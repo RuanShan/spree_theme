@@ -1,7 +1,7 @@
 SpreeTheme
 ==========
 
-New frontend of spree, user could easy modify theme or add new theme.
+New frontend of spree, user could easy modify theme or add new theme. It is not working now!
 
 
 Example
