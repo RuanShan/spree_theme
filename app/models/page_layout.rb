@@ -23,16 +23,18 @@ class PageLayout < ActiveRecord::Base
   before_destroy :remove_section
   
   scope :full_html_roots, where(:is_full_html=>true,:parent_id=>nil)
+  attr_accessible :section_id,:title
 
   #notice: attribute section_id, title required
   # section.root.section_piece_id should be 'root'
   def self.create_layout(section, title, attrs={})
     #create record in table page_layouts
-    obj = create!(:section_id=>section.id) do |l|
-      l.title = title
-      l.attributes = attrs unless attrs.empty?
-      l.section_instance = 1
-      l.is_full_html = section.section_piece.is_root?
+    obj = create!(:section_id=>section.id) do |obj|
+      obj.title = title
+      obj.website_id = SpreeTheme::Config.website_class.current.id
+      obj.attributes = attrs unless attrs.empty?
+      obj.section_instance = 1
+      obj.is_full_html = section.section_piece.is_root?
     end
     obj.update_attribute("root_id",obj.id)
     if obj.is_full_html? #only create template for full html page layout
@@ -163,11 +165,11 @@ class PageLayout < ActiveRecord::Base
       if section.root? and self.section.section_piece.is_container      
         whole_tree = self.root.self_and_descendants
         section_instance = whole_tree.select{|xnode| xnode.section_id==section.id}.size.succ
-        atts = {:website_id=>website_id, :root_id=>root_id, :section_id=>section_id, :section_instance=>section_instance}      
-        atts.merge!(attrs)
-        atts[:title]||="#{section.slug}#{section_instance}"
-        
-        obj = self.class.create!(atts)      
+        attrs[:title]||="#{section.slug}#{section_instance}"        
+        obj = self.dup
+        obj.section_id, obj.section_instance=section_id, section_instance
+        obj.assign_attributes( attrs )
+        obj.save!    
         obj.move_to_child_of(self)
         #copy the default section param value to the layout
         obj.add_param_value()

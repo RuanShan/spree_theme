@@ -8,17 +8,22 @@ module Spree
     def website_class
       SampleWebsite
     end
-
+    def taxonomy_class
+      Spree::Taxonomy      
+    end
+    
     class SampleWebsite
-      attr_accessor :url, :name, :index_page
+      attr_accessor :id, :url, :name, :index_page
       class << self
         def current
           if Thread.current[:website].nil?
             website = SampleWebsite.new
+            website.id = 1
             website.name = 'DalianShops Demo Site'
             website.url = 'demo.spreecommerce.com'
             Thread.current[:website] = website
           end
+          Thread.current[:website]
         end
       end
     end

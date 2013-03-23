@@ -136,12 +136,21 @@ GEM
       activesupport (>= 3.0)
     cocaine (0.5.1)
       climate_control (>= 0.0.3, < 1.0)
+    coffee-rails (3.2.2)
+      coffee-script (>= 2.2.0)
+      railties (~> 3.2.0)
+    coffee-script (2.2.0)
+      coffee-script-source
+      execjs
+    coffee-script-source (1.6.2)
     columnize (0.3.6)
     deface (0.9.1)
       nokogiri (~> 1.5.0)
       rails (~> 3.1)
     diff-lcs (1.2.1)
     erubis (2.7.0)
+    execjs (1.4.0)
+      multi_json (~> 1.0)
     factory_girl (4.2.0)
       activesupport (>= 3.0.0)
     ffaker (1.15.0)
@@ -283,6 +292,7 @@ DEPENDENCIES
   acts_as_tree
   awesome_nested_set
   capybara (= 1.0.1)
+  coffee-rails
   factory_girl
   ffaker
   friendly_id (~> 4.0.9)

@@ -5,6 +5,7 @@ class Section < ActiveRecord::Base
   acts_as_nested_set #:scope=>"root_id"
   friendly_id :title, :use => :slugged
   
+  attr_accessible :section_piece_id, :title, :global_events, :subscribed_global_events
   # usage: attribute section_piece_id, title required
   # params: default_param_value,  is a hash,  class_name=>{htmal_attribute_id=>default_value,..}
   def self.create_section(section_piece_id,attrs = {}, default_param_value={})
@@ -28,13 +29,15 @@ class Section < ActiveRecord::Base
     section_piece = SectionPiece.find(section_piece_id)
     tree = self.root.self_and_descendants
     section_piece_instance = tree.select{|xnode| xnode.section_piece_id==section_piece_id}.size.succ
-    atts = {:website_id=>website_id, :section_piece_id=>section_piece_id, :section_piece_instance=>section_piece_instance}
+    atts = { :section_piece_id=>section_piece_id}
     obj = nil
     self.class.transaction do      
-      obj = self.class.create!(atts)
+      obj = self.class.create!(atts)do|obj|
+        obj.root_id= self.root_id
+        obj.section_piece_instance=section_piece_instance       
+      end
       obj.move_to_child_of(self)
       obj.add_section_piece_param(default_param_value)
-      obj.update_attribute("root_id", self.root_id)      
     end
     obj
   end
@@ -60,7 +63,8 @@ class Section < ActiveRecord::Base
     exclude_keys = [:disabled_ha_ids]
     section_root_id = self.root.id
       for spp in section_piece_params
-        section_param = SectionParam.create(:section_root_id=>section_root_id) do |sp|
+        section_param = SectionParam.create() do |sp|
+          sp.section_root_id=section_root_id
           sp.section_id = self.id
           sp.section_piece_param_id = spp.id
           #sp.is_enabled =

@@ -12,6 +12,7 @@ class TemplateTheme < ActiveRecord::Base
   friendly_id :title,:use => :scoped, :scope => :website
 
   after_destroy :remove_relative_data
+  attr_accessible :website_id,:page_layout_root_id,:title
   
   begin 'for page generator'  
     def file_name(usage)

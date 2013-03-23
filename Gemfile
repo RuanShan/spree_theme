@@ -24,4 +24,8 @@ gem "responds_to_parent"
 gem 'jquery-rails', '>= 1.0.12'
 gem "friendly_id", "~> 4.0.9"
 
+group :assets do
+  gem 'coffee-rails'
+end
+
 gemspec

@@ -13,7 +13,7 @@ class ParamValue < ActiveRecord::Base
   scope :within_section, lambda { |param_value|
       where(" theme_id=? and param_values.page_layout_id=? ", param_value.theme_id, param_value.page_layout_id).includes(:section_param=>:section_piece_param)      
     }
-
+  attr_accessible :page_layout_root_id, :page_layout_id
   attr_accessor :updated_html_attribute_values, :original_html_attribute_values, :page_events
     
   # usage: return all html_attribute_values this param value contains. 
