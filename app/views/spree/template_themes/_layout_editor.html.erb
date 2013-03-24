@@ -2,9 +2,8 @@
     <div id="page_layout_tree" class="block">
     <%= render :partial=>"layout_tree", :locals=>{:layout_root=>@theme.page_layout, :selected_id=>@theme.page_layout.id} %>
     <% #do not put it in file layout_tree, or update_layout_tree ajax add section_selection_dialog again and again.
-      sections = Section.roots
     %>
-    <%= render :partial=>"section_selection_dialog", :locals=>{:sections=>sections}%>
+    <%= render :partial=>"section_selection_dialog", :locals=>{:sections=>@sections}%>
 
     </div>
   </div>

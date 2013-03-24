@@ -27,8 +27,6 @@ class ApplicationController < ActionController::Base
   
   def init_shop
     #self.shop = Shop.first
-    self.website = Website.first
-    Website.current = self.website    
   end
   
 end

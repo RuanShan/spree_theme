@@ -1,6 +1,5 @@
 Spree::Core::Engine.routes.draw do
   # Add your extension routes here
-  
   resources :template_themes do
      member do
        get :editor
@@ -24,6 +23,6 @@ Spree::Core::Engine.routes.draw do
   match '(/:c(/:r))' => 'template_themes#preview', :c => /[\d]+/
   match 'preview(/:c(/:r))' => 'template_themes#preview' #preview home
  
-  root :to=>"template_themes#index"
+  #root :to=>"template_themes#index"
 
 end

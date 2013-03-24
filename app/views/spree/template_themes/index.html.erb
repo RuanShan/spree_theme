@@ -9,8 +9,8 @@
   <tr>
     <td><%=h theme.slug %></td>
 
-    <td><%= link_to 'Destroy', theme, :confirm => 'Are you sure?', :method => :delete %></td>
-    <td><%= link_to 'copy', {:action=>"copy",:id=>theme}, {:method=>:post} %></td>
+    <td><%= link_to 'Destroy', template_theme_path(theme), :confirm => 'Are you sure?', :method => :delete %></td>
+    <td><%= link_to 'copy', copy_template_theme_path(theme), {:method=>:post} %></td>
     <td><%= link_to 'Editor', editor_template_theme_path(theme) %></td>
     <td><%= link_to 'Build', build_template_theme_path(theme) %></td>
     <td><%= link_to 'GenerateAssets', generate_assets_template_theme_path(theme)   %></td>

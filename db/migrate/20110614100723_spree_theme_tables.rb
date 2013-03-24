@@ -177,7 +177,6 @@ class SpreeThemeTables < ActiveRecord::Migration
   end
   
   def self.down
-    drop_table :websites
     drop_table :html_attributes
     drop_table :section_pieces
     drop_table :param_categories

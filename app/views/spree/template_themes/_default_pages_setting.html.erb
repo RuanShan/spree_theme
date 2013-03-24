@@ -1,0 +1,13 @@
+<% page_layouts = PageLayout.full_html_roots
+
+%>
+
+<table>
+  <tr>
+    <th> default index page </th>
+    <td><%=  grouped_collection_select("website", "index_page", Menu.roots, :descendants, "slug", "id", "slug")%>  
+    </td>    
+  </tr>
+
+</table>
+

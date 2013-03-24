@@ -6,7 +6,7 @@
    pv_div_id = "pv_#{param_value.id}_#{ha.id}"
    pv_ele_id = "pv#{param_value.id}[#{ha.id}]"
    pv_link_id = pv_div_id+'_a'
-   hav = HtmlAttributeValue.parse_from(param_value, ha)
+   hav = Spree::HtmlAttributeValue.parse_from(param_value, ha)
    display = ( hav.hidden? ? "display:none" : ""  )
    Rails.logger.debug "hidden=#{display}" 
 -%>
@@ -21,8 +21,7 @@
            possible_values = ha.possible_selected_values(i)
            possible_values_descriptions = ha.possible_selected_values_descriptions(i)
            units = ha.units
-onchange = my_remote_function( :submit=>"layout_editor_form",  
-:url => { :action => "update_param_value",:editing_param_value_id=> param_value.id, :editing_html_attribute_id=>ha.id, :param_value_event=>ParamValue::EventEnum[:psv_changed]})
+onchange = my_remote_function( :submit=>"layout_editor_form",:url => hav.build_url_params(:psv_changed))
 #logger.debug "ha=#{hav.html_attribute.id},hav.properties=#{hav.properties.inspect} psvalue=#{psvalue}, pvalue=#{pvalue}, unit=#{unit}"
         -%>
         <%# possible selected value
@@ -39,8 +38,7 @@ onchange = my_remote_function( :submit=>"layout_editor_form",
             if ha.manual_entry?(psvalue)
               element_style="display:inline-block;"
             end
-  onchange = my_remote_function( :submit=>"layout_editor_form",  
-  :url => { :action => "update_param_value",:editing_param_value_id=> param_value.id, :editing_html_attribute_id=>ha.id, :param_value_event=>ParamValue::EventEnum[:pv_changed]})
+  onchange = my_remote_function( :submit=>"layout_editor_form",:url => hav.build_url_params(:pv_changed))
           -%>
           <div class="fl" style="<%=element_style%>">
             <%if html_attribute.is_special?(:db)-%>
@@ -69,8 +67,7 @@ onchange = my_remote_function( :submit=>"layout_editor_form",
       <%}-%>
       </div>
       <div class="fr">
-<%onchange = my_remote_function( :submit=>"layout_editor_form",  
-:url => { :action => "update_param_value",:editing_param_value_id=> param_value.id, :editing_html_attribute_id=>ha.id, :param_value_event=>ParamValue::EventEnum[:unset_changed]})
+<%onchange = my_remote_function( :submit=>"layout_editor_form",:url => hav.build_url_params(:unset_changed))
 -%>
         <%=check_box_tag("#{pv_ele_id}[unset]", HtmlAttribute::BOOL_TRUE, hav.unset?, :onchange=>onchange)%> <%=label_tag "#{pv_ele_id}[unset]", "Unset"%>
       </div>
