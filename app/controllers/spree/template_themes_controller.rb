@@ -3,6 +3,7 @@ module Spree
     cattr_accessor :layout_base_path
     self.layout_base_path = File.join(::Rails.root.to_s,"public","shops")   
   
+    delegate :taxon_class,:website_class, :to=>SpreeTheme::Config
     # GET /themes
     # GET /themes.xml
     def index
@@ -116,9 +117,9 @@ module Spree
       params[:d] = 'www.rubyecommerce.com'
       editor = params[:editor]
       website=menu=layout=theme = resource = nil
-      website = SpreeTheme::Config.website_class.current
+      website = website_class.current
       if params[:c]
-        menu = Menu.find_by_id(params[:c])
+        menu = taxon_class.find_by_id(params[:c])
         if params[:r]
           resource = BlogPost.find_by_id(params[:r])
         end  
@@ -139,7 +140,7 @@ module Spree
     end
       
     def publish
-      @menu = Menu.roots.first
+      @menu_roots = SpreeTheme::Config.taxon_class.roots
     end
     
     def assign_default
@@ -159,8 +160,8 @@ module Spree
       if commit_command=~/Update/
         #update default page
         website_params = params[:website]
-        self.website.attributes = website_params
-        self.website.save
+        self.website_class.current.attributes = website_params
+        self.website_class.current.save
         
       end
       

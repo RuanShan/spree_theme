@@ -8,8 +8,8 @@ module Spree
     def website_class
       SampleWebsite
     end
-    def taxonomy_class
-      Spree::Taxonomy      
+    def taxon_class
+      Spree::Taxon   
     end
     
     class SampleWebsite
