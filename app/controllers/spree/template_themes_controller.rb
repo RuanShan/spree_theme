@@ -3,7 +3,7 @@ module Spree
     cattr_accessor :layout_base_path
     self.layout_base_path = File.join(::Rails.root.to_s,"public","shops")   
   
-    delegate :taxon_class,:website_class, :to=>SpreeTheme::Config
+    delegate :taxon_class,:website_class, :to=>:"SpreeTheme::Config"
     # GET /themes
     # GET /themes.xml
     def index
@@ -124,9 +124,9 @@ module Spree
           resource = BlogPost.find_by_id(params[:r])
         end  
       else
-        menu = Menu.find_by_id(website.index_page)  
+        menu = taxon_class.find_by_id(website.index_page)  
       end
-      theme = TemplateTheme.find(menu.find_theme_id(is_preview=true))
+      theme = TemplateTheme.find( website_class.current.theme_id)
       html,css = do_preview(theme, menu, {:blog_post_id=>(resource.nil? ? nil:resource.id),:editor=>editor})
       #insert css to html
       style = %Q!<style type="text/css">#{css}</style>!
@@ -140,7 +140,9 @@ module Spree
     end
       
     def publish
-      @menu_roots = SpreeTheme::Config.taxon_class.roots
+      @website = website_class.current
+      @menu_roots = taxon_class.roots
+      @themes = TemplateTheme.all
     end
     
     def assign_default
@@ -184,7 +186,7 @@ module Spree
     
     def select_tree
       
-      @menu = Menu.find(params[:menu_id])
+      @menu = taxon_class.find(params[:menu_id])
       
       render :partial=>"menu_and_template"
     end
@@ -392,7 +394,7 @@ module Spree
     
     def do_publish
         # find all theme used by website
-      theme_ids = Menu.assigned_theme_ids()
+      theme_ids = taxon_class.assigned_theme_ids()
       if not theme_ids.empty?
         for theme_id in theme_ids
           theme = TemplateTheme.find(theme_id)
@@ -446,9 +448,9 @@ module Spree
       website=menu=layout=theme = nil
       website = SpreeTheme::Config.website_class.current
       if params[:c]
-        menu = Menu.find_by_id(params[:c])
+        menu = taxon_class.find_by_id(params[:c])
       else
-        menu = Menu.find_by_id(website.index_page)  
+        menu = taxon_class.find_by_id(website.index_page)  
       end
       theme = TemplateTheme.find(menu.find_theme_id(is_preview=true))
       html, css = do_generate(theme.id, theme.layout_id, menu.id)

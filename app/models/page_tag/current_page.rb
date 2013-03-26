@@ -24,7 +24,7 @@ module PageTag
     
     #title is current page title,  resource.title-menu.title-website.title
     def title
-      "#{menu.title} - #{menu.website.title}"
+      "#{menu.name} - #{menu.website.title}"
     end
     
     #get current page's resource by template.current_piece 

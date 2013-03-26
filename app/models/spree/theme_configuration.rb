@@ -6,26 +6,11 @@ module Spree
   class ThemeConfiguration < Preferences::Configuration
     #description start with global means it is for whole application, not just one site 
     def website_class
-      SampleWebsite
+      FakeWebsite
     end
     def taxon_class
       Spree::Taxon   
     end
     
-    class SampleWebsite
-      attr_accessor :id, :url, :name, :index_page
-      class << self
-        def current
-          if Thread.current[:website].nil?
-            website = SampleWebsite.new
-            website.id = 1
-            website.name = 'DalianShops Demo Site'
-            website.url = 'demo.spreecommerce.com'
-            Thread.current[:website] = website
-          end
-          Thread.current[:website]
-        end
-      end
-    end
   end
 end
