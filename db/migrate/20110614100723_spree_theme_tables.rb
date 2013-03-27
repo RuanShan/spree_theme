@@ -1,12 +1,6 @@
 class SpreeThemeTables < ActiveRecord::Migration
   def self.up
-    create_table :websites do |t|
-      t.string :title,:limit => 24,     :null => false
-      t.string :url
-      t.integer :index_page,     :null => false, :default => 0
-      t.timestamps
-    end  
-    
+   
     # This table contains the css specification, copied from the w3 website.
     # Ok, it also includes html elment attributes, but only the ones that can't be put in css
     # Users do not use this table.
@@ -37,7 +31,9 @@ class SpreeThemeTables < ActiveRecord::Migration
       t.column :is_selectable,       :boolean,                   :null => false, :default => false
       # could assign kinds of resources to this piece
       t.column :resources,           :string, :limit => 10,      :null => false, :default => ""
-      t.timestamps
+      # load by fixture, created_at,updated_at maybe nil
+      t.column :created_at,           :datetime
+      t.column :updated_at,           :datetime
     end
     add_index :section_pieces, :slug, :unique => true
  

@@ -117,9 +117,9 @@ objs=[
   {"neg_ok"=>false, "pvalues_desc"=>"1,0", "default_value"=>-1, "pvalues"=>"1,0", "punits"=>"", "title"=>"sitemap_view_style", "id"=>116, "pvspecial"=>""},
   {"neg_ok"=>false, "pvalues_desc"=>"1809,1810,1811,1812,1813", "default_value"=>1, "pvalues"=>"1809,1810,1811,1812,1813", "punits"=>"", "title"=>"composite", "id"=>117, "pvspecial"=>""}]
 
-HtmlAttribute.delete_all              
+Spree::HtmlAttribute.delete_all              
 for ha in objs
-  obj = HtmlAttribute.new
+  obj = Spree::HtmlAttribute.new
   obj.assign_attributes( ha,  :without_protection => true)
   obj.save
 end

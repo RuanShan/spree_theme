@@ -1,10 +1,10 @@
 #################################  template resource #####################################
-template = TemplateTheme.first
+template = Spree::TemplateTheme.first
 
-taxonomy_class = SpreeTheme::Config.taxonomy_class
+taxon_class = SpreeTheme::Config.taxon_class
 
-categories = taxonomy_class.find_by_name!("Categories")
-brands = taxonomy_class.find_by_name!("Brand")
+categories = taxon_class.find_by_name!("Categories")
+brands = taxon_class.find_by_name!("Brand")
 
 #main_menu_section = template.page_layout.self_and_descendants.where(:title=>title).first
 

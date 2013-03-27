@@ -15,7 +15,7 @@ module PageTag
         template_image = nil
         image_id = wrapped_page_layout.assigned_image_id
         if image_id > 0          
-          template_image = TemplateFile.find(image_id)
+          template_image = Spree::TemplateFile.find(image_id)
         end
         images_cache[key] = template_image     
       end

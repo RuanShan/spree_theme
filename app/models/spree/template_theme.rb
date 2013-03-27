@@ -3,7 +3,7 @@ module Spree
   class TemplateTheme < ActiveRecord::Base
     #extend FriendlyId
   
-    belongs_to :website
+    #belongs_to :website #move it into template_theme_decorator
     belongs_to :page_layout, :foreign_key=>"page_layout_root_id", :dependent=>:destroy
     has_many :param_values, :foreign_key=>"theme_id" #  :dependent=>:destroy, do not use dependent, it cause load each one of param_value
     has_many :template_files, :foreign_key=>"theme_id" #  :dependent=>:destroy, do not use dependent, it cause load each one of param_value

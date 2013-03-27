@@ -20,9 +20,9 @@ objs=[
   
   ]
 
-ParamCategory.delete_all              
+Spree::ParamCategory.delete_all              
 for ha in objs
-  obj = ParamCategory.new
+  obj = Spree::ParamCategory.new
   obj.assign_attributes( ha,  :without_protection => true)
   obj.save
 end

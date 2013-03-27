@@ -6,7 +6,7 @@ class PageGenerator
   cattr_accessor :pattern
   self.pattern = '<\? \?>'
   
-  attr_accessor :website, :menu, :theme, :resource # resource could be blog_post, flash, file, image...
+  attr_accessor :menu, :theme, :resource # resource could be blog_post, flash, file, image...
   attr_accessor :editor
   attr_accessor :html, :css, :js
   #ruby embeded source

@@ -7,8 +7,8 @@ module PageTag
     
     def param_values_hash
       if @param_values_hash.nil?
-        param_values =  ParamValue.find(:all,:conditions=>["theme_id=?", self.template_tag.id],
-          :include=>[:section_param=>:section_piece_param], :order=>'param_values.page_layout_id,section_piece_params.class_name '
+        param_values =  Spree::ParamValue.find(:all,:conditions=>["theme_id=?", self.template_tag.id],
+          :include=>[:section_param=>:section_piece_param], :order=>'spree_param_values.page_layout_id,spree_section_piece_params.class_name '
         )
         
         @param_values_hash = param_values.inject({}){|h,pv|
@@ -39,18 +39,13 @@ module PageTag
             if options[:source]=='computed' #computed param value must be css 
               val<< pv.computed_pvalue.values.join(';')                           
             else
-              html_attributes = HtmlAttribute.find_by_ids(pv.html_attribute_ids)
+              html_attributes = Spree::HtmlAttribute.find_by_ids(pv.html_attribute_ids)
               for ha in  html_attributes
                 if ha.is_special?(:image) or ha.is_special?(:src)
                   hav= pv.html_attribute_value(ha)
                   file_name = hav['pvalue0']
                   if file_name
-                    if spp.pclass==SectionPieceParam::PCLASS_STYLE
-                      # replace ':' with '='
-                      val << %Q!#{ha.slug}="#{build_path(file_name)}"!
-                    else
-                      val << "#{ha.slug}:url(#{build_path(file_name)});"
-                    end
+                    val << "#{ha.slug}:url(#{build_path(file_name)});"
                   end
                 else
                   unset = pv.unset?(ha.id)
@@ -58,12 +53,7 @@ module PageTag
                   # hidden= pv.hidden?(ha.id)
                   pv_for_ha = pv.pvalue_for_haid(ha.id)
                   if !unset 
-                    if spp.pclass==SectionPieceParam::PCLASS_STYLE
-                      ha_slug, ha_value = pv_for_ha.split(':')
-                      val << %Q!#{ha_slug}="#{ha_value}"!
-                    else
                       val <<  ( pv_for_ha+';' )                    
-                    end
                   end                
                 end
                 

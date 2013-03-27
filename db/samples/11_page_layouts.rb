@@ -15,21 +15,21 @@ objs=[
 =end                
 
 # section slugs= [root,container,menu]
-objects = Section.roots
+objects = Spree::Section.roots
 section_hash= objects.inject({}){|h,sp| h[sp.slug] = sp; h}
 # puts "section_hash=#{section_hash.keys}"
 website_id = section_hash['root'].website_id
   
 
 # center area
-center_area = PageLayout.create_layout(section_hash['center_area'], "center_area")
+center_area = Spree::PageLayout.create_layout(section_hash['center_area'], "center_area")
 center_area.add_section(section_hash['center_part'].id,:title=>"center_part")
 center_area.add_section(section_hash['left_part'].id,:title=>"left_part")
 center_area.add_section(section_hash['right_part'].id,:title=>"right_part")
   
   
   
-root = PageLayout.create_layout(section_hash['root'], "Template One")
+root = Spree::PageLayout.create_layout(section_hash['root'], "Template One")
 
 header = root.add_section(section_hash['container'].id,:title=>"Header")
 header.add_section(section_hash['logo'].id,:title=>"Logo")
@@ -53,11 +53,11 @@ blog_detail.add_section(section_hash['blog-post-body'].id,:title=>"Blog post bod
 
 blog_list.reload   #reload left, right
 blog_detail.reload #reload left, right
-blog_list.update_section_context( PageLayout::ContextEnum.list )
-blog_list.update_data_source( PageLayout::ContextDataSourceMap[PageLayout::ContextEnum.list].first )
+blog_list.update_section_context( Spree::PageLayout::ContextEnum.list )
+blog_list.update_data_source( Spree::PageLayout::ContextDataSourceMap[Spree::PageLayout::ContextEnum.list].first )
 
-blog_detail.update_section_context( PageLayout::ContextEnum.detail )
-blog_detail.update_data_source( PageLayout::ContextDataSourceMap[PageLayout::ContextEnum.detail].first )
+blog_detail.update_section_context( Spree::PageLayout::ContextEnum.detail )
+blog_detail.update_data_source( Spree::PageLayout::ContextDataSourceMap[Spree::PageLayout::ContextEnum.detail].first )
 
 
 

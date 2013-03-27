@@ -32,10 +32,10 @@ module PageTag
       end
        
       def assigned_menu_id
-        self.collection_tag.theme.assigned_resource_id(Menu, page_layout.id)
+        self.collection_tag.theme.assigned_resource_id(SpreeTheme::Config.taxon_class, page_layout.id)
       end
       def assigned_image_id
-        self.collection_tag.theme.assigned_resource_id(TemplateFile, page_layout.id)
+        self.collection_tag.theme.assigned_resource_id(Spree::TemplateFile, page_layout.id)
       end
     end
     

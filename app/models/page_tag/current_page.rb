@@ -24,7 +24,7 @@ module PageTag
     
     #title is current page title,  resource.title-menu.title-website.title
     def title
-      "#{menu.name} - #{menu.website.title}"
+      "#{menu.name} - #{website_tag.name}"
     end
     
     #get current page's resource by template.current_piece 
@@ -33,9 +33,9 @@ module PageTag
       data_source = self.template_tag.current_piece.data_source
       if data_source.present?
         if data_source == 'gpvs'
-          objs = menu.blog_posts
+          objs = menu.products
         elsif data_source == 'this_product'
-          objs = menu.blog_posts.where(:id=>resource.id)        
+          objs = menu.products.where(:id=>resource.id)        
         end
         if objs.present?
           objs = BlogPosts.new( self.page_generator, objs)

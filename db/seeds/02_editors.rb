@@ -4,9 +4,9 @@ editors = [
   {:id=>3,:slug=>'color'}, 
   {:id=>4,:slug=>'text'}  
     ]
-Editor.delete_all              
+Spree::Editor.delete_all              
 for ha in editors
-  obj = Editor.new
+  obj = Spree::Editor.new
   obj.assign_attributes( ha,  :without_protection => true)
   obj.save
 end

@@ -1,6 +1,9 @@
 module PageTag
   class WebsiteTag < Base
-    
+    class_attribute :accessable_attributes
+    self.accessable_attributes = [:id,:name]
+    delegate *self.accessable_attributes, :to => :website
+
     def website
       page_generator.theme.website
     end

@@ -1,4 +1,4 @@
-class FakeWebsite < ActiveRecord::Migration
+class AddFakeWebsite < ActiveRecord::Migration
   def up
     # fake website for test only, user would change index_page, should store it.
     create_table :fake_websites do |t|

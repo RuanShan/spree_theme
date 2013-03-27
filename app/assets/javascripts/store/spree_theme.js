@@ -1,8 +1,8 @@
 //= require jquery
 //= require jquery-ui
 //= require jquery_ujs
+//= require jquery.form
 //= require store/spree_frontend
-//= require store/jquery.form
 
 function ajax_post (url, form, data_type, callback) {
   $.ajax({type:'post',data:$("#"+form+" :input").serialize(), url:url,dataType:data_type, success:callback });   

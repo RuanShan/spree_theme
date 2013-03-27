@@ -43,9 +43,9 @@ objs=[
   
   ]
 
-SectionPieceParam.delete_all              
+Spree::SectionPieceParam.delete_all              
 for ha in objs
-  obj = SectionPieceParam.new
+  obj = Spree::SectionPieceParam.new
   obj.param_conditions={}
   obj.assign_attributes( ha,  :without_protection => true)
   obj.save
