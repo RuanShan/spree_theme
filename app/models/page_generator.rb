@@ -36,8 +36,8 @@ class PageGenerator
     self.is_preview = options[:preview].present?
     
     self.editor = options[:editor]
-    if options[:blog_post_id]
-      self.resource = BlogPost.find(options[:blog_post_id])
+    if options[:resource].present?
+      self.resource = options[:resource]
     end
     html = css = js = nil
     ehtml = ecss = ejs = nil
@@ -95,7 +95,7 @@ class PageGenerator
  
   def build_path(model)    
     url = nil
-    if model.kind_of?( Menu)
+    if model.kind_of?( SpreeTheme::Config.taxon_class)
       url= [self.url_prefix, model.id].join('/')
     else  
       url= [self.url_prefix, self.menu.id, model.id].join('/')    

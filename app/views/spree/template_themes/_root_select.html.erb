@@ -1,3 +1,3 @@
 <%# locals={:selected_value}
 -%>
-<%= select "menu","id", Menu.roots.collect{|item| [item.title,item.id] }%>
+<%= select "menu","id", SpreeTheme::Config.taxon_class.roots.collect{|item| [item.title,item.id] }%>

@@ -5,7 +5,7 @@ module PageTag
   class BlogPosts < ModelCollection
     
     class WrappedBlogPost < WrappedModel
-      self.accessable_attributes=[:id,:name,:body,:published_at]
+      self.accessable_attributes=[:id,:name,:description,:published_at]
       delegate *self.accessable_attributes, :to => :model
       
     end  

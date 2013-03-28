@@ -69,8 +69,7 @@ module Spree
       # param_value.pvalue should be menu root id
       # return menu roots
       def assigned_menus
-        pvs = self.param_values.all(:conditions=>["section_piece_params.pclass=?","db"],:include=>[:section_param=>:section_piece_param])
-        pvs.collect{|pv| mid = pv.first_pvalue.to_i; mid>0 ? Menu.find(mid) : nil }.compact
+
       end
       
       # get assigned menu by specified page_layout_id

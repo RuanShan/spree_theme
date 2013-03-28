@@ -5,7 +5,7 @@
 
 # method of this form should be 'get', every time user click a section, get_param_values belong to the section.
 -%>
-<%= form_tag({:action=>'get_param_values'}, { :remote=>true, :method=>'post', 'data-type'=>'script', :id=>"layout_editor_form",:name=>"layout_editor_form"}) do -%>
+<%= form_tag(get_param_values_template_theme_path(@theme), { :remote=>true, :method=>'post', 'data-type'=>'script', :id=>"layout_editor_form",:name=>"layout_editor_form"}) do -%>
 
     <ul class="tabs clear-block">
     <% for tab in @editors%>

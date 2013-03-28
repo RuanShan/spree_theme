@@ -121,13 +121,13 @@ module Spree
       if params[:c]
         menu = taxon_class.find_by_id(params[:c])
         if params[:r]
-          resource = BlogPost.find_by_id(params[:r])
+          resource = Product.find_by_id(params[:r])
         end  
       else
         menu = taxon_class.find_by_id(website.index_page)  
       end
       theme = TemplateTheme.find( website_class.current.theme_id)
-      html,css = do_preview(theme, menu, {:blog_post_id=>(resource.nil? ? nil:resource.id),:editor=>editor})
+      html,css = do_preview(theme, menu, {:resource=>(resource.nil? ? nil:resource),:editor=>editor})
       #insert css to html
       style = %Q!<style type="text/css">#{css}</style>!
       

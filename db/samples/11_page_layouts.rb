@@ -43,13 +43,13 @@ main_content = body.add_section(section_hash['container'].id,:title=>"main conte
 
 lftnav.add_section(section_hash['vmenu'].id,:title=>"Categories")
 
-blog_list = main_content.add_section(section_hash['container'].id,:title=>"blog list")
-blog_detail = main_content.add_section(section_hash['container'].id,:title=>"blog detail")
-blog_list.add_section(section_hash['blog-post-title'].id,:title=>"Blog post title")
+blog_list = main_content.add_section(section_hash['container'].id,:title=>"product list")
+blog_detail = main_content.add_section(section_hash['container'].id,:title=>"product detail")
+blog_list.add_section(section_hash['product-name'].id,:title=>"product name")
 
 
-blog_detail.add_section(section_hash['blog-post-title'].id,:title=>"Blog post title")
-blog_detail.add_section(section_hash['blog-post-body'].id,:title=>"Blog post body")
+blog_detail.add_section(section_hash['product-name'].id,:title=>"product name")
+blog_detail.add_section(section_hash['product-description'].id,:title=>"product description")
 
 blog_list.reload   #reload left, right
 blog_detail.reload #reload left, right

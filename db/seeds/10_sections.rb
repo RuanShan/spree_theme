@@ -55,17 +55,17 @@ text = Spree::Section.create_section(section_piece_hash['container'].id, {:title
    'inner'=>{'15hidden'=>bool_true}})
 text.add_section_piece(section_piece_hash['text'].id)
 
-blog_post_title = Spree::Section.create_section(section_piece_hash['container'].id, {:title=>"blog post title"},
+product_name = Spree::Section.create_section(section_piece_hash['container'].id, {:title=>"product name"},
   {'block'=>{'disabled_ha_ids'=>'111'},
    'content_horizontal'=>{'disabled_ha_ids'=>'101'},
    'inner'=>{'15hidden'=>bool_true}})
-blog_post_title.add_section_piece(section_piece_hash['blog-post-title'].id)
+product_name.add_section_piece(section_piece_hash['product-name'].id)
 
-blog_post_body = Spree::Section.create_section(section_piece_hash['container'].id, {:title=>"blog post body"},
+product_description = Spree::Section.create_section(section_piece_hash['container'].id, {:title=>"product description"},
   {'block'=>{'disabled_ha_ids'=>'111'},
    'content_horizontal'=>{'disabled_ha_ids'=>'101'},
    'inner'=>{'15hidden'=>bool_true}})
-blog_post_body.add_section_piece(section_piece_hash['blog-post-body'].id)
+product_description.add_section_piece(section_piece_hash['product-description'].id)
 
 ################################################ center area start ##############################################  
 center_area = Spree::Section.create_section(section_piece_hash['container'].id, {:title=>"center_area",:subscribed_global_events=>"page_layout_fixed,block_width"},{'content_layout'=>{86=>bool_true,'86unset'=>bool_false},
