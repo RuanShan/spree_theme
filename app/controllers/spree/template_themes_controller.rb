@@ -8,7 +8,7 @@ module Spree
     # GET /themes.xml
     def index
       @themes = TemplateTheme.all
-  
+  Rails.logger.debug "app=#{Rails.application.app}"
       respond_to do |format|
         format.html # index.html.erb
         format.xml  { render :xml => @themes }
@@ -127,7 +127,7 @@ module Spree
         menu = taxon_class.find_by_id(website.index_page)  
       end
       theme = TemplateTheme.find( website_class.current.theme_id)
-      html,css = do_preview(theme, menu, {:resource=>(resource.nil? ? nil:resource),:editor=>editor})
+      html,css = do_preview(theme, menu, {:resource=>(resource.nil? ? nil:resource),:editor=>editor,:controller=>self})
       #insert css to html
       style = %Q!<style type="text/css">#{css}</style>!
       
@@ -422,9 +422,10 @@ module Spree
     
     def do_preview( theme,  menu, options={})
         options[:preview] = true #preview_template_themes_url
-        @lg = PageGenerator.generator( menu, theme, options)
-        html = @lg.generate
-        css,js  = @lg.generate_assets
+        
+        @lg = PageGenerator.previewer( menu, theme, options)
+        html = @lg.renderer.generate
+        css,js  = @lg.renderer.generate_assets
         if options[:serialize_html]
           @lg.serialize_page(:html)
         end
@@ -434,11 +435,10 @@ module Spree
         return html, css, js  
     end
   
-    def do_generate( theme_id, layout_id, menu_id, options={})
+    def do_generate( theme, menu, options={})
   
-        theme = TemplateTheme.find(theme_id)
-        @lg = PageGenerator.new( theme_id, layout_id, menu_id, options)
-        html, css = @lg.generate_from_erb_file
+        @lg = PageGenerator.generator( theme, menu, options)
+        html, css = @lg.renderer.generate_from_erb_file
         return html, css      
     end
       
@@ -453,7 +453,7 @@ module Spree
         menu = taxon_class.find_by_id(website.index_page)  
       end
       theme = TemplateTheme.find(menu.find_theme_id(is_preview=true))
-      html, css = do_generate(theme.id, theme.layout_id, menu.id)
+      html, css = do_generate(theme,  menu)
       render :text => html
     end
   end

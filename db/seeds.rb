@@ -13,8 +13,6 @@
 
 seeds_path = File.join(File.dirname(__FILE__), 'seeds')
 
-require 'active_record/fixtures'
-ActiveRecord::Fixtures.create_fixtures(seeds_path, "spree_section_pieces")   
 
 #suffix number of seeds file name indicate loading order. 
 xpath = File.join(seeds_path, "*.rb")
@@ -28,3 +26,4 @@ Dir[xpath].sort.each {|file|
 # Section
 
 puts "loading complete!"
+

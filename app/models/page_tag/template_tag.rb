@@ -40,7 +40,7 @@ module PageTag
     end
     
     attr_accessor :page_layout_tree
-    attr_accessor :param_values_tag, :menus_tag, :image_tag, :blog_post_tag
+    attr_accessor :param_values_tag, :menus_tag, :image_tag
     delegate :css, :to => :param_values_tag 
     delegate :menu, :to => :menus_tag
     delegate :image, :to => :image_tag

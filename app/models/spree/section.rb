@@ -143,10 +143,10 @@ module Spree
         
         #only set @param_values, @menus for root piece.
         header= <<-EOS
-           <? g_section_id=#{node.id};
+           <% g_section_id=#{node.id};
               @template.select(g_page_layout_id, g_section_id);
               g_piece_selector = @template.current_piece.piece_selector;
-              ?> 
+              %> 
            EOS
       end 
       

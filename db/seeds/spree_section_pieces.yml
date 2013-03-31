@@ -8,27 +8,26 @@ root:
     <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
     <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en" dir="ltr">
     <head>
-      <title><?= @current_page.title?></title>
+      <title><%= @current_page.title%></title>
       <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
       <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE8" />
       <link rel="shortcut icon" href="favicon.ico" type="image/x-icon"/>
-    <script type="text/javascript" src="/assets/jquery.js"></script>
-    <script type="text/javascript" src="/assets/jquery-ui.js"></script>
-      <script type="text/javascript" src="<?=@website.public_path('js')?>"></script>
-      <link rel="stylesheet" href="<?=@website.public_path('css')?>" type="text/css" />
+      <script type="text/javascript" src="<%=@website.public_path('js')%>"></script>
+      <link rel="stylesheet" href="<%=@website.public_path('css')%>" type="text/css" />
     <!--[if lt IE 7]>
       <script src="/javascripts/IE7.js" type="text/javascript"></script>
     <![endif]-->
-    <? if @current_page.is_preview ?>
-      <script type="text/javascript" src="/assets/jquery_ujs.js"></script>
-      <script type="text/javascript" src="/assets/jquery.form.js"></script>
+    <% if @current_page.is_preview %>
       <script type="text/javascript" src="/assets/store/spree_theme.js"></script>
       <link rel="stylesheet" href="/assets/store/spree_theme.css" type="text/css" />    
-      <link rel="stylesheet" href="/assets/store/jquery-ui/smoothness/jquery-ui.css" type="text/css" />    
-    <? end ?>
+      <link rel="stylesheet" href="/assets/jquery-ui/minified/jquery-ui.min.css" type="text/css" />    
+    <% else%>
+      <script type="text/javascript" src="/assets/jquery.js"></script>
+      <script type="text/javascript" src="/assets/jquery-ui.js"></script>    
+    <% end %>
     
     </head>
-    <body class="<?=g_piece_selector?> clear-block">
+    <body class="<%=g_piece_selector%> clear-block">
 
       <div id="page" class='page'><div id="page-inner" class="clear-block">
         <a name="top" id="navigation-top"></a>
@@ -43,15 +42,15 @@ root:
       { font-size: 100%;
         margin: 0;
         padding: 0;
-        <?= @template.css :body ?>
+        <%= @template.css :body %>
       }    
       body, caption, th, td, input, textarea, select, option, legend, fieldset
       {
-        <? if @template.css(:font_family)== 'serif' ?>
+        <% if @template.css(:font_family)== 'serif' %>
         font-family: Times, "Times New Roman", Georgia, "Bitstream Vera Serif", serif;
-        <? else ?>
+        <% else %>
         font-family: Tahoma, Verdana, Arial, Helvetica, "Bitstream Vera Sans", Sans, sans-serif;
-        <? end ?>
+        <% end %>
       }    
       ul,li {
         list-style: none outside none;
@@ -99,62 +98,62 @@ root:
       { margin: 0;
         padding: 0;
       }
-    <? if @template.css :use_bbtl ?>
+    <% if @template.css :use_bbtl %>
     div#bbtl
     { position:absolute;
       top:0;
       left:0;
-      <?= @template.css :bbtl ?>
+      <%= @template.css :bbtl %>
     }
-    <? end ?>
-    <? if @template.css :use_bbtr ?>
+    <% end %>
+    <% if @template.css :use_bbtr %>
     div#bbtr
     { position:absolute;
       top:0;
       right:0;
-      <?= @template.css :bbtr ?>
+      <%= @template.css :bbtr %>
     }
-    <? end ?>
-    <? if @template.css :use_pbbl ?>
+    <% end %>
+    <% if @template.css :use_pbbl %>
     div#pbbl
     { position:absolute;
       bottom:0;
       left:0;
-      <?= @template.css :pbbl ?>
+      <%= @template.css :pbbl %>
     }
-    <? end ?>
-    <? if @template.css :use_pbbr ?>
+    <% end %>
+    <% if @template.css :use_pbbr %>
     div#pbbr
     { position:absolute;
       bottom:0;
       right:0;
-      <?= @template.css :pbbr ?>
+      <%= @template.css :pbbr %>
     }
-    <? end ?>
+    <% end %>
       #page
       {
-        <? if @template.css(:font_size)== 10?>
+        <% if @template.css(:font_size)== 10%>
         font-size: 0.625em; /* 16px x .625 = 10px */
         line-height: 1.4em; /* 10px x 1.4 = 14px */
-        <? elsif @template.css(:font_size)== 12?>
+        <% elsif @template.css(:font_size)== 12%>
         font-size: 0.75em; /* 16px x .75 = 12px */
         line-height: 1.333em; /* 12px x 1.333 = 16px */
-        <? elsif @template.css(:font_size)== 14?>
+        <% elsif @template.css(:font_size)== 14%>
         font-size: 0.875em; /* 16px x .875 = 14px */
         line-height: 1.286; /* 14px x 1.286 = 18px */
-        <? elsif @template.css(:font_size)== 16?>
+        <% elsif @template.css(:font_size)== 16%>
         font-size: 1em; /* 16px x 1 = 16px */
         line-height: 1.13; /* 16px x 1.13 = 18px */
-        <? end ?>
-        <? if @template.css :layout_fixed ?>
+        <% end %>
+        <% if @template.css :layout_fixed %>
         margin-left: auto;
         margin-right: auto;
-        <? end ?>
-        <?= @template.css :page ?>
+        <% end %>
+        <%= @template.css :page %>
       }
         #page-inner
         { position:relative;
-        <? @template.css :inner ?>
+        <% @template.css :inner %>
         }
           #navigation-top, #navigation
           { position: absolute;
@@ -186,11 +185,11 @@ root:
           }
     .section /* #page .section would override .some_block .section */
     {  
-      <? if @template.css(:horizontal_content).to_i > 0 ?>
+      <% if @template.css(:horizontal_content).to_i > 0 %>
       clear:none;
-      <? else ?>
+      <% else %>
       clear:both;
-      <? end ?>
+      <% end %>
     }
     .section .inner
     {
@@ -234,89 +233,89 @@ container:
   is_container: "1"
   html: |-
     <!-- container  -->
-    <div class="<?=g_piece_selector?> c_pageparams.parent_section_instance section" >
-          <div class="<?=g_piece_selector?>_inner clear-block">
+    <div class="<%=g_piece_selector%> c_pageparams.parent_section_instance section" >
+          <div class="<%=g_piece_selector%>_inner clear-block">
           ~~content~~
           </div>          
     </div> 
   css: |-
     /* background, margin, border, skinnables */
-    .<?=g_piece_selector?>
+    .<%=g_piece_selector%>
     { overflow:hidden;  padding:0;  margin:0; 
       position:relative;
-      <?=@template.css(:block)?>
+      <%=@template.css(:block)%>
     }
     /* background, margin, border, padding */
-    .<?=g_piece_selector?> .<?=g_piece_selector?>_inner
+    .<%=g_piece_selector%> .<%=g_piece_selector%>_inner
     {
-      <?=@template.css(:inner)?>
+      <%=@template.css(:inner)%>
     }
-    .<?=g_piece_selector?> .section
+    .<%=g_piece_selector%> .section
     {
-      <?if @template.css(:content_layout).to_i > 0 ?>
+      <%if @template.css(:content_layout).to_i > 0 %>
       clear:none;
-      <?else?>
+      <%else%>
       clear:both;
-      <?end?>
+      <%end%>
     }
     
-      <? if @template.css :use_img_tlc ?>
-    #<?= g_piece_selector?>_tlc
+      <% if @template.css :use_img_tlc %>
+    #<%= g_piece_selector%>_tlc
     {
-      <?= @template.css :img_tlc ?>
+      <%= @template.css :img_tlc %>
       background-position: 0% 0%;
       background-repeat:no-repeat;
     }
-      <? end ?>
-      <? if @template.css :use_img_trc ?>
-    #<?= g_piece_selector?>_trc
+      <% end %>
+      <% if @template.css :use_img_trc %>
+    #<%= g_piece_selector%>_trc
     {
-      <?= @template.css :img_trc ?>
+      <%= @template.css :img_trc %>
       background-position: 100% 0%;
       background-repeat:no-repeat;
     }
-      <? end ?>
-      <? if @template.css :use_img_blc ?>
-    #<?= g_piece_selector?>_blc
+      <% end %>
+      <% if @template.css :use_img_blc %>
+    #<%= g_piece_selector%>_blc
     {
-      <?= @template.css :img_blc ?>
+      <%= @template.css :img_blc %>
       background-position: 0% 100%;
       background-repeat:no-repeat;
     }
-      <? end ?>
-      <? if @template.css :use_img_brc ?>
-    #<?= g_piece_selector?>_brc
+      <% end %>
+      <% if @template.css :use_img_brc %>
+    #<%= g_piece_selector%>_brc
     {
-      <?= @template.css :img_brc ?>
+      <%= @template.css :img_brc %>
       background-position: 100% 100%;
       background-repeat:no-repeat;
     }
-      <? end ?>
-      <? if @template.css :use_img_tb ?>
-    #<?= g_piece_selector?>_tb
+      <% end %>
+      <% if @template.css :use_img_tb %>
+    #<%= g_piece_selector%>_tb
     {
-      <?= @template.css :img_tb ?>
+      <%= @template.css :img_tb %>
     }
-      <? end ?>
-      <? if @template.css :use_img_bb ?>
-    #<?= g_piece_selector?>_bb
+      <% end %>
+      <% if @template.css :use_img_bb %>
+    #<%= g_piece_selector%>_bb
     {
-      <?= @template.css :img_bb ?>
+      <%= @template.css :img_bb %>
       background-position: 50% 100%;
     }
-      <? end ?>
-      <? if @template.css :use_img_rb ?>
-    #<?= g_piece_selector?>_rb
+      <% end %>
+      <% if @template.css :use_img_rb %>
+    #<%= g_piece_selector%>_rb
     {
-      <?= @template.css :img_rb ?>
+      <%= @template.css :img_rb %>
     }
-      <? end ?>
-      <? if @template.css :use_img_lb ?>
-    #<?= g_piece_selector?>_lb
+      <% end %>
+      <% if @template.css :use_img_lb %>
+    #<%= g_piece_selector%>_lb
     {
-      <?= @template.css :img_lb ?>
+      <%= @template.css :img_lb %>
     }
-      <? end ?>
+      <% end %>
   title: container
   slug: container
   
@@ -326,18 +325,18 @@ hmenu:
   is_container: "1"
   resources: m
   html: |-
-    <ul class="<?=g_piece_selector?>" >
-    <? if @template.menu.present? ?>
-    <? for page in @template.menu.children ?>
+    <ul class="<%=g_piece_selector%>" >
+    <% if @template.menu.present? %>
+    <% for page in @template.menu.children %>
        ~~content~~
-    <? end ?>
-    <? end ?>
+    <% end %>
+    <% end %>
     </ul>
   css: |-
-    .<?=g_piece_selector?> li{ 
+    .<%=g_piece_selector%> li{ 
       list-style-type:none;
       display:inline;}
-    .<?=g_piece_selector?> a{ 
+    .<%=g_piece_selector%> a{ 
      display:inline-block;
      float:left;
      margin:0; /* non-editable */}
@@ -351,15 +350,15 @@ vmenu:
   title: vmenu
   slug: vmenu
   html: |-
-    <ul class="<?=g_piece_selector?>">
-    <? if @template.menu.present? ?>
-    <? for page in @template.menu.children ?>
+    <ul class="<%=g_piece_selector%>">
+    <% if @template.menu.present? %>
+    <% for page in @template.menu.children %>
        ~~content~~
-    <? end ?>
-    <? end ?>
+    <% end %>
+    <% end %>
     </ul>
   css: |-
-      .<?=g_piece_selector?> a{ float: left;  clear: left;  text-align: left;  margin: 0px;  border: 0px;  }
+      .<%=g_piece_selector%> a{ float: left;  clear: left;  text-align: left;  margin: 0px;  border: 0px;  }
 
   js: ""
    
@@ -370,30 +369,30 @@ menuitem:
   title: menuitem
   slug: menuitem
   html: |
-    <li class="<?=g_piece_selector?>">
-      <? if page.clickable? ?>
-        <? if page.current? ?>
-         <a id="pi<?= g_piece_selector?>_page.id" href="<?= page.path ?>" class="selected" ><?= page.name ?> </a>
-        <? else ?>
-         <a id="pi<?= g_piece_selector?>_page.id" href="<?= page.path ?>" ><?= page.name ?> </a>
-        <? end ?>
-      <? else ?>
-        <a id="pi<?= g_piece_selector?>_page.id" class="noclick"> <?= page.name ?> </a>    
-      <? end ?>
+    <li class="<%=g_piece_selector%>">
+      <% if page.clickable? %>
+        <% if page.current? %>
+         <a id="pi<%= g_piece_selector%>_page.id" href="<%= page.path %>" class="selected" ><%= page.name %> </a>
+        <% else %>
+         <a id="pi<%= g_piece_selector%>_page.id" href="<%= page.path %>" ><%= page.name %> </a>
+        <% end %>
+      <% else %>
+        <a id="pi<%= g_piece_selector%>_page.id" class="noclick"> <%= page.name %> </a>    
+      <% end %>
     </li>
   css: |-
-      .<?=g_piece_selector?> a{
-       <?= @template.css :ainner ?>
-       <?= @template.css :a ?>  
+      .<%=g_piece_selector%> a{
+       <%= @template.css :ainner %>
+       <%= @template.css :a %>  
        }
-      .<?=g_piece_selector?> a:hover{  
-        <?= @template.css :ah ?> 
+      .<%=g_piece_selector%> a:hover{  
+        <%= @template.css :ah %> 
         }
-      .<?=g_piece_selector?> a.selected{ 
-        <?= @template.css :as ?> 
+      .<%=g_piece_selector%> a.selected{ 
+        <%= @template.css :as %> 
         }
-      .<?=g_piece_selector?> a.selected:hover{  <?= @template.css :ahs ?> }
-      .<?=g_piece_selector?> a.noclick{ <?= @template.css :au ?> }
+      .<%=g_piece_selector%> a.selected:hover{  <%= @template.css :ahs %> }
+      .<%=g_piece_selector%> a.noclick{ <%= @template.css :au %> }
   js: ""
 image:
   id: 7
@@ -403,11 +402,11 @@ image:
   is_container: "0"
   resources: i
   html: | 
-    <? if @template.image.present? ?>    
-         <img src="<?= @template.image.url ?>"  border="0" />
-    <? else ?>
+    <% if @template.image.present? %>    
+         <img src="<%= @template.image.url %>"  border="0" />
+    <% else %>
          <img alt='no image'  border="0" />         
-    <? end ?>
+    <% end %>
   created_at: 2011-09-20 19:40:07
   updated_at: 2011-09-20 19:40:07
   css: ""
@@ -419,25 +418,19 @@ text:
   is_selectable: "0"
   is_container: "0"
   html: |          
-          <?= @template.css :text ?> 
+          <%= @template.css :text %> 
   created_at: 2011-09-20 19:40:07
   updated_at: 2011-09-20 19:40:07
   css: ""
   js: ""
-blog_post_list:
+product_image:
   id: 11
-  title: blog_post_list
-  slug: blog_post_list
+  title: product_image
+  slug: product_image
   is_selectable: "0"
   is_container: "0"
   html: |         
-    <? if @blog_posts.current.nil? ?> 
-    <ul>
-    <? for blog_post in @menus.current.blog_posts ?>
-       ~~content~~
-    <? end ?>
-    </ul>
-    <? end ?>
+    <%= link_to small_image(product, :itemprop => "image"), product, :itemprop => 'url' %>
   created_at: 2011-09-20 19:40:07
   updated_at: 2011-09-20 19:40:07
   css: ""
@@ -449,7 +442,7 @@ product_description:
   is_selectable: "0"
   is_container: "0"
   html: |      
-       <?=blog_post.description ?>
+       <%=product.description %>
   created_at: 2011-09-20 19:40:07
   updated_at: 2011-09-20 19:40:07
   css: ""
@@ -461,7 +454,7 @@ product_name:
   is_selectable: "0"
   is_container: "0"
   html: |    
-     <a href="<?= blog_post.path ?>"> <?=blog_post.name ?> </a>
+     <a href="<%= product.path %>"> <%=product.name %> </a>
   created_at: 2011-09-20 19:40:07
   updated_at: 2011-09-20 19:40:07
   js: ""

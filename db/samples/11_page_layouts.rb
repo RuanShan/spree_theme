@@ -46,6 +46,7 @@ lftnav.add_section(section_hash['vmenu'].id,:title=>"Categories")
 blog_list = main_content.add_section(section_hash['container'].id,:title=>"product list")
 blog_detail = main_content.add_section(section_hash['container'].id,:title=>"product detail")
 blog_list.add_section(section_hash['product-name'].id,:title=>"product name")
+blog_list.add_section(section_hash['product-image'].id,:title=>"product image")
 
 
 blog_detail.add_section(section_hash['product-name'].id,:title=>"product name")

@@ -420,19 +420,19 @@ module Spree
   Rails.logger.debug "build page_layout_id=#{node.id}, data_source=#{node.data_source}"       
          if node.data_source.present? #node.data_source.singularize
            subpieces = <<-EOS1 
-           <? if @current_page.resources.present? ?>
-           <? @current_page.resources.each{|blog_post| ?>
+           <% if @current_page.resources.present? %>
+           <% @current_page.resources.each{|product| %>
            #{subpieces}
-           <? } ?>
-           <? end ?>
+           <% } %>
+           <% end %>
            EOS1
          end
                     
          if node.section_context.present?
            subpieces = <<-EOS2
-           <? if @current_page.valid_context? ?>
+           <% if @current_page.valid_context? %>
            #{subpieces}
-           <? end ?>
+           <% end %>
            EOS2
          end           
          piece.insert(pos,subpieces)
@@ -444,7 +444,7 @@ module Spree
     end
   
     def get_header_script(node)
-      header = "<? g_page_layout_id=#{node.id}; ?>#{$/}"
+      header = "<% g_page_layout_id=#{node.id}; %>#{$/}"
     end   
   end
 
