@@ -38,7 +38,7 @@ module PageTag
           objs = menu.products.where(:id=>resource.id)        
         end
         if objs.present?
-          objs = BlogPosts.new( self.page_generator, objs)
+          objs = Products.new( self.page_generator, objs)
         end
       end
       objs

@@ -1,5 +1,5 @@
 module Spree
-  class TemplateThemesController < ApplicationController
+  class TemplateThemesController < Spree::StoreController
     cattr_accessor :layout_base_path
     self.layout_base_path = File.join(::Rails.root.to_s,"public","shops")   
   

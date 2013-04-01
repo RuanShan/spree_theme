@@ -5,9 +5,14 @@ module PageTag
   class Products < ModelCollection
     
     class WrappedProduct < WrappedModel
-      self.accessable_attributes=[:id,:name,:description,:published_at]
+      self.accessable_attributes=[:id,:name,:description,:images] 
       delegate *self.accessable_attributes, :to => :model
       
+      
+      #:model_name use by small_image
+      def self.model_name
+        Spree::Product.model_name
+      end
     end  
     
     
