@@ -6,6 +6,7 @@ module Spree
     has_many :themes, :class_name => "TemplateTheme",:foreign_key=>:page_layout_root_id
     belongs_to :website
     friendly_id :title, :use => :scoped, :scope => :website
+    has_many :full_set_nodes, :class_name =>'PageLayout', :foreign_key=>:root_id, :primary_key=>:root_id
   
     # use string instead of symbol, parameter from client is string 
     ContextEnum=Struct.new(:list,:detail,:cart,:accout)[:list,:detail,:cart,:accout]

@@ -33,7 +33,12 @@ module PageTag
       data_source = self.template_tag.current_piece.data_source
       if data_source.present?
         if data_source == 'gpvs'
-          objs = menu.products
+          #objs = menu.products
+          #copy from taxons_controller#show
+          @searcher = Spree::Config.searcher_class.new({:taxon => menu.id})
+          #@searcher.current_user = try_spree_current_user
+          #@searcher.current_currency = current_currency
+          objs = @searcher.retrieve_products
         elsif data_source == 'this_product'
           objs = menu.products.where(:id=>resource.id)        
         end

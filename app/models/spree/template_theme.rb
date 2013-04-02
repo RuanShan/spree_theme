@@ -55,11 +55,17 @@ module Spree
       return new_theme
     end
     
-    
-    def export_to_seed
-      
+    begin 'export&import'
+      # export to yaml, include page_layouts, param_values, template_files
+      def export
+        template = self.class.find(self.id,:include=>[:param_values,:page_layout=>:full_set_nodes])
+        serialize_hash ={:template=>template, :param_values=>template.param_values, :page_layouts=>template.page_layout.full_set_nodes} 
+        serialize_hash.to_yaml      
+      end
+      def import
+        
+      end
     end
-    
     def remove_relative_data
       ParamValue.delete_all(["theme_id=?", self.id])
     end
