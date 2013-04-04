@@ -424,8 +424,8 @@ module Spree
         options[:preview] = true #preview_template_themes_url
         
         @lg = PageGenerator.previewer( menu, theme, options)
-        html = @lg.renderer.generate
-        css,js  = @lg.renderer.generate_assets
+        html = @lg.generate
+        css,js  = @lg.generate_assets
         if options[:serialize_html]
           @lg.serialize_page(:html)
         end

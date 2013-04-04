@@ -3,8 +3,8 @@ template = Spree::TemplateTheme.first
 
 taxon_class = SpreeTheme::Config.taxon_class
 
-categories = taxon_class.find_by_name!("Categories")
-brands = taxon_class.find_by_name!("Brand")
+categories = taxon_class.find_by_name("Categories")
+brands = taxon_class.find_by_name("Brand")
 
 #main_menu_section = template.page_layout.self_and_descendants.where(:title=>title).first
 

@@ -13,6 +13,7 @@ module SpreeTheme
 
     initializer "spree.theme.environment", :before => "spree.environment" do |app|
       SpreeTheme::Config = Spree::ThemeConfiguration.new
+      #YAML::ENGINE.yamler = 'syck' #serialize template_theme
     end
     
     def self.activate

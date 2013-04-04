@@ -16,6 +16,8 @@ class PageGenerator
   attr_accessor :is_preview, :controller, :renderer 
   attr_accessor :ehtml, :ecss, :ejs 
 
+  delegate :generate, :generate_assets, :to=>:renderer
+
   class << self
     #page generator has two interface, builder and generator
     #builder only build content: ehtml,js,css

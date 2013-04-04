@@ -4,6 +4,7 @@ module Spree
     acts_as_nested_set :scope=>"root_id" # scope is for :copy, no need to modify parent_id, lft, rgt.
     belongs_to :section  
     has_many :themes, :class_name => "TemplateTheme",:foreign_key=>:page_layout_root_id
+    has_many :param_values
     belongs_to :website
     friendly_id :title, :use => :scoped, :scope => :website
     has_many :full_set_nodes, :class_name =>'PageLayout', :foreign_key=>:root_id, :primary_key=>:root_id
@@ -27,6 +28,7 @@ module Spree
     scope :full_html_roots, where(:is_full_html=>true,:parent_id=>nil)
     attr_accessible :section_id,:title
   
+    # create component, it is partial layout, no html body, composite of some sections. 
     #notice: attribute section_id, title required
     # section.root.section_piece_id should be 'root'
     def self.create_layout(section, title, attrs={})
@@ -39,12 +41,6 @@ module Spree
         obj.is_full_html = section.section_piece.is_root?
       end
       obj.update_attribute("root_id",obj.id)
-      if obj.is_full_html? #only create template for full html page layout
-        #create a theme for it.
-        TemplateTheme.create!({:website_id=>obj.website_id,:page_layout_root_id=>obj.id,:title=>title}) 
-        #copy the default section param value to the layout
-        obj.add_param_value()
-      end
       obj
     end
     
@@ -173,8 +169,6 @@ module Spree
           obj.assign_attributes( attrs )
           obj.save!    
           obj.move_to_child_of(self)
-          #copy the default section param value to the layout
-          obj.add_param_value()
         end
         obj
       end
@@ -184,15 +178,14 @@ module Spree
         remove_param_value()
       end
       #Usage:  add param_value of section into this layout  
-      def add_param_value()
+      def add_param_value(theme)
         # section_id, section_piece_param_id, section_piece_id, section_piece_instance, is_enabled, disabled_ha_ids
         # all section_params belong to section tree.
         # section_tree = self.section.self_and_descendants
         # get default values of this section
+        #TODO no need add param_value any more, use default value before user modify it
         layout_id = self.id
         layout_root_id = self.root_id
-        themes = TemplateTheme.by_layout(layout_root_id)
-        for theme in themes
           section_params = self.section.section_params
           for sp in section_params
             #use root section_id
@@ -204,13 +197,13 @@ module Spree
               #set default empty {} for now.
             end
           end
-        end
       end 
        
       def remove_param_value()
-        layout_root_id = self.root_id
-        themes = TemplateTheme.find(:all,:conditions=>['layout_id=?',layout_root_id])
-        ParamValue.delete_all(["page_layout_id=? and theme_id in (?)", self.id, themes.collect{|obj|obj.id }])    
+        #layout_root_id = self.root_id
+        #themes = TemplateTheme.find(:all,:conditions=>['layout_id=?',layout_root_id])
+        #ParamValue.delete_all(["page_layout_id=? and theme_id in (?)", self.id, themes.collect{|obj|obj.id }])
+        ParamValue.delete_all(["page_layout_id=? ", self.id])    
       end
       
     end   
