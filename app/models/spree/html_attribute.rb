@@ -32,7 +32,7 @@ module Spree
       all_hash[val.to_s] 
     end
     
-    #keys are db,bool, text, image
+    #keys are db,bool, text, image, color
     #key should only be symbol
     def is_special?(key)
   
@@ -122,6 +122,15 @@ module Spree
     def default_possible_selected_value(repeat=0)
       if has_default_value?
         possible_selected_values[self.default_value]
+      end
+    end
+    
+    def default_manual_value(repeat=0)
+      
+      if manual_selected_value.present?
+        if is_special?(:color)
+          "#000000"
+        end
       end
     end
     

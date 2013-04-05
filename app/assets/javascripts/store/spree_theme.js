@@ -2,6 +2,7 @@
 //= require jquery-ui
 //= require jquery_ujs
 //= require jquery.form
+//= require jquery.layout
 //= require store/spree_frontend
 
 function ajax_post (url, form, data_type, callback) {

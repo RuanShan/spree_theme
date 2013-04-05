@@ -1,3 +1,9 @@
-<div id='editor_panel' class="clear-block">
+<%# ui-layout-south required by jquery.layout %>
+<div id='editor_panel' class="clear-block ui-layout-south">
   <%=render :partial=>'layout_editor'%>
 </div>
+<SCRIPT type="text/javascript">
+$(document).ready(function () {
+  $('body').layout({ applyDefaultStyles: true });
+});
+</SCRIPT>

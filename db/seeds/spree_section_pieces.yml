@@ -29,7 +29,7 @@ root:
     </head>
     <body class="<%=g_piece_selector%> clear-block">
 
-      <div id="page" class='page'><div id="page-inner" class="clear-block">
+      <div id="page" class='page <%='ui-layout-center' if @current_page.is_preview %>'><div id="page-inner" class="clear-block">
         <a name="top" id="navigation-top"></a>
         <div id="skip-to-nav"><a href="#navigation">Skip to Navigation</a></div>
         ~~content~~

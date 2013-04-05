@@ -17,7 +17,13 @@ module Spree
         # tidy posted pvalue_properties, only keep valid values.
         html_attribute.repeats.times{|i|
           psvalue = pvalue_properties["psvalue#{i}"]
-          if html_attribute.manual_entry?( psvalue )
+          if html_attribute.manual_entry?( psvalue )            
+            if pvalue_properties["pvalue#{i}"].blank?
+              #user select manual_entry, but have not entry any value
+              pvalue_properties["pvalue#{i}"] = html_attribute.default_manual_value
+            end
+              
+          else
             pvalue_properties.except!(["pvalue#{i}","unit#{i}"])          
           end
         }
@@ -75,7 +81,9 @@ module Spree
                 object_properties["psvalue#{i}"] = val
               else# it is manual entry.
                 object_properties["psvalue#{i}"] = html_attribute.manual_selected_value
-                if html_attribute.has_unit?
+                if html_attribute.is_special?(:color) #border-color has unit
+                  object_properties["pvalue#{i}"] =  val
+                elsif html_attribute.has_unit?
                   object_properties["pvalue#{i}"],object_properties["unit#{i}"] =  val[/^\d+/].to_i,val[/[a-z%]+$/]
                 else
                   object_properties["pvalue#{i}"] = val
@@ -234,6 +242,8 @@ module Spree
       def css_selector
         if self.param_value.section_param.section_piece_param.class_name=~/(block)/
           ".s_#{self.param_value.page_layout_id}_#{self.param_value.section_param.section_id}"
+        elsif self.param_value.section_param.section_piece_param.class_name=~/(inner)/
+          ".s_#{self.param_value.page_layout_id}_#{self.param_value.section_param.section_id}_#{self.param_value.section_param.section_piece_param.class_name}"
         else  
           ".s_#{self.param_value.page_layout_id}_#{self.param_value.section_param.section_id} .#{self.param_value.section_param.section_piece_param.class_name}"
         end

@@ -23,7 +23,7 @@ bool_false = Spree::HtmlAttribute::BOOL_FALSE
            possible_values = ha.possible_selected_values(i)
            possible_values_descriptions = ha.possible_selected_values_descriptions(i)
            units = ha.units
-onchange = my_remote_function( :submit=>"layout_editor_form",:url => hav.build_url_params(:psv_changed))
+onchange = my_remote_function( :submit=>"layout_editor_form",:url => hav.build_url_params(:psv_changed), :if=>'')
 #logger.debug "ha=#{hav.html_attribute.id},hav.properties=#{hav.properties.inspect} psvalue=#{psvalue}, pvalue=#{pvalue}, unit=#{unit}"
         -%>
         <%# possible selected value
