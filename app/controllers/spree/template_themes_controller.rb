@@ -340,6 +340,12 @@ module Spree
       param_value.updated_html_attribute_values
     end
     
+    # usage - 1. popup file upload dialog
+    #         2. handle submitted file 
+    # params
+    #   html_attribute_id
+    #   param_value_id, 
+    #   template_file - {"attachment"=>#<ActionDispatch::Http::UploadedFile:0xc9e77ec @original_filename="老郎酒1956精品酱香型531.jpg", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"template_file[attachment]\"; filename=\"\xE8\x80\x81\xE9\x83\x8E\xE9\x85\x921956\xE7\xB2\xBE\xE5\x93\x81\xE9\x85\xB1\xE9\xA6\x99\xE5\x9E\x8B531.jpg\"\r\nContent-Type: image/jpeg\r\n", @tempfile=#<File:/tmp/RackMultipart20130405-18221-1riv34n>>}
     def upload_file_dialog
       @dialog_content="upload_dialog_content"
       @param_value_id = params[:param_value_id]
@@ -365,18 +371,13 @@ module Spree
                 render :partial=>'after_upload_dialog' 
           end
         else
-          
         end
       else
-  
         @theme = TemplateTheme.find(@param_value.theme_id)
-  
         model_dialog("File upload dialog",@dialog_content)    
-  
       end
     end
-    
-    
+   
     
     def check_upload_file_name
       file_name = params[:file_name]

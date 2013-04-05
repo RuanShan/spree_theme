@@ -1,6 +1,20 @@
 /*
  *= require store/spree_frontend
 */
+
+#editor_panel
+{height:300px;
+}
+#page_layout_tree_inner
+{
+  height:270px;
+  overflow: auto;
+}
+.param_value_editor
+{
+  height:240px;
+  overflow: auto;  
+}
 .fl{ float:left;}
 .fr{ float:right;}
 .clear-block:after {
