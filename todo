@@ -1,2 +1,5 @@
-1. export template
+*1. export template
 2. editor dock.
+3. ajax update section, no need refresh when add section into template.
+
+ 

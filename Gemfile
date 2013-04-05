@@ -12,7 +12,9 @@ end
 gem 'spree', :github => "spree/spree", :branch => "master"
 
 group :test,:development do
-gem "mysql2"
+  #using backend required
+  gem 'spree_auth_devise', :github => 'spree/spree_auth_devise', :branch => 'master'
+  gem "mysql2"
 end
 gem "acts_as_list"
 gem "acts_as_tree"

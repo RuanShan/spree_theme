@@ -12,9 +12,8 @@ module PageRenderer
     
     def generate
       prepare_instance_variables
-Rails.logger.debug "ehtml=#{ehtml}"      
+#Rails.logger.debug "ehtml=#{ehtml}"      
       self.html = renderer.render_to_string(:inline =>ehtml)
-Rails.logger.debug "html=#{html}"      
       return self.html
     end
   

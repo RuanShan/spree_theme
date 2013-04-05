@@ -16,6 +16,7 @@ Spree::Core::Engine.routes.draw do
        get :preview # add function preview_template_themes_path
        get 'publish'
        get 'upload_file_dialog'
+       post 'upload_file_dialog'
        post :assign
      end
   end

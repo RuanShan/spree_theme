@@ -36,16 +36,7 @@ module Spree
         format.html { redirect_to(template_themes_url) }
       end    
     end
-    # GET /themes/new
-    # GET /themes/new.xml
-    def new
-      @theme = TemplateTheme.new
-  
-      respond_to do |format|
-        format.html # new.html.erb
-        format.xml  { render :xml => @theme }
-      end
-    end
+
   
     # GET /themes/1/edit
     def edit
@@ -204,27 +195,32 @@ module Spree
       @template_themes = TemplateTheme.all
     end  
   
+  
+    # params
+    #   layout_id: selected page_layout_id
     def update_layout_tree
+      @theme = TemplateTheme.find(params[:id])
       op = params[:op]
-      layout_id = params[:layout_id]
+      selected_page_layout_id = params[:layout_id]
       selected_id = params[:selected_id]
       selected_type = params[:selected_type]
-      layout = PageLayout.find(layout_id)
-      @layout = layout.root
+      @selected_page_layout = @theme.page_layout.self_and_descendants.find(selected_page_layout_id)
       if op=='move_left'
-        layout.move_left
+        @selected_page_layout.move_left
       elsif op=='move_right'  
-        layout.move_right
+        @selected_page_layout.move_right
       elsif op=='add_child'    
         if selected_type=='Section'  
-          layout.add_section(selected_id)
+          @selected_page_layout.add_section(selected_id)
         else
-          layout.add_layout_tree(selected_id)        
+          @selected_page_layout.add_layout_tree(selected_id)        
         end
-        @layout.reload      
+        #@layout.reload      
       elsif op=='del_self'
-        layout.destroy unless layout.root?        
-        @layout.reload
+        @selected_page_layout.destroy unless layout.root?
+        @selected_page_layout = @selected_page_layout.parent
+        #FIXME update param_values in editor        
+        #@layout.reload
       end
       
       render :partial=>"layout_tree"    
@@ -364,7 +360,7 @@ module Spree
                 do_update_param_value(@param_value, param_value_params, param_value_event, editing_html_attribute_id) 
                 # get all param values by selected editor
                 # since we redirect to editors, these are unused
-                @param_values = ParamValue.within_section(@param_value).where("section_piece_params.editor_id"=>@editor.id)
+                @param_values = ParamValue.within_section(@param_value).within_editor(@editor)
                 # update param value
                 render :partial=>'after_upload_dialog' 
           end
@@ -456,6 +452,24 @@ module Spree
       html, css = do_generate(theme,  menu)
       render :text => html
     end
+    
+    private
+    def model_dialog(dialog_title, dialog_content)
+      @dialog_title = dialog_title
+      @content_string = render_to_string :partial => dialog_content
+      respond_to do |format|
+          format.js{ render "base/model_dialog"}
+      end
+    end
+    
+    def render_message(message)
+      respond_to do |format|
+          format.js{ render "base/message_box", :locals=>{:message=>message}}
+      end
+        
+    end
+
+    
   end
 
 end

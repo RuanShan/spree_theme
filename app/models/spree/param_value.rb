@@ -12,8 +12,12 @@ module Spree
     after_update :trigger_events
   
     scope :within_section, lambda { |param_value|
-        where(" theme_id=? and param_values.page_layout_id=? ", param_value.theme_id, param_value.page_layout_id).includes(:section_param=>:section_piece_param)      
+        where(" theme_id=? and page_layout_id=? ", param_value.theme_id, param_value.page_layout_id)      
       }
+    scope :within_editor, lambda { |editor|
+        scoped.includes(:section_param=>:section_piece_param).where("#{SectionPieceParam.table_name}.editor_id"=>editor.id)
+      }
+      
     attr_accessible :page_layout_root_id, :page_layout_id
     attr_accessor :updated_html_attribute_values, :original_html_attribute_values, :page_events
       
@@ -104,7 +108,7 @@ module Spree
     
     
     def partial_html
-      pvs = self.class.within_section(self) 
+      pvs = self.class.within_section(self).includes(:section_param=>:section_piece_param)
       HtmlPage::PartialHtml.new(nil, self.page_layout, nil, pvs)
     end
     

@@ -11,6 +11,6 @@ module Spree
     self.attachment_definitions[:attachment][ :default_url] = "/images/:style/missing.png"
   
     delegate :url, :to => :attachment
-  
+    attr_accessible :theme_id, :attachment,
   end
 end

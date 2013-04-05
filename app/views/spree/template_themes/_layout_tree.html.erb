@@ -1,8 +1,9 @@
 <%-
 # list layout tree in editor page.
-# local params: layout_root, selected_id,
+# local params: theme, selected_id,
+layout_root = theme.page_layout
 -%>
-<%=form_tag({:action=>'update_layout_tree'}, :id=>"layout_tree_form",:name=>"layout_tree_form", :remote=>true) do -%>
+<%=form_tag(update_layout_tree_template_theme_path(theme), :id=>"layout_tree_form",:name=>"layout_tree_form", :remote=>true) do -%>
 
   <div  class="block">
   <% for layout in layout_root.self_and_descendants-%>

@@ -129,9 +129,7 @@ module Spree
       def self.import( file )
         #require class
         Spree::ParamValue; Spree::PageLayout;
-Rails.logger.debug "import:#{file.path}"        
         serialized_hash = YAML::load(file)
-Rails.logger.debug "imported:#{serialized_hash }"        
         template = serialized_hash[:template]
         if self.exists?(template[:id])
           existing_template = self.find(template[:id])
@@ -141,16 +139,13 @@ Rails.logger.debug "imported:#{serialized_hash }"
           end
           existing_template.destroy
         end
-Rails.logger.debug "start to insert.."        
         connection.insert_fixture(template.attributes, self.table_name)
         serialized_hash[:param_values].each do |record|
           table_name = ParamValue.table_name
-Rails.logger.debug "insert param_values=#{record}"        
           connection.insert_fixture(record.attributes, table_name)          
         end
         serialized_hash[:page_layouts].each do |record|
           table_name = PageLayout.table_name
-Rails.logger.debug "insert page_layouts"        
           connection.insert_fixture(record.attributes, table_name)          
         end
         
