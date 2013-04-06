@@ -25,7 +25,7 @@ module PageEvent
     #event_name+'_event_handler', is handler name of this event. 
     def event_name
       # ex. page_layout + fixed =  page_layout_fixed
-      self.param_value.section_param.section_piece_param.class_name+'_'+self.html_attribute.slug
+      self.param_value.section_param.section_piece_param.class_name+'_'+self.html_attribute.css_name
     end
     
     def handler_name

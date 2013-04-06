@@ -206,6 +206,18 @@ module Spree
         ParamValue.delete_all(["page_layout_id=? ", self.id])    
       end
       
+      def demote
+        if left_sibling.present?
+          move_to_child_of( left_sibling )
+        end
+      end
+      
+      def promote
+        unless root?
+          move_to_right_of( parent )
+        end        
+      end
+      
     end   
     
     begin 'section content, html, css, js'

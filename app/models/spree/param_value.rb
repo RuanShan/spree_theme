@@ -31,7 +31,7 @@ module Spree
       
       hav_hash = ha_array.inject({}){|h, ha| hav = HtmlAttributeValue.parse_from(self,ha); 
         h[ha.id]=hav;
-        unique_key = "#{hav.param_value.section_param.section_piece_param.class_name}_#{hav.html_attribute.slug}"
+        unique_key = "#{hav.param_value.section_param.section_piece_param.class_name}_#{hav.html_attribute.css_name}"
         h[unique_key]=hav; h 
       }
   

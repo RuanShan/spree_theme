@@ -20,11 +20,11 @@ layout_root = theme.page_layout
     <div class="fr">
 
 <%= link_to_function "+","$('#layout_id').val(#{layout.id});$('#section_select_dialog').dialog('open')"%>
-
 <%= link_to_function "-","if (confirm('Really?')) submit_layout_tree_form('del_self',#{layout.id} )"%>
-
-<%= link_to_function "<","submit_layout_tree_form('move_left',#{layout.id} )"%>
-<%= link_to_function ">","submit_layout_tree_form('move_right',#{layout.id} )"%>
+<%= link_to_function "u","submit_layout_tree_form('move_left',#{layout.id} )"%>
+<%= link_to_function "d","submit_layout_tree_form('move_right',#{layout.id} )"%>
+<%= link_to_function "<","submit_layout_tree_form('promote',#{layout.id} )"%>
+<%= link_to_function ">","submit_layout_tree_form('demote',#{layout.id} )"%>
 
       
     </div>

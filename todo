@@ -1,5 +1,7 @@
 *1. export template
-2. editor dock.
-3. ajax update section, no need refresh when add section into template.
+*2. editor dock.
+2.1 promote section, demote section   
+2.2 highlight counter part of preview page when hovering on section
+3.  ajax update section, no need refresh when add section into template.
 
  

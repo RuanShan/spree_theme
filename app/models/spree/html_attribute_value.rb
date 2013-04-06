@@ -113,7 +113,7 @@ module Spree
           html_attribute.manual_entry?(pvalue_properties["psvalue#{i}"]) ? 
             "#{pvalue_properties["pvalue#{i}"]}#{pvalue_properties["unit#{i}"]}" : pvalue_properties["psvalue#{i}"]
         }
-        pvalue_string = html_attribute.slug+':'+ vals.join(' ')
+        pvalue_string = html_attribute.css_name+':'+ vals.join(' ')
       end
       pvalue_string
     end
@@ -257,7 +257,7 @@ module Spree
         if unset?
           html_attribute.default_possible_selected_value
         else
-          if html_attribute.slug== 'background-image'
+          if html_attribute.css_name== 'background-image'
             if html_attribute.manual_entry?(self["psvalue"])
               file = TemplateFile.find_by_attachment_file_name( self["pvalue"] )
               if file.present?

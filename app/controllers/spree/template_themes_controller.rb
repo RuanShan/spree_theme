@@ -206,7 +206,11 @@ module Spree
       selected_section_id = params[:selected_section_id]
       selected_type = params[:selected_type]
       @selected_page_layout = @theme.page_layout.self_and_descendants.find(selected_page_layout_id)
-      if op=='move_left'
+      if op=='promote'
+        @selected_page_layout.promote
+      elsif op=='demote'
+        @selected_page_layout.demote
+      elsif op=='move_left'
         @selected_page_layout.move_left
       elsif op=='move_right'  
         @selected_page_layout.move_right

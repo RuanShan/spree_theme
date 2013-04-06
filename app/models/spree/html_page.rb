@@ -86,7 +86,7 @@ module Spree
           for pv in self.param_values
             class_name = pv.section_param.section_piece_param.class_name
             pv.html_attribute_values_hash.values.each{|hav|
-              unique_key = hav.computed? ?  "computed_#{class_name}_#{hav.html_attribute.slug}" : "#{class_name}_#{hav.html_attribute.css_name}"
+              unique_key = hav.computed? ?  "computed_#{class_name}_#{hav.html_attribute.css_name}" : "#{class_name}_#{hav.html_attribute.css_name}"
               @html_attribute_value_hash[unique_key]=hav
             }        
           end
