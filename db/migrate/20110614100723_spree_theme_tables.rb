@@ -6,6 +6,8 @@ class SpreeThemeTables < ActiveRecord::Migration
     # Users do not use this table.
     create_table :html_attributes, :force=>true do |t|
       t.column :title,              :string,                    :null => false, :default => ""  # the name of the property
+      #title is for user, css_name is for css attribute name
+      t.column :css_name,              :string,                    :null => false, :default => ""  # the name of the property
       t.column :slug,               :string,                    :null => false, :default => ""  # the name of the property
       t.column :pvalues,                 :string,                    :null => false, :default => "" # comma separate list of possible values to choose from
                                  # or 0?=see below, 1=length, 2=x y, 4=t r b l, 

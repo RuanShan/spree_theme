@@ -183,15 +183,15 @@ root:
             width: auto;
             height: auto;
           }
-    .section /* #page .section would override .some_block .section */
+    .content_layout /* #page .content_layout would override .some_block .content_layout */
     {  
-      <% if @template.css(:horizontal_content).to_i > 0 %>
+      <% if @template.css(:content_layout).to_i > 0 %>
       clear:none;
       <% else %>
       clear:both;
       <% end %>
     }
-    .section .inner
+    .content_layout .inner /*FIXME*/
     {
       position:absolute;
       top:0;
@@ -233,7 +233,7 @@ container:
   is_container: "1"
   html: |-
     <!-- container  -->
-    <div class="<%=g_piece_selector%> c_pageparams.parent_section_instance section" >
+    <div class="<%=g_piece_selector%> c_pageparams.parent_section_instance content_layout" >
           <div class="<%=g_piece_selector%>_inner clear-block">
           ~~content~~
           </div>          
@@ -250,10 +250,10 @@ container:
     {
       <%=@template.css(:inner)%>
     }
-    .<%=g_piece_selector%> .section
+    .<%=g_piece_selector%> .content_layout
     {
-      <%if @template.css(:content_layout).to_i > 0 %>
-      clear:none;
+      <%if @template.css(:content_layout).present? %>
+        <%= @template.css(:content_layout) %>
       <%else%>
       clear:both;
       <%end%>

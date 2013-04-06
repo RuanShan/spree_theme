@@ -86,7 +86,7 @@ module Spree
           for pv in self.param_values
             class_name = pv.section_param.section_piece_param.class_name
             pv.html_attribute_values_hash.values.each{|hav|
-              unique_key = hav.computed? ?  "computed_#{class_name}_#{hav.html_attribute.slug}" : "#{class_name}_#{hav.html_attribute.slug}"
+              unique_key = hav.computed? ?  "computed_#{class_name}_#{hav.html_attribute.slug}" : "#{class_name}_#{hav.html_attribute.css_name}"
               @html_attribute_value_hash[unique_key]=hav
             }        
           end
@@ -146,11 +146,12 @@ module Spree
       
       def container?
         # has html_attribute_value: content_layout_horizontal
-        ! html_attribute_values("content_layout_horizontal").nil?
+        ! html_attribute_values("content_layout_clear").nil?
       end
       
+      #FIXME
       def content_layout_vertical?
-        not html_attribute_values("content_layout_horizontal").bool_true?
+        not html_attribute_values("content_layout_clear").bool_true?
       end
       
       def section_slug

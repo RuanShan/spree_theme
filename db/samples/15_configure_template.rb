@@ -36,8 +36,8 @@ for partial_html in html_page.partial_htmls
   when 'content'
     partial_html['block_height']['unset'] = true
     partial_html['block_height'].update
-    partial_html['content_layout_horizontal']['pvalue'] = true
-    partial_html['content_layout_horizontal'].update
+    partial_html['content_layout_clear']['psvalue'] = 'none'
+    partial_html['content_layout_clear'].update
     
   when 'main content'
     partial_html['block_height']['unset'] = true

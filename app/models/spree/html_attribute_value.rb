@@ -240,9 +240,9 @@ module Spree
     
     begin 'css selector, name, value'
       def css_selector
-        if self.param_value.section_param.section_piece_param.class_name=~/(block)/
+        if self.param_value.section_param.section_piece_param.class_name=~/block/
           ".s_#{self.param_value.page_layout_id}_#{self.param_value.section_param.section_id}"
-        elsif self.param_value.section_param.section_piece_param.class_name=~/(inner)/
+        elsif self.param_value.section_param.section_piece_param.class_name=~/inner/
           ".s_#{self.param_value.page_layout_id}_#{self.param_value.section_param.section_id}_#{self.param_value.section_param.section_piece_param.class_name}"
         else  
           ".s_#{self.param_value.page_layout_id}_#{self.param_value.section_param.section_id} .#{self.param_value.section_param.section_piece_param.class_name}"
@@ -250,7 +250,7 @@ module Spree
       end 
       
       def attribute_name
-        self.html_attribute.slug
+        self.html_attribute.css_name
       end
       def attribute_value
         val = nil

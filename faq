@@ -1,3 +1,14 @@
 1. recognize_path in console
 
   Rails.appplication.routes.recognize_path
+  
+2. create directory recursively
+
+ path = "/tmp/a/b/c"
+ FileUtils.mkdir_p(path) unless File.exists?(path)
+ 
+3. reinstall all migration
+  remove dummy/db/migrate/*
+  rake spree:install:migrations
+  rake spree_auth:install:migrations
+  rake spree_theme:install:migrations
