@@ -264,6 +264,12 @@ module Spree
         end
         return ''
       end
+
+      # highlight this page_layout.      
+      def css_selector
+        ".s_#{id}_#{section_id}"
+      end
+      
     end
   
     #param: some_event could be a global_param_value changed event or a section_event.

@@ -14,7 +14,7 @@ layout_root = theme.page_layout
     %>
     <%= link_to_function(layout.slug, 
       "$('#selected_page_layout_id').val(#{layout.id});$('#layout_editor_form').trigger('submit')",
-      {"class"=>(layout.id==selected_id ? "selected":""),"data-lid"=>layout.id})
+      {"class"=>(layout.id==selected_id ? "selected":""),"data-lid"=>layout.id, :onmouseout=>"$('#{layout.css_selector}').trigger('dehighlight')",:onmouseover=>"$('#{layout.css_selector}').trigger('highlight')"})
       %>
     </div>
     <div class="fr">

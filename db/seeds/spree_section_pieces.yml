@@ -35,6 +35,10 @@ root:
         ~~content~~
       </div><!-- /#page-inner -->
       </div><!-- /#page -->
+    <% if @current_page.is_preview %>      
+      // And go!
+      <script type="text/javascript" src="/assets/interface.js"></script>    
+    <% end %>
     </body>
     </html>
   css: |-
