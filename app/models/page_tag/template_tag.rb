@@ -61,9 +61,10 @@ module PageTag
         
     #Usage: call this in template to initialize current section and section_piece
     #        should call this before call any method.
-    #Params: section, in fact, it is record of table page_layout. represent a section instance
-    #        section_piece, it is record of table section, represent a section_piece instance
-    def select(page_layout_id, section_id)
+    #Params: page_layout_id, in fact, it is record of table page_layout. represent a section instance
+    #        section_id, it is id of table section, represent a section_piece instance, could be 0. only select page_layout
+    #                    
+    def select(page_layout_id, section_id=0)
       
       #current selected section instance, page_layout record
       page_layout = page_layout_tree.select{|node| node.id == page_layout_id}.first

@@ -422,7 +422,7 @@ module Spree
         end
       end  
        piece = node.section.build_html
-       piece.insert(0,get_header_script(node))
+       
        if node.root?
   #       piece.insert(0,init_vars)  
        end
@@ -438,17 +438,20 @@ module Spree
            <% } %>
            <% end %>
            EOS1
-         end
-                    
-         if node.section_context.present?
-           subpieces = <<-EOS2
-           <% if @current_page.valid_context? %>
-           #{subpieces}
-           <% end %>
-           EOS2
-         end           
-         piece.insert(pos,subpieces)
+         end                    
+         piece.insert(pos,subpieces)        
        end
+       
+       if node.section_context.present?
+         # should set current page_layout before do valid_context.
+         piece = <<-EOS2
+           <% if @current_page.valid_context? %>
+           #{piece}
+           <% end %>
+         EOS2
+       end  
+        
+       piece.insert(0,get_header_script(node))
        # remove ~~content~~ however, node could be a container.
        # in section.build_html, ~~content~~ have not removed. 
        # there could be more than one ~~content~~, use gsub!
@@ -456,7 +459,7 @@ module Spree
     end
   
     def get_header_script(node)
-      header = "<% g_page_layout_id=#{node.id}; %>#{$/}"
+      header = "<% g_page_layout_id=#{node.id};@template.select(g_page_layout_id); %>#{$/}"
     end   
   end
 

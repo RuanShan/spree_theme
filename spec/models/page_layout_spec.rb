@@ -15,4 +15,18 @@ describe Spree::PageLayout do
     center_area.param_values.count.should eq(0)
     
   end
+  
+  it "valid section context" do
+    
+    
+    product_detail = Spree::PageLayout.find_by_section_context( Spree::PageLayout::ContextEnum.detail)
+    
+    product_detail.context_detail?.should be_true
+      
+    product_list = Spree::PageLayout.find_by_section_context( Spree::PageLayout::ContextEnum.list)
+    
+    product_list.context_list?.should be_true
+ 
+  end
+  
 end
