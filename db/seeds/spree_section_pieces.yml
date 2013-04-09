@@ -245,7 +245,7 @@ container:
   css: |-
     /* background, margin, border, skinnables */
     .<%=g_piece_selector%>
-    { overflow:hidden;  padding:0;  margin:0; 
+    { float:left; overflow:hidden;  padding:0;  margin:0; 
       position:relative;
       <%=@template.css(:block)%>
     }
@@ -461,4 +461,50 @@ product_name:
      <a href="<%= product.path %>"> <%=product.name %> </a>
   created_at: 2011-09-20 19:40:07
   updated_at: 2011-09-20 19:40:07
+  js: ""
+product_thumbnails:
+  id: 14
+  title: product_thumbnails
+  slug: product_thumbnails
+  is_selectable: "0"
+  is_container: "0"
+  html: |   
+    <%# no need for thumbnails unless there is more than one image %>
+    <% if (product.images + product.variant_images).uniq.size > 1 %>
+      <ul id="product-thumbnails" class="thumbnails inline" data-hook>
+        <% product.images.each do |i| %>
+          <li class='tmb-all' id='tmb-<%= i.id %>'>
+            <%= link_to(image_tag(i.attachment.url(:mini)), i.attachment.url(:product), :class => 'tmb-all', :id => "tmb-#{i.id}") %>
+          </li>
+        <% end %>
+    
+        <% if product.has_variants? %>
+          <% @variants.select(&:available?).each do |v| %>
+            <% v.images.each do |i| %>
+              <% next if @product.images.include?(i) %>
+              <li class='vtmb-<%= v.id %> vtmb' id='tmb-<%= i.id %>'>
+                <%= link_to(image_tag(i.attachment.url(:mini)), i.attachment.url(:product)) %>
+              </li>
+            <% end %>
+          <% end %>
+        <% end %>
+      </ul>
+    <% end %>
+
+  created_at: 2011-09-20 19:40:07
+  updated_at: 2011-09-20 19:40:07
+  css: ""
+  js: ""
+product_main_image:
+  id: 15
+  title: product_main_image
+  slug: product_main_image
+  is_selectable: "0"
+  is_container: "0"
+  html: |   
+    <%= product_image(product, :itemprop => "image") %>
+
+  created_at: 2011-09-20 19:40:07
+  updated_at: 2011-09-20 19:40:07
+  css: ""
   js: ""

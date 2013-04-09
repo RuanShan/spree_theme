@@ -5,7 +5,7 @@ module PageTag
   class Products < ModelCollection
     
     class WrappedProduct < WrappedModel
-      self.accessable_attributes=[:id,:name,:description,:images] 
+      self.accessable_attributes=[:id,:name,:description,:images,:variant_images,:has_variants?] 
       delegate *self.accessable_attributes, :to => :model
       
       

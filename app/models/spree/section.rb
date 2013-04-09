@@ -108,6 +108,14 @@ module Spree
                piece.concat(subpiece)
              end
            end
+           piece.rindex( /~~content~~/ )
+           #remove this tag, or tree as above would not work.
+           # container
+           #   container
+           #     main_image
+           #   container
+           #     thumbnails
+
          end
          piece
       end
