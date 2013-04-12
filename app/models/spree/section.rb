@@ -102,20 +102,20 @@ module Spree
            children = tree.select{|n| n.parent_id==node.id}
            for child in children
              subpiece = build_html_piece(tree, child, section_piece_hash)
-             if(pos = (piece=~/~~content~~/))           
+             if(pos = (piece.rindex(/~~content~~/)))           
                piece.insert(pos,subpiece)
              else           
                piece.concat(subpiece)
              end
            end
-           piece.rindex( /~~content~~/ )
            #remove this tag, or tree as above would not work.
            # container
            #   container
            #     main_image
            #   container
            #     thumbnails
-
+           pos = piece.rindex( /~~content~~/ )
+           piece[pos,11]=''
          end
          piece
       end

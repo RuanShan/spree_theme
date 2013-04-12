@@ -434,7 +434,7 @@ product_image:
   is_selectable: "0"
   is_container: "0"
   html: |         
-    <%= link_to small_image(product, :itemprop => "image"), product, :itemprop => 'url' %>
+    <%= link_to small_image(product, :itemprop => "image"), product.path %>
   created_at: 2011-09-20 19:40:07
   updated_at: 2011-09-20 19:40:07
   css: ""
@@ -504,6 +504,31 @@ product_main_image:
   html: |   
     <%= product_image(product, :itemprop => "image") %>
 
+  created_at: 2011-09-20 19:40:07
+  updated_at: 2011-09-20 19:40:07
+  css: ""
+  js: ""
+product_properties:
+  id: 16
+  title: product_properties
+  slug: product_properties
+  is_selectable: "0"
+  is_container: "0"
+  html: |   
+    <% unless product.product_properties.empty? %>  
+      <table id="product-properties" class="table-display" data-hook>
+        <tbody>
+          <% product.product_properties.each do |product_property| %>
+            <% css_class = cycle('even', 'odd', :name => "properties") %>
+            <tr class="<%= css_class %>">
+              <td><strong><%= product_property.property.presentation %></strong></td>
+              <td><%= product_property.value %></td>
+            </tr>
+          <% end %>
+          <% reset_cycle('properties') %>
+        </tbody>
+      </table>
+    <% end %>
   created_at: 2011-09-20 19:40:07
   updated_at: 2011-09-20 19:40:07
   css: ""

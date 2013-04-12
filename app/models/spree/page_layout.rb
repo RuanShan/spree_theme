@@ -455,7 +455,8 @@ module Spree
        # remove ~~content~~ however, node could be a container.
        # in section.build_html, ~~content~~ have not removed. 
        # there could be more than one ~~content~~, use gsub!
-       piece.gsub!(/~~content~~/,'')       
+       piece.gsub!(/~~content~~/,'')
+       piece       
     end
   
     def get_header_script(node)

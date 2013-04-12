@@ -13,6 +13,10 @@ module PageTag
       def self.model_name
         Spree::Product.model_name
       end
+      
+      def product_properties
+        self.model.product_properties.includes(:property)
+      end
     end  
     
     
