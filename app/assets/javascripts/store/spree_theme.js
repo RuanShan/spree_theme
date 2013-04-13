@@ -19,7 +19,8 @@ $(document).ready(function() {
                                        buttons: { "Cancel": function() { $(this).dialog("close"); },
                                                   "OK": function() { submit_layout_tree_form( 'add_child',null, $(this).find('[name="selected_section_id"]').val());
                                                                      $(this).dialog("close"); }
-                                                }  });
+                                                },  
+                                       width:500 });
   $("#section_select_dialog .titles li").click(function(){
     $(this).parent().children().removeClass('selected');
     $(this).addClass('selected'); 

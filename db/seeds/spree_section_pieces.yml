@@ -479,13 +479,11 @@ product_thumbnails:
         <% end %>
     
         <% if product.has_variants? %>
-          <% @variants.select(&:available?).each do |v| %>
-            <% v.images.each do |i| %>
-              <% next if @product.images.include?(i) %>
-              <li class='vtmb-<%= v.id %> vtmb' id='tmb-<%= i.id %>'>
-                <%= link_to(image_tag(i.attachment.url(:mini)), i.attachment.url(:product)) %>
-              </li>
-            <% end %>
+          <% product.variant_images.each do |i| %>
+            <% next if product.images.include?(i) %>
+            <li class='vtmb' id='tmb-<%= i.id %>'>
+              <%= link_to(image_tag(i.attachment.url(:mini)), i.attachment.url(:product)) %>
+            </li>
           <% end %>
         <% end %>
       </ul>
@@ -533,3 +531,55 @@ product_properties:
   updated_at: 2011-09-20 19:40:07
   css: ""
   js: ""
+product_price:
+  id: 17
+  title: product_price
+  slug: product_price
+  is_selectable: "0"
+  is_container: "0"
+  html: |   
+    <% if product.price_in(current_currency) and !product.price.nil? %>
+      <div data-hook="product_price" class="columns five <% if !product.has_variants? %> alpha <% else %> omega <% end %>">        
+        <div id="product-price">
+          <div><span class="price selling" itemprop="price"><%= product.price_in(current_currency).display_price %></span></div>
+        </div>
+      </div>
+    <% else %>
+        <div id="product-price">
+          <br>
+          <div><span class="price selling" itemprop="price"><%= t('product_not_available_in_this_currency') %></span></div>
+        </div>
+    <% end %>   
+  created_at: 2011-09-20 19:40:07
+  updated_at: 2011-09-20 19:40:07
+  css: ""
+  js: ""
+product_quantity:
+  id: 18
+  title: product_quantity
+  slug: product_quantity
+  is_selectable: "0"
+  is_container: "0"
+  html: |   
+    <%= number_field_tag (product.has_variants? ? :quantity : "variants[#{product.master.id}]"),
+            1, :class => 'title', :min => 1 %>
+
+  created_at: 2011-09-20 19:40:07
+  updated_at: 2011-09-20 19:40:07
+  css: ""
+  js: ""
+product_atc:
+  id: 19
+  title: product_atc
+  slug: product_atc
+  is_selectable: "0"
+  is_container: "0"
+  html: |   
+    <%= button_tag :class => 'large primary', :id => 'add-to-cart-button', :type => :submit do %>
+            <%= t(:add_to_cart) %>
+    <% end %>
+  created_at: 2011-09-20 19:40:07
+  updated_at: 2011-09-20 19:40:07
+  css: ""
+  js: ""
+  

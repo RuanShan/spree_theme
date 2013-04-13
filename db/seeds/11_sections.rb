@@ -15,6 +15,12 @@ product_image_with_thumbnails.add_section_piece(section_piece_hash['container'].
 
 #add product_properties
 Spree::Section.where(:title=>'product_properties').each(&:destroy)
-product_properties = Spree::Section.create_section(section_piece_hash['container'].id, {:title=>"product_properties"},
+product_properties = Spree::Section.create_section(section_piece_hash['container'].id, {:title=>"product properties"},
   {'block'=>{'disabled_ha_ids'=>'111'}, 'inner'=>{'15hidden'=>bool_true}})
 product_properties.add_section_piece(section_piece_hash['product_properties'].id)
+
+#add product_price
+Spree::Section.where(:title=>'product_price').each(&:destroy)
+product_properties = Spree::Section.create_section(section_piece_hash['container'].id, {:title=>"product price"},
+  {'block'=>{'disabled_ha_ids'=>'111'}, 'inner'=>{'15hidden'=>bool_true}})
+product_properties.add_section_piece(section_piece_hash['product_price'].id)

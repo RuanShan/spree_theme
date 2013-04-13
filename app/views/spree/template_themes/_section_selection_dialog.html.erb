@@ -1,13 +1,13 @@
 <div id="section_select_dialog" class="clear-block" title="Section dialog"> 
 
     
-    <ul class="fl titles" style="width:120px;">
+    <ul class="fl titles" style="width:200px;">
       <% sections.each_index{|i| s = sections[i]-%>
       <li <%= 'class=selected' if i==0%> <%="data-section-id=#{s.id}"%> ><%=s.slug%></li>
       <% }-%>
     </ul>
   
-  <div class="fl details" style="width:120px;">
+  <div class="fl details" style="width:200px;">
       <% sections.each_index{|i| s = sections[i]-%>
       <div <%= 'class=selected' if i==0%>>
         <%= s.slug%>
