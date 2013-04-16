@@ -53,6 +53,10 @@ module PageTag
     def valid_context?
       if self.resource.present? #product detail
         self.template_tag.current_piece.context_either? or self.template_tag.current_piece.context_detail?  
+      elsif menu[:page_type]=='cart'
+        self.template_tag.current_piece.context_either? or self.template_tag.current_piece.context_cart?          
+      elsif menu[:page_type]=='account'
+        self.template_tag.current_piece.context_either? or self.template_tag.current_piece.context_account?          
       else
         self.template_tag.current_piece.context_either? or self.template_tag.current_piece.context_list?
       end

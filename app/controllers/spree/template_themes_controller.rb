@@ -105,25 +105,16 @@ module Spree
     #    c: menu_id
     def preview
       #for debug
-      params[:d] = 'www.rubyecommerce.com'
       editor = params[:editor]
-      website=menu=layout=theme = resource = nil
-      website = website_class.current
-      if params[:c]
-        menu = taxon_class.find_by_id(params[:c])
-        if params[:r]
-          resource = Product.find_by_id(params[:r])
-        end  
-      else
-        menu = taxon_class.find_by_id(website.index_page)  
-      end
-      theme = TemplateTheme.find( website_class.current.theme_id)
-      html,css = do_preview(theme, menu, {:resource=>(resource.nil? ? nil:resource),:editor=>editor,:controller=>self})
+      
+      @lg = PageGenerator.previewer( @menu, @theme, {:resource=>(@resource.nil? ? nil:@resource),:editor=>editor,:controller=>self})
+      html = @lg.generate
+      css,js  = @lg.generate_assets        
       #insert css to html
       style = %Q!<style type="text/css">#{css}</style>!
       
       #editor_panel require @theme, @editors, @editor ...
-      prepare_params_for_editors(theme)
+      prepare_params_for_editors(@theme)
       editor_panel = render_to_string :partial=>'layout_editor_panel'
       html.insert(html.index("</head>"),style)
       html.insert(html.index("</body>"),editor_panel)

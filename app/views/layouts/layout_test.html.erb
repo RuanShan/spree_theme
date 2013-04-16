@@ -1,0 +1,7 @@
+<%
+      html,css = do_preview(@theme, @menu, {:resource=>(@resource.nil? ? nil:@resource),:editor=>editor,:controller=>self})
+      #insert css to html
+      style = %Q!<style type="text/css">#{css}</style>!
+%>
+<%= render :partial=>'layouts/template1'%>
+

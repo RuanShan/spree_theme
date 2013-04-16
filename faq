@@ -22,4 +22,4 @@
   
 5. add a section
   rake spree_theme:reload_section_piece  
-  rails r "load SpreeTheme::Engine.root.to_s+'/db/seeds/11_sections.rb'"
+  rails r "load SpreeTheme::Engine.root.to_s+'/db/seeds/10_sections.rb'"

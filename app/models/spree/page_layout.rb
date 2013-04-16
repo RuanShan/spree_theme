@@ -10,7 +10,7 @@ module Spree
     has_many :full_set_nodes, :class_name =>'PageLayout', :foreign_key=>:root_id, :primary_key=>:root_id
   
     # use string instead of symbol, parameter from client is string 
-    ContextEnum=Struct.new(:list,:detail,:cart,:accout)[:list,:detail,:cart,:accout]
+    ContextEnum=Struct.new(:list,:detail,:cart,:account)[:list,:detail,:cart,:account]
     ContextEither = :""
     Contexts = [ContextEnum.values,ContextEither].flatten
     ContextDataSourceMap = { ContextEnum.list=>[:gpvs],ContextEnum.detail=>[:this_product]}
@@ -326,6 +326,12 @@ module Spree
         end
       end
       
+      def context_cart?
+        current_context ==ContextEnum.cart
+      end
+      def context_account?
+        current_context ==ContextEnum.account
+      end
       def context_list?
         current_context ==ContextEnum.list
       end
