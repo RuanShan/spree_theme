@@ -63,7 +63,11 @@ module PageTag
 
     end
     
-
+    # when render for cart/account, should output '<%=yield %>'
+    # store it in section piece would not work, controller.render_to_string would parse it.
+    def reyield
+      '<%=yield %>'
+    end
   end
   
 end

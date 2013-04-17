@@ -1,7 +1,17 @@
 <%
-      html,css = do_preview(@theme, @menu, {:resource=>(@resource.nil? ? nil:@resource),:editor=>editor,:controller=>self})
-      #insert css to html
-      style = %Q!<style type="text/css">#{css}</style>!
-%>
-<%= render :partial=>'layouts/template1'%>
+  @lg = PageGenerator.previewer( @menu, @theme, {:resource=>(@resource.nil? ? nil:@resource),:controller=>controller})
+  ehtml = @lg.ehtml
+  css,js  = @lg.generate_assets        
+  #insert css to html
+  style = %Q! <style type="text/css">#{css}</style> !
+  #editor_panel require @theme, @editors, @editor ...
+  ehtml.insert(ehtml.index("</head>"),style)
+  ehtml.insert(ehtml.index("</body>"),@editor_panel)
 
+  @lg.context.each_pair{|key,val|
+    instance_variable_set( "@#{key}", val)
+  }  
+
+%>
+
+<%= render :inline => ehtml%>

@@ -104,21 +104,19 @@ module Spree
     #    d: domain of website
     #    c: menu_id
     def preview
-      #for debug
-      editor = params[:editor]
-      
-      @lg = PageGenerator.previewer( @menu, @theme, {:resource=>(@resource.nil? ? nil:@resource),:editor=>editor,:controller=>self})
+     
+      @lg = PageGenerator.previewer( @menu, @theme, {:resource=>(@resource.nil? ? nil:@resource),:controller=>self})
       html = @lg.generate
       css,js  = @lg.generate_assets        
       #insert css to html
       style = %Q!<style type="text/css">#{css}</style>!
-      
       #editor_panel require @theme, @editors, @editor ...
-      prepare_params_for_editors(@theme)
-      editor_panel = render_to_string :partial=>'layout_editor_panel'
       html.insert(html.index("</head>"),style)
-      html.insert(html.index("</body>"),editor_panel)
-      render :text => html
+      html.insert(html.index("</body>"),@editor_panel)
+      respond_to do |format|
+        format.html {render :text => html}
+      end
+          
     end
       
     def publish
@@ -220,7 +218,7 @@ module Spree
         #@layout.reload
       end
       
-      render :partial=>"layout_tree"    
+      render :partial=>"layout_tree1"    
     end
   
     # user disable a section in the current layout tree
@@ -290,31 +288,7 @@ module Spree
     end
     
       
-    def prepare_params_for_editors(theme,editor=nil,page_layout = nil)
-      @editors = Editor.all
-      @param_values_for_editors = Array.new(@editors.size){|i| []}
-      editor_ids = @editors.collect{|e|e.id}
-      page_layout ||= theme.page_layout
-      param_values =theme.param_values().where(:page_layout_id=>page_layout.id).includes([:section_param=>[:section_piece_param=>:param_category]]) 
-      #get param_values for each editors
-      for pv in param_values
-        #only get pv blong to root section
-        #next if pv.section_id != layout.section_id or pv.section_instance != layout.section_instance
-        idx = (editor_ids.index pv.section_param.section_piece_param.editor_id)
-        if idx>=0
-          @param_values_for_editors[idx]||=[]        
-          @param_values_for_editors[idx] << pv
-        end
-      end 
-  
-      @theme =  theme   
-      @editor = editor    
-      @editor ||= @editors.first
-      
-      @page_layout = page_layout #current selected page_layout, the node of the layout tree.
-      @page_layout||= theme.page_layout
-      @sections = Section.roots
-    end
+
     
     # Usage, update a param_value by param_value_param
     # Params, param_value ParamValue instance 

@@ -8,4 +8,11 @@ describe Spree::Section do
     section.destroy
     
   end
+  
+  it "build cart section" do
+    cart = Spree::Section.find_by_title('cart')
+    html = cart.build_html
+    html.should =~/yield/
+  end
+  
 end

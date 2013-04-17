@@ -26,6 +26,7 @@ class PageGenerator
     end
     #generator generate content: html,js,css
     def previewer(menu, theme=nil,  options={})
+      options[:preview] = true
       pg = self.new( theme, menu, options)
       pg.build
       pg
@@ -60,9 +61,9 @@ class PageGenerator
     self.is_preview ? "/preview" : ""
   end
   
-  def has_editor?
-    self.editor.present?
-  end
+  #def has_editor?
+  #  self.editor.present?
+  #end
 
   #build html, css sourse
   def build
