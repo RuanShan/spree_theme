@@ -234,7 +234,7 @@ module Spree
     # event_enum :ps_changed| :psv_changed  
     def build_url_params(event_enum)
       
-      { :action => "update_param_value",:editing_param_value_id=> param_value.id, :editing_html_attribute_id=>html_attribute.id, :param_value_event=>ParamValue::EventEnum[event_enum]}
+      { :editing_param_value_id=> param_value.id, :editing_html_attribute_id=>html_attribute.id, :param_value_event=>ParamValue::EventEnum[event_enum]}
       
     end
     

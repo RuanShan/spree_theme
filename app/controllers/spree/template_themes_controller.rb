@@ -242,7 +242,7 @@ module Spree
       
       respond_to do |format|
         format.html 
-        format.js  {render :partial=>'editors'}
+        format.js  {render :partial=>'editors1'}
       end    
     end
   
