@@ -37,10 +37,11 @@ module SpreeTheme::System
           @is_preview = true
         end     
       end
-
-    if @is_preview      
-       prepare_params_for_editors(@theme)
-       @editor_panel = render_to_string :partial=>'layout_editor_panel'
+    unless request.xhr?
+      if @is_preview      
+         prepare_params_for_editors(@theme)
+         @editor_panel = render_to_string :partial=>'layout_editor_panel'
+      end
     end
   end
   

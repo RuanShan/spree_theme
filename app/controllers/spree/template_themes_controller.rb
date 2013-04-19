@@ -212,7 +212,7 @@ module Spree
         #end
         #@layout.reload      
       elsif op=='del_self'
-        @selected_page_layout.destroy unless layout.root?
+        @selected_page_layout.destroy unless @selected_page_layout.root?
         @selected_page_layout = @selected_page_layout.parent
         #FIXME update param_values in editor        
         #@layout.reload

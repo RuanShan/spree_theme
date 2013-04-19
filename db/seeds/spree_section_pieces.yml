@@ -470,7 +470,7 @@ product_thumbnails:
   is_container: "0"
   html: |   
     <%# no need for thumbnails unless there is more than one image %>
-    <div id="product-images" data-hook="product_images">
+    <div id="product-images" data-hook="product_images" class="<%=g_piece_selector%>">
     <% if (product.images + product.variant_images).uniq.size > 1 %>
       <ul id="product-thumbnails" class="thumbnails inline" data-hook>
         <% product.images.each do |i| %>
@@ -492,7 +492,18 @@ product_thumbnails:
     </div>
   created_at: 2011-09-20 19:40:07
   updated_at: 2011-09-20 19:40:07
-  css: ""
+  css: |
+    .<%=g_piece_selector%> ul, ol {
+      margin-left: 0;
+      margin-top: 0;
+      -webkit-padding-start: 0px;
+      padding-left: 0;
+      list-style-position: inside;
+    }    
+    .<%=g_piece_selector%> ul.inline  li {
+          display: inline-block;
+    }
+
   js: ""
 product_main_image:
   id: 15
