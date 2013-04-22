@@ -3,7 +3,7 @@ class << Spree::Core::ControllerHelpers::Common
   def included_with_theme_support(receiver)
     included_without_theme_support(receiver)
     receiver.send :include, SpreeTheme::System
-    receiver.send :layout, :get_theme_layout
+    receiver.send :layout, :get_layout_if_use
     receiver.send :before_filter, :initialize_template
   end
   alias_method_chain :included, :theme_support   
@@ -11,9 +11,18 @@ end
 
 module SpreeTheme::System
   private
-  #override spree's
-  def get_theme_layout
-    @is_preview ? 'layout_test' : Spree::Config[:layout]
+  # override spree's
+  # only cart|account using layout while rendering, product list|detail page render without layout.
+  def get_layout_if_use
+    #for designer
+    if @is_designer
+      return 'layout_for_design'
+    end 
+    #for customer
+    if @is_preview 
+      return 'layout_for_preview'
+    end  
+    SpreeTheme::Config.website_class.current.layout.present? ? SpreeTheme::Config.website_class.current.layout : Spree::Config[:layout]
   end
 
   def initialize_template
@@ -31,14 +40,15 @@ module SpreeTheme::System
       end
       @theme = Spree::TemplateTheme.find( website.theme_id)
 
-     if Rails.env !~ /prduction/
+      if Rails.env !~ /prduction/
         # for development or test, enable get site from cookies
-        if cookies[:abc_development_preview].present?
-          @is_preview = true
+        if cookies[:abc_development_design].present?
+          @is_designer = true
+          #user is designer.
         end     
       end
     unless request.xhr?
-      if @is_preview      
+      if @is_designer      
          prepare_params_for_editors(@theme)
          @editor_panel = render_to_string :partial=>'layout_editor_panel'
       end

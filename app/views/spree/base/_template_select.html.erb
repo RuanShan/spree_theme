@@ -1,0 +1,10 @@
+<%
+# local params:
+#   select_name
+#   themes  
+#   selected_value
+options = themes.collect{|item| [item.title,item.id] }
+%>
+
+<%= select "theme","id", options,{:selected=>selected_value},{:name=>select_name} %>
+

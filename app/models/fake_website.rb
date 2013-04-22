@@ -25,4 +25,8 @@ Rails.logger.debug "website= #{website.inspect}"
         File.join(Rails.root,'public','shops', Rails.env, self.id.to_s)
       end
       
+      def layout
+        nil
+      end
+      
     end

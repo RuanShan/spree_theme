@@ -4,16 +4,16 @@
 */
 
 #editor_panel
-{height:300px;
+{height:260px;
 }
 #page_layout_tree_inner
 {
-  height:270px;
+  height:200px;
   overflow: auto;
 }
 .param_value_editor
 {
-  height:240px;
+  height:200px;
   overflow: auto;  
 }
 .fl{ float:left;}
