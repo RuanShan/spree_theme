@@ -29,5 +29,5 @@ gem "friendly_id", "~> 4.0.9"
 group :assets do
   gem 'coffee-rails'
 end
-
+#gem 'ssl_requirement'
 gemspec

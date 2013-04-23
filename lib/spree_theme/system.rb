@@ -50,7 +50,7 @@ module SpreeTheme::System
     unless request.xhr?
       if @is_designer      
          prepare_params_for_editors(@theme)
-         @editor_panel = render_to_string :partial=>'layout_editor_panel'
+         @editor_panel = render_to_string :partial=>'/spree/base/layout_editor_panel'
       end
     end
   end

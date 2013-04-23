@@ -28,20 +28,37 @@ customer: get layout from current site
 
 path
 ----
-
-customer view product list              -> www.tld/tid    
-customer view product detail            -> www.tld/tid/pid
-designer design product list page       -> www.tld/tid
-designer design product detail page     -> www.tld/tid/pid
-admin manage site                       -> www.tld/admin/...   
-
-user login                              -> www.tld/admin/
-
-customer view live template demo        -> templates.dalianshops.com
-customer browse published template list -> www.tld/admin/template_themes/
-
-
-
+  1. designer design product list page       
+  www.tld/tid       
+  2. designer design product detail page     
+  www.tld/tid/pid   
+  2. designer publish design     
+  www.tld/admin/template_theme     
+  3. customer view product list              
+  www.tld/tid                -> /var/www/shops/n/    
+  4. customer view product detail            
+  www.tld/tid/pid   
+  5. admin manage site                       
+  www.tld/admin/...   
+  6. user login
+  www.tld/admin/
+  7. customer view live template demo        
+  templates.dalianshops.com  -> /var/www/shops/1
+  8. customer browse published template list 
+  www.tld/admin/template_themes/
+  9. shop folders
+    template folder
+       t(current template id)-> /var/www/shops/1/t(original template id)
+    theme image folder:
+       tx/images
+    generated layout
+       tx/tx.html.erb
+    theme css, js
+       tx/cssx.css
+       tx/jsx.js       
+    page_layout image folder: images belongs to shop, like logo
+       lx
+        
 Example
 =======
 
