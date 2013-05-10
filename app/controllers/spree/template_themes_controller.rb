@@ -1,19 +1,7 @@
 module Spree
   class TemplateThemesController < Spree::StoreController
-    cattr_accessor :layout_base_path
-    self.layout_base_path = File.join(::Rails.root.to_s,"public","shops")   
   
     delegate :taxon_class,:website_class, :to=>:"SpreeTheme::Config"
-    # GET /themes
-    # GET /themes.xml
-    def index
-      @themes = TemplateTheme.all
-  Rails.logger.debug "app=#{Rails.application.app}"
-      respond_to do |format|
-        format.html # index.html.erb
-        format.xml  { render :xml => @themes }
-      end
-    end
   
     # GET /themes/1
     # GET /themes/1.xml
@@ -26,37 +14,10 @@ module Spree
       end
     end
   
-    #copy selected theme to new theme
-    def copy
-      @original_theme = TemplateTheme.find(params[:id])
-      #copy theme, layout, param_value
-      @new_theme = @original_theme.copy_to_new
-      
-      respond_to do |format|
-        format.html { redirect_to(template_themes_url) }
-      end    
-    end
-
   
     # GET /themes/1/edit
     def edit
       @theme = TemplateTheme.find(params[:id])
-    end
-  
-    # POST /themes
-    # POST /themes.xml
-    def create
-      @theme = TemplateTheme.new(params[:theme])
-  
-      respond_to do |format|
-        if @theme.save
-          format.html { redirect_to(@theme, :notice => 'TemplateTheme was successfully created.') }
-          format.xml  { render :xml => @theme, :status => :created, :location => @theme }
-        else
-          format.html { render :action => "new" }
-          format.xml  { render :xml => @theme.errors, :status => :unprocessable_entity }
-        end
-      end
     end
   
     # PUT /themes/1
@@ -74,31 +35,7 @@ module Spree
         end
       end
     end
-  
-    # DELETE /themes/1
-    # DELETE /themes/1.xml
-    def destroy
-      @theme = TemplateTheme.find(params[:id])
-      @theme.destroy
-  
-      respond_to do |format|
-        format.html { redirect_to(template_themes_url) }
-        format.xml  { head :ok }
-      end
-    end
-    
-    def build
-      theme_id = params[:id]
-      html, css = "", ""
-      if TemplateTheme.exists?(theme_id)
-        theme = TemplateTheme.find(theme_id)
-        @lg = PageGenerator.builder(theme)
-        html,css = @lg.build
-        @lg.serialize_page(:ehtml)      
-        @lg.serialize_page(:ecss)      
-      end
-    end
-   
+      
     
     # params for preview
     #    d: domain of website
@@ -118,13 +55,7 @@ module Spree
       end
           
     end
-      
-    def publish
-      @website = website_class.current
-      @menu_roots = taxon_class.roots
-      @themes = TemplateTheme.all
-    end
-    
+          
     def assign_default
       website_params = params[:website]
       self.website[:index_page] = website_params[:index_page].to_i
@@ -359,50 +290,7 @@ module Spree
         # render "upload"      
       end
     end
-    
-    def do_publish
-        # find all theme used by website
-      theme_ids = taxon_class.assigned_theme_ids()
-      if not theme_ids.empty?
-        for theme_id in theme_ids
-          theme = TemplateTheme.find(theme_id)
-          do_build(theme)
-        end
-      end
-    end
-    
-      # build ehtml,css,js
-    def do_build( theme, options={})
-      options[:serialize_ehtml] = true
-      options[:serialize_ecss] = true
       
-        @lg = PageGenerator.builder( theme)
-        html, css = @lg.build
-        if options[:serialize_ehtml]
-          @lg.serialize_page(:ehtml)
-        end
-        css = @lg.generate_assets
-        if options[:serialize_css]      
-          @lg.serialize_page(:css)
-        end
-        return html, css      
-    end
-    
-    def do_preview( theme,  menu, options={})
-        options[:preview] = true #preview_template_themes_url
-        
-        @lg = PageGenerator.previewer( menu, theme, options)
-        html = @lg.generate
-        css,js  = @lg.generate_assets
-        if options[:serialize_html]
-          @lg.serialize_page(:html)
-        end
-        if options[:serialize_css]      
-          @lg.serialize_page(:css)
-        end
-        return html, css, js  
-    end
-  
     def do_generate( theme, menu, options={})
   
         @lg = PageGenerator.generator( theme, menu, options)

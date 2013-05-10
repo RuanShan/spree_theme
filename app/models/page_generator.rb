@@ -1,8 +1,8 @@
 #in layout, there are some eruby, all available varibles should be here.
 class PageGenerator
-  cattr_accessor :layout_base_path, :layout_public_path
-  self.layout_public_path = File.join(File::SEPARATOR,"shops")
-  self.layout_base_path = File.join(Rails.root,'public',layout_public_path)   
+  cattr_accessor :document_path, :public_path
+  self.public_path = File.join(File::SEPARATOR,"shops",'themes')
+  self.document_path = File.join(Rails.root,'public',public_path)   
 
   
   attr_accessor :menu, :theme, :resource # resource could be product, blog_post, flash, file, image...
@@ -15,8 +15,8 @@ class PageGenerator
   # we would like to use helper method of rails, so now is using controller as renderer
   attr_accessor :is_preview, :controller, :renderer 
   attr_accessor :ehtml, :ecss, :ejs 
-
   delegate :generate, :generate_assets, :to=>:renderer
+  delegate :html,:css,:js, :to=>:renderer
 
   class << self
     #page generator has two interface, builder and generator
@@ -24,6 +24,14 @@ class PageGenerator
     def builder( theme )
       self.new( theme, menu=nil)      
     end
+    
+    #designer release a template
+    def releaser( theme)
+      pg = self.new( theme, menu=nil)
+      pg.build
+      pg
+    end
+    
     #generator generate content: html,js,css
     def previewer(menu, theme=nil,  options={})
       options[:preview] = true
@@ -71,6 +79,15 @@ class PageGenerator
     return self.ehtml, self.ecss
   end
   
+  def release
+    #build -> generate_assets -> serialize
+    self.build            # build ehtml, ecss, ejs
+    self.generate_assets  # generate css, js 
+    serialize_page(:ehtml)
+    serialize_page(:css)
+    serialize_page(:js)
+  end
+  
   def renderer
     if @renderer.blank?     
       if self.controller.present?
@@ -94,12 +111,12 @@ class PageGenerator
   
   # *specific_attribute - ehtml,ecss, html, css
   def serialize_page(specific_attribute)
-    specific_attribute_collection = [:html,:css,:js,:ehtml,:ecss,:ejs]
+    specific_attribute_collection = [:css,:js,:ehtml]
     raise ArgumentError unless specific_attribute_collection.include?(specific_attribute)
     page_content = send(specific_attribute)
     if page_content.present?
-      path = File.join(self.class.layout_base_path, self.theme.file_name('ehtml'))      
-      open(path, 'w') do |f|  f.puts html; end
+      path = File.join(serialize_path, self.theme.file_name(specific_attribute))      
+      open(path, 'w') do |f|  f.puts page_content; end
     end
     
   end
@@ -112,5 +129,13 @@ class PageGenerator
       :website=>current_page_tag.website_tag, :template=>current_page_tag.template_tag
       }    
   end  
+  
+  def serialize_path
+    theme_release = self.theme.template_releases.last
+    path = File.join(self.class.document_path, "t#{self.theme.id}_r#{theme_release.id}")      
+    FileUtils.mkdir_p(path) unless File.exists?(path)
+    path
+  end
+  
 end
 

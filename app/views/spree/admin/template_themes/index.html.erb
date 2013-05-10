@@ -3,17 +3,18 @@
 <table>
   <tr>
     <th>TemplateTheme</th>
+    <th>IsReleased</th>
   </tr>
 
 <% @themes.each do |theme| %>
   <tr>
     <td><%= theme.title %></td>
+    <td><%= theme.template_releases.exists? %></td>
 
     <td><%= link_to 'Destroy', admin_template_theme_path(theme), :confirm => 'Are you sure?', :method => :delete %></td>
-    <td><%= link_to 'copy', copy_template_theme_path(theme), {:method=>:post} %></td>
+    <td><%= link_to 'copy', copy_admin_template_theme_path(theme), {:method=>:post} %></td>
     <td><%= link_to 'Editor', editor_template_theme_path(theme) %></td>
-    <td><%= link_to 'Build', build_template_theme_path(theme) %></td>
-    <td><%= link_to 'GenerateAssets', generate_assets_template_theme_path(theme)   %></td>
+    <td><%= link_to 'Release', release_admin_template_theme_path(theme), {:method=>:post} %></td>
   </tr>
 <% end %>
 </table>

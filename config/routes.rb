@@ -5,7 +5,6 @@ Spree::Core::Engine.routes.draw do
        get :editor
        get :edit_layout # modify page_layout
        post :get_param_values # to support post data>1024byte
-       post :copy
        post :update_param_value
        post :update_layout_tree
        get :build
@@ -26,8 +25,9 @@ Spree::Core::Engine.routes.draw do
  
   namespace :admin do
     resources :template_themes do
-      collection do
-        post 'release'
+      member do
+        post :copy
+        post :release
       end
     end
   end

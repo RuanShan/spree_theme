@@ -23,6 +23,7 @@ module PageRenderer
       self.css = renderer.render_to_string(:inline =>ecss)
       return self.css, self.js
     end
+        
     private 
     def prepare_instance_variables
       self.context.each_pair{|key,val|

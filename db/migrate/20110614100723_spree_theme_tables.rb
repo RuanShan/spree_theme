@@ -143,7 +143,6 @@ class SpreeThemeTables < ActiveRecord::Migration
       #  keep all assigned resource ids to the template, it is hash
       #  {:page_layout_id={:image_ids=[], :menu_ids=[]}}
       t.column :assigned_resource_ids,   :string,  :limit => 255,      :null => false, :default => ""        
-      t.column :released_at,             :datetime
       t.timestamps
     end
 

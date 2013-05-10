@@ -7,6 +7,7 @@ module Spree
     belongs_to :page_layout, :foreign_key=>"page_layout_root_id", :dependent=>:destroy
     has_many :param_values, :foreign_key=>"theme_id" #  :dependent=>:destroy, do not use dependent, it cause load each one of param_value
     has_many :template_files, :foreign_key=>"theme_id" #  :dependent=>:destroy, do not use dependent, it cause load each one of param_value
+    has_many :template_releases, :foreign_key=>"theme_id" #  :dependent=>:destroy, do not use dependent, it cause load each one of param_value
     
     scope :by_layout,  lambda { |layout_id| where(:page_layout_root_id => layout_id) }
     serialize :assigned_resource_ids, Hash
@@ -35,8 +36,15 @@ module Spree
     
     
     begin 'for page generator'  
+      # * params
+      #   * usage - may be [ehtml, css, js]
       def file_name(usage)
-        "#{page_layout_root_id}_#{id}.#{usage}"
+        if usage.to_s == 'ehtml'
+          "l#{page_layout_root_id}_t#{id}.html.erb"
+        else
+          "l#{page_layout_root_id}_t#{id}.#{usage}"
+        end
+        
       end
     end
     

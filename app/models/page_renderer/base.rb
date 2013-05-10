@@ -14,8 +14,13 @@ module PageRenderer
       raise NotImplementedError
     end
       
-    def generate_from_erb_file()
+    def generate_from_erb_file
       raise NotImplementedError
-    end    
+    end
+
+    def release
+      raise NotImplementedError
+    end
+     
   end
 end
