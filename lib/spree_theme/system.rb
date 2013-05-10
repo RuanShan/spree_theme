@@ -35,6 +35,9 @@ module SpreeTheme::System
       elsif params[:controller]=~/cart|checkout|order/
         @menu = DefaultTaxon.instance
         @menu[:page_type] = 'cart'
+      elsif params[:controller]=~/user/
+        @menu = DefaultTaxon.instance
+        @menu[:page_type] = 'account'
       else
         @menu = SpreeTheme::Config.taxon_class.find_by_id(website.index_page)  
       end
@@ -50,7 +53,9 @@ module SpreeTheme::System
     unless request.xhr?
       if @is_designer      
          prepare_params_for_editors(@theme)
-         @editor_panel = render_to_string :partial=>'/spree/base/layout_editor_panel'
+         # layout_editor_panel has to be in views/application, 
+         # or could not find for spree_auth_devise/controllers
+         @editor_panel = render_to_string :partial=>'layout_editor_panel'
       end
     end
   end

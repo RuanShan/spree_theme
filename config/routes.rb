@@ -24,6 +24,11 @@ Spree::Core::Engine.routes.draw do
   match '(/:c(/:r))' => 'template_themes#preview', :c => /[\d]+/
   match 'preview(/:c(/:r))' => 'template_themes#preview' #preview home
  
-  #root :to=>"template_themes#index"
-
+  namespace :admin do
+    resources :template_themes do
+      collection do
+        post 'release'
+      end
+    end
+  end
 end

@@ -125,7 +125,6 @@ class SpreeThemeTables < ActiveRecord::Migration
       t.string  :default_value   #,   :null => false, :default => ""
       t.boolean :is_enabled,     :default=>true
       t.string :disabled_ha_ids, :limit=>255, :null => false, :default => ""
-
       t.timestamps
     end
     
@@ -144,7 +143,10 @@ class SpreeThemeTables < ActiveRecord::Migration
       #  keep all assigned resource ids to the template, it is hash
       #  {:page_layout_id={:image_ids=[], :menu_ids=[]}}
       t.column :assigned_resource_ids,   :string,  :limit => 255,      :null => false, :default => ""        
+      t.column :released_at,             :datetime
+      t.timestamps
     end
+
     create_table :param_values, :force=>true do |t|
       t.column :page_layout_root_id,      :integer, :limit => 2,     :null => false, :default => 0 # this is an root layout id in the page_layouts table
       # in param_value_event, we need get page_layout 

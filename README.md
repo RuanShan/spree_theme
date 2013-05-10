@@ -8,7 +8,7 @@ how it work
 designer
 0. new theme
 1. design theme
-2. publish completed theme.  generate themeN/versionN.html.erb
+2. release completed theme.  generate themeN/versionN.html.erb
 3. theme is viewable by public.  shops/shop_id/themeN/    
 
 backend
@@ -32,7 +32,7 @@ path
   www.tld/tid       
   2. designer design product detail page     
   www.tld/tid/pid   
-  2. designer publish design     
+  2. designer release design     
   www.tld/admin/template_theme     
   3. customer view product list              
   www.tld/tid                -> /var/www/shops/n/    
