@@ -41,7 +41,6 @@ module SpreeTheme::System
       else
         @menu = SpreeTheme::Config.taxon_class.find_by_id(website.index_page)  
       end
-      @theme = Spree::TemplateTheme.find( website.theme_id)
 
       if Rails.env !~ /prduction/
         # for development or test, enable get site from cookies
@@ -50,6 +49,15 @@ module SpreeTheme::System
           #user is designer.
         end     
       end
+      
+      #get template from query string 
+      if @is_designer
+        if params[:action]=='preview' && params[:id].present?
+          @theme = Spree::TemplateTheme.find( params[:id] )          
+        end
+      end
+      @theme ||= Spree::TemplateTheme.find( website.theme_id)
+      
     unless request.xhr?
       if @is_designer      
          prepare_params_for_editors(@theme)
@@ -84,6 +92,8 @@ module SpreeTheme::System
       @page_layout = page_layout #current selected page_layout, the node of the layout tree.
       @page_layout||= theme.page_layout
       @sections = Spree::Section.roots
+      #template selection
+      @template_themes = Spree::TemplateTheme.all
   end
   
 end

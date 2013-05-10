@@ -31,4 +31,10 @@ Rails.logger.debug "temp_file=#{temp_file.size}"
     first_param_value.page_layout_root_id.should eq(template.page_layout.root_id)
     
   end
+  
+  it "should copy to new" do
+     template = Spree::TemplateTheme.first
+     copy_template = template.copy_to_new
+  end
+  
 end

@@ -9,8 +9,9 @@ designer
 0. new theme
 1. design theme
 2. release completed theme.  generate themeN/versionN.html.erb
-3. theme is viewable by public.  shops/shop_id/themeN/    
-
+3. theme is viewable by public.  shops/themes/themeN/    
+   designs.dalianshops.com?theme_id=N
+   
 backend
 1. user browse available themes, snapshot or live demo.
 2. import preferred theme

@@ -42,17 +42,17 @@ module Spree
     #    c: menu_id
     def preview
      
-      @lg = PageGenerator.previewer( @menu, @theme, {:resource=>(@resource.nil? ? nil:@resource),:controller=>self})
-      html = @lg.generate
-      css,js  = @lg.generate_assets        
+    #  @lg = PageGenerator.previewer( @menu, @theme, {:resource=>(@resource.nil? ? nil:@resource),:controller=>self})
+    #  html = @lg.generate
+    #  css,js  = @lg.generate_assets        
       #insert css to html
-      style = %Q!<style type="text/css">#{css}</style>!
+    #  style = %Q!<style type="text/css">#{css}</style>!
       #editor_panel require @theme, @editors, @editor ...
-      html.insert(html.index("</head>"),style)
-      html.insert(html.index("</body>"),@editor_panel)
-      respond_to do |format|
-        format.html {render :text => html}
-      end
+    #  html.insert(html.index("</head>"),style)
+    #  html.insert(html.index("</body>"),@editor_panel)
+    #  respond_to do |format|
+    #    format.html {render :text => html}
+    #  end
           
     end
           
@@ -112,7 +112,6 @@ module Spree
       theme = TemplateTheme.find(params[:id])
       prepare_params_for_editors(theme)
       
-      @template_themes = TemplateTheme.all
     end  
   
   

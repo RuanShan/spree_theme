@@ -2,7 +2,8 @@ Spree::Core::Engine.routes.draw do
   # Add your extension routes here
   resources :template_themes do
      member do
-       get :editor
+       get :preview # add function preview_template_theme_path
+       #get :editor
        get :edit_layout # modify page_layout
        post :get_param_values # to support post data>1024byte
        post :update_param_value

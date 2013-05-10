@@ -7,7 +7,7 @@
 
 <div >
   <div>
-    <%=render :partial=>"layout_selection", :locals=>{:template_themes=>@template_themes, :selected=>@theme} %>
+    <%=render :partial=>"theme_selection", :locals=>{:template_themes=>@template_themes, :selected=>@theme} %>
     <%= link_to_function "Preview", "window.open('#{preview_template_themes_path}','rle-preview')"%>
     <%= link_to "Preview setting", publish_template_themes_url%>
     <%= link_to "Edit layout", edit_layout_template_theme_url(@theme)%>

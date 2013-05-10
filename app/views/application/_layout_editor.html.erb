@@ -1,6 +1,6 @@
   <div class="fl" style="width:35%">
     <div id="page_layout_tree" class="block">
-    <%= render :partial=>'template_select', :locals=>{:themes=>@theme.class.all,:selected_value=>@theme.id, :select_name=>'theme[:id]'} %>
+    <%=render :partial=>"theme_selection", :locals=>{:template_themes=>@template_themes, :selected=>@theme} %>
     <%= render :partial=>"layout_tree", :locals=>{:theme=>@theme, :selected_id=>@theme.page_layout.id} %>
     <% #do not put it in file layout_tree, or update_layout_tree ajax add section_selection_dialog again and again.
     %>

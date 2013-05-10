@@ -13,7 +13,7 @@ module PageTag
     end
     
     def public_path(target)
-      File.join(page_generator.layout_public_path,page_generator.theme.file_name(target))
+      File.join(page_generator.public_path, page_generator.theme.file_name(target))
     end
     
   end

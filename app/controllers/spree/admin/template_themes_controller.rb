@@ -17,7 +17,7 @@ module Spree
           @new_theme = @original_theme.copy_to_new
           
           respond_to do |format|
-            format.html { redirect_to(template_themes_url) }
+            format.html { redirect_to(admin_template_themes_url) }
           end    
         end
 

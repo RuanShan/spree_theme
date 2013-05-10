@@ -59,7 +59,7 @@ module Spree
         new_layout = original_layout.copy_to_new
         #create theme record
         new_theme = self.dup
-        new_theme.layout_id = new_layout.id
+        new_theme.page_layout_root_id = new_layout.id
         new_theme.save!
         
         #copy param values
@@ -70,7 +70,7 @@ module Spree
         table_column_names.delete('id')
         
         table_column_values  = table_column_names.dup
-        table_column_values[table_column_values.index('layout_root_id')] = new_layout.id
+        table_column_values[table_column_values.index('page_layout_root_id')] = new_layout.id
         table_column_values[table_column_values.index('theme_id')] = new_theme.id
         
         #copy param value from origin to new.
