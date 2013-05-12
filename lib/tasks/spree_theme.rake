@@ -27,7 +27,7 @@ namespace :spree_theme do
     SpreeTheme::Config.website_class.current.document_root
     file_path =  get_template_backup_path( template )
     open(file_path) do |file|
-      Spree::TemplateTheme.import(file)
+      Spree::TemplateTheme.import_into_db(file)
     end    
     puts "imported file #{file_path}"
   end

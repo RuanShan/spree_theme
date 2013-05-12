@@ -1,8 +1,17 @@
-    class FakeWebsite < ActiveRecord::Base      
+module Spree
+  #it has to be in module Spree, website.template_theme require it. 
+  class FakeWebsite < ActiveRecord::Base      
       self.table_name = 'fake_websites'
+      belongs_to :template_theme, :foreign_key=>"theme_id"
+
       before_validation :set_short_name
       attr_accessible :index_page,:theme_id
       class << self
+        
+        def dalianshopsdesigns
+          find(1)
+        end
+        
         def current
           if Thread.current[:website].nil?
             website = FakeWebsite.find_or_initialize_by_url_and_name('demo.spreecommerce.com','DalianShops Demo Site' )
@@ -30,3 +39,4 @@ Rails.logger.debug "website= #{website.inspect}"
       end
       
     end
+end

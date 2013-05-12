@@ -26,6 +26,10 @@ Spree::Core::Engine.routes.draw do
  
   namespace :admin do
     resources :template_themes do
+      collection do
+        get :native
+        get :foreign
+      end
       member do
         post :copy
         post :release

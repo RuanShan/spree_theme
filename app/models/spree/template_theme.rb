@@ -4,16 +4,18 @@ module Spree
     #extend FriendlyId
   
     #belongs_to :website #move it into template_theme_decorator
+    # for now template_theme and page_layout are one to one
     belongs_to :page_layout, :foreign_key=>"page_layout_root_id", :dependent=>:destroy
-    has_many :param_values, :foreign_key=>"theme_id" #  :dependent=>:destroy, do not use dependent, it cause load each one of param_value
-    has_many :template_files, :foreign_key=>"theme_id" #  :dependent=>:destroy, do not use dependent, it cause load each one of param_value
-    has_many :template_releases, :foreign_key=>"theme_id" #  :dependent=>:destroy, do not use dependent, it cause load each one of param_value
+    has_many :param_values, :foreign_key=>"theme_id", :dependent => :delete_all
+    has_many :template_files, :foreign_key=>"theme_id", :dependent => :delete_all
+    has_many :template_releases, :foreign_key=>"theme_id", :dependent => :delete_all
     
     scope :by_layout,  lambda { |layout_id| where(:page_layout_root_id => layout_id) }
     serialize :assigned_resource_ids, Hash
     #friendly_id :title,:use => :scoped, :scope => :website
-  
-    after_destroy :remove_relative_data
+    scope :within_website, lambda { where( :website_id => SpreeTheme::Config.website_class.current.id) }
+    
+    before_destroy :remove_relative_data
     attr_accessible :website_id,:page_layout_root_id,:title
     
     class << self
@@ -30,6 +32,10 @@ module Spree
         template.update_attribute("page_layout_root_id",page_layout_root.id)
         
         template
+      end
+      
+      def foreign
+        self.unscoped.where(:website_id=> SpreeTheme::Config.website_class.dalianshopsdesigns.id)
       end
       
     end
@@ -49,6 +55,27 @@ module Spree
     end
     
     begin 'edit template'
+      #import theme into current site
+      #only create template record, do not copy param_value,page_layout,template_file...
+      # * params
+      #   * resource_config - new configuration for resource
+      def import(resource_config={})
+        raise ArgumentError unless self.template_releases.exists?
+        #only released template is importable
+        #create theme record
+        new_theme = self.dup
+        new_theme.title = "Imported "+ new_theme.title
+        new_theme.website_id = SpreeTheme::Config.website_class.current.id
+        new_theme.release_id = self.template_versions.last.id
+        new_theme.save!
+        new_theme
+      end
+      
+      # apply to website
+      def apply
+        SpreeTheme::Config.website_class.current.update_attribute(:theme_id,self.id)
+      end
+      
       # Usage: user want to copy this layout&theme to new for editing or backup.
       #        we need copy param_value and theme_images
       #        note that it is only for root. 
@@ -79,7 +106,15 @@ module Spree
         #update layout_id to new_layout.id    
         for node in new_layout.self_and_descendants
           original_node = original_layout.self_and_descendants.select{|item| (item.section_id == node.section_id) and (item.section_instance==node.section_instance) }.first
+          #correct param_values
           ParamValue.update_all(["page_layout_id=?", node.id],["theme_id=? and page_layout_id=?",new_theme.id, original_node.id])
+          #correct template.assigned_resource_ids
+          if new_theme.assigned_resource_ids[original_node.id].present?             
+            new_theme.assigned_resource_ids[node.id] = new_theme.assigned_resource_ids.delete(original_node.id)            
+          end
+        end
+        if new_theme.assigned_resource_ids.present?
+          new_theme.save
         end
         return new_theme
       end
@@ -134,8 +169,8 @@ module Spree
       # it would delete existing one first, then import
       # params
       #   file - opened file 
-      def self.import( file )
-        #require class
+      def self.import_into_db( file )
+        # rake task require class 
         Spree::ParamValue; Spree::PageLayout;
         serialized_hash = YAML::load(file)
         template = serialized_hash[:template]
@@ -160,7 +195,7 @@ module Spree
       end
     end
     def remove_relative_data
-      ParamValue.delete_all(["theme_id=?", self.id])
+      #ParamValue.delete_all(["theme_id=?", self.id])      
     end
     
     begin 'assigned resource'

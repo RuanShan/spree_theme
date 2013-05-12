@@ -12,7 +12,7 @@ describe Spree::TemplateTheme do
     File.exists?(temp_file.path).should be_true
     temp_file.rewind
 Rails.logger.debug "temp_file=#{temp_file.size}"    
-    Spree::TemplateTheme.import(temp_file)
+    Spree::TemplateTheme.import_into_db(temp_file)
     
     temp_file.close    
   end
@@ -34,7 +34,14 @@ Rails.logger.debug "temp_file=#{temp_file.size}"
   
   it "should copy to new" do
      template = Spree::TemplateTheme.first
-     copy_template = template.copy_to_new
+     copy_template = template.copy_to_new     
+     copy_template.page_layout_root_id.should be != template.page_layout_root_id
+     
+     new_node_ids = copy_template.page_layout.self_and_descendants.collect{|node| node.id }     
+     template.assigned_resource_ids.keys{| node_id |
+       new_node_ids.should include node_id
+     }
+     
   end
   
 end

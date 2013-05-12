@@ -56,6 +56,8 @@ module SpreeTheme::System
           @theme = Spree::TemplateTheme.find( params[:id] )          
         end
       end
+      #browse template by public
+      
       @theme ||= Spree::TemplateTheme.find( website.theme_id)
       
     unless request.xhr?

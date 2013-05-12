@@ -3,11 +3,19 @@ module Spree
     class TemplateThemesController < Spree::Admin::BaseController
       before_filter :load_theme, :only => [:edit, :update, :release, :copy_theme]
 
-      #list themes
       def index
-        @themes = TemplateTheme.all
+        native
+      end
+      #list themes
+      def native
+        @themes = TemplateTheme.within_website
+        render :action=>:native
       end
 
+      def foreign
+        @themes = TemplateTheme.foreign.includes(:template_releases)
+        @themes = @themes.select{|theme| theme.template_releases.present?}
+      end
 
       begin 'designer'
         #copy selected theme to new theme
@@ -29,7 +37,7 @@ module Spree
           @lg = PageGenerator.releaser( @theme)
           @lg.release
           @themes = TemplateTheme.all          
-          render :action=>'index' 
+          render :action=>'native' 
         end
         
         # DELETE /themes/1
@@ -39,7 +47,7 @@ module Spree
           @theme.destroy
       
           respond_to do |format|
-            format.html { redirect_to(template_themes_url) }
+            format.html { redirect_to(admin_template_themes_url) }
             format.xml  { head :ok }
           end
         end
