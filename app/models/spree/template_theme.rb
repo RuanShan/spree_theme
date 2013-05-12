@@ -178,7 +178,9 @@ module Spree
       # it is a hash with keys :template, :param_values, :page_layouts
       def serializable_data
         template = self.class.find(self.id,:include=>[:param_values,:page_layout=>:full_set_nodes])
-        hash ={:template=>template, :param_values=>template.param_values, :page_layouts=>template.page_layout.full_set_nodes} 
+        hash ={:template=>template, :param_values=>template.param_values, :page_layouts=>template.page_layout.full_set_nodes,
+            :template_files=>template.template_files
+            } 
         hash      
       end
       
@@ -187,15 +189,11 @@ module Spree
       #   file - opened file 
       def self.import_into_db( file )
         # rake task require class 
-        Spree::ParamValue; Spree::PageLayout;
+        Spree::ParamValue; Spree::PageLayout; Spree::TemplateFile;
         serialized_hash = YAML::load(file)
         template = serialized_hash[:template]
         if self.exists?(template[:id])
-          existing_template = self.find(template[:id])
-          if existing_template.page_layout.themes.count==1
-            #dele page_layouts     
-            existing_template.page_layout.destroy       
-          end
+          existing_template = self.find(template[:id])          
           existing_template.destroy
         end
         connection.insert_fixture(template.attributes, self.table_name)
@@ -207,7 +205,10 @@ module Spree
           table_name = PageLayout.table_name
           connection.insert_fixture(record.attributes, table_name)          
         end
-        
+        serialized_hash[:template_files].each do |record|
+          table_name = TemplateFile.table_name
+          connection.insert_fixture(record.attributes, table_name)          
+        end        
       end
     end
     def remove_relative_data

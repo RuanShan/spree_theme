@@ -2,6 +2,13 @@
 require 'spec_helper'
 describe Spree::PageLayout do
   let (:page_layout) { Spree::PageLayout.first }
+  
+  it "build html css js" do
+    html, css = page_layout.build_content    
+    html.present?.should be_true
+    css.present?.should be_true
+  end
+  
   it "create new page_layout tree" do
     objects = Spree::Section.roots
     section_hash= objects.inject({}){|h,sp| h[sp.slug] = sp; h}

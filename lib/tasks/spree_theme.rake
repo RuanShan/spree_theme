@@ -14,7 +14,7 @@ namespace :spree_theme do
   task :export_template => :environment do
     template = Spree::TemplateTheme.first
     serializable_data = template.serializable_data
-    file_path =  get_template_backup_path( template )
+    file_path =  File.join(SpreeTheme::Config.website_class.current.document_root, "#{template.id}_#{Time.now.to_i}.yml")
     open(file_path,'w') do |file|
       file.write(serializable_data.to_yaml)
     end
@@ -23,9 +23,10 @@ namespace :spree_theme do
   
   desc "import template one"
   task :import_template => :environment do
-    template = Spree::TemplateTheme.first
-    SpreeTheme::Config.website_class.current.document_root
-    file_path =  get_template_backup_path( template )
+    #template = Spree::TemplateTheme.first
+    
+    file_path =  File.join(SpreeTheme::Config.website_class.current.document_root, "1_*.yml")
+    file_path = Dir[file_path].sort.last
     open(file_path) do |file|
       Spree::TemplateTheme.import_into_db(file)
     end    
@@ -34,6 +35,3 @@ namespace :spree_theme do
 
 end
 
-def get_template_backup_path( template)
-  File.join(SpreeTheme::Config.website_class.current.document_root, template.id.to_s+'.yml')
-end

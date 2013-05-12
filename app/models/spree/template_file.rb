@@ -8,7 +8,7 @@ module Spree
     has_attached_file :attachment
     self.attachment_definitions[:attachment][:url] = "/shops/:rails_env/1/:class/:id/:basename_:style.:extension"
     self.attachment_definitions[:attachment][:path] = ":rails_root/public/shops/:rails_env/1/:class/:id/:basename_:style.:extension"
-    self.attachment_definitions[:attachment][ :default_url] = "/images/:style/missing.png"
+    self.attachment_definitions[:attachment][:default_url] = "/images/:style/missing.png"
   
     delegate :url, :to => :attachment
     attr_accessible :theme_id, :attachment,

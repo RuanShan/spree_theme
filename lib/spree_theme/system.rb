@@ -26,40 +26,38 @@ module SpreeTheme::System
   end
 
   def initialize_template
-      website = SpreeTheme::Config.website_class.current
-      if params[:c]
-        @menu = SpreeTheme::Config.taxon_class.find_by_id(params[:c])
-        if params[:r]
-          @resource = Spree::Product.find_by_id(params[:r])
-        end  
-      elsif params[:controller]=~/cart|checkout|order/
-        @menu = DefaultTaxon.instance
-        @menu[:page_type] = 'cart'
-      elsif params[:controller]=~/user/
-        @menu = DefaultTaxon.instance
-        @menu[:page_type] = 'account'
-      else
-        @menu = SpreeTheme::Config.taxon_class.find_by_id(website.index_page)  
-      end
+    return if self.class.name=~/Admin/    
+    website = SpreeTheme::Config.website_class.current
+    if params[:c]
+      @menu = SpreeTheme::Config.taxon_class.find_by_id(params[:c])
+      if params[:r]
+        @resource = Spree::Product.find_by_id(params[:r])
+      end  
+    elsif params[:controller]=~/cart|checkout|order/
+      @menu = DefaultTaxon.instance
+      @menu[:page_type] = 'cart'
+    elsif params[:controller]=~/user/
+      @menu = DefaultTaxon.instance
+      @menu[:page_type] = 'account'
+    else
+      @menu = SpreeTheme::Config.taxon_class.find_by_id(website.index_page)  
+    end
 
-      if Rails.env !~ /prduction/
-        # for development or test, enable get site from cookies
-        if cookies[:abc_development_design].present?
-          @is_designer = true
-          #user is designer.
-        end     
+    if Rails.env !~ /prduction/
+      # for development or test, enable get site from cookies
+      if cookies[:abc_development_design].present?
+        @is_designer = true
+        #user is designer.
+      end     
+    end    
+    #get template from query string 
+    if @is_designer
+      if params[:action]=='preview' && params[:id].present?
+        @theme = Spree::TemplateTheme.find( params[:id] )          
       end
-      
-      #get template from query string 
-      if @is_designer
-        if params[:action]=='preview' && params[:id].present?
-          @theme = Spree::TemplateTheme.find( params[:id] )          
-        end
-      end
-      #browse template by public
-      
-      @theme ||= Spree::TemplateTheme.find( website.theme_id)
-      
+    end
+    #browse template by public    
+    @theme ||= Spree::TemplateTheme.find( website.theme_id)
     unless request.xhr?
       if @is_designer      
          prepare_params_for_editors(@theme)

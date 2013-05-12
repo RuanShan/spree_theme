@@ -1,7 +1,7 @@
 module Spree
   #it has to be in module Spree, website.template_theme require it. 
   class FakeWebsite < ActiveRecord::Base      
-      self.table_name = 'fake_websites'
+      #self.table_name = 'fake_websites'
       belongs_to :template_theme, :foreign_key=>"theme_id"
 
       before_validation :set_short_name
@@ -14,9 +14,9 @@ module Spree
         
         def current
           if Thread.current[:website].nil?
-            website = FakeWebsite.find_or_initialize_by_url_and_name('demo.spreecommerce.com','DalianShops Demo Site' )
+            website = self.find_or_initialize_by_url_and_name('demo.spreecommerce.com','DalianShops Demo Site' )
             if website.new_record?
-Rails.logger.debug "website= #{website.inspect}"              
+              website.theme_id = 1
               website.save!
             end
             Thread.current[:website] = website

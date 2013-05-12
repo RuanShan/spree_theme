@@ -64,7 +64,8 @@ Example
 =======
 
 load sample
-rake db:reset
+rake db:migrate:reset
+rake db:seed
 rake spree_theme:load_sample
 rake spree_theme:import_template
 

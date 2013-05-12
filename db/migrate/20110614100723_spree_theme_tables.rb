@@ -142,8 +142,8 @@ class SpreeThemeTables < ActiveRecord::Migration
       t.column :slug,                    :string,  :limit => 64,      :null => false, :default => ""  # the name of the property      
       #  keep all assigned resource ids to the template, it is hash
       #  {:page_layout_id={:image_ids=[], :menu_ids=[]}}
-      t.column :assigned_resource_ids,   :string,  :limit => 255,      :null => false, :default => ""        
-      t.timestamps
+      t.column :assigned_resource_ids,   :string,  :limit => 255,     :null => false, :default => ""        
+      t.column :released_at,             :datetime,:null => false,    :default => 0
     end
 
     create_table :param_values, :force=>true do |t|
