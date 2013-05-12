@@ -33,6 +33,7 @@ Spree::Core::Engine.routes.draw do
       member do
         post :copy
         post :release
+        post :import
       end
     end
   end

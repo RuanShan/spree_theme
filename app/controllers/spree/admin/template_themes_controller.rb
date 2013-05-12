@@ -1,20 +1,27 @@
 module Spree
   module Admin
     class TemplateThemesController < Spree::Admin::BaseController
-      before_filter :load_theme, :only => [:edit, :update, :release, :copy_theme]
+      before_filter :load_theme, :only => [:import, :edit, :update, :release, :copy_theme]
 
       def index
         native
       end
       #list themes
       def native
-        @themes = TemplateTheme.within_website
+        @themes = TemplateTheme.native
         render :action=>:native
       end
 
       def foreign
         @themes = TemplateTheme.foreign.includes(:template_releases)
         @themes = @themes.select{|theme| theme.template_releases.present?}
+      end
+
+      def import
+        imported_theme = @theme.import
+        respond_to do |format|
+          format.html { redirect_to(foreign_admin_template_themes_url) }
+        end    
       end
 
       begin 'designer'
@@ -36,7 +43,7 @@ module Spree
           template_release.save
           @lg = PageGenerator.releaser( @theme)
           @lg.release
-          @themes = TemplateTheme.all          
+          @themes = TemplateTheme.native          
           render :action=>'native' 
         end
         

@@ -33,9 +33,8 @@ Rails.logger.debug "temp_file=#{temp_file.size}"
   end
   
   it "should copy to new" do
-     template = Spree::TemplateTheme.first
      copy_template = template.copy_to_new     
-     copy_template.page_layout_root_id.should be != template.page_layout_root_id
+     copy_template.page_layout_root_id.should_not eq template.page_layout_root_id
      
      new_node_ids = copy_template.page_layout.self_and_descendants.collect{|node| node.id }     
      template.assigned_resource_ids.keys{| node_id |
@@ -44,4 +43,16 @@ Rails.logger.debug "temp_file=#{temp_file.size}"
      
   end
   
+  it "destroy imported one" do
+Rails.logger.debug "............strart test import................."    
+    #template.template_releases.stub(:exists?) { true }
+    template_release = template.template_releases.build
+    template_release.name = "just a test"
+    template_release.save    
+    # release first
+    imported_template = template.import
+    imported_template.has_native_layout?.should be_false
+    imported_template.destroy
+    template.page_layout.present?.should be_true    
+  end
 end

@@ -5,15 +5,17 @@ module Spree
   
     #belongs_to :website #move it into template_theme_decorator
     # for now template_theme and page_layout are one to one
-    belongs_to :page_layout, :foreign_key=>"page_layout_root_id", :dependent=>:destroy
+    belongs_to :page_layout, :foreign_key=>"page_layout_root_id" #, :dependent=>:destroy  #imported theme refer to page_layout of original theme
     has_many :param_values, :foreign_key=>"theme_id", :dependent => :delete_all
     has_many :template_files, :foreign_key=>"theme_id", :dependent => :delete_all
     has_many :template_releases, :foreign_key=>"theme_id", :dependent => :delete_all
+    belongs_to :imported_template_release, :class_name=>"TemplateRelease", :foreign_key=>"release_id"
     
     scope :by_layout,  lambda { |layout_id| where(:page_layout_root_id => layout_id) }
     serialize :assigned_resource_ids, Hash
     #friendly_id :title,:use => :scoped, :scope => :website
-    scope :within_website, lambda { where( :website_id => SpreeTheme::Config.website_class.current.id) }
+    scope :within_website, lambda { |site|where(:website_id=> site.id) }
+    scope :imported, where("release_id>0")
     
     before_destroy :remove_relative_data
     attr_accessible :website_id,:page_layout_root_id,:title
@@ -30,12 +32,15 @@ module Spree
         end
         page_layout_root = template.add_section( section ) 
         template.update_attribute("page_layout_root_id",page_layout_root.id)
-        
         template
       end
       
+      def native
+        self.within_website(SpreeTheme::Config.website_class.current )
+      end
+      
       def foreign
-        self.unscoped.where(:website_id=> SpreeTheme::Config.website_class.dalianshopsdesigns.id)
+        self.within_website(SpreeTheme::Config.website_class.dalianshopsdesigns )
       end
       
     end
@@ -66,11 +71,22 @@ module Spree
         new_theme = self.dup
         new_theme.title = "Imported "+ new_theme.title
         new_theme.website_id = SpreeTheme::Config.website_class.current.id
-        new_theme.release_id = self.template_versions.last.id
+        new_theme.release_id = self.template_releases.last.id
         new_theme.save!
         new_theme
       end
       
+      #
+      def has_imported?
+        # theme should has page_layout, param_values      
+        raise ArgumentError if self.release_id>0
+        themes = TemplateTheme.native.imported.includes(:imported_template_release)
+        themes.select{|theme| theme.imported_template_release.theme_id == self.id}.present?
+      end
+      
+      def has_native_layout?
+        !self.class.exists?(["page_layout_root_id=? and id<?", self.page_layout_root_id, self.id])        
+      end
       # apply to website
       def apply
         SpreeTheme::Config.website_class.current.update_attribute(:theme_id,self.id)
@@ -195,7 +211,9 @@ module Spree
       end
     end
     def remove_relative_data
-      #ParamValue.delete_all(["theme_id=?", self.id])      
+      if self.has_native_layout?
+        self.page_layout.destroy
+      end
     end
     
     begin 'assigned resource'

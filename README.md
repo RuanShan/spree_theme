@@ -63,10 +63,15 @@ path
 Example
 =======
 
-Example goes here.
+load sample
+rake db:reset
+rake spree_theme:load_sample
+rake spree_theme:import_template
+
 
 Testing
 -------
+
 
 Be sure to bundle your dependencies and then create a dummy test app for the specs to run against.
 
