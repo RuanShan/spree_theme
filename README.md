@@ -59,7 +59,13 @@ path
        tx/jsx.js       
     page_layout image folder: images belongs to shop, like logo
        lx
-        
+
+configure
+---------
+website theme_id, index_page should greater than 0.
+website index_page could equal to 0.
+
+
 Example
 =======
 

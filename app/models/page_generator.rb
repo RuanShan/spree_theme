@@ -1,9 +1,5 @@
 #in layout, there are some eruby, all available varibles should be here.
 class PageGenerator
-  cattr_accessor :document_path, :public_path
-  self.public_path = File.join(File::SEPARATOR,"shops",'themes')
-  self.document_path = File.join(Rails.root,'public',public_path)   
-
   
   attr_accessor :menu, :theme, :resource # resource could be product, blog_post, flash, file, image...
   attr_accessor :editor
@@ -132,7 +128,7 @@ class PageGenerator
   
   def serialize_path
     theme_release = self.theme.template_releases.last
-    path = File.join(self.class.document_path, "t#{self.theme.id}_r#{theme_release.id}")      
+    path = File.join(self.theme.website.document_root,theme_release.path )      
     FileUtils.mkdir_p(path) unless File.exists?(path)
     path
   end

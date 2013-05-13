@@ -39,10 +39,12 @@ module SpreeTheme::System
     elsif params[:controller]=~/user/
       @menu = DefaultTaxon.instance
       @menu[:page_type] = 'account'
+    elsif website.index_page == 0
+      @menu = DefaultTaxon.instance
     else
-      @menu = SpreeTheme::Config.taxon_class.find_by_id(website.index_page)  
+      @menu = SpreeTheme::Config.taxon_class.find_by_id(website.index_page)
     end
-
+    @is_designer = false
     if Rails.env !~ /prduction/
       # for development or test, enable get site from cookies
       if cookies[:abc_development_design].present?
