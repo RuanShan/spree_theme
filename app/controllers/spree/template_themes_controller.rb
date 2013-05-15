@@ -290,28 +290,6 @@ module Spree
       end
     end
       
-    def do_generate( theme, menu, options={})
-  
-        @lg = PageGenerator.generator( theme, menu, options)
-        html, css = @lg.renderer.generate_from_erb_file
-        return html, css      
-    end
-      
-    def public
-      params[:d] = 'www.rubyecommerce.com'
-      
-      website=menu=layout=theme = nil
-      website = SpreeTheme::Config.website_class.current
-      if params[:c]
-        menu = taxon_class.find_by_id(params[:c])
-      else
-        menu = taxon_class.find_by_id(website.index_page)  
-      end
-      theme = TemplateTheme.find(menu.find_theme_id(is_preview=true))
-      html, css = do_generate(theme,  menu)
-      render :text => html
-    end
-    
     private
     def model_dialog(dialog_title, dialog_content)
       @dialog_title = dialog_title

@@ -1,7 +1,7 @@
 #in layout, there are some eruby, all available varibles should be here.
 class PageGenerator
   
-  attr_accessor :menu, :theme, :resource # resource could be product, blog_post, flash, file, image...
+  attr_accessor :template_release, :menu, :theme, :resource # resource could be product, blog_post, flash, file, image...
   attr_accessor :editor
 
   #these attributes are for templates
@@ -17,33 +17,34 @@ class PageGenerator
   class << self
     #page generator has two interface, builder and generator
     #builder only build content: ehtml,js,css
-    def builder( theme )
-      self.new( theme, menu=nil)      
-    end
+    #def builder( theme )
+    #  self.new( theme, menu=nil)      
+    #end
     
     #designer release a template
-    def releaser( theme)
-      pg = self.new( theme, menu=nil)
+    def releaser( template_release)
+      pg = self.new( template_release, menu=nil)
       pg.build
       pg
     end
     
     #generator generate content: html,js,css
-    def previewer(menu, theme=nil,  options={})
+    def previewer(menu, template_release=nil,  options={})
       options[:preview] = true
-      pg = self.new( theme, menu, options)
+      pg = self.new( template_release, menu, options)
       pg.build
       pg
     end    
     #generator generate content: html,js,css
-    def generator(menu, theme=nil,  options={})
-      self.new( theme, menu, options)
+    def generator(menu, template_release=nil,  options={})
+      self.new( template_release, menu, options)
     end
   end
   
-  def initialize( theme, menu, options={})
+  def initialize( template_release, menu, options={})
+    self.template_release=  template_release
     self.menu = menu
-    self.theme = theme
+    self.theme = template_release.template_theme
     self.resource = nil
     self.is_preview = options[:preview].present?
     
@@ -111,7 +112,10 @@ class PageGenerator
     raise ArgumentError unless specific_attribute_collection.include?(specific_attribute)
     page_content = send(specific_attribute)
     if page_content.present?
-      path = File.join(serialize_path, self.theme.file_name(specific_attribute))      
+      path = self.template_release.document_path
+      FileUtils.mkdir_p(path) unless File.exists?(path)
+
+      path = self.template_release.document_file_path(specific_attribute)      
       open(path, 'w') do |f|  f.puts page_content; end
     end
     
@@ -125,13 +129,6 @@ class PageGenerator
       :website=>current_page_tag.website_tag, :template=>current_page_tag.template_tag
       }    
   end  
-  
-  def serialize_path
-    theme_release = self.theme.template_releases.last
-    path = File.join(self.theme.website.document_root,theme_release.path )      
-    FileUtils.mkdir_p(path) unless File.exists?(path)
-    path
-  end
-  
+
 end
 

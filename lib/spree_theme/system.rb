@@ -22,7 +22,7 @@ module SpreeTheme::System
     if @is_preview 
       return 'layout_for_preview'
     end  
-    SpreeTheme::Config.website_class.current.layout.present? ? SpreeTheme::Config.website_class.current.layout : Spree::Config[:layout]
+    SpreeTheme::Config.website_class.current.layout || Spree::Config[:layout]
   end
 
   def initialize_template
@@ -58,8 +58,10 @@ module SpreeTheme::System
         @theme = Spree::TemplateTheme.find( params[:id] )          
       end
     end
-    #browse template by public    
-    @theme ||= Spree::TemplateTheme.find( website.theme_id)
+    #browse template by public
+    if @theme.nil?         
+      @theme = website.template_release.template_theme
+    end
     unless request.xhr?
       if @is_designer      
          prepare_params_for_editors(@theme)

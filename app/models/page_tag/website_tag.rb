@@ -12,8 +12,8 @@ module PageTag
       self.website.send function_name
     end
     
-    def public_path(target)
-      File.join(page_generator.public_path, page_generator.theme.file_name(target))
+    def public_path(target)      
+      page_generator.template_release.document_file_path(target)       
     end
     
   end

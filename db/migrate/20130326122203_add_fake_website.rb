@@ -7,6 +7,7 @@ class AddFakeWebsite < ActiveRecord::Migration
       t.string :short_name,:limit => 24,     :null => false
       t.integer :index_page,     :null => false, :default => 0
       t.integer :theme_id,     :null => false, :default => 0
+      t.integer :template_release_id,     :null => false, :default => 0
     end 
   end
 

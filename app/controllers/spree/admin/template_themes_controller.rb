@@ -41,7 +41,7 @@ module Spree
           template_release = @theme.template_releases.build
           template_release.name = "just a test"
           template_release.save
-          @lg = PageGenerator.releaser( @theme)
+          @lg = PageGenerator.releaser( template_release)
           @lg.release
           @themes = TemplateTheme.native          
           render :action=>'native' 

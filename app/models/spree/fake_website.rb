@@ -3,6 +3,7 @@ module Spree
   class FakeWebsite < ActiveRecord::Base      
       #self.table_name = 'fake_websites'
       belongs_to :template_theme, :foreign_key=>"theme_id"
+      belongs_to :template_release, :foreign_key=>"template_release_id"
 
       before_validation :set_short_name
       attr_accessible :index_page,:theme_id
@@ -31,11 +32,19 @@ module Spree
       
       # shop's resource should be in this folder
       def document_root
-        File.join(Rails.root,'public','shops', Rails.env, self.id.to_s)
+        File.join(Rails.root,'public') 
+      end
+      
+      def document_path
+        self.document_root + self.path
+      end
+      
+      def path
+        File.join( File::SEPARATOR + 'shops', Rails.env, self.id.to_s )
       end
       
       def layout
-        nil
+        self.template_release.present? ? self.template_release.layout_path : nil
       end
       
     end
