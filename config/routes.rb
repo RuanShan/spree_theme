@@ -1,4 +1,5 @@
-Spree::Core::Engine.routes.draw do
+Spree::Core::Engine.routes.prepend do
+  root :to => 'template_themes#page'
   # Add your extension routes here
   resources :template_themes do
      member do
@@ -21,7 +22,7 @@ Spree::Core::Engine.routes.draw do
      end
   end
   
-  match '(/:c(/:r))' => 'template_themes#preview', :c => /[\d]+/
+  match '(/:c(/:r))' => 'template_themes#page', :c => /[\d]+/
   match 'preview(/:c(/:r))' => 'template_themes#preview' #preview home
  
   namespace :admin do

@@ -21,6 +21,7 @@ module PageRenderer
     def generate_assets
       prepare_instance_variables
       self.css = renderer.render_to_string(:inline =>ecss)
+Rails.logger.debug "-------------------------css=#{css}"      
       return self.css, self.js
     end
         

@@ -40,7 +40,8 @@ module PageTag
           #@searcher.current_currency = current_currency
           objs = @searcher.retrieve_products
         elsif data_source == 'this_product'
-          objs = menu.products.where(:id=>resource.id)        
+          #default_taxon.id is 0 
+          objs = [self.resource] #menu.products.where(:id=>resource.id)        
         end
         if objs.present?
           objs = Products.new( self.page_generator, objs)
@@ -51,6 +52,7 @@ module PageTag
     
     #is given section context valid to current page 
     def valid_context?
+Rails.logger.debug "resource.present?=#{resource.present?}"      
       if self.resource.present? #product detail
         self.template_tag.current_piece.context_either? or self.template_tag.current_piece.context_detail?  
       elsif menu[:page_type]=='cart'

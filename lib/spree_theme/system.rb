@@ -28,22 +28,29 @@ module SpreeTheme::System
   def initialize_template
     return if self.class.name=~/Admin/    
     website = SpreeTheme::Config.website_class.current
-    if params[:c]
-      @menu = SpreeTheme::Config.taxon_class.find_by_id(params[:c])
-      if params[:r]
-        @resource = Spree::Product.find_by_id(params[:r])
-      end  
-    elsif params[:controller]=~/cart|checkout|order/
-      @menu = DefaultTaxon.instance
-      @menu[:page_type] = 'cart'
-    elsif params[:controller]=~/user/
-      @menu = DefaultTaxon.instance
-      @menu[:page_type] = 'account'
-    elsif website.index_page == 0
-      @menu = DefaultTaxon.instance
-    else
-      @menu = SpreeTheme::Config.taxon_class.find_by_id(website.index_page)
-    end
+    #DefaultTaxon.instance.id => 0
+      if params[:controller]=~/cart|checkout|order/
+        @menu = DefaultTaxon.instance
+        @menu[:page_type] = 'cart'
+      elsif params[:controller]=~/user/
+        @menu = DefaultTaxon.instance
+        @menu[:page_type] = 'account'
+      else
+        if params[:r]
+          @resource = Spree::Product.find_by_id(params[:r])
+        end
+        if params[:c] and params[:c].to_i>0 
+          @menu = SpreeTheme::Config.taxon_class.find_by_id(params[:c])
+        elsif website.index_page > 0
+          @menu = SpreeTheme::Config.taxon_class.find_by_id(website.index_page)
+        else
+          @menu = DefaultTaxon.instance
+        end
+        if @resource.present?
+          #@menu[:page_type] = 'detail'
+        end
+      end
+
     @is_designer = false
     if Rails.env !~ /prduction/
       # for development or test, enable get site from cookies

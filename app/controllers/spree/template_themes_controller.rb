@@ -2,7 +2,14 @@ module Spree
   class TemplateThemesController < Spree::StoreController
   
     delegate :taxon_class,:website_class, :to=>:"SpreeTheme::Config"
-  
+    # index of frontend 
+    def page
+      template_release =  SpreeTheme::Config.website_class.current.template_release
+      @lg = PageGenerator.generator( @menu, template_release, {:resource=>(@resource.nil? ? nil:@resource),:controller=>self})
+      @lg.context.each_pair{|key,val|
+        instance_variable_set( "@#{key}", val)
+      }  
+    end  
     # GET /themes/1
     # GET /themes/1.xml
     def show

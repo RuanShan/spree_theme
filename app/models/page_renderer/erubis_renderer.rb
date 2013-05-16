@@ -1,10 +1,11 @@
 module PageRenderer
   class ErubisRenderer < Base
     cattr_accessor :pattern
-    self.pattern = '<\? \?>'
+    self.pattern = '<\% \%>'
     
     def initialize( ehtml, ecss, ejs, context)
       self.ehtml, self.ecss, self.ejs = ehtml, ecss, ejs
+      self.context = context
     end
     
     def generate
@@ -15,9 +16,6 @@ module PageRenderer
   
     #generate css and js, they are do not need current menu
     def generate_assets
-      if self.ecss.nil? 
-        self.build()
-      end
       css_eruby = Erubis::Eruby.new(self.ecss,:pattern=>self.class.pattern)
       self.css = css_eruby.evaluate(context)
       return self.css, self.js
