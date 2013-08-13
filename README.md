@@ -6,17 +6,17 @@ New frontend of spree, user could easy modify theme or add new theme. It is not 
 how it work
 -----------
 designer
-0. new theme
-1. design theme
-2. release completed theme.  generate themeN/versionN.html.erb
-3. theme is viewable by public.  shops/themes/themeN/    
+  0. new theme
+  1. design theme
+  2. release completed theme.  generate themeN/versionN.html.erb
+  3. theme is viewable by public.  shops/themes/themeN/    
    designs.dalianshops.com?theme_id=N
    
 backend
-1. user browse available themes, snapshot or live demo.
-2. import preferred theme
-*3. preview it. Do not support it now, find a clean way support tld/admin/add_to_cart first. 
-4. apply it to frontend
+  1. user browse available themes, snapshot or live demo.
+  2. import preferred theme
+  *3. preview it. Do not support it now, find a clean way support tld/admin/add_to_cart first. 
+  4. apply it to frontend
 
 requirement
   admin.sometld/... is for user preview,   ex. admin.somtld/some_taxon  
@@ -24,8 +24,8 @@ requirement
 
 how roles get layout?
 ---------------------
-designer: get current editing template
-customer: get layout from current site 
+  designer: get current editing template
+  customer: get layout from current site 
 
 path
 ----
@@ -62,8 +62,8 @@ path
 
 configure
 ---------
-website theme_id, index_page should greater than 0.
-website index_page could equal to 0.
+  website theme_id, index_page should greater than 0.
+  website index_page could equal to 0.
 
 
 Example
