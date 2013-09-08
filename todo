@@ -1,3 +1,5 @@
+0. go through whole process, create new template -> edit it-> release it-> other shop apply it
+
 *1. export template
 *2. editor dock.
 2.1 promote section, demote section   
@@ -6,3 +8,10 @@
 
 4.  add section cart and try add to cart.
  
+
+
+
+
+bugs
+
+set font-size:0, unset it does not work.

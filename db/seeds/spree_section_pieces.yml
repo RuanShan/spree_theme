@@ -24,8 +24,9 @@ root:
     <% else%>
       <script type="text/javascript" src="/assets/jquery.js"></script>
       <script type="text/javascript" src="/assets/jquery-ui.js"></script>    
-    <% end %>
-    
+    <% end %>    
+    <%= csrf_meta_tags %>
+    <%= render "spree/shared/routes" %>
     </head>
     <body class="<%=g_piece_selector%> clear-block">
 
