@@ -4,7 +4,7 @@ class SpreeThemeTables < ActiveRecord::Migration
     # This table contains the css specification, copied from the w3 website.
     # Ok, it also includes html elment attributes, but only the ones that can't be put in css
     # Users do not use this table.
-    create_table :html_attributes, :force=>true do |t|
+    create_table :spree_html_attributes, :force=>true do |t|
       t.column :title,              :string,                    :null => false, :default => ""  # the name of the property
       #title is for user, css_name is for css attribute name
       t.column :css_name,              :string,                    :null => false, :default => ""  # the name of the property
@@ -19,9 +19,9 @@ class SpreeThemeTables < ActiveRecord::Migration
       # If pvalues is manual entry only then the default manual entry. 0 = we define the default value
       t.column :pvspecial,               :string,   :limit => 7,     :null => false, :default => "" # xy, trbl or inherit
     end
-    add_index :html_attributes, :slug, :unique => true
+    add_index :spree_html_attributes, :slug, :unique => true
 
-    create_table :section_pieces,  :force=>true do |t| #sqlite do not support :options=>'ENGINE=InnoDB DEFAULT CHARSET=ascii',
+    create_table :spree_section_pieces,  :force=>true do |t| #sqlite do not support :options=>'ENGINE=InnoDB DEFAULT CHARSET=ascii',
       t.column :title,         :string, :limit => 100,   :null => false
       t.column :slug,          :string, :limit => 100,   :null => false
       t.column :html,                :string, :limit => 12000,   :null => false, :default => ""
@@ -37,12 +37,12 @@ class SpreeThemeTables < ActiveRecord::Migration
       t.column :created_at,           :datetime
       t.column :updated_at,           :datetime
     end
-    add_index :section_pieces, :slug, :unique => true
+    add_index :spree_section_pieces, :slug, :unique => true
  
      # it is category of section_piece_params
     # 1. we want to expand&collapse
     # 2. we want to get a group of param_values, ex. general position : width, height,outer_margin, margin, border, padding.
-    create_table :param_categories, :force=>true do |t|
+    create_table :spree_param_categories, :force=>true do |t|
       t.column "editor_id",              :integer, :limit => 3,     :null => false, :default => 0
       t.column "position",               :integer, :limit => 3,     :null => true,  :default => 0
       t.column "slug",             :string,   :limit => 200,   :null => false, :default => ""
@@ -50,13 +50,13 @@ class SpreeThemeTables < ActiveRecord::Migration
       t.timestamps
     end
 
-    create_table :editors, :force=>true do |t|
+    create_table :spree_editors, :force=>true do |t|
       t.column "slug",             :string,   :limit => 200,   :null => false, :default => ""
       t.timestamps
     end
 
     # section_piece composite of section
-    create_table :sections, :force=>true do |t|
+    create_table :spree_sections, :force=>true do |t|
       t.column "website_id",             :integer, :limit => 3,     :null => false, :default => 0
       t.column "root_id",                :integer, :limit => 3
       t.column "parent_id",              :integer, :limit => 3
@@ -72,7 +72,7 @@ class SpreeThemeTables < ActiveRecord::Migration
       #comma seperated event, ex. page_layout_fixed
     end   
     #section instance composite of layout
-    create_table :page_layouts, :force=>true do |t|
+    create_table :spree_page_layouts, :force=>true do |t|
       t.column "website_id",                :integer, :limit => 3,     :null => true,  :default => 0    
       t.column "root_id",                :integer, :limit => 3#,     :null => true,  :default => :null     
       t.column "parent_id",              :integer, :limit => 3#,     :null => true,  :default => :null
@@ -97,7 +97,7 @@ class SpreeThemeTables < ActiveRecord::Migration
       t.timestamps
       
     end
-    create_table :section_piece_params, :force=>true do |t|
+    create_table :spree_section_piece_params, :force=>true do |t|
       t.column :section_piece_id,        :integer, :limit => 2,     :null => false, :default => 0
       t.column :editor_id,               :integer, :limit => 2,     :null => false, :default => 0
       t.column :param_category_id,       :integer, :limit => 2,     :null => false, :default => 0
@@ -116,7 +116,7 @@ class SpreeThemeTables < ActiveRecord::Migration
 
     end
     
-    create_table :section_params do |t|
+    create_table :spree_section_params do |t|
       t.integer :section_root_id #it is section_root_id
       t.integer :section_id 
       #t.integer :section_piece_id
@@ -129,24 +129,31 @@ class SpreeThemeTables < ActiveRecord::Migration
     end
     
     # store the text used in the section. like pclass='txt'
-    create_table :section_texts do |t|
+    create_table :spree_section_texts do |t|
       t.string :lang
       t.string :body
       t.timestamps
     end
 
-    create_table :template_themes, :force=>true do |t|
+    create_table :spree_template_themes, :force=>true do |t|
       t.column :website_id,              :integer, :null => true, :default => 0 # this is an id in the page_layouts table
       t.column :page_layout_root_id,               :integer, :null => false, :default => 0 # this is an id in the page_layouts table
+      t.column :release_id,              :integer, :null => true, :default => 0 # this is an id in the page_layouts table
       t.column :title,                   :string,  :limit => 64,      :null => false, :default => ""  # the name of the property      
       t.column :slug,                    :string,  :limit => 64,      :null => false, :default => ""  # the name of the property      
       #  keep all assigned resource ids to the template, it is hash
       #  {:page_layout_id={:image_ids=[], :menu_ids=[]}}
       t.column :assigned_resource_ids,   :string,  :limit => 255,     :null => false, :default => ""        
-      t.column :released_at,             :datetime,:null => false,    :default => 0
+      #t.column :released_at,             :datetime,:null => false,    :default => "1970-01-01 00:00:00"
     end
-
-    create_table :param_values, :force=>true do |t|
+    
+    create_table :spree_template_releases do |t|
+      t.string :name,:limit => 24,     :null => false
+      t.integer :theme_id,     :null => false, :default => 0
+      t.timestamps
+    end 
+    
+    create_table :spree_param_values, :force=>true do |t|
       t.column :page_layout_root_id,      :integer, :limit => 2,     :null => false, :default => 0 # this is an root layout id in the page_layouts table
       # in param_value_event, we need get page_layout 
       t.column :page_layout_id,      :integer, :limit => 2,     :null => false, :default => 0 # this is an id in the page_layouts table
@@ -162,7 +169,7 @@ class SpreeThemeTables < ActiveRecord::Migration
       #t.column :preview_unset,           :string,                   :null => false, :default => false # if true ignore the pvalue and do not generate an output for this param
       t.timestamps
     end
-    create_table :template_files do |t|
+    create_table :spree_template_files do |t|
       t.integer :theme_id
       t.integer    :attachment_width
       t.integer    :attachment_height
@@ -176,18 +183,19 @@ class SpreeThemeTables < ActiveRecord::Migration
   end
   
   def self.down
-    drop_table :html_attributes
-    drop_table :section_pieces
-    drop_table :param_categories
-    drop_table :editors
-    drop_table :sections
-    drop_table :page_layouts
-    drop_table :section_piece_params
-    drop_table :section_params
-    drop_table :section_texts
-    drop_table :template_themes
-    drop_table :param_values
-    drop_table :template_files
+    drop_table :spree_html_attributes
+    drop_table :spree_section_pieces
+    drop_table :spree_param_categories
+    drop_table :spree_editors
+    drop_table :spree_sections
+    drop_table :spree_page_layouts
+    drop_table :spree_section_piece_params
+    drop_table :spree_section_params
+    drop_table :spree_section_texts
+    drop_table :spree_template_themes
+    drop_table :spree_template_releases
+    drop_table :spree_param_values
+    drop_table :spree_template_files
  
   end
 end

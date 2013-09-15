@@ -66,12 +66,19 @@ configure
   website index_page could equal to 0.
 
 
-Example
-=======
+Installation
+============
 
-load sample
-rake db:migrate:reset
-rake db:seed
+rake spree_theme:install:migrations
+rake db:migrate
+rails r "SpreeeTheme::Engine.load_seed"
+in config/spree.rb
+  SpreeTheme.website_class = FakeWebsite
+  SpreeTheme.taxon_class = Spree::Taxon
+
+
+Load sample
+-----------
 rake spree_theme:load_sample
 rake spree_theme:import_template
 

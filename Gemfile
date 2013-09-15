@@ -2,11 +2,6 @@ source 'http://rubygems.org'
 
 
 
-if RUBY_VERSION < "1.9"
-  gem "ruby-debug"
-else
-  gem "ruby-debug19"
-end
 gem 'spree', :github => "spree/spree", :branch => "2-0-stable"
 
 group :test,:development do
@@ -26,7 +21,8 @@ gem "awesome_nested_set"
 #use paperclip instead of dragonfly,  dragonfly have no way to configure image path
 #gem "paperclip", "2.8.0" # spree require it.
 gem "responds_to_parent"
-gem 'jquery-rails', '>= 1.0.12'
+gem 'jquery-rails'
+gem 'jquery-ui-rails'
 gem "friendly_id", "~> 4.0.9"
 
 group :assets do

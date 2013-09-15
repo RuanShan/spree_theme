@@ -1,7 +1,7 @@
 namespace :spree_theme do
-  desc "load sample of theme, include spree_sample"
+  desc "load sample of theme"
   task :load_sample  => :environment do
-    Rake::Task["spree_sample:load"].invoke    
+    #Rake::Task["spree_sample:load"].invoke    
     load File.join(SpreeTheme::Engine.root,'db/samples.rb')
   end
   

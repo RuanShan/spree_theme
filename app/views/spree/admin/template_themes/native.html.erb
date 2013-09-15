@@ -11,7 +11,7 @@
 <% @themes.each do |theme| %>
   <tr>
     <td><%= theme.title %></td>
-    <td><%= theme==SpreeTheme::Config.website_class.current.template_theme %></td>
+    <td><%= theme==SpreeTheme.website_class.current.template_theme %></td>
     <td><%= theme.template_releases.exists? %></td>
 
     <td><%= link_to 'Destroy', admin_template_theme_path(theme), :confirm => 'Are you sure?', :method => :delete %></td>

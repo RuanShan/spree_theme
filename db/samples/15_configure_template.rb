@@ -1,7 +1,7 @@
 #################################  template resource #####################################
 template = Spree::TemplateTheme.first
 
-taxon_class = SpreeTheme::Config.taxon_class
+taxon_class = SpreeTheme.taxon_class
 
 categories = taxon_class.find_by_name("Categories")
 brands = taxon_class.find_by_name("Brand")

@@ -1,3 +1,3 @@
-class DefaultTaxon < SpreeTheme::Config.taxon_class
+class DefaultTaxon < SpreeTheme.taxon_class
   include Singleton
 end

@@ -5,14 +5,15 @@ module SpreeTheme
     engine_name 'spree_theme'
 
     config.autoload_paths += %W(#{config.root}/lib)
-
+    #rails layout path is fixed view_path/layouts,  so we need to add more view path for SpreeTheme templates
+    config.paths['app/views'] << File.join( "public","shops",Rails.env )
     # use rspec for tests
     config.generators do |g|
       g.test_framework :rspec
     end
 
     initializer "spree.theme.environment", :before => "spree.environment" do |app|
-      SpreeTheme::Config = Spree::ThemeConfiguration.new
+      SpreeTheme = Spree::ThemeConfiguration.new
     end
     
     def self.activate

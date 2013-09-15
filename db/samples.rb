@@ -1,14 +1,5 @@
 #Please run 'spree_sample:load' first 
 ###################################################################################################################################################################################################################################################################################################################################################################################   
-# load sample resources
-xpath = File.dirname(__FILE__)+ "/samples/sample_resources/*.rb"
-Dir[xpath].sort.each {|file| 
-  puts "loading #{file}"
-  load file
-}
-
-
-
 #suffix number of seeds file name indicate loading order. 
 xpath = File.dirname(__FILE__)+ "/samples/*.rb"
 Dir[xpath].sort.each {|file| 

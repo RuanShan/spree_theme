@@ -35,7 +35,7 @@ module Spree
       #create record in table page_layouts
       obj = create!(:section_id=>section.id) do |obj|
         obj.title = title
-        obj.website_id = SpreeTheme::Config.website_class.current.id
+        obj.website_id = SpreeTheme.website_class.current.id
         obj.attributes = attrs unless attrs.empty?
         obj.section_instance = 1
         obj.is_full_html = section.section_piece.is_root?

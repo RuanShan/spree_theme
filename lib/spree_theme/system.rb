@@ -22,12 +22,12 @@ module SpreeTheme::System
     if @is_preview 
       return 'layout_for_preview'
     end  
-    SpreeTheme::Config.website_class.current.layout || Spree::Config[:layout]
+    SpreeTheme.website_class.current.layout || Spree::Config[:layout]
   end
 
   def initialize_template
     return if self.class.name=~/Admin/    
-    website = SpreeTheme::Config.website_class.current
+    website = SpreeTheme.website_class.current
     #DefaultTaxon.instance.id => 0
       if params[:controller]=~/cart|checkout|order/
         @menu = DefaultTaxon.instance
@@ -40,9 +40,9 @@ module SpreeTheme::System
           @resource = Spree::Product.find_by_id(params[:r])
         end
         if params[:c] and params[:c].to_i>0 
-          @menu = SpreeTheme::Config.taxon_class.find_by_id(params[:c])
+          @menu = SpreeTheme.taxon_class.find_by_id(params[:c])
         elsif website.index_page > 0
-          @menu = SpreeTheme::Config.taxon_class.find_by_id(website.index_page)
+          @menu = SpreeTheme.taxon_class.find_by_id(website.index_page)
         else
           @menu = DefaultTaxon.instance
         end

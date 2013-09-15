@@ -38,7 +38,7 @@ module PageTag
       unless menus_cache.key? key
         menu_tree = nil
         if wrapped_page_layout.assigned_menu_id>0          
-          menu_tree = SpreeTheme::Config.taxon_class.find( wrapped_page_layout.assigned_menu_id).self_and_descendants
+          menu_tree = SpreeTheme.taxon_class.find( wrapped_page_layout.assigned_menu_id).self_and_descendants
         end
         menus_cache[key] = menu_tree     
       end
@@ -63,7 +63,7 @@ module PageTag
           )
         for pv in param_values
           menu_root_ids = pv.html_attribute_values_hash.values.collect{|hav| hav.pvalue}
-          menu_roots = SpreeTheme::Config.taxon_class.find(:all, :conditions=>["id in (?)",menu_root_ids])
+          menu_roots = SpreeTheme.taxon_class.find(:all, :conditions=>["id in (?)",menu_root_ids])
           
           self.menu_models = menu_roots.collect{|menu| WrappedMenu.new(self, menu)} 
           self.menu_keys = pv.html_attribute_values_hash.values.collect{|hav| hav.html_attribute['slug']}

@@ -15,14 +15,14 @@ module Spree
     end
     
     def document_path
-      self.template_theme.website.document_path + self.path
+      File.join( SpreeTheme.website_class.document_layout_path, self.template_theme.website_id.to_s, self.path)
     end
     
     # * params
     #   * targe - could be css, js
-    # * return js or css document file path, ex /shops/development/1/themes/t1_r1/l1_t1.css
+    # * return js or css document file path, ex /shops/development/1/layouts/t1_r1/l1_t1.css
     def file_path( target )
-       template_theme.website.path + File.join(self.path , template_theme.file_name(target))
+       File.join(template_theme.website.path, self.path, template_theme.file_name(target))
     end
     
     def document_file_path( target )

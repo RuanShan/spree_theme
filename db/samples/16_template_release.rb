@@ -6,4 +6,4 @@ template_release.save!
 @lg = PageGenerator.releaser( template_release )
 @lg.release
 
-SpreeTheme::Config.website_class.current.update_attribute(:template_release_id, template_release.id)
+SpreeTheme.website_class.current.update_attribute(:template_release_id, template_release.id)
