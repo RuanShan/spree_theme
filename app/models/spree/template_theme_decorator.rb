@@ -15,7 +15,6 @@
 # a.get :color
 # a.preferred_color
 #
-Spree::TemplateTheme.class_eval do
-  belongs_to :website, :class_name => SpreeTheme.website_class.to_s, :foreign_key => "website_id"
-  
-end
+#Spree::TemplateTheme.class_eval do
+#  belongs_to :website, :class_name => SpreeTheme.site_class.to_s, :foreign_key => "website_id"
+#end

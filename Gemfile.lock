@@ -71,6 +71,8 @@ PATH
   remote: .
   specs:
     spree_theme (1.0.0)
+      friendly_id
+      spree_core (~> 2.0)
 
 GEM
   remote: http://rubygems.org/
@@ -301,7 +303,7 @@ DEPENDENCIES
   coffee-rails
   factory_girl
   ffaker
-  friendly_id (~> 4.0.9)
+  friendly_id
   jquery-rails
   jquery-ui-rails
   mysql2

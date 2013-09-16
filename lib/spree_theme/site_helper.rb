@@ -12,15 +12,15 @@ module SpreeTheme
         find(1)
       end        
       def current
-          if Thread.current[:website].nil?
-            website = self.find_or_initialize_by_url_and_name('demo.spreecommerce.com','DalianShops Demo Site' )
-            if website.new_record?
-              website.theme_id = 1
-              website.save!
-            end
-            Thread.current[:website] = website
+        if Thread.current[:spree_site].nil?
+          website = self.find_or_initialize_by_url_and_name('demo.dalianshops.com','DalianShops Demo Site' )
+          if website.new_record?
+            website.theme_id = 1
+            website.save!
           end
-          Thread.current[:website]
+          Thread.current[:spree_site] = website
+        end
+        Thread.current[:spree_site]
       end
       # shop's resource should be in this folder
       def document_root

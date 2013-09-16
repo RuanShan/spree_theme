@@ -22,12 +22,12 @@ module SpreeTheme::System
     if @is_preview 
       return 'layout_for_preview'
     end  
-    SpreeTheme.website_class.current.layout || Spree::Config[:layout]
+    SpreeTheme.site_class.current.layout || Spree::Config[:layout]
   end
 
   def initialize_template
     return if self.class.name=~/Admin/    
-    website = SpreeTheme.website_class.current
+    website = SpreeTheme.site_class.current
     #DefaultTaxon.instance.id => 0
       if params[:controller]=~/cart|checkout|order/
         @menu = DefaultTaxon.instance

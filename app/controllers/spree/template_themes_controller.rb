@@ -1,10 +1,10 @@
 module Spree
   class TemplateThemesController < Spree::StoreController
-  
-    delegate :taxon_class,:website_class, :to=>:"SpreeTheme"
+    before_filter :add_view_path
+    delegate :taxon_class,:site_class, :to=>:"SpreeTheme"
     # index of frontend 
     def page
-      template_release =  SpreeTheme.website_class.current.template_release
+      template_release =  SpreeTheme.site_class.current.template_release
       @lg = PageGenerator.generator( @menu, template_release, {:resource=>(@resource.nil? ? nil:@resource),:controller=>self})
       @lg.context.each_pair{|key,val|
         instance_variable_set( "@#{key}", val)
@@ -80,8 +80,8 @@ module Spree
       if commit_command=~/Update/
         #update default page
         website_params = params[:website]
-        self.website_class.current.attributes = website_params
-        self.website_class.current.save
+        self.site_class.current.attributes = website_params
+        self.site_class.current.save
         
       end
       
@@ -313,7 +313,10 @@ module Spree
         
     end
 
-    
+    def add_view_path
+      #!!is it a place cause memory overflow?
+      append_view_path SpreeTheme.site_class.current.document_path
+    end
   end
 
 end

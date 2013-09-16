@@ -5,13 +5,13 @@ require 'spree_theme/site_helper'
 
 module SpreeTheme
   
-  mattr_accessor :website_class, :taxon_class
+  mattr_accessor :site_class, :taxon_class
 
-  def self.website_class
-    if @@website_class.is_a?(Class)
-      raise "Spree.website_class MUST be a String object, not a Class object."
-    elsif @@website_class.is_a?(String)
-      @@website_class.constantize
+  def self.site_class
+    if @@site_class.is_a?(Class)
+      raise "Spree.site_class MUST be a String object, not a Class object."
+    elsif @@site_class.is_a?(String)
+      @@site_class.constantize
     end
   end
   

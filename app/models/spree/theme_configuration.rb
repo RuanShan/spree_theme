@@ -5,7 +5,7 @@
 module Spree
   class ThemeConfiguration < Preferences::Configuration
     #description start with global means it is for whole application, not just one site 
-    def website_class
+    def site_class
       FakeWebsite
     end
     def taxon_class

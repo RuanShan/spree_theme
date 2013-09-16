@@ -15,7 +15,7 @@ module Spree
     end
     
     def document_path
-      File.join( SpreeTheme.website_class.document_layout_path, self.template_theme.website_id.to_s, self.path)
+      File.join( template_theme.website.document_path, self.path)
     end
     
     # * params

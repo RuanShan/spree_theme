@@ -2,6 +2,7 @@ module Spree
   #it is a theme of page_layout
   class TemplateTheme < ActiveRecord::Base
     #extend FriendlyId
+    belongs_to :website, :class_name => SpreeTheme.site_class.to_s, :foreign_key => "website_id"
   
     #belongs_to :website #move it into template_theme_decorator
     # for now template_theme and page_layout are one to one
@@ -25,7 +26,7 @@ module Spree
       # 
       def create_plain_template( section, title, attrs={})
         #create a theme first.
-        website_id = SpreeTheme.website_class.current.id
+        website_id = SpreeTheme.site_class.current.id
         template = TemplateTheme.create({:website_id=>website_id,:title=>title}) do|template|
           #fix Attribute was supposed to be a Hash, but was a String
           template.assigned_resource_ids={}
@@ -36,11 +37,11 @@ module Spree
       end
       
       def native
-        self.within_website(SpreeTheme.website_class.current )
+        self.within_website(SpreeTheme.site_class.current )
       end
       
       def foreign
-        self.within_website(SpreeTheme.website_class.dalianshopsdesigns )
+        self.within_website(SpreeTheme.site_class.dalianshopsdesigns )
       end
       
     end
@@ -70,7 +71,7 @@ module Spree
         #create theme record
         new_theme = self.dup
         new_theme.title = "Imported "+ new_theme.title
-        new_theme.website_id = SpreeTheme.website_class.current.id
+        new_theme.website_id = SpreeTheme.site_class.current.id
         new_theme.release_id = self.template_releases.last.id
         new_theme.save!
         new_theme
@@ -89,7 +90,7 @@ module Spree
       end
       # apply to website
       def apply
-        SpreeTheme.website_class.current.update_attribute(:theme_id,self.id)
+        SpreeTheme.site_class.current.update_attribute(:theme_id,self.id)
       end
       
       # Usage: user want to copy this layout&theme to new for editing or backup.
@@ -158,7 +159,7 @@ module Spree
             obj.section_id, obj.section_instance=section.id, section_instance
             obj.assign_attributes( attrs )
             obj.root_id = selected_page_layout.root_id if selected_page_layout.present?
-            obj.website_id = SpreeTheme.website_class.current.id
+            obj.website_id = SpreeTheme.site_class.current.id
             obj.is_full_html = section.section_piece.is_root?
           end
           if selected_page_layout.present?

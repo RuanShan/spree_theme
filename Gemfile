@@ -23,7 +23,7 @@ gem "awesome_nested_set"
 gem "responds_to_parent"
 gem 'jquery-rails'
 gem 'jquery-ui-rails'
-gem "friendly_id", "~> 4.0.9"
+gem "friendly_id"
 
 group :assets do
   gem 'sass'
