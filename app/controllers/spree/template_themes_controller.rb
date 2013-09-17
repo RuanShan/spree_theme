@@ -7,6 +7,7 @@ module Spree
       template_release =  SpreeTheme.site_class.current.template_release
       @lg = PageGenerator.generator( @menu, template_release, {:resource=>(@resource.nil? ? nil:@resource),:controller=>self})
       @lg.context.each_pair{|key,val|
+logger.debug "key=#{key}, val=#{val}, @template=#{@template}"        
         instance_variable_set( "@#{key}", val)
       }  
     end  
@@ -310,13 +311,8 @@ module Spree
       respond_to do |format|
           format.js{ render "base/message_box", :locals=>{:message=>message}}
       end
-        
     end
 
-    def add_view_path
-      #!!is it a place cause memory overflow?
-      append_view_path SpreeTheme.site_class.current.document_path
-    end
   end
 
 end

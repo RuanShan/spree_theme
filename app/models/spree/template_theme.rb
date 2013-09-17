@@ -15,7 +15,7 @@ module Spree
     scope :by_layout,  lambda { |layout_id| where(:page_layout_root_id => layout_id) }
     serialize :assigned_resource_ids, Hash
     #friendly_id :title,:use => :scoped, :scope => :website
-    scope :within_website, lambda { |site|where(:website_id=> site.id) }
+    scope :within_site, lambda { |site|where(:website_id=> site.id) }
     scope :imported, where("release_id>0")
     
     before_destroy :remove_relative_data
@@ -37,11 +37,11 @@ module Spree
       end
       
       def native
-        self.within_website(SpreeTheme.site_class.current )
+        self.within_site(SpreeTheme.site_class.current )
       end
       
       def foreign
-        self.within_website(SpreeTheme.site_class.dalianshopsdesigns )
+        self.within_site(SpreeTheme.site_class.dalianshopsdesigns )
       end
       
     end
@@ -190,7 +190,7 @@ module Spree
       #   file - opened file 
       def self.import_into_db( file )
         # rake task require class 
-        Spree::ParamValue; Spree::PageLayout; Spree::TemplateFile;
+        Spree::ParamValue; Spree::PageLayout; Spree::TemplateFile;Spree::TemplateRelease;
         serialized_hash = YAML::load(file)
         template = serialized_hash[:template]
         if self.exists?(template[:id])
@@ -208,6 +208,10 @@ module Spree
         end
         serialized_hash[:template_files].each do |record|
           table_name = TemplateFile.table_name
+          connection.insert_fixture(record.attributes, table_name)          
+        end        
+        serialized_hash[:template_releases].each do |record|
+          table_name = TemplateRelease.table_name
           connection.insert_fixture(record.attributes, table_name)          
         end        
       end

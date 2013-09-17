@@ -5,6 +5,7 @@ class << Spree::Core::ControllerHelpers::Common
     receiver.send :include, SpreeTheme::System
     receiver.send :layout, :get_layout_if_use
     receiver.send :before_filter, :initialize_template
+    receiver.send :before_filter, :add_view_path #spree_devise_auth, and spree_core require it.
   end
   alias_method_chain :included, :theme_support   
 end
@@ -29,27 +30,27 @@ module SpreeTheme::System
     return if self.class.name=~/Admin/    
     website = SpreeTheme.site_class.current
     #DefaultTaxon.instance.id => 0
-      if params[:controller]=~/cart|checkout|order/
-        @menu = DefaultTaxon.instance
-        @menu[:page_type] = 'cart'
-      elsif params[:controller]=~/user/
-        @menu = DefaultTaxon.instance
-        @menu[:page_type] = 'account'
-      else
-        if params[:r]
-          @resource = Spree::Product.find_by_id(params[:r])
-        end
-        if params[:c] and params[:c].to_i>0 
-          @menu = SpreeTheme.taxon_class.find_by_id(params[:c])
-        elsif website.index_page > 0
-          @menu = SpreeTheme.taxon_class.find_by_id(website.index_page)
-        else
-          @menu = DefaultTaxon.instance
-        end
-        if @resource.present?
-          #@menu[:page_type] = 'detail'
-        end
+    if params[:controller]=~/cart|checkout|order/
+      @menu = DefaultTaxon.instance
+      @menu[:page_type] = 'cart'
+    elsif params[:controller]=~/user/
+      @menu = DefaultTaxon.instance
+      @menu[:page_type] = 'account'
+    else
+      if params[:r]
+        @resource = Spree::Product.find_by_id(params[:r])
       end
+      if params[:c] and params[:c].to_i>0 
+        @menu = SpreeTheme.taxon_class.find_by_id(params[:c])
+      elsif website.index_page > 0
+        @menu = SpreeTheme.taxon_class.find_by_id(website.index_page)
+      else
+        @menu = DefaultTaxon.instance
+      end
+      if @resource.present?
+        #@menu[:page_type] = 'detail'
+      end
+    end
 
     @is_designer = false
     if Rails.env !~ /prduction/
@@ -77,6 +78,12 @@ module SpreeTheme::System
          @editor_panel = render_to_string :partial=>'layout_editor_panel'
       end
     end
+    # we have initialize PageGenerator here, page like login  do not go to template_thems_controller/page
+    template_release =  SpreeTheme.site_class.current.template_release
+    @lg = PageGenerator.generator( @menu, template_release, {:resource=>@resource,:controller=>self})
+    @lg.context.each_pair{|key,val|
+      instance_variable_set( "@#{key}", val)
+    }      
   end
   
   def prepare_params_for_editors(theme,editor=nil,page_layout = nil)
@@ -107,4 +114,8 @@ module SpreeTheme::System
       @template_themes = Spree::TemplateTheme.all
   end
   
+  def add_view_path
+    #!!is it a place cause memory overflow?
+    append_view_path SpreeTheme.site_class.current.document_path
+  end
 end

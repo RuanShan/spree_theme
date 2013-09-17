@@ -37,7 +37,9 @@ module PageTag
       key = wrapped_page_layout.to_key 
       unless menus_cache.key? key
         menu_tree = nil
-        if wrapped_page_layout.assigned_menu_id>0          
+        #wrapped_page_layout.assigned_menu_id may not exist for some reason.
+        if wrapped_page_layout.assigned_menu_id>0 and SpreeTheme.taxon_class.exists?( wrapped_page_layout.assigned_menu_id )     
+                
           menu_tree = SpreeTheme.taxon_class.find( wrapped_page_layout.assigned_menu_id).self_and_descendants
         end
         menus_cache[key] = menu_tree     
