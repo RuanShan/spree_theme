@@ -38,4 +38,6 @@ Spree::Core::Engine.routes.prepend do
       end
     end
   end
+  match '/under_construction', :to => 'template_themes#under_construction', :as => :under_construction
+
 end

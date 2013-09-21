@@ -4,13 +4,19 @@ module Spree
     delegate :taxon_class,:site_class, :to=>:"SpreeTheme"
     # index of frontend 
     def page
-      template_release =  SpreeTheme.site_class.current.template_release
-      @lg = PageGenerator.generator( @menu, template_release, {:resource=>(@resource.nil? ? nil:@resource),:controller=>self})
-      @lg.context.each_pair{|key,val|
-logger.debug "key=#{key}, val=#{val}, @template=#{@template}"        
-        instance_variable_set( "@#{key}", val)
-      }  
+      #template_release =  SpreeTheme.site_class.current.template_release
+      #@lg = PageGenerator.generator( @menu, template_release, {:resource=>(@resource.nil? ? nil:@resource),:controller=>self})
+      #@lg.context.each_pair{|key,val|
+      #  instance_variable_set( "@#{key}", val)
+      #}  
     end  
+    
+    def under_construction
+      session['spree_user_return_to'] = "/admin" #admin root
+      #require spree_auth_devise
+      render "under_construction",layout:"under_construction"
+    end
+    
     # GET /themes/1
     # GET /themes/1.xml
     def show

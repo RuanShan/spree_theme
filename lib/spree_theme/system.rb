@@ -27,7 +27,10 @@ module SpreeTheme::System
   end
 
   def initialize_template
-    return if self.class.name=~/Admin/    
+Rails.logger.debug "fullpath=#{request.fullpath}"    
+    return if request.fullpath=='/under_construction'
+    return if request.fullpath=='/login' and request.post? 
+    return if request.fullpath=~/^\/admin/    
     website = SpreeTheme.site_class.current
     #DefaultTaxon.instance.id => 0
     if params[:controller]=~/cart|checkout|order/
@@ -52,7 +55,7 @@ module SpreeTheme::System
       end
     end
 
-    @is_designer = false
+    @is_designer = Spree::Site.current.design?
     if Rails.env !~ /prduction/
       # for development or test, enable get site from cookies
       if cookies[:abc_development_design].present?
@@ -66,24 +69,30 @@ module SpreeTheme::System
         @theme = Spree::TemplateTheme.find( params[:id] )          
       end
     end
-    #browse template by public
-    if @theme.nil?         
-      @theme = website.template_release.template_theme
-    end
-    unless request.xhr?
-      if @is_designer      
-         prepare_params_for_editors(@theme)
-         # layout_editor_panel has to be in views/application, 
-         # or could not find for spree_auth_devise/controllers
-         @editor_panel = render_to_string :partial=>'layout_editor_panel'
-      end
-    end
-    # we have initialize PageGenerator here, page like login  do not go to template_thems_controller/page
     template_release =  SpreeTheme.site_class.current.template_release
-    @lg = PageGenerator.generator( @menu, template_release, {:resource=>@resource,:controller=>self})
-    @lg.context.each_pair{|key,val|
-      instance_variable_set( "@#{key}", val)
-    }      
+    #browse template by public
+    if @theme.blank? and template_release.present?       
+      @theme = template_release.template_theme
+    end
+
+    # site has a released theme    
+    if template_release.present?  
+      unless request.xhr?
+        if @is_designer      
+           prepare_params_for_editors(@theme)
+           # layout_editor_panel has to be in views/application, 
+           # or could not find for spree_auth_devise/controllers
+           @editor_panel = render_to_string :partial=>'layout_editor_panel'
+        end
+      end
+      # we have initialize PageGenerator here, page like login  do not go to template_thems_controller/page
+      @lg = PageGenerator.generator( @menu, template_release, {:resource=>@resource,:controller=>self})
+      @lg.context.each_pair{|key,val|
+        instance_variable_set( "@#{key}", val)
+      }      
+    else
+      redirect_to :under_construction
+    end
   end
   
   def prepare_params_for_editors(theme,editor=nil,page_layout = nil)

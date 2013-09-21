@@ -8,12 +8,13 @@ module SpreeTheme
     end
     
     module ClassMethods
-      def dalianshopsdesigns
-        find(1)
-      end        
+      def designsite
+        find_by_domain 'design.dalianshops.com'
+      end     
+         
       def current
         if Thread.current[:spree_site].nil?
-          website = self.find_or_initialize_by_url_and_name('demo.dalianshops.com','DalianShops Demo Site' )
+          website = self.find_or_initialize_by_domain_and_name('design.dalianshops.com','DalianShops Design Site' )
           if website.new_record?
             website.theme_id = 1
             website.save!
@@ -32,18 +33,20 @@ module SpreeTheme
       end
     end  
 
-      def document_path
-        self.class.document_root + self.path
-      end
+    def document_path
+      self.class.document_root + self.path
+    end
+    
+    def path
+      File.join( File::SEPARATOR + 'shops', Rails.env, self.id.to_s )
+    end
+    
+    def layout
+      self.template_release.present? ? self.template_release.layout_path : nil
+    end
       
-      def path
-        File.join( File::SEPARATOR + 'shops', Rails.env, self.id.to_s )
-      end
-      
-      def layout
-        self.template_release.present? ? self.template_release.layout_path : nil
-      end
-      
-      
+    def design?
+      self == self.class.designsite
+    end      
   end
 end

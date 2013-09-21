@@ -41,7 +41,7 @@ module Spree
       end
       
       def foreign
-        self.within_site(SpreeTheme.site_class.dalianshopsdesigns )
+        self.within_site(SpreeTheme.site_class.designsite )
       end
       
     end
