@@ -11,11 +11,27 @@ module Spree
       #}  
     end  
     
-    def under_construction
-      session['spree_user_return_to'] = "/admin" #admin root
+    def under_construction  
+      logger.debug "request.env[/devise/]= #{request.env['devise.mapping']},#{warden.inspect}"   
       #require spree_auth_devise
-      render "under_construction",layout:"under_construction"
+      render "under_construction", layout:"under_construction"            
     end
+    
+    def create_admin_session
+      user_params = params[:spree_user]
+      user = Spree.user_class.find_for_authentication(:email => user_params[:email])
+      if user.present?
+        if user.valid_password?(user_params[:password])
+          sign_in :spree_user,user 
+        end 
+      end
+      if spree_user_signed_in? and current_spree_user.admin?
+        redirect_to "/admin"
+      else
+        render "new_admin_session", layout:"under_construction"
+      end
+    end
+    
     
     # GET /themes/1
     # GET /themes/1.xml
@@ -89,13 +105,11 @@ module Spree
         website_params = params[:website]
         self.site_class.current.attributes = website_params
         self.site_class.current.save
-        
       end
       
       if commit_command=~/Publish/
         do_publish
       end
-      
       
       respond_to do |format|
         format.js  {
@@ -110,9 +124,7 @@ module Spree
     end
     
     def select_tree
-      
       @menu = taxon_class.find(params[:menu_id])
-      
       render :partial=>"menu_and_template"
     end
     
@@ -125,7 +137,6 @@ module Spree
       layout_id = 0
       theme = TemplateTheme.find(params[:id])
       prepare_params_for_editors(theme)
-      
     end  
   
   

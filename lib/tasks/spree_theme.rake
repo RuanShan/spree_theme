@@ -24,7 +24,7 @@ namespace :spree_theme do
   desc "import template one"
   task :import_template => :environment do
     #template = Spree::TemplateTheme.first
-    
+    SpreeTheme.site_class.current = SpreeTheme.site_class.designsite 
     file_path =  File.join(SpreeTheme.site_class.designsite.document_path, "1_*.yml")
     file_path = Dir[file_path].sort.last
     open(file_path) do |file|

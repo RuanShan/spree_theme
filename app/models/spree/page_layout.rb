@@ -5,8 +5,8 @@ module Spree
     belongs_to :section  
     has_many :themes, :class_name => "TemplateTheme",:foreign_key=>:page_layout_root_id
     has_many :param_values
-    belongs_to :website
-    friendly_id :title, :use => :scoped, :scope => :website
+    belongs_to :site
+    friendly_id :title, :use => :scoped, :scope => :site
     has_many :full_set_nodes, :class_name =>'PageLayout', :foreign_key=>:root_id, :primary_key=>:root_id
   
     # use string instead of symbol, parameter from client is string 
@@ -35,7 +35,7 @@ module Spree
       #create record in table page_layouts
       obj = create!(:section_id=>section.id) do |obj|
         obj.title = title
-        obj.website_id = SpreeTheme.site_class.current.id
+        obj.site_id = SpreeTheme.site_class.current.id
         obj.attributes = attrs unless attrs.empty?
         obj.section_instance = 1
         obj.is_full_html = section.section_piece.is_root?

@@ -2,7 +2,7 @@ module Spree
   #it is a theme of page_layout
   class TemplateTheme < ActiveRecord::Base
     #extend FriendlyId
-    belongs_to :website, :class_name => SpreeTheme.site_class.to_s, :foreign_key => "website_id"
+    belongs_to :website, :class_name => SpreeTheme.site_class.to_s, :foreign_key => "site_id"
   
     #belongs_to :website #move it into template_theme_decorator
     # for now template_theme and page_layout are one to one
@@ -14,20 +14,19 @@ module Spree
     
     scope :by_layout,  lambda { |layout_id| where(:page_layout_root_id => layout_id) }
     serialize :assigned_resource_ids, Hash
-    #friendly_id :title,:use => :scoped, :scope => :website
-    scope :within_site, lambda { |site|where(:website_id=> site.id) }
+    scope :within_site, lambda { |site|where(:site_id=> site.id) }
     scope :imported, where("release_id>0")
     
     before_destroy :remove_relative_data
-    attr_accessible :website_id,:page_layout_root_id,:title
+    attr_accessible :site_id,:page_layout_root_id,:title
     
     class << self
       # template has page_layout & param_values
       # 
       def create_plain_template( section, title, attrs={})
         #create a theme first.
-        website_id = SpreeTheme.site_class.current.id
-        template = TemplateTheme.create({:website_id=>website_id,:title=>title}) do|template|
+        site_id = SpreeTheme.site_class.current.id
+        template = TemplateTheme.create({:site_id=>site_id,:title=>title}) do|template|
           #fix Attribute was supposed to be a Hash, but was a String
           template.assigned_resource_ids={}
         end
@@ -71,7 +70,7 @@ module Spree
         #create theme record
         new_theme = self.dup
         new_theme.title = "Imported "+ new_theme.title
-        new_theme.website_id = SpreeTheme.site_class.current.id
+        new_theme.site_id = SpreeTheme.site_class.current.id
         new_theme.release_id = self.template_releases.last.id
         new_theme.save!
         new_theme
@@ -159,7 +158,7 @@ module Spree
             obj.section_id, obj.section_instance=section.id, section_instance
             obj.assign_attributes( attrs )
             obj.root_id = selected_page_layout.root_id if selected_page_layout.present?
-            obj.website_id = SpreeTheme.site_class.current.id
+            obj.site_id = SpreeTheme.site_class.current.id
             obj.is_full_html = section.section_piece.is_root?
           end
           if selected_page_layout.present?
@@ -198,6 +197,8 @@ module Spree
           existing_template.destroy
         end
         connection.insert_fixture(template.attributes, self.table_name)
+        # we need new template id
+        # template = self.find_by_title template.title
         serialized_hash[:param_values].each do |record|
           table_name = ParamValue.table_name
           connection.insert_fixture(record.attributes, table_name)          

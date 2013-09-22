@@ -41,6 +41,8 @@ module Spree
           template_release = @theme.template_releases.build
           template_release.name = "just a test"
           template_release.save
+          SpreeTheme.site_class.current.update_attribute(:template_release_id, template_release.id)
+           
           @lg = PageGenerator.releaser( template_release)
           @lg.release
           @themes = TemplateTheme.native          
