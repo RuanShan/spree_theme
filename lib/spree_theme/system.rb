@@ -56,7 +56,7 @@ Rails.logger.debug "request.fullpath=#{request.fullpath}"
       end
     end
 
-    @is_designer = Spree::Site.current.design?
+    @is_designer = website.design?
     if Rails.env !~ /prduction/
       # for development or test, enable get site from cookies
       if cookies[:abc_development_design].present?

@@ -56,9 +56,7 @@ module PageTag
                       val <<  ( pv_for_ha+';' )                    
                   end                
                 end
-                
               end
-      
             end
           end
         end

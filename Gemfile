@@ -5,6 +5,7 @@ source 'http://rubygems.org'
 gem 'spree', :github => "spree/spree", :branch => "2-0-stable"
 
 group :test,:development do
+  gem 'simplecov' #rspec using it.
   #using backend required
   gem 'spree_auth_devise', :github => 'spree/spree_auth_devise', :branch => '2-0-stable'
   gem "mysql2"

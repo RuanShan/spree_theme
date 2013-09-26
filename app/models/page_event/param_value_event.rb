@@ -46,7 +46,7 @@ module PageEvent
         computed_inner_height['psvalue'] = height['psvalue']
         computed_inner_height['pvalue'] = inner_height_value
         computed_inner_height['unit'] = height['unit']
-        computed_inner_height['unset'] = HtmlAttribute::BOOL_FALSE
+        computed_inner_height['unset'] = Spree::HtmlAttribute::BOOL_FALSE
         self.updated_html_attribute_values.push(computed_inner_height)
       end
     end

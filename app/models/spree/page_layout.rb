@@ -151,27 +151,26 @@ module Spree
         new_layout.reload
       end
        
-      #
+      # it is not using
       # Usage: modify layout, add the section instance as child of current node into the layout,
       # Params: page_layout, instance of model PageLayout 
       # return: added page_layout record
       # 
-      def add_section(section_id, attrs={})
-        # check section.section_piece.is_container?
-        obj = nil
-        section = Section.find(section_id)    
-        if section.root? and self.section.section_piece.is_container      
-          whole_tree = self.root.self_and_descendants
-          section_instance = whole_tree.select{|xnode| xnode.section_id==section.id}.size.succ
-          attrs[:title]||="#{section.slug}#{section_instance}"        
-          obj = self.dup
-          obj.section_id, obj.section_instance=section_id, section_instance
-          obj.assign_attributes( attrs )
-          obj.save!    
-          obj.move_to_child_of(self)
-        end
-        obj
-      end
+      #def add_section(section, attrs={})
+      #  # check section.section_piece.is_container?
+      #  obj = nil
+      #  if section.root? and self.section.section_piece.is_container      
+      #    whole_tree = self.root.self_and_descendants
+      #    section_instance = whole_tree.select{|xnode| xnode.section_id==section.id}.size.succ
+      #    attrs[:title]||="#{section.slug}#{section_instance}"        
+      #    obj = self.dup
+      #    obj.section_id, obj.section_instance=section_id, section_instance
+      #    obj.assign_attributes( attrs )
+      #    obj.save!    
+      #    obj.move_to_child_of(self)
+      #  end
+      #  obj
+      #end
       
       # Usage: remove param_values belong to self in every theme while destroy self(page_layout record)
       def remove_section
@@ -181,12 +180,13 @@ module Spree
       def add_param_value(theme)
         # section_id, section_piece_param_id, section_piece_id, section_piece_instance, is_enabled, disabled_ha_ids
         # all section_params belong to section tree.
-        # section_tree = self.section.self_and_descendants
+        # section_tree = self.section.self_and_descendants.includes(:section_params)
         # get default values of this section
         #TODO no need add param_value any more, use default value before user modify it
         layout_id = self.id
         layout_root_id = self.root_id
-          section_params = self.section.section_params
+        for section_node in self.section.self_and_descendants.includes(:section_params)
+          section_params = section_node.section_params
           for sp in section_params
             #use root section_id
             ParamValue.create(:page_layout_root_id=>layout_root_id, :page_layout_id=>layout_id) do |pv|
@@ -197,6 +197,7 @@ module Spree
               #set default empty {} for now.
             end
           end
+        end
       end 
        
       def remove_param_value()

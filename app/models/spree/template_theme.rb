@@ -179,7 +179,7 @@ module Spree
       def serializable_data
         template = self.class.find(self.id,:include=>[:param_values,:page_layout=>:full_set_nodes])
         hash ={:template=>template, :param_values=>template.param_values, :page_layouts=>template.page_layout.full_set_nodes,
-            :template_files=>template.template_files
+            :template_files=>template.template_files,:template_releases=>template.template_releases
             } 
         hash      
       end

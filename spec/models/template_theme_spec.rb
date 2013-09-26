@@ -1,19 +1,25 @@
 require 'spec_helper'
 describe Spree::TemplateTheme do
   let (:template) { Spree::TemplateTheme.first }
+  it "has right param_values" do
+    section_params = template.page_layout.self_and_descendants.map{|page_layout| 
+      page_layout.section.self_and_descendants.map{|section| section.section_params }.flatten 
+      }.flatten    
+Rails.logger.debug "section_params.size = #{section_params.size }"
+    template.param_values.size.should == section_params.size     
+  end
+  
+  
   it "could serialize&unserialize" do
     serializable_data = template.serializable_data    
     expect(serializable_data).to be_an_instance_of(Hash)
-    
     temp_file = Tempfile.new ['theme', '.yml'], File.join( Rails.root, 'tmp')
-    
     temp_file.write( serializable_data.to_yaml )
     temp_file.size.should be > 0 #cause flush
     File.exists?(temp_file.path).should be_true
     temp_file.rewind
 Rails.logger.debug "temp_file=#{temp_file.size}"    
-    Spree::TemplateTheme.import_into_db(temp_file)
-    
+    Spree::TemplateTheme.import_into_db(temp_file)    
     temp_file.close    
   end
 

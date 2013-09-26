@@ -16,6 +16,11 @@
   height:200px;
   overflow: auto;  
 }
+.editor-header
+{
+  background-color: #B6B6B6;
+}
+
 .fl{ float:left;}
 .fr{ float:right;}
 .clear-block:after {
