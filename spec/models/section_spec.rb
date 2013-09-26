@@ -1,4 +1,3 @@
-
 require 'spec_helper'
 describe Spree::Section do
   let (:section) { Spree::Section.first }
@@ -15,4 +14,6 @@ describe Spree::Section do
     html.should =~/yield/
   end
   
+  #TODO
+  # test add_section_piece, section_param should be added
 end
