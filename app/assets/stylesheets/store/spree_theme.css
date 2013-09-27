@@ -53,28 +53,28 @@ ul.tabs{list-style:none; margin:0;padding:0;}
     float:left;
 }
 
-span.option_item
+#editors span.option_item
 {
   display:inline-block;
   width:170px;
 }
 
-div.pv{
+#editors div.pv{
     padding:2px;
     
 }
-span.pv-name
+#editors span.pv-name
 {
   display:inline-block;
   width:150px;    
 }
 
-input.pv-psv, select.pv-psv
+#editors input.pv-psv, select.pv-psv
 {
   display:inline-block;
   width:120px;    
 }
-input.pv-pv
+#editors input.pv-pv
 {
   display:inline-block;
   width:120px;    
@@ -113,7 +113,7 @@ input.pv-pv
   padding:0;
 }
 
-a.selected
+#editor_panel a.selected
 {
   background-color: #22A7F2;
   color: white;

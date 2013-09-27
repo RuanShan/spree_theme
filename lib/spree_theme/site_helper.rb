@@ -23,6 +23,11 @@ module SpreeTheme
         end
         Thread.current[:spree_site]
       end
+      
+      def current=(some_site)
+        ::Thread.current[:spree_site] = some_site      
+      end
+      
       # shop's resource should be in this folder
       def document_root
         File.join(Rails.root,'public') 

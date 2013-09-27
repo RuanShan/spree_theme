@@ -393,11 +393,11 @@ menuitem:
       .<%=g_piece_selector%> a:hover{  
         <%= @template.css :ah %> 
         }
-      .<%=g_piece_selector%> a.selected{ 
-        <%= @template.css :as %> 
+      .<%=g_piece_selector%> .selected{ 
+        <%= @template.css :selected %> 
         }
-      .<%=g_piece_selector%> a.selected:hover{  <%= @template.css :ahs %> }
-      .<%=g_piece_selector%> a.noclick{ <%= @template.css :au %> }
+      .<%=g_piece_selector%> a.selected:hover{  <%= @template.css :ash %> }
+      .<%=g_piece_selector%> .noclick{ <%= @template.css :noclick %> }
   js: ""
 image:
   id: 7

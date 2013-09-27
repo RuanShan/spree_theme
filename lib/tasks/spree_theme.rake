@@ -33,5 +33,16 @@ namespace :spree_theme do
     puts "imported file #{file_path}"
   end
 
+  desc "get css of template one"
+  task :get_css, [:page_layout_id,:section_id, :class_name] =>[ :environment ] do |t, args|
+    #template = Spree::TemplateTheme.first
+    class_name = args.class_name
+    lg = PageGenerator.generator( DefaultTaxon.instance, SpreeTheme.site_class.designsite.template_release)
+    template = lg.context[:template]
+    template.select(args.page_layout_id.to_i, args.section_id.to_i)
+    puts "template 1, page_layout_id=#{args.page_layout_id}_#{args.section_id}, #{class_name}= #{template.css(class_name)}"
+  end
+  
+
 end
 

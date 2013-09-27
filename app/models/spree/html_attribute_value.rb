@@ -244,7 +244,11 @@ module Spree
           ".s_#{self.param_value.page_layout_id}_#{self.param_value.section_param.section_id}"
         elsif self.param_value.section_param.section_piece_param.class_name=~/inner/
           ".s_#{self.param_value.page_layout_id}_#{self.param_value.section_param.section_id}_#{self.param_value.section_param.section_piece_param.class_name}"
-        else  
+        elsif self.param_value.section_param.section_piece_param.class_name=='ash' #selected:hover
+          ".s_#{self.param_value.page_layout_id}_#{self.param_value.section_param.section_id} .selected"
+        elsif self.param_value.section_param.section_piece_param.class_name=~/^a/ #ainner, a, ah
+          ".s_#{self.param_value.page_layout_id}_#{self.param_value.section_param.section_id} a"
+        else  #noclick, selected
           ".s_#{self.param_value.page_layout_id}_#{self.param_value.section_param.section_id} .#{self.param_value.section_param.section_piece_param.class_name}"
         end
       end 

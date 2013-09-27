@@ -28,15 +28,15 @@ objs=[
   {"id"=>52, "editor_id"=>2, "section_piece_id"=>6, "class_name"=>"ainner", "pclass"=>"css", "param_category_id"=>6,  "html_attribute_ids"=>"32,7,8,6"},
   {"id"=>56, "editor_id"=>4, "section_piece_id"=>6, "class_name"=>"a", "pclass"=>"css", "param_category_id"=>11,  "html_attribute_ids"=>"23,24,25,27,49,53,54,56"},  
   {"id"=>57, "editor_id"=>4, "section_piece_id"=>6, "class_name"=>"ah", "pclass"=>"css", "param_category_id"=>12,  "html_attribute_ids"=>"23,24,25,27,49,53,54,56"},  
-  {"id"=>58, "editor_id"=>4, "section_piece_id"=>6, "class_name"=>"as", "pclass"=>"css", "param_category_id"=>13,  "html_attribute_ids"=>"23,24,25,27,49,53,54,56"},  
-  {"id"=>59, "editor_id"=>4, "section_piece_id"=>6, "class_name"=>"ahs", "pclass"=>"css", "param_category_id"=>14,  "html_attribute_ids"=>"23,24,25,27,49,53,54,56"},  
-  {"id"=>60, "editor_id"=>4, "section_piece_id"=>6, "class_name"=>"au", "pclass"=>"css", "param_category_id"=>15,  "html_attribute_ids"=>"23,24,25,27,49,53,54,56"},  
+  {"id"=>58, "editor_id"=>4, "section_piece_id"=>6, "class_name"=>"selected", "pclass"=>"css", "param_category_id"=>13,  "html_attribute_ids"=>"23,24,25,27,49,53,54,56"},  
+  {"id"=>59, "editor_id"=>4, "section_piece_id"=>6, "class_name"=>"ash", "pclass"=>"css", "param_category_id"=>14,  "html_attribute_ids"=>"23,24,25,27,49,53,54,56"},  
+  {"id"=>60, "editor_id"=>4, "section_piece_id"=>6, "class_name"=>"noclick", "pclass"=>"css", "param_category_id"=>15,  "html_attribute_ids"=>"23,24,25,27,49,53,54,56"},  
   
   {"id"=>61, "editor_id"=>3, "section_piece_id"=>6, "class_name"=>"a", "pclass"=>"css", "param_category_id"=>61,  "html_attribute_ids"=>"2,3,4,5"},  
   {"id"=>62, "editor_id"=>3, "section_piece_id"=>6, "class_name"=>"ah", "pclass"=>"css", "param_category_id"=>62,  "html_attribute_ids"=>"2,3,4,5"},  
-  {"id"=>63, "editor_id"=>3, "section_piece_id"=>6, "class_name"=>"as", "pclass"=>"css", "param_category_id"=>63,  "html_attribute_ids"=>"2,3,4,5"},  
-  {"id"=>64, "editor_id"=>3, "section_piece_id"=>6, "class_name"=>"ahs", "pclass"=>"css", "param_category_id"=>64,  "html_attribute_ids"=>"2,3,4,5"},  
-  {"id"=>65, "editor_id"=>3, "section_piece_id"=>6, "class_name"=>"au", "pclass"=>"css", "param_category_id"=>65,  "html_attribute_ids"=>"2,3,4,5"},
+  {"id"=>63, "editor_id"=>3, "section_piece_id"=>6, "class_name"=>"selected", "pclass"=>"css", "param_category_id"=>63,  "html_attribute_ids"=>"2,3,4,5"},  
+  {"id"=>64, "editor_id"=>3, "section_piece_id"=>6, "class_name"=>"ash", "pclass"=>"css", "param_category_id"=>64,  "html_attribute_ids"=>"2,3,4,5"},  
+  {"id"=>65, "editor_id"=>3, "section_piece_id"=>6, "class_name"=>"noclick", "pclass"=>"css", "param_category_id"=>65,  "html_attribute_ids"=>"2,3,4,5"},
   
   # text
   #{"id"=>101, "editor_id"=>1, "section_piece_id"=>8, "class_name"=>"text", "pclass"=>"text", "param_category_id"=>2,  "html_attribute_ids"=>"84"},

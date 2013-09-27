@@ -3,8 +3,9 @@
 
 *1. export template
 *2. editor dock.
-2.1 promote section, demote section   
-2.2 highlight counter part of preview page when hovering on section
+*2.1 promote section, demote section   
+*2.2 highlight counter part of preview page when hovering on section
+2.3 _update_param_value.js.erb, update <a> hover,selected param_value, client should be updated by ajax. 
 3.  ajax update section, no need refresh when add section into template.
 
 4.  add section cart and try add to cart.
