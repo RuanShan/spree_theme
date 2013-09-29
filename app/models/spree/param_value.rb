@@ -18,7 +18,7 @@ module Spree
         scoped.includes(:section_param=>:section_piece_param).where("#{SectionPieceParam.table_name}.editor_id"=>editor.id)
       }
       
-    attr_accessible :page_layout_root_id, :page_layout_id
+    attr_accessible :page_layout_root_id, :page_layout_id,:section_id
     attr_accessor :updated_html_attribute_values, :original_html_attribute_values, :page_events
       
     # usage: return all html_attribute_values this param value contains. 

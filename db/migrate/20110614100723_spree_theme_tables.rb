@@ -158,6 +158,7 @@ class SpreeThemeTables < ActiveRecord::Migration
       t.column :page_layout_root_id,      :integer, :limit => 2,     :null => false, :default => 0 # this is an root layout id in the page_layouts table
       # in param_value_event, we need get page_layout 
       t.column :page_layout_id,      :integer, :limit => 2,     :null => false, :default => 0 # this is an id in the page_layouts table
+      #section_param indicate section_piece instance. 
       #t.column :section_id,              :integer, :limit => 2,     :null => false, :default => 0 # this is an id in the sections table
       #t.column :section_instance,        :integer, :limit => 2,     :null => false, :default => 0 # the instance of the section in the layout
       t.column :section_param_id,  :integer, :limit => 2,     :null => false, :default => 0

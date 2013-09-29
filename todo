@@ -13,6 +13,14 @@
 
 #how todo
 how to add a section piece param?
+  #sectionA   -container
+  #              -container
+  #                -text                  
+  #page_layoutA  -root
+  #                 -sectionA                   
+  #add a section piece param into continer 
+  #
+  
   add record of section_piece_param 
   # after create
   add section_param where section.section_piece_id = ? for each section tree.

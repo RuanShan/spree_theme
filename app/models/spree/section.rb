@@ -1,11 +1,12 @@
 module Spree
   class Section < ActiveRecord::Base
     extend FriendlyId
+    acts_as_nested_set #:scope=>"root_id"
+    has_many :full_set_nodes, :class_name =>'Section', :foreign_key=>:root_id, :primary_key=>:root_id
     belongs_to :section_piece  
     has_many :section_params
-    acts_as_nested_set #:scope=>"root_id"
-    friendly_id :title, :use => :slugged
     
+    friendly_id :title, :use => :slugged
     attr_accessible :section_piece_id, :title, :global_events, :subscribed_global_events
     # usage: attribute section_piece_id, title required
     # params: default_param_value,  is a hash,  class_name=>{htmal_attribute_id=>default_value,..}

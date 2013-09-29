@@ -40,7 +40,8 @@ objs=[
   
   # text
   #{"id"=>101, "editor_id"=>1, "section_piece_id"=>8, "class_name"=>"text", "pclass"=>"text", "param_category_id"=>2,  "html_attribute_ids"=>"84"},
-  
+  # product name
+    
   ]
 
 Spree::SectionPieceParam.delete_all              

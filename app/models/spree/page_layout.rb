@@ -3,7 +3,7 @@ module Spree
     extend FriendlyId
     acts_as_nested_set :scope=>"root_id" # scope is for :copy, no need to modify parent_id, lft, rgt.
     belongs_to :section  
-    has_many :themes, :class_name => "TemplateTheme",:foreign_key=>:page_layout_root_id
+    has_many :themes, :class_name => "TemplateTheme",:primary_key=>:root_id,:foreign_key=>:page_layout_root_id
     has_many :param_values
     belongs_to :site
     friendly_id :title, :use => :scoped, :scope => :site
