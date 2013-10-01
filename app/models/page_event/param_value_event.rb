@@ -13,7 +13,8 @@ module PageEvent
           html_piece = html_page.partial_htmls.select{|hp| hp.page_layout.id==self.param_value.page_layout_id }.pop
 # Rails.logger.debug "self.param_value=#{self.param_value.inspect}"        
 # Rails.logger.debug "html_piece=#{html_piece.inspect}"            
-          self.updated_html_attribute_values.concat( self.send( handler_name, html_piece))    
+          #self.updated_html_attribute_values.concat( )
+          self.send( handler_name, html_piece)    
         end      
       end
       self.updated_html_attribute_values
@@ -28,33 +29,32 @@ module PageEvent
     end
   
     def height_pv_changed_handler(partial_html)
- 
-      height = partial_html.html_attribute_values('block_height')
-    Rails.logger.debug "partial_html=#{partial_html}"    
-      if height.manual_entry?
-        margin, border, padding  = partial_html.html_attribute_values('inner_margin'),
-          partial_html.html_attribute_values('inner_border-width'),
-          partial_html.html_attribute_values('inner_padding')
+      height = partial_html.height 
+      if height>0
+        margin, border, padding = partial_html.margin, partial_html.border, partial_html.padding
         computed_inner_height = partial_html.html_attribute_values('inner_height')
-        inner_height_value = height['pvalue0'].to_i
+        inner_height_value = height
         [0,2].each{|i|#0:top, 2: bottom
-          inner_height_value-= margin["pvalue#{i}"]  if margin.manual_entry?(i)  
-          inner_height_value-= border["pvalue#{i}"]  if border.manual_entry?(i)  
-          inner_height_value-= padding["pvalue#{i}"] if padding.manual_entry?(i)  
+          inner_height_value-= margin[i]  
+          inner_height_value-= border[i]  
+          inner_height_value-= padding[i]  
             } 
-    Rails.logger.debug "height=#{height['pvalue0']}, inner_height_value=#{inner_height_value}"           
-        computed_inner_height['psvalue'] = height['psvalue']
+    Rails.logger.debug "height=#{height}, inner_height_value=#{inner_height_value}"  
+        hav = partial_html.html_attribute_values("block_height")         
+        computed_inner_height['psvalue'] = hav['psvalue']
         computed_inner_height['pvalue'] = inner_height_value
-        computed_inner_height['unit'] = height['unit']
+        computed_inner_height['unit'] = hav['unit']
         computed_inner_height['unset'] = Spree::HtmlAttribute::BOOL_FALSE
         self.updated_html_attribute_values.push(computed_inner_height)
       end
     end
     # TODO width_pv_changed_handler, should not bigger than its parent's width.
     
+    def border_pv_changed_handler(partial_html)
+      height_pv_changed_handler( partial_html )
+    end 
     def margin_pv_changed_handler(partial_html)
       height_pv_changed_handler( partial_html )
-      
     end 
     def padding_pv_changed_handler(partial_html)
       height_pv_changed_handler( partial_html )      

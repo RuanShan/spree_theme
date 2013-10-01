@@ -13,7 +13,7 @@ objs=[
   {"id"=>13, "editor_id"=>2, "section_piece_id"=>2, "class_name"=>"content_layout", "pclass"=>"css", "param_category_id"=>1,  "html_attribute_ids"=>"85"},
   {"id"=>15, "editor_id"=>2, "section_piece_id"=>2, "class_name"=>"block", "pclass"=>"css", "param_category_id"=>2,  "html_attribute_ids"=>"101,15,21", "param_conditions"=>{15=>['pv_changed']}},
   #general decoration, margin, border,padding
-  {"id"=>16, "editor_id"=>2, "section_piece_id"=>2, "class_name"=>"inner", "pclass"=>"css", "param_category_id"=>2,  "html_attribute_ids"=>"31,32,7,8,6,15", "param_conditions"=>{31=>['pv_changed'],32=>['pv_changed']}},
+  {"id"=>16, "editor_id"=>2, "section_piece_id"=>2, "class_name"=>"inner", "pclass"=>"css", "param_category_id"=>2,  "html_attribute_ids"=>"31,32,7,8,6,15", "param_conditions"=>{8=>['pv_changed'],31=>['pv_changed'],32=>['pv_changed']}},
 
   #general background
   {"id"=>31, "editor_id"=>3, "section_piece_id"=>2, "class_name"=>"block", "pclass"=>"css", "param_category_id"=>3,  "html_attribute_ids"=>"2,3,4,5"},

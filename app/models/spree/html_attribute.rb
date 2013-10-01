@@ -109,7 +109,14 @@ module Spree
     def units
       if @units.blank?
         if has_unit?
-          @units= punits.split(',').collect{|unit| ((self.class.unit_collection.key?(unit.to_sym)) ? (self.class.unit_collection.fetch(unit.to_sym)) : unit) }.flatten!
+          @units= []
+          punits.split(',').each{|unit|
+            if self.class.unit_collection.key?(unit.to_sym)
+              @units.concat self.class.unit_collection.fetch(unit.to_sym) 
+            else
+              @units.push unit
+            end 
+          }
         end
       end 
       @units

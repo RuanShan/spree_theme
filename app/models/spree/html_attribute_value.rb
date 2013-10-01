@@ -81,10 +81,13 @@ module Spree
                 object_properties["psvalue#{i}"] = val
               else# it is manual entry.
                 object_properties["psvalue#{i}"] = html_attribute.manual_selected_value
-                if html_attribute.is_special?(:color) #border-color has unit
+                if html_attribute.is_special?(:color) #border-color has unit hex|rgb
                   object_properties["pvalue#{i}"] =  val
+                  if html_attribute.has_unit?
+                    object_properties["unit#{i}"] = (val=~/^#/ ? html_attribute.units.first : html_attribute.units.last) 
+                  end
                 elsif html_attribute.has_unit?
-                  object_properties["pvalue#{i}"],object_properties["unit#{i}"] =  val[/^\d+/].to_i,val[/[a-z%]+$/]
+                  object_properties["pvalue#{i}"],object_properties["unit#{i}"] =  (val.to_i == val.to_f ? val.to_i : val.to_f),val[/[a-z%]+$/]                                        
                 else
                   object_properties["pvalue#{i}"] = val
                 end
@@ -110,8 +113,13 @@ module Spree
         pvalue_string = pvalue_properties["pvalue0"]
       else      
         vals = html_attribute.repeats.times.collect{|i|
-          html_attribute.manual_entry?(pvalue_properties["psvalue#{i}"]) ? 
-            "#{pvalue_properties["pvalue#{i}"]}#{pvalue_properties["unit#{i}"]}" : pvalue_properties["psvalue#{i}"]
+          if html_attribute.is_special? :color #no need unit for color
+            html_attribute.manual_entry?(pvalue_properties["psvalue#{i}"]) ? 
+              "#{pvalue_properties["pvalue#{i}"]}" : pvalue_properties["psvalue#{i}"]                      
+          else
+            html_attribute.manual_entry?(pvalue_properties["psvalue#{i}"]) ? 
+              "#{pvalue_properties["pvalue#{i}"]}#{pvalue_properties["unit#{i}"]}" : pvalue_properties["psvalue#{i}"]            
+          end
         }
         pvalue_string = html_attribute.css_name+':'+ vals.join(' ')
       end
@@ -273,8 +281,13 @@ module Spree
     
           else
             val = html_attribute.repeats.times.collect{|i|
-              html_attribute.manual_entry?(properties["psvalue#{i}"]) ? 
-                "#{properties["pvalue#{i}"]}#{properties["unit#{i}"]}" : properties["psvalue#{i}"]
+              if html_attribute.css_name== 'border-color'
+                html_attribute.manual_entry?(properties["psvalue#{i}"]) ? 
+                  "#{properties["pvalue#{i}"]}" : properties["psvalue#{i}"]
+              else
+                html_attribute.manual_entry?(properties["psvalue#{i}"]) ? 
+                  "#{properties["pvalue#{i}"]}#{properties["unit#{i}"]}" : properties["psvalue#{i}"]
+              end
             }.join(' ')
           end
         end

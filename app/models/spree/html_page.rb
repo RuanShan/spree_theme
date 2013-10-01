@@ -94,11 +94,7 @@ module Spree
         end
         hav = @html_attribute_value_hash[key]
       end
-    
-           
-  
-        
-      
+    begin "width, height, margin, padding, border only for computing"            
       # return: 0(self is fluid) or >0(real width) 
       def width    
         # it is root and fluid 
@@ -114,7 +110,6 @@ module Spree
           computed_width -= (margin['pvalue1']+margin['pvalue3']) unless margin.unset? 
           computed_width -= (border['pvalue1']+border['pvalue3']) unless border.unset? 
           computed_width -= (padding['pvalue1']+padding['pvalue3']) unless padding.unset? 
-            
           return computed_width  
         end
             
@@ -125,6 +120,38 @@ module Spree
         self.parent.width
       end
       
+      # return: 0(self is fluid) or >0(real width) 
+      def height    
+        # it is root 
+        return 0 if self.root? 
+        hav = self.html_attribute_values("block_height")
+        # self width unset, parent content layout is vertical.
+        return 0 if hav.unset?
+        return hav['pvalue'].to_i    
+      end
+      
+      def margin
+        hav = self.html_attribute_values("inner_margin")
+        # self width unset, parent content layout is vertical.
+        return [0,0,0,0] if hav.unset?
+        # in case 'auto'.to_i => 0
+        return [hav.pvalue(0).to_i, hav.pvalue(1).to_i, hav.pvalue(2).to_i, hav.pvalue(3).to_i]        
+      end
+        
+      def padding        
+        hav = self.html_attribute_values("inner_padding")
+        # self width unset, parent content layout is vertical.
+        return [0,0,0,0] if hav.unset?
+        return [hav.pvalue(0), hav.pvalue(1), hav.pvalue(2), hav.pvalue(3)]        
+      end
+      
+      def border
+        hav = self.html_attribute_values("inner_border-width")
+        # self width unset, parent content layout is vertical.
+        return [0,0,0,0] if hav.unset?
+        return [hav.pvalue(0), hav.pvalue(1), hav.pvalue(2), hav.pvalue(3)]
+      end
+    end            
       def save
         updated_html_attribute_values.each{|hav|  hav.update  }
         # update param_value.pvalue
