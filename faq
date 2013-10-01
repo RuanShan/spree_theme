@@ -28,4 +28,19 @@
   cd dummy
   rake db:test:prepare
   rake spree_theme:load_sample RAILS_ENV=test
-  
+7. rebuild development env
+  rake db:migrate:reset
+  rake db:seed
+  rake spree_theme:load_sample
+  rake spree_theme:import_template
+8. load seed without extra_piece_params 
+  rake db:seed DISABLE_EXTRA_PARAMS=1
+9. load a extra_piece_param
+  rails r "load SpreeTheme::Engine.root.to_s+'/db/extra_piece_params/xxx.rb'"
+10. add more section piece params
+  @rebuild development env
+  add file in db/extra_piece_params
+  @load the extra_piece_param
+  @rebuild development env
+
+    

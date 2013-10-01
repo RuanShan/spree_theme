@@ -459,12 +459,16 @@ product_name:
   is_selectable: "0"
   is_container: "0"
   html: |    
-     <a href="<%= product.path %>"> <%=product.name %> </a>
+     <%# span only for selector  .g_piece_selector a %>
+     <span class="<%=g_piece_selector%>"><a href="<%= product.path %>"> <%=product.name %> </a> </span>
   created_at: 2011-09-20 19:40:07
   updated_at: 2011-09-20 19:40:07
   css: |
     .<%=g_piece_selector%> a{
       <%= @template.css :a %> 
+    }
+    .<%=g_piece_selector%> a:hover{
+      <%= @template.css :ah %> 
     }
   js: ""
 product_thumbnails:
