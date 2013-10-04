@@ -2,6 +2,7 @@ require 'spree_core'
 require 'spree_theme/engine'
 require 'spree_theme/system'
 require 'spree_theme/site_helper'
+require 'spree_theme/section_piece_param_helper'
 
 module SpreeTheme
   

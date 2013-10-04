@@ -256,6 +256,10 @@ module Spree
           ".s_#{self.param_value.page_layout_id}_#{self.param_value.section_param.section_id} .selected"
         elsif self.param_value.section_param.section_piece_param.class_name=~/^a/ #ainner, a, ah
           ".s_#{self.param_value.page_layout_id}_#{self.param_value.section_param.section_id} a"
+        elsif ['img','button','input','td','th'].include? self.param_value.section_param.section_piece_param.class_name
+          #product quantity,atc section_piece content just input,add a <span> wrap it.
+          #product images content thumb and main images so here should be section_id, 
+          ".s_#{self.param_value.page_layout_id}_#{self.param_value.section_param.section_id} #{self.param_value.section_param.section_piece_param.class_name}"
         else  #noclick, selected
           ".s_#{self.param_value.page_layout_id}_#{self.param_value.section_param.section_id} .#{self.param_value.section_param.section_piece_param.class_name}"
         end

@@ -12,11 +12,8 @@ root:
       <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
       <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE8" />
       <link rel="shortcut icon" href="favicon.ico" type="image/x-icon"/>
-    <!--[if lt IE 7]>
-      <script src="/javascripts/IE7.js" type="text/javascript"></script>
-    <![endif]-->      
-    <% if @current_page.is_preview %>
       <script type="text/javascript" src="/assets/store/spree_theme.js"></script>
+    <% if @current_page.is_preview %>
       <link rel="stylesheet" href="/assets/store/spree_theme.css" type="text/css" />    
       <link rel="stylesheet" href="/assets/jquery-ui/minified/jquery-ui.min.css" type="text/css" />    
     <% else%>
@@ -57,8 +54,8 @@ root:
         font-family: Tahoma, Verdana, Arial, Helvetica, "Bitstream Vera Sans", Sans, sans-serif;
         <% end %>
       }    
-      ul,li {
-        list-style: none outside none;
+      ol,ul {
+        list-style: none;
       }
     /* **** Defaults **** */  /** headings **/
       h1
@@ -85,23 +82,27 @@ root:
         line-height: 1.3em;
         margin-top: 0.909em; /* Equivalent to 1em in the page's base font: 1 / 1.1 = 0.909 */
         margin-bottom: 0.909em;
-      }    
-      p, ul, ol
+      }  
+      /* Normalizes margin,padding */        
+      div,dl,dt,dd,ul,ol,li,pre,form,fieldset,input,p,blockquote,th,td
       { margin: 0;
         padding: 0;
-      }    
-      table
-      { border-collapse: collapse;
-      }    
+      }
+      /* Normalizes font-size and font-weight to normal */
+      address,caption,cite,code,dfn,em,strong,th,var { font-size:normal; font-weight:normal }    
+      /* Removes list-style from lists */
+      table { border-collapse:collapse; border-spacing:0 }
       th, thead th, tbody th
       { text-align: left;
+        font-style:normal;
+        font-weight:normal;   
       }
       img
       { border: 0;
-      }
-      form
-      { margin: 0;
-        padding: 0;
+        /* remove extra height, 
+         * http://stackoverflow.com/questions/6483994/css-font-size-img-tag
+         */
+        vertical-align:middle; 
       }
     <% if @template.css :use_bbtl %>
     div#bbtl
@@ -482,37 +483,31 @@ product_thumbnails:
     <div id="product-images" data-hook="product_images" class="<%=g_piece_selector%>">
     <% if (product.images + product.variant_images).uniq.size > 1 %>
       <ul id="product-thumbnails" class="thumbnails inline" data-hook>
-        <% product.images.each do |i| %>
-          <li class='tmb-all' id='tmb-<%= i.id %>'>
+        <% product.images.each do |i| %><li class='tmb-all' id='tmb-<%= i.id %>'>
             <%= link_to(image_tag(i.attachment.url(:mini)), i.attachment.url(:product), :class => 'tmb-all', :id => "tmb-#{i.id}") %>
-          </li>
-        <% end %>
-    
+        </li><% end %>
         <% if product.has_variants? %>
           <% product.variant_images.each do |i| %>
-            <% next if product.images.include?(i) %>
-            <li class='vtmb' id='tmb-<%= i.id %>'>
+            <% next if product.images.include?(i) %><li class='vtmb' id='tmb-<%= i.id %>'>
               <%= link_to(image_tag(i.attachment.url(:mini)), i.attachment.url(:product)) %>
-            </li>
-          <% end %>
+          </li><% end %>
         <% end %>
       </ul>
     <% end %>
     </div>
   created_at: 2011-09-20 19:40:07
   updated_at: 2011-09-20 19:40:07
-  css: |
-    .<%=g_piece_selector%> ul, ol {
-      margin-left: 0;
-      margin-top: 0;
-      -webkit-padding-start: 0px;
-      padding-left: 0;
-      list-style-position: inside;
-    }    
+  css: |  
     .<%=g_piece_selector%> ul.inline  li {
+    /*
+     * it is inline-block, we should remove space between li.
+     * http://stackoverflow.com/questions/16234440/space-between-li
+     */
           display: inline-block;
     }
-
+    .<%=g_piece_selector%> img {
+      <%= @template.css :img %> 
+    }
   js: ""
 product_main_image:
   id: 15
@@ -521,12 +516,15 @@ product_main_image:
   is_selectable: "0"
   is_container: "0"
   html: |   
-    <div id="main-image" data-hook>
+    <div id="main-image"  class="<%=g_piece_selector%>">
       <%= product_image(product, :itemprop => "image") %>
     </div>
   created_at: 2011-09-20 19:40:07
   updated_at: 2011-09-20 19:40:07
-  css: ""
+  css: |
+    .<%=g_piece_selector%> img{
+      <%= @template.css :img %> 
+    }
   js: ""
 product_properties:
   id: 16
@@ -536,13 +534,13 @@ product_properties:
   is_container: "0"
   html: |   
     <% unless product.product_properties.empty? %>  
-      <table id="product-properties" class="table-display" data-hook>
+      <table class="<%=g_piece_selector%>" >
         <tbody>
           <% product.product_properties.each do |product_property| %>
             <% css_class = cycle('even', 'odd', :name => "properties") %>
             <tr class="<%= css_class %>">
-              <td><strong><%= product_property.property.presentation %></strong></td>
-              <td><%= product_property.value %></td>
+              <th class="cell"><%= product_property.property.presentation %></th>
+              <td class="cell"><%= product_property.value %></td>
             </tr>
           <% end %>
           <% reset_cycle('properties') %>
@@ -551,7 +549,20 @@ product_properties:
     <% end %>
   created_at: 2011-09-20 19:40:07
   updated_at: 2011-09-20 19:40:07
-  css: ""
+  css: |
+    .<%=g_piece_selector%> {
+      width:100%; 
+    }
+    .<%=g_piece_selector%> .cell{
+      <%= @template.css :cell %> 
+    }
+    .<%=g_piece_selector%> th{
+      <%= @template.css :th %> 
+    }
+    .<%=g_piece_selector%> td{
+      <%= @template.css :td %> 
+    }
+
   js: ""
 product_price:
   id: 17
@@ -561,7 +572,7 @@ product_price:
   is_container: "0"
   html: |   
     <% if product.price_in(current_currency) and !product.price.nil? %>
-      <div data-hook="product_price" class="columns five <% if !product.has_variants? %> alpha <% else %> omega <% end %>">        
+      <div class="columns five <% if !product.has_variants? %> alpha <% else %> omega <% end %>">        
         <div id="product-price">
           <div><span class="price selling" itemprop="price"><%= product.price_in(current_currency).display_price %></span></div>
         </div>
@@ -582,13 +593,16 @@ product_quantity:
   slug: product_quantity
   is_selectable: "0"
   is_container: "0"
-  html: |   
-    <%= number_field_tag ( "variants[#{product.master.id}]"),
-            1, :class => 'title', :min => 1 %>
+  html: |       
+    <span class="<%=g_piece_selector%>"><%= number_field_tag ( "variants[#{product.master.id}]"),
+            1, :class => 'title', :min => 1 %> </span>
 
   created_at: 2011-09-20 19:40:07
   updated_at: 2011-09-20 19:40:07
-  css: ""
+  css: |
+    .<%=g_piece_selector%> input{
+      <%= @template.css :input %> 
+    }
   js: ""
 product_atc:
   id: 19
@@ -597,15 +611,18 @@ product_atc:
   is_selectable: "0"
   is_container: "0"
   html: |   
-    <%= form_for :order, :url => populate_orders_path do |f| %>
+    <%= form_for :order, :url => populate_orders_path, :html=>{:class=>g_piece_selector} do |f| %>
       <%= hidden_field_tag  "variants[#{product.master.id}]", 1 %>
-      <%= button_tag :class => 'large primary', :id => 'add-to-cart-button', :type => :submit do %>
+      <%= button_tag  :id => 'add-to-cart-button', :type => :submit do %>
             <%= t(:add_to_cart) %>
       <% end %>
     <% end %>
   created_at: 2011-09-20 19:40:07
   updated_at: 2011-09-20 19:40:07
-  css: ""
+  css: |
+    .<%=g_piece_selector%> button{
+      <%= @template.css :button %> 
+    }
   js: ""
 cart:
   id: 20

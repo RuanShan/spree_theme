@@ -48,13 +48,17 @@ namespace :spree_theme do
     #section_pieces = Spree::SectionPiece.all(:include=>:section_piece_params)    
     #sections =  Spree::Section.all(:include=>{:section_params=>:section_piece_params})
     #page_layouts = Spree::PageLayout.all(:include=>{:section_params=>:section_piece_params})    
-    pvs = Spree::TemplateTheme.first.param_values.all(:include=>{:section_param=>:section_piece_param})
+    pvs = Spree::TemplateTheme.first.param_values.all(:include=>{:section_param=>{:section_piece_param=>:param_category}})
     for pv in pvs
       if pv.section_param.blank?
         puts "error:pv=#{pv.id} has no section_param"  
       else
         if pv.section_param.section_piece_param.blank?
           puts "error:pv=#{pv.id} has no section_piece_param"  
+        else
+          if pv.section_param.section_piece_param.param_category.blank?
+            puts "error:pv=#{pv.id},spp=#{pv.section_param.section_piece_param.id} has no param_category"
+          end
         end
       end      
     end
