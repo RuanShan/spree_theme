@@ -32,7 +32,13 @@ module PageTag
       end
        
       def assigned_menu_id
-        self.collection_tag.theme.assigned_resource_id(SpreeTheme.taxon_class, page_layout.id)
+        assigned_id =  self.collection_tag.theme.assigned_resource_id(SpreeTheme.taxon_class, page_layout.id)
+        if assigned_id==0
+          assigned_id = page_layout.ancestors.collect{|ancestor| 
+            self.collection_tag.theme.assigned_resource_id(SpreeTheme.taxon_class, ancestor.id) 
+          }.select{| ancestor_assigned_id | ancestor_assigned_id >0 }.first.to_i
+        end        
+        assigned_id
       end
       def assigned_image_id
         self.collection_tag.theme.assigned_resource_id(Spree::TemplateFile, page_layout.id)

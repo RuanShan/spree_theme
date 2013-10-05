@@ -3,7 +3,7 @@ module PageTag
     class WrappedMenu < WrappedModel
       self.accessable_attributes=[:id,:name]
       delegate *self.accessable_attributes, :to => :model
-
+      delegate :taxonomy, :to => :model
       def children
         self.model.children.collect{|item| WrappedMenu.new(self.collection_tag, item)}
       end
@@ -32,7 +32,11 @@ module PageTag
       self.menus_cache = {}
     end
 
-    # get menu root assigned to section instance
+    # get menu root assigned to section instance or ancestors
+    #  containerA(menu) - taxonomy_name
+    #                  - hmenu
+    #  containerB- hmenu(menu)
+    #  in case above all works
     def get( wrapped_page_layout )
       key = wrapped_page_layout.to_key 
       unless menus_cache.key? key
