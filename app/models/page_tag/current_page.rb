@@ -53,16 +53,7 @@ module PageTag
     #is given section context valid to current page 
     def valid_context?
 Rails.logger.debug "resource.present?=#{resource.present?}"      
-      if self.resource.present? #product detail
-        self.template_tag.current_piece.context_either? or self.template_tag.current_piece.context_detail?  
-      elsif menu[:page_type]=='cart'
-        self.template_tag.current_piece.context_either? or self.template_tag.current_piece.context_cart?          
-      elsif menu[:page_type]=='account'
-        self.template_tag.current_piece.context_either? or self.template_tag.current_piece.context_account?          
-      else
-        self.template_tag.current_piece.context_either? or self.template_tag.current_piece.context_list?
-      end
-
+      self.template_tag.current_piece.context_either? or (self.template_tag.current_piece.current_context == menu.current_context)      
     end
     
     # when render for cart/account, should output '<%=yield %>'

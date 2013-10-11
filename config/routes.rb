@@ -23,7 +23,7 @@ Spree::Core::Engine.routes.prepend do
   end
   
   match '(/:c(/:r))' => 'template_themes#page', :c => /[\d]+/
-  match 'preview(/:c(/:r))' => 'template_themes#preview' #preview home
+  #match 'preview(/:c(/:r))' => 'template_themes#preview' #preview home
  
   namespace :admin do
     resources :template_themes do

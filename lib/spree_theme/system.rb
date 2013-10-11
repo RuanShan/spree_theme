@@ -36,10 +36,10 @@ Rails.logger.debug "request.fullpath=#{request.fullpath}"
     #DefaultTaxon.instance.id => 0
     if params[:controller]=~/cart|checkout|order/
       @menu = DefaultTaxon.instance
-      @menu[:page_type] = 'cart'
+      @menu[:request_fullpath] = request.fullpath
     elsif params[:controller]=~/user/
       @menu = DefaultTaxon.instance
-      @menu[:page_type] = 'account'
+      @menu[:request_fullpath] = request.fullpath
     else
       if params[:r]
         @resource = Spree::Product.find_by_id(params[:r])
@@ -50,9 +50,6 @@ Rails.logger.debug "request.fullpath=#{request.fullpath}"
         @menu = SpreeTheme.taxon_class.find_by_id(website.index_page)
       else
         @menu = DefaultTaxon.instance
-      end
-      if @resource.present?
-        #@menu[:page_type] = 'detail'
       end
     end
 

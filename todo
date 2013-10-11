@@ -37,3 +37,4 @@ how to remove a section piece param?
 get_css 12,13,'block', it is not right in generated css. 
 set font-size:0, unset it does not work.
 set input font-color:red, unset it does not work.
+category 'brand' do not work.

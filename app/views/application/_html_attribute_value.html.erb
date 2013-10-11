@@ -11,9 +11,9 @@ bool_false = Spree::HtmlAttribute::BOOL_FALSE
    pv_link_id = pv_div_id+'_a'
    hav = Spree::HtmlAttributeValue.parse_from(param_value, ha)
    display = ( hav.hidden? ? "display:none" : ""  )
-   Rails.logger.debug "hidden=#{display}" 
+#   Rails.logger.debug "hidden=#{display}" 
    query_path = update_param_value_template_theme_path( @theme )
--%>
+%>
   <div id=<%=pv_div_id%> class="pv clear-block" style="<%=display%>">
       <div class="fl"> <span class="pv-name"><%=ha.title%></span>
       </div>

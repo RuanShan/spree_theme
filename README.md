@@ -2,6 +2,7 @@ SpreeTheme
 ==========
 
 New frontend of spree, user could easy modify theme or add new theme. It is not working now!
+It is just for spree_abc, not common use, cause it override some cart/checkout views.
 
 how it work
 -----------

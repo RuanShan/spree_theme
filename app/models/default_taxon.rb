@@ -1,3 +1,12 @@
 class DefaultTaxon < SpreeTheme.taxon_class
-  include Singleton
+  include Spree::Context::Taxon
+
+  def self.instance
+    self.new
+  end
+  
+  def name
+    "Default #{current_context}"
+  end
+  
 end

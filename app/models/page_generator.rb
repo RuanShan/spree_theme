@@ -63,7 +63,8 @@ class PageGenerator
   end
   
   def url_prefix      
-    self.is_preview ? "/preview" : ""
+    #self.is_preview ? "/preview" : ""
+    ""
   end
   
   #def has_editor?

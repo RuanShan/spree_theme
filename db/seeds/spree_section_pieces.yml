@@ -197,14 +197,6 @@ root:
       clear:both;
       <% end %>
     }
-    .content_layout .inner /*FIXME*/
-    {
-      position:absolute;
-      top:0;
-      left:0;
-      right:0;
-      bottom:0;
-    }
     .clear-block:after {
       content: ".";
       display: block;
@@ -630,13 +622,40 @@ cart:
   id: 20
   title: cart
   slug: cart
-  is_selectable: "0"
-  is_container: "0"
-  html: |   
-    <%= yield %>
+  is_selectable: "1"
+  is_container: "1"
+  html: |
+    <% if @order.line_items.empty? %>    
+      <div class="<%=g_piece_selector%>" data-hook="empty_cart">
+        <p><%= Spree.t(:your_cart_is_empty) %></p>
+        <p><%= link_to Spree.t(:continue_shopping), products_path, :class => 'button continue' %></p>
+      </div>    
+    <% else %>
+      <div class="<%=g_piece_selector%>"  data-hook="outside_cart_form">
+        <%= form_for @order, :url => update_cart_path, :html => {:id => 'update-cart'} do |order_form| %>
+          <div data-hook="inside_cart_form">
+            <% #place holder for action /cart %>
+            <%= yield %>
+            ~~content~~
+            <div class="cart_buttons" data-hook="cart_buttons">
+              <%= button_tag :class => 'primary', :id => 'update-button' do %>
+                <%= Spree.t(:update) %>
+              <% end %>
+              <%= button_tag :class => 'button checkout primary', :id => 'checkout-link', :name => 'checkout' do %>
+                <%= Spree.t(:checkout) %>
+              <% end %>
+            </div>
+          </div>
+        <% end %>
+      </div>    
+    <% end %>
   created_at: 2011-09-20 19:40:07
   updated_at: 2011-09-20 19:40:07
-  css: ""
+  css: |
+    .<%=g_piece_selector%> cart_buttons    { clear:both; }
+    .<%=g_piece_selector%> button{
+      <%= @template.css :button %> 
+    }
   js: ""
 account:
   id: 21
@@ -660,6 +679,57 @@ taxonomy_name:
     <% if @template.css :use_taxonomy %>   
     <span ><%= @template.menu.taxonomy.name %> </span>
     <% end %>
+  created_at: 2011-09-20 19:40:07
+  updated_at: 2011-09-20 19:40:07
+  css: ""
+  js: ""
+cart_items:
+  id: 23
+  title: cart items
+  slug: cart-items
+  is_selectable: "1"
+  is_container: "0"
+  html: |    
+    <%= render :partial => 'form', :locals => { :order_form => order_form } %>
+  created_at: 2011-09-20 19:40:07
+  updated_at: 2011-09-20 19:40:07
+  css: ""
+  js: ""
+order_total_price:  
+  id: 24
+  title: order total price
+  slug: order-total-price
+  is_selectable: "1"
+  is_container: "0"
+  html: |    
+    <%= Spree.t(:subtotal) %>: <span class="g-order-total"><%= @order.display_total.to_html %></span>
+  created_at: 2011-09-20 19:40:07
+  updated_at: 2011-09-20 19:40:07
+  css: |
+   .g-order-total{
+     
+   }
+  js: ""
+checkout:
+  id: 25
+  title: checkout
+  slug: checkout
+  is_selectable: "0"
+  is_container: "0"
+  html: |   
+    <%= yield %>
+  created_at: 2011-09-20 19:40:07
+  updated_at: 2011-09-20 19:40:07
+  css: ""
+  js: ""
+order:
+  id: 26
+  title: order
+  slug: order
+  is_selectable: "0"
+  is_container: "0"
+  html: |   
+    <%= yield %>
   created_at: 2011-09-20 19:40:07
   updated_at: 2011-09-20 19:40:07
   css: ""

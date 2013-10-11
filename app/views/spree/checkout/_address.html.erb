@@ -1,0 +1,13 @@
+<div class="columns alpha six" data-hook="billing_fieldset_wrapper">
+    <%= form.fields_for :bill_address do |bill_form| %>
+      <legend align="center"><%= Spree.t(:billing_address) %></legend>
+      <%= render :partial => 'spree/address/form', :locals => { :form => bill_form, :address_type => 'billing', :address => @order.bill_address } %>
+    <% end %>
+</div>
+
+    <%= form.fields_for :ship_address do |ship_form| %>
+        <%= hidden_field_tag 'order[use_billing]', '1' %>
+    <% end %>
+<div class="form-buttons" data-hook="buttons">
+  <%= submit_tag Spree.t(:save_and_continue), :class => 'continue button primary' %>
+</div>

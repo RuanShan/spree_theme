@@ -1,6 +1,8 @@
 module Spree
   class PageLayout < ActiveRecord::Base
     extend FriendlyId
+    include Spree::Context::Base
+
     acts_as_nested_set :scope=>"root_id" # scope is for :copy, no need to modify parent_id, lft, rgt.
     belongs_to :section  
     has_many :themes, :class_name => "TemplateTheme",:primary_key=>:root_id,:foreign_key=>:page_layout_root_id
@@ -9,19 +11,6 @@ module Spree
     friendly_id :title, :use => :scoped, :scope => :site
     has_many :full_set_nodes, :class_name =>'PageLayout', :foreign_key=>:root_id, :primary_key=>:root_id
   
-    # use string instead of symbol, parameter from client is string 
-    ContextEnum=Struct.new(:list,:detail,:cart,:account)[:list,:detail,:cart,:account]
-    ContextEither = :""
-    Contexts = [ContextEnum.values,ContextEither].flatten
-    ContextDataSourceMap = { ContextEnum.list=>[:gpvs],ContextEnum.detail=>[:this_product]}
-    DataSourceChainMap = {:gpvs=>[:gpv_product,:gpv_group, :gpv_either],
-      :gpv_product=>[:product_images,:product_options], 
-      :gpv_group=>[:group_products,:group_images],    
-      :group_products=>[:product_images,:product_options],
-      :this_product=>[]
-      #keys should inclde all data_sources, test required.
-      }
-    DataSourceEmpty = :""
     # remove section relatives after page_layout destroyed.
     before_destroy :remove_section
     
@@ -327,6 +316,9 @@ module Spree
         end
       end
       
+      def context?(some_context)
+        current_context == some_context.to_sym
+      end
       def context_cart?
         current_context ==ContextEnum.cart
       end
@@ -338,9 +330,6 @@ module Spree
       end
       def context_detail?
         current_context ==ContextEnum.detail
-      end
-      def context_either?
-        current_context ==ContextEither
       end
       
     end
