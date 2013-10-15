@@ -16,18 +16,22 @@ objs=[
   {"id"=>30, "position"=>30, "is_enabled"=>true, "editor_id"=>2, "slug"=>"main_image" },
   {"id"=>31, "position"=>31, "is_enabled"=>true, "editor_id"=>2, "slug"=>"thumb_image" },
 
-  #input
-  {"id"=>41, "position"=>41, "is_enabled"=>true, "editor_id"=>0, "slug"=>"input" },
-  #{"id"=>61, "position"=>61, "is_enabled"=>true, "editor_id"=>3, "slug"=>"link_background" },
-  #{"id"=>62, "position"=>62, "is_enabled"=>true, "editor_id"=>3, "slug"=>"link_hover_background" },
-  #{"id"=>63, "position"=>63, "is_enabled"=>true, "editor_id"=>3, "slug"=>"link_selected_background" },
+  #form
+  {"id"=>39, "position"=>39, "is_enabled"=>true, "editor_id"=>0, "slug"=>"form" },
+  {"id"=>40, "position"=>40, "is_enabled"=>true, "editor_id"=>0, "slug"=>"form_title" },
+  {"id"=>42, "position"=>42, "is_enabled"=>true, "editor_id"=>0, "slug"=>"label_name" },
+  {"id"=>43, "position"=>43, "is_enabled"=>true, "editor_id"=>0, "slug"=>"label_error" },
+  {"id"=>44, "position"=>44, "is_enabled"=>true, "editor_id"=>0, "slug"=>"input" },
+   
+  #{"id"=>50, "position"=>50, "is_enabled"=>true, "editor_id"=>0, "slug"=>"title" },
   #{"id"=>64, "position"=>64, "is_enabled"=>true, "editor_id"=>3, "slug"=>"link_selected_hover_background" },
   #{"id"=>65, "position"=>65, "is_enabled"=>true, "editor_id"=>3, "slug"=>"unclickable_link" },
   #table
+  {"id"=>78, "position"=>78, "is_enabled"=>true, "editor_id"=>0, "slug"=>"table_wrapper" },
+  {"id"=>79, "position"=>79, "is_enabled"=>true, "editor_id"=>0, "slug"=>"table_title" },
   {"id"=>80, "position"=>80, "is_enabled"=>true, "editor_id"=>2, "slug"=>"cell" },
   {"id"=>81, "position"=>81, "is_enabled"=>true, "editor_id"=>2, "slug"=>"th" },
   {"id"=>82, "position"=>82, "is_enabled"=>true, "editor_id"=>2, "slug"=>"td" },
-  #{"id"=>83, "position"=>83, "is_enabled"=>true, "editor_id"=>4, "slug"=>"th_text" },
   #{"id"=>84, "position"=>84, "is_enabled"=>true, "editor_id"=>4, "slug"=>"td_text" },
   ]
 

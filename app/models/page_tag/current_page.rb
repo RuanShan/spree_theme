@@ -52,7 +52,9 @@ module PageTag
     
     #is given section context valid to current page 
     def valid_context?
-Rails.logger.debug "resource.present?=#{resource.present?}"      
+#Rails.logger.debug "resource.present?=#{resource.present?}"
+#Rails.logger.debug "menu.object_id=#{menu.object_id}"
+#Rails.logger.debug "request_fullpath=#{menu.request_fullpath},menu.current_context=#{menu.current_context},piece.current_context=#{self.template_tag.current_piece.current_context}"      
       self.template_tag.current_piece.context_either? or (self.template_tag.current_piece.current_context == menu.current_context)      
     end
     

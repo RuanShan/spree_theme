@@ -2,7 +2,7 @@ module Spree
   module Context
     module Base
       # use string instead of symbol, parameter from client is string 
-      ContextEnum=Struct.new(:list,:detail,:cart,:account,:checkout, :thankyou,:signup,:login)[:list,:detail,:cart,:account,:checkout, :thankyou,:signup,:login]
+      ContextEnum=Struct.new(:list,:detail,:cart,:account,:checkout, :thanks,:signup,:login)[:list,:detail,:cart,:account,:checkout, :thanks,:signup,:login]
       ContextEither = :""
       Contexts = [ContextEnum.values,ContextEither].flatten
       

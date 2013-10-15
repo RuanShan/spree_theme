@@ -252,6 +252,7 @@ GEM
       rspec-core (~> 2.14.0)
       rspec-expectations (~> 2.14.0)
       rspec-mocks (~> 2.14.0)
+    ruby-graphviz (1.0.9)
     rubyzip (0.9.9)
     sass (3.2.10)
     sass-rails (3.2.6)
@@ -313,6 +314,7 @@ DEPENDENCIES
   mysql2
   responds_to_parent
   rspec-rails (~> 2.7)
+  ruby-graphviz
   sass
   simplecov
   spree!

@@ -235,7 +235,6 @@ module Spree
       def assigned_resource_id( resource_class, page_layout_id)
         resource_id = 0
         resource_key = get_resource_class_key(resource_class)
-  Rails.logger.debug "resource_key=#{resource_key}, page_layout_id=#{page_layout_id}"      
         if assigned_resource_ids.try(:[],page_layout_id).try(:[],resource_key).present?
           resource_id = assigned_resource_ids[page_layout_id][resource_key].first
         end

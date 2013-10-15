@@ -299,8 +299,6 @@ module Spree
       # * params
       #   * new_context - one value of Contexts 
       def update_section_context( new_context)
-  Rails.logger.debug "update_section_context#{self.id}, original=#{self.section_context}, new=#{new_context}"
-  Rails.logger.debug "update_section_context#{self.id}, inherited_context=#{self.inherited_context}, current_context=#{current_context}"
         new_context  = new_context.to_sym
         return if self.inherited_context != ContextEither # ancestor has assigned context. 
         return if self.current_context == new_context

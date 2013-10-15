@@ -7,23 +7,25 @@ module Spree
       #     /user  context is account
       # return :either(detail or list), cart, checkout, register, login
       def current_context
-        #TODO verify thankyou page.
-        case self[:request_fullpath]
+        #TODO verify thanks page.
+        case self.request_fullpath
           when /^\/[\d]+\/[\d]+/
             ContextEnum.detail
           when /^\/cart/
             ContextEnum.cart
           when /^\/user/,/^\/password/ 
             ContextEnum.account
+          when /^\/login/, /^\/checkout\/registration/
+            ContextEnum.account  #FIXME use login?    
           when /^\/checkout/
             ContextEnum.checkout
-          when /^\/login/, /^\/checkout\/registration/
-            ContextEnum.login      
+          when /^\/orders/
+            ContextEnum.thanks
           when /^\/signup/
             ContextEnum.signup
           else
             ContextEnum.list
-          end
+        end
       end
     end
   end

@@ -36,10 +36,8 @@ Rails.logger.debug "request.fullpath=#{request.fullpath}"
     #DefaultTaxon.instance.id => 0
     if params[:controller]=~/cart|checkout|order/
       @menu = DefaultTaxon.instance
-      @menu[:request_fullpath] = request.fullpath
     elsif params[:controller]=~/user/
       @menu = DefaultTaxon.instance
-      @menu[:request_fullpath] = request.fullpath
     else
       if params[:r]
         @resource = Spree::Product.find_by_id(params[:r])
@@ -52,7 +50,8 @@ Rails.logger.debug "request.fullpath=#{request.fullpath}"
         @menu = DefaultTaxon.instance
       end
     end
-
+    #menu should be same instance pass to PageGenerator, it require  request_fullpath
+    @menu.request_fullpath = request.fullpath
     @is_designer = website.design?
     if Rails.env !~ /prduction/
       # for development or test, enable get site from cookies
