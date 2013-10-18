@@ -13,8 +13,8 @@ create_section_piece_param( section_piece, cell)
 
 title =  { "editor_id"=>3,  "class_name"=>"table_title", "pclass"=>"css", "param_category_id"=>79,  "html_attribute_ids"=>"2,3,4,5"}  
 cell =  { "editor_id"=>3,  "class_name"=>"cell", "pclass"=>"css", "param_category_id"=>80,  "html_attribute_ids"=>"2,3,4,5"}  
-th =  { "editor_id"=>3,  "class_name"=>"table_th", "pclass"=>"css", "param_category_id"=>81,  "html_attribute_ids"=>"2,3,4,5"}  
-td =  { "editor_id"=>3,  "class_name"=>"table_td", "pclass"=>"css", "param_category_id"=>82,  "html_attribute_ids"=>"2,3,4,5"}  
+th =  { "editor_id"=>3,  "class_name"=>"th", "pclass"=>"css", "param_category_id"=>81,  "html_attribute_ids"=>"2,3,4,5"}  
+td =  { "editor_id"=>3,  "class_name"=>"td", "pclass"=>"css", "param_category_id"=>82,  "html_attribute_ids"=>"2,3,4,5"}  
 create_section_piece_param( section_piece, title)
 create_section_piece_param( section_piece, cell)
 create_section_piece_param( section_piece, th)
@@ -22,8 +22,8 @@ create_section_piece_param( section_piece, td)
 
 title = { "editor_id"=>4,  "class_name"=>"table_title", "pclass"=>"css", "param_category_id"=>79,  "html_attribute_ids"=>"24,27,49,53,54"}  
 cell = { "editor_id"=>4,  "class_name"=>"cell", "pclass"=>"css", "param_category_id"=>80,  "html_attribute_ids"=>"24,27,49,53,54"}  
-th = { "editor_id"=>4,  "class_name"=>"table_th", "pclass"=>"css", "param_category_id"=>81,  "html_attribute_ids"=>"24,27,49,53,54"}  
-td = { "editor_id"=>4,  "class_name"=>"table_td", "pclass"=>"css", "param_category_id"=>82,  "html_attribute_ids"=>"24,27,49,53,54"}  
+th = { "editor_id"=>4,  "class_name"=>"th", "pclass"=>"css", "param_category_id"=>81,  "html_attribute_ids"=>"24,27,49,53,54"}  
+td = { "editor_id"=>4,  "class_name"=>"td", "pclass"=>"css", "param_category_id"=>82,  "html_attribute_ids"=>"24,27,49,53,54"}  
 create_section_piece_param( section_piece, title)
 create_section_piece_param( section_piece, cell)
 create_section_piece_param( section_piece, th)

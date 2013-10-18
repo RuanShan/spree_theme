@@ -261,6 +261,8 @@ module Spree
           #product quantity,atc section_piece content just input,add a <span> wrap it.
           #product images content thumb and main images so here should be section_id,
           ".s_#{self.param_value.page_layout_id}_#{self.param_value.section_param.section_id} #{self.param_value.section_param.section_piece_param.class_name}"
+        elsif self.param_value.section_param.section_piece_param.class_name=='cell'
+          ".s_#{self.param_value.page_layout_id}_#{self.param_value.section_param.section_id} th, .s_#{self.param_value.page_layout_id}_#{self.param_value.section_param.section_id} td"          
         else  #noclick, selected
           ".s_#{self.param_value.page_layout_id}_#{self.param_value.section_param.section_id} .#{self.param_value.section_param.section_piece_param.class_name}"
         end
