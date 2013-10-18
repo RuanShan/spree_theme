@@ -15,7 +15,7 @@ module Spree
             ContextEnum.cart
           when /^\/user/,/^\/password/ 
             ContextEnum.account
-          when /^\/login/, /^\/checkout\/registration/
+          when /^\/account/,/^\/login/, /^\/checkout\/registration/
             ContextEnum.account  #FIXME use login?    
           when /^\/checkout/
             ContextEnum.checkout
