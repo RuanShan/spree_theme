@@ -43,6 +43,12 @@ module Spree
       return (rgt-lft)>1
     end
     
+    #get whole tree and select ancestors, rails would cache whole tree, this would save time than get ancestors for each node
+    def cached_level
+      tree = self.root.self_and_descendants
+      tree.select{|node| node.lft<lft and node.rgt>rgt}.count
+    end
+    
     # get applicable resources for self
     def applicable_reources
       self.section.self_and_descendants(:include=>:section_piece).select{|node|

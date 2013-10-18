@@ -23,7 +23,7 @@ objs=[
   {"id"=>43, "position"=>43, "is_enabled"=>true, "editor_id"=>0, "slug"=>"label_error" },
   {"id"=>44, "position"=>44, "is_enabled"=>true, "editor_id"=>0, "slug"=>"input" },
    
-  #{"id"=>50, "position"=>50, "is_enabled"=>true, "editor_id"=>0, "slug"=>"title" },
+  {"id"=>45, "position"=>45, "is_enabled"=>true, "editor_id"=>0, "slug"=>"button" },
   #{"id"=>64, "position"=>64, "is_enabled"=>true, "editor_id"=>3, "slug"=>"link_selected_hover_background" },
   #{"id"=>65, "position"=>65, "is_enabled"=>true, "editor_id"=>3, "slug"=>"unclickable_link" },
   #table

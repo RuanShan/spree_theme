@@ -9,7 +9,7 @@ layout_root = theme.page_layout
   <% for layout in layout_root.self_and_descendants-%>
   <div class="clear-block">
     <div class="fl">
-    <%=raw("&nbsp;"*layout.level)%>
+    <%=raw("&nbsp;"*layout.cached_level)%>
     <%# do not call form.submit. 
     %>
     <%= link_to_function(layout.slug, 
