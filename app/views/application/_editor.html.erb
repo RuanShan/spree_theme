@@ -1,18 +1,7 @@
-<%-
-#local_params: editor, param_values
-
-param_category_ids = []
--%>
-<div id="editor_<%=editor.id%>" class="block param_value_editor">
-<%for pv in param_values-%>
 <%
-   param_category = pv.section_param.section_piece_param.param_category
-   unless param_category_ids.include? param_category.id
-    param_category_ids << param_category.id
--%>
-<div class="editor-header">H:<%=param_category.slug%></div>
-<% end-%>
-
-<%=render :partial=>"param_value",  :locals=>{:editor=>editor,:param_value=>pv}%>
-<%end-%>
+#local_params: editor, param_values
+  @param_category_ids = []
+%>
+<div id="editor_<%=editor.id%>" class="block param_value_editor">
+<%=render :partial=>"param_value", :collection=>param_values %>
 </div>

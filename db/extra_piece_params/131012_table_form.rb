@@ -32,9 +32,9 @@ create_section_piece_param( section_piece, td)
   
 form = {"editor_id"=>2, "class_name"=>"form", "pclass"=>"css", "param_category_id"=>39,  "html_attribute_ids"=>"31,7,8,6"}
 title = {"editor_id"=>2, "class_name"=>"form_title", "pclass"=>"css", "param_category_id"=>40,  "html_attribute_ids"=>"31,32,7,8,6"}
-label = {"editor_id"=>2, "class_name"=>"form_label", "pclass"=>"css", "param_category_id"=>42,  "html_attribute_ids"=>"31,32,7,8,6"}
+label = {"editor_id"=>2, "class_name"=>"label", "pclass"=>"css", "param_category_id"=>42,  "html_attribute_ids"=>"31,32,7,8,6"}
 error = {"editor_id"=>2, "class_name"=>"form_error", "pclass"=>"css", "param_category_id"=>43,  "html_attribute_ids"=>"31,32,7,8,6"}
-input = { "editor_id"=>2,  "class_name"=>"form_input", "pclass"=>"css", "param_category_id"=>44,  "html_attribute_ids"=>"21,15,31,32,7,8,6"}  
+input = { "editor_id"=>2,  "class_name"=>"input", "pclass"=>"css", "param_category_id"=>44,  "html_attribute_ids"=>"21,15,31,32,7,8,6"}  
 create_section_piece_param( section_piece, form)
 create_section_piece_param( section_piece, title)
 create_section_piece_param( section_piece, label)
@@ -42,18 +42,18 @@ create_section_piece_param( section_piece, error)
 create_section_piece_param( section_piece, input)
 
 title = { "editor_id"=>3,  "class_name"=>"form_title", "pclass"=>"css", "param_category_id"=>40,  "html_attribute_ids"=>"2,3,4,5"}  
-label = {"editor_id"=>3, "class_name"=>"form_label", "pclass"=>"css", "param_category_id"=>42,  "html_attribute_ids"=>"2,3,4,5"}
+label = {"editor_id"=>3, "class_name"=>"label", "pclass"=>"css", "param_category_id"=>42,  "html_attribute_ids"=>"2,3,4,5"}
 error = {"editor_id"=>3, "class_name"=>"form_error", "pclass"=>"css", "param_category_id"=>43,  "html_attribute_ids"=>"2,3,4,5"}
-input = { "editor_id"=>3,  "class_name"=>"form_input", "pclass"=>"css", "param_category_id"=>44,  "html_attribute_ids"=>"2,3,4,5"}  
+input = { "editor_id"=>3,  "class_name"=>"input", "pclass"=>"css", "param_category_id"=>44,  "html_attribute_ids"=>"2,3,4,5"}  
 create_section_piece_param( section_piece, title)
 create_section_piece_param( section_piece, label)
 create_section_piece_param( section_piece, error)
 create_section_piece_param( section_piece, input)
 
 title = { "editor_id"=>4,  "class_name"=>"forme_title", "pclass"=>"css", "param_category_id"=>40,  "html_attribute_ids"=>"24,27,49,53,54"}  
-label = {"editor_id"=>4, "class_name"=>"form_label", "pclass"=>"css", "param_category_id"=>42,  "html_attribute_ids"=>"24,27,49,53,54"}
+label = {"editor_id"=>4, "class_name"=>"label", "pclass"=>"css", "param_category_id"=>42,  "html_attribute_ids"=>"24,27,49,53,54"}
 error = {"editor_id"=>4, "class_name"=>"form_error", "pclass"=>"css", "param_category_id"=>43,  "html_attribute_ids"=>"24,27,49,53,54"}
-input = { "editor_id"=>4,  "class_name"=>"form_input", "pclass"=>"css", "param_category_id"=>44,  "html_attribute_ids"=>"24,27,49,53,54"}  
+input = { "editor_id"=>4,  "class_name"=>"input", "pclass"=>"css", "param_category_id"=>44,  "html_attribute_ids"=>"24,27,49,53,54"}  
 create_section_piece_param( section_piece, title)
 create_section_piece_param( section_piece, label)
 create_section_piece_param( section_piece, error)

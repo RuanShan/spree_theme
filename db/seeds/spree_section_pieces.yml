@@ -25,9 +25,9 @@ root:
     <%= csrf_meta_tags %>
     <%= render "spree/shared/routes" %>
     </head>
-    <body class="<%=g_piece_selector%> clear-block">
+    <body class="clear-block">
 
-      <div id="page" class='page <%='ui-layout-center' if @current_page.is_preview %>'><div id="page-inner" class="clear-block">
+      <div id="page" class='<%=g_piece_selector%> <%='ui-layout-center' if @current_page.is_preview %>'><div id="page-inner" class="clear-block">
         <a name="top" id="navigation-top"></a>
         <div id="skip-to-nav"><a href="#navigation">Skip to Navigation</a></div>
         ~~content~~
@@ -239,14 +239,19 @@ root:
      *   error margin, border, padding, bg, font
      *   input margin, border, padding, bg, font
      */
-    .table_title{ @template.css(:table_title) }
-    .table_cell{ @template.css(:table_cell) }
-    .table_th{ @template.css(:table_th) }
-    .table_td{ @template.css(:table_td) }
-    .form_title{ @template.css(:form_title) }
-    .form_label{ @template.css(:form_label) }
-    .form_error{ @template.css(:form_error) }
-    .form_input{ @template.css(:form_input) }
+    .<%=g_piece_selector%> label{ <%=@template.css(:label) %> }
+    .<%=g_piece_selector%> .error{ <%=@template.css(:error) %> }
+    .<%=g_piece_selector%> input{ <%=@template.css(:input) %> }
+    .<%=g_piece_selector%> a{ <%=@template.css(:a) %> }
+    .<%=g_piece_selector%> a:hover{ <%=@template.css(:ah) %> }    
+    .<%=g_piece_selector%> .table_title{ <%=@template.css(:table_title) %> }
+    .<%=g_piece_selector%> .table_cell{ <%=@template.css(:table_cell) %> }
+    .<%=g_piece_selector%> .table_th{ <%=@template.css(:table_th) %> }
+    .<%=g_piece_selector%> .table_td{ <%=@template.css(:table_td) %> }
+    .<%=g_piece_selector%> .form_title{ <%=@template.css(:form_title) %> }
+    .<%=g_piece_selector%> .form_label{ <%=@template.css(:form_label) %> }
+    .<%=g_piece_selector%> .form_error{ <%=@template.css(:form_error) %> }
+    .<%=g_piece_selector%> .form_input{ <%=@template.css(:form_input) %> }
     
     
   title: root

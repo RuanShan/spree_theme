@@ -10,6 +10,7 @@ group :test,:development do
   #using backend required
   gem 'spree_auth_devise', :github => 'spree/spree_auth_devise', :branch => '2-0-stable'
   gem "mysql2"
+  #gem 'thin'
 end
 
 #group :test do
