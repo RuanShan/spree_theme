@@ -2,10 +2,9 @@ module Spree
   module Context
     module Base
       # use string instead of symbol, parameter from client is string 
-      ContextEnum=Struct.new(:list,:detail,:cart,:account,:checkout, :thanks,:signup,:login)[:list,:detail,:cart,:account,:checkout, :thanks,:signup,:login]
-      ContextEither = :""
-      Contexts = [ContextEnum.values,ContextEither].flatten
+      ContextEnum=Struct.new(:either, :list,:detail,:cart,:account,:checkout, :thanks,:signup,:login)[:"", :list,:detail,:cart,:account,:checkout, :thanks,:signup,:login]
       
+      #context may be array, datasource is nil for array.
       ContextDataSourceMap = { ContextEnum.list=>[:gpvs],ContextEnum.detail=>[:this_product]}
       DataSourceChainMap = {:gpvs=>[:gpv_product,:gpv_group, :gpv_either],
         :gpv_product=>[:product_images,:product_options], 
@@ -22,7 +21,7 @@ module Spree
       end
 
       def context_either?
-        current_context ==ContextEither
+        current_context ==ContextEnum.either
       end
     end
   end

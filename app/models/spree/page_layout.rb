@@ -16,6 +16,7 @@ module Spree
     
     scope :full_html_roots, where(:is_full_html=>true,:parent_id=>nil)
     attr_accessible :section_id,:title
+    attr_accessor :current_contexts, :inherited_contexts
   
     # create component, it is partial layout, no html body, composite of some sections. 
     #notice: attribute section_id, title required
@@ -31,6 +32,17 @@ module Spree
       end
       obj.update_attribute("root_id",obj.id)
       obj
+    end
+    
+    
+    # verify :come_contexts valid to :target_contexts
+    # ex.  [:cart]  is valid to [:either]
+    #      [:cart]  is valid to [:account, :checkout, :thankyou, :cart]
+    #      [:cart]  is invalid to [:account]
+    def self.verify_contexts( some_contexts, target_contexts )
+      some_contexts = [some_contexts] unless some_contexts.kind_of?( Array )
+
+      (target_contexts==[ContextEnum.either] || (target_contexts&some_contexts)==some_contexts)
     end
     
     # a page_layout tree could be whole html or partial html, it depend's on self.section.section_piece.is_root?,  
@@ -289,51 +301,53 @@ module Spree
       @subscribe_event_nodes_hash[some_event.event_name]
     end
     
-    begin 'handle context'
-      
+    begin 'handle context' 
+      # a section could have several contexts, means it could appear in serveral kind of pages 
+      # return array of current contexts   
+      def current_contexts
+        if @current_contexts.blank?
+          @current_contexts = ( self.section_context.present? ? self.section_context.split(',').map(&:to_sym) : inherited_contexts )
+        end
+        @current_contexts
+      end
+
+      # * current context of section
       # * section_context is inheritable value, current_context means self.section_context or inherited value 
       def current_context
-       self.section_context.present? ? self.section_context.to_sym : self.inherited_context 
+       self.section_context.present? ? self.section_context.to_sym : inherited_section_context.to_sym
       end
-      
-      def inherited_context
-        #ancestors order by lft
-        ancestor_context = self.ancestors.where('section_context!=?','').collect{|page_layout| page_layout.section_context }.last      
-        ancestor_context.present? ? ancestor_context.to_sym : ContextEither
-      end
-      
+            
       # * params
-      #   * new_context - one value of Contexts 
+      #   * new_context - one value of Contexts or an array of contexts 
       def update_section_context( new_context)
-        new_context  = new_context.to_sym
-        return if self.inherited_context != ContextEither # ancestor has assigned context. 
-        return if self.current_context == new_context
-        raise ArgumentError unless Contexts.include? new_context
+        new_context  = [new_context] unless new_context.kind_of?( Array )
+
+        raise ArgumentError unless self.class.verify_contexts( new_context, inherited_contexts)
         # test would check section_context,so keep it as string
-        self.update_attribute(:section_context,new_context.to_s)
-        if new_context != ContextEither
+        self.update_attribute(:section_context,new_context.join(','))
+        if new_context.first != ContextEnum.either
           #update descendant's context
           #strange self.descendants raise  no .update_all for []:Array
-          self.descendants.update_all(:section_context=>ContextEither)
+          self.descendants.update_all(:section_context=>ContextEnum.either)
           #TODO correct descendants's data_source
           self.update_data_source( DataSourceEmpty )
         end
       end
       
       def context?(some_context)
-        current_context == some_context.to_sym
+        current_contexts.include? some_context.to_sym
       end
       def context_cart?
-        current_context ==ContextEnum.cart
+        current_contexts.include? ContextEnum.cart
       end
       def context_account?
-        current_context ==ContextEnum.account
+        current_contexts.include? ContextEnum.account
       end
       def context_list?
-        current_context ==ContextEnum.list
+        current_contexts.include? ContextEnum.list
       end
       def context_detail?
-        current_context ==ContextEnum.detail
+        current_contexts.include? ContextEnum.detail
       end
       
     end
@@ -361,7 +375,6 @@ module Spree
         if new_data_source.blank? or self.is_valid_data_source?
   Rails.logger.debug "update_data_source, section_context=#{self.section_context}."        
           self.update_attribute(:data_source,new_data_source )
-  Rails.logger.debug "update section context?1"        
           #verify descendants, fix them.
           verify_required_descendants = self.descendants.where('data_source!=?', DataSourceEmpty)
           for node in verify_required_descendants
@@ -373,7 +386,6 @@ module Spree
         else
           self.data_source = original_data_source
         end
-  Rails.logger.debug "update section context?2"        
         self
       end
       
@@ -383,7 +395,9 @@ module Spree
         if self.current_data_source != DataSourceEmpty
           if self.inherited_data_source == DataSourceEmpty # top level data source 
             available_data_sources =  ContextDataSourceMap[self.current_context]
-            is_valid = ( available_data_sources.include? self.current_data_source )          
+            if available_data_sources.present?
+              is_valid = ( available_data_sources.include? self.current_data_source )
+            end          
           else #sub level data source
             is_valid = ( DataSourceChainMap[self.inherited_data_source].include? self.current_data_source)
           end
@@ -397,7 +411,7 @@ module Spree
       def available_data_sources
         data_sources = []
         the_context = self.current_context 
-        if  the_context != ContextEither
+        if  the_context != ContextEnum.either
           the_data_source = self.inherited_data_source
           if the_data_source == DataSourceEmpty # top level data source 
             data_sources =  ContextDataSourceMap[the_context]
@@ -411,6 +425,23 @@ module Spree
     
     
     private
+    # section_context could be more than one. 
+    def inherited_contexts
+      #ancestors order by lft
+      if @inherited_contexts.blank?
+        ancestor_context = self.ancestors.where('section_context!=?','').collect{|page_layout| page_layout.section_context }.last      
+        @inherited_contexts = ( ancestor_context.present? ? ancestor_context.split(',').map(&:to_sym) : [ContextEnum.either] )
+      end
+      @inherited_contexts
+    end
+    
+    def inherited_section_context
+      #ancestors order by lft
+      ancestor_context = self.ancestors.where('section_context!=?','').collect{|page_layout| page_layout.section_context }.last      
+      ancestor_context.present? ? ancestor_context.to_sym : ContextEnum.either
+    end
+    
+    
     def build_section_html(tree, node, section_hash) 
       subpieces = ""
       unless node.leaf?              

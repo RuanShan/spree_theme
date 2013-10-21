@@ -767,3 +767,15 @@ thanks:
   updated_at: 2011-09-20 19:40:07
   css: ""
   js: ""
+taxon_name:
+  id: 27
+  title: taxon name
+  slug: taxon-name
+  is_selectable: "1"
+  is_container: "0"
+  html: |    
+    <span> <%= @current_page.menu.name %> </span>
+  created_at: 2011-09-20 19:40:07
+  updated_at: 2011-09-20 19:40:07
+  css: ""
+  js: ""
