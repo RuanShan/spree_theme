@@ -327,7 +327,7 @@ module Spree
         self.update_attribute(:section_context,new_context.join(','))
         if new_context.first != ContextEnum.either
           #update descendant's context, 
-          self.descendants.where(["section_context!=",ContextEnum.either]).each{|node|
+          self.descendants.where(["section_context!=?",ContextEnum.either]).each{|node|
             #only reset context if desendant's context is invalid for new_context.
             unless self.class.verify_contexts( node.current_contexts, new_context )
               node.update_attribute(:section_context, ContextEnum.either)
