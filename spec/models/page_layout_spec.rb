@@ -32,12 +32,21 @@ describe Spree::PageLayout do
   end
 
   it "could update context" do
-    contexts = [Spree::PageLayout::ContextEnum.account, Spree::PageLayout::ContextEnum.thanks,Spree::PageLayout::ContextEnum.cart, Spree::PageLayout::ContextEnum.checkout]
+    list_section = Spree::PageLayout.find_by_section_context('list')
+    detail_section = Spree::PageLayout.find_by_section_context('detail')
+    #contexts = [Spree::PageLayout::ContextEnum.account, Spree::PageLayout::ContextEnum.thanks,Spree::PageLayout::ContextEnum.cart, Spree::PageLayout::ContextEnum.checkout]
+    contexts = [Spree::PageLayout::ContextEnum.list, Spree::PageLayout::ContextEnum.detail]
     page_layout.update_section_context contexts
     
-    
     for node in page_layout.self_and_descendants
-      node.current_contexts.should eq(contexts)
+      if node.is_or_is_descendant_of? list_section
+        node.current_contexts.should eq(list_section.current_contexts)
+      elsif   node.is_or_is_descendant_of? detail_section
+        node.current_contexts.should eq(detail_section.current_contexts)
+      else
+        node.current_contexts.should eq(contexts)  
+      end
+      
     end
   end
 

@@ -326,9 +326,13 @@ module Spree
         # test would check section_context,so keep it as string
         self.update_attribute(:section_context,new_context.join(','))
         if new_context.first != ContextEnum.either
-          #update descendant's context
-          #strange self.descendants raise  no .update_all for []:Array
-          self.descendants.update_all(:section_context=>ContextEnum.either)
+          #update descendant's context, 
+          self.descendants.where(["section_context!=",ContextEnum.either]).each{|node|
+            #only reset context if desendant's context is invalid for new_context.
+            unless self.class.verify_contexts( node.current_contexts, new_context )
+              node.update_attribute(:section_context, ContextEnum.either)
+            end
+          }
           #TODO correct descendants's data_source
           self.update_data_source( DataSourceEmpty )
         end
