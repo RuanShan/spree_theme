@@ -25,6 +25,10 @@ class DefaultTaxon < SpreeTheme.taxon_class
         else
           "unknown"
       end
+    elsif some_context==ContextEnum.checkout
+      translated_name = Spree.t(:checkout)
+    elsif  some_context==ContextEnum.cart
+      translated_name =  Spree.t(:shopping_cart)
     else
       translated_name = "Default #{some_context}"
     end
