@@ -1,4 +1,5 @@
 # Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+# id is required, or reload_section_piece would not work, sections is using section_piece_id. 
 root:
   id: 1
   is_selectable: true
@@ -762,7 +763,7 @@ thanks:
   is_selectable: "0"
   is_container: "0"
   html: |   
-    <%= flash_messages %><%= yield %>
+    <%= flash_messages %><%= yield %>~~content~~
   created_at: 2011-09-20 19:40:07
   updated_at: 2011-09-20 19:40:07
   css: ""
@@ -780,6 +781,7 @@ taxon_name:
   css: ""
   js: ""
 container_title:
+  id: 28
   title: container title
   slug: container-title
   is_selectable: "1"
@@ -791,17 +793,17 @@ container_title:
     }
   js: ""
 order_number:
+  id: 29
   title: order number
   slug: order-number
   is_selectable: "1"
   is_container: "0"
   html: |    
     <span> <%= @order.number %> </span>
-  created_at: 2011-09-20 19:40:07
-  updated_at: 2011-09-20 19:40:07
   css: ""
   js: ""
 order_address:
+  id: 30
   title: order address
   slug: order-address
   is_selectable: "1"
@@ -815,12 +817,10 @@ order_address:
         </div>
       <% end %>
     <% end %>    
-    
-  created_at: 2011-09-20 19:40:07
-  updated_at: 2011-09-20 19:40:07
-  css: ""
-  js: ""
+  css: " "
+  js: " "
 order_payment:
+  id: 31
   title: order payment
   slug: order-payment
   is_selectable: "1"
@@ -832,18 +832,15 @@ order_payment:
         <%= render payment%><br/>
       <% end %>
     </div>
-  created_at: 2011-09-20 19:40:07
-  updated_at: 2011-09-20 19:40:07
   css: ""
   js: ""
 order_items:
+  id: 32
   title: order items
   slug: order-items
   is_selectable: "1"
   is_container: "0"
   html: |    
     <%= render :partial => 'order_items' %>
-  created_at: 2011-09-20 19:40:07
-  updated_at: 2011-09-20 19:40:07
   css: ""
   js: ""
