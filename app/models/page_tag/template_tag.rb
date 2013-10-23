@@ -27,6 +27,12 @@ module PageTag
         end
       end
       
+      # section piece have no html, only some css, in this case section_selector is required for css which apply to whole section
+      # ex. container title.
+      def section_selector
+        "s_#{page_layout.id}_#{page_layout.section_id}"
+      end
+      
       def to_key
         "#{page_layout.id}_#{section_id}"
       end

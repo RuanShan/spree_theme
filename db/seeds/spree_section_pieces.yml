@@ -687,7 +687,7 @@ cart:
   css: |
     .<%=g_piece_selector%> .cart_buttons{ clear:both; }
     .<%=g_piece_selector%> button{
-      <%= @template.css :button %> 
+      <%= @template.css :button %>
     }
   js: ""
 account:
@@ -775,6 +775,74 @@ taxon_name:
   is_container: "0"
   html: |    
     <span> <%= @current_page.menu.name %> </span>
+  created_at: 2011-09-20 19:40:07
+  updated_at: 2011-09-20 19:40:07
+  css: ""
+  js: ""
+container_title:
+  title: container title
+  slug: container-title
+  is_selectable: "1"
+  is_container: "0"
+  html: ""    
+  css: |
+    .<%=@template.current_piece.section_selector%> .s_title{
+      <%= @template.css :s_title %> 
+    }
+  js: ""
+order_number:
+  title: order number
+  slug: order-number
+  is_selectable: "1"
+  is_container: "0"
+  html: |    
+    <span> <%= @order.number %> </span>
+  created_at: 2011-09-20 19:40:07
+  updated_at: 2011-09-20 19:40:07
+  css: ""
+  js: ""
+order_address:
+  title: order address
+  slug: order-address
+  is_selectable: "1"
+  is_container: "0"
+  html: |
+    <% if order.has_step?("address") %>
+      <% if order.has_step?("delivery") %>
+        <h6><%= Spree.t(:shipping_address) %> <%= link_to "(#{Spree.t(:edit)})", checkout_state_path(:address) unless @order.completed? %></h6>
+        <div class="columns alpha four" data-hook="order-ship-address">
+          <%= render :partial => 'spree/shared/address', :locals => { :address => order.ship_address } %>
+        </div>
+      <% end %>
+    <% end %>    
+    
+  created_at: 2011-09-20 19:40:07
+  updated_at: 2011-09-20 19:40:07
+  css: ""
+  js: ""
+order_payment:
+  title: order payment
+  slug: order-payment
+  is_selectable: "1"
+  is_container: "0"
+  html: |    
+    <h6><%= Spree.t(:payment_information) %> <%= link_to "(#{Spree.t(:edit)})", checkout_state_path(:payment) unless @order.completed? %></h6>
+    <div class="payment-info">
+      <% order.payments.valid.each do |payment| %>
+        <%= render payment%><br/>
+      <% end %>
+    </div>
+  created_at: 2011-09-20 19:40:07
+  updated_at: 2011-09-20 19:40:07
+  css: ""
+  js: ""
+order_items:
+  title: order items
+  slug: order-items
+  is_selectable: "1"
+  is_container: "0"
+  html: |    
+    <%= render :partial => 'order_items' %>
   created_at: 2011-09-20 19:40:07
   updated_at: 2011-09-20 19:40:07
   css: ""

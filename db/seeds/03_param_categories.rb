@@ -4,7 +4,7 @@ objs=[
   #{"id"=>3, "position"=>1, "is_enabled"=>true, "editor_id"=>3, "slug"=>"general_background" },
   #{"id"=>4, "position"=>1, "is_enabled"=>true, "editor_id"=>4, "slug"=>"general_text" },
 
-  #{"id"=>6, "position"=>6, "is_enabled"=>true, "editor_id"=>2, "slug"=>"link_position" },
+  {"id"=>6, "position"=>6, "is_enabled"=>true, "editor_id"=>0, "slug"=>"title" },
   # a
   {"id"=>11, "position"=>11, "is_enabled"=>true, "editor_id"=>4, "slug"=>"link" },
   {"id"=>12, "position"=>12, "is_enabled"=>true, "editor_id"=>4, "slug"=>"link_hover" },
