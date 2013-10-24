@@ -249,7 +249,11 @@ module Spree
     begin 'css selector, name, value'
       def css_selector
         #it has to apply to inner, for root, outer is body, it include editor panel, some css would affect it. 
-        if self.param_value.section_param.section_piece_param.class_name=~/block/
+        if self.param_value.section_param.section_piece_param.class_name=~/page/
+          "#page"
+        elsif self.param_value.section_param.section_piece_param.class_name=~/content_layout/
+          ".s_#{self.param_value.page_layout_id}_#{self.param_value.section_param.section_id}_inner>.content_layout"          
+        elsif self.param_value.section_param.section_piece_param.class_name=~/block/
           ".s_#{self.param_value.page_layout_id}_#{self.param_value.section_param.section_id}"
         elsif self.param_value.section_param.section_piece_param.class_name=~/inner/
           ".s_#{self.param_value.page_layout_id}_#{self.param_value.section_param.section_id}_#{self.param_value.section_param.section_piece_param.class_name}"

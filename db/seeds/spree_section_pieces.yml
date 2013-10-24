@@ -27,13 +27,14 @@ root:
     <%= render "spree/shared/routes" %>
     </head>
     <body class="clear-block">
-
-      <div id="page" class='<%=g_piece_selector%> <%='ui-layout-center' if @current_page.is_preview %>'><div id="page-inner" class="clear-block">
+      <div id="page-wrapper" class="<%='ui-layout-center' if @current_page.is_preview %>">
+      <div id="page" class='<%=g_piece_selector%>'><div id="page-inner" class="<%=g_piece_selector%>_inner clear-block">
         <a name="top" id="navigation-top"></a>
         <div id="skip-to-nav"><a href="#navigation">Skip to Navigation</a></div>
         ~~content~~
       </div><!-- /#page-inner -->
       </div><!-- /#page -->
+      </div><!-- /#jquery.layout require it -->
     <% if @current_page.is_preview %>      
       // And go!
       <script type="text/javascript" src="/assets/interface.js"></script>    
@@ -190,7 +191,7 @@ root:
             width: auto;
             height: auto;
           }
-    .content_layout /* #page .content_layout would override .some_block .content_layout */
+    .<%=g_piece_selector%>_inner>.content_layout
     {  
       <% if @template.css(:content_layout).to_i > 0 %>
       clear:none;
@@ -282,7 +283,7 @@ container:
     {
       <%=@template.css(:inner)%>
     }
-    .<%=g_piece_selector%> .content_layout
+    .<%=g_piece_selector%>_inner>.content_layout
     {
       <%if @template.css(:content_layout).present? %>
         <%= @template.css(:content_layout) %>
@@ -799,7 +800,7 @@ order_number:
   is_selectable: "1"
   is_container: "0"
   html: |    
-    <span> <%= @order.number %> </span>
+    <span> <%= Spree.t(:order) + " #" + @order.number %></span>
   css: ""
   js: ""
 order_address:
@@ -809,11 +810,11 @@ order_address:
   is_selectable: "1"
   is_container: "0"
   html: |
-    <% if order.has_step?("address") %>
-      <% if order.has_step?("delivery") %>
+    <% if @order.has_step?("address") %>
+      <% if @order.has_step?("delivery") %>
         <h6><%= Spree.t(:shipping_address) %> <%= link_to "(#{Spree.t(:edit)})", checkout_state_path(:address) unless @order.completed? %></h6>
         <div class="columns alpha four" data-hook="order-ship-address">
-          <%= render :partial => 'spree/shared/address', :locals => { :address => order.ship_address } %>
+          <%= render :partial => 'spree/shared/address', :locals => { :address => @order.ship_address } %>
         </div>
       <% end %>
     <% end %>    
@@ -828,7 +829,7 @@ order_payment:
   html: |    
     <h6><%= Spree.t(:payment_information) %> <%= link_to "(#{Spree.t(:edit)})", checkout_state_path(:payment) unless @order.completed? %></h6>
     <div class="payment-info">
-      <% order.payments.valid.each do |payment| %>
+      <% @order.payments.valid.each do |payment| %>
         <%= render payment%><br/>
       <% end %>
     </div>

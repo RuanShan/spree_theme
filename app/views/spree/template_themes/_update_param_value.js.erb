@@ -17,6 +17,6 @@
         $(this).css('<%=hav.attribute_name%>','')
        })
   <%else%>      
-     $("<%=hav.css_selector%>").css('<%=hav.attribute_name%>','<%=hav.attribute_value%>')
+     $("<%= raw hav.css_selector%>").css('<%=hav.attribute_name%>','<%=hav.attribute_value%>')
   <%end%>        
 <% end %>
