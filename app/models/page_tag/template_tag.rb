@@ -8,7 +8,7 @@ module PageTag
   class TemplateTag < Base
     class WrappedPageLayout < WrappedModel
       self.accessable_attributes=[:id,:data_source,:data_filter,:current_contexts, :context?, :context_either?]
-      attr_accessor :section_id, :page_layout
+      attr_accessor :section_id, :page_layout, :page_layout_parent
       delegate *self.accessable_attributes, :to => :page_layout
       
       def initialize(collection_tag, page_layout, section_id)
@@ -16,7 +16,7 @@ module PageTag
         self.collection_tag = collection_tag
         self.page_layout = page_layout      
         self.section_id = section_id
-        #self.model = 
+        #self.page_layout_parent = page_layout_parent
       end
             
       #Usage: css selector for current section piece instance
@@ -33,6 +33,18 @@ module PageTag
         "s_#{page_layout.id}_#{page_layout.section_id}"
       end
       
+      # some css apply to children but all descendants, so we need a selector to get children
+      # this selector indicate it is child of some parent 
+      # ex. content_layout.
+      def as_child_selector
+        "c_#{page_layout.parent_id}"
+      end
+      # some css apply to children but all descendants, so we need a selector to get children 
+      # this selector refer to its children 
+      def child_selector
+        "c_#{page_layout.id}"
+      end
+
       def to_key
         "#{page_layout.id}_#{section_id}"
       end
@@ -80,6 +92,7 @@ module PageTag
       
       #current selected section instance, page_layout record
       page_layout = page_layout_tree.select{|node| node.id == page_layout_id}.first
+      #page_layout_parent = page_layout_tree.select{|node| node.id == page_layout.parent_id}.first
       self.current_piece = WrappedPageLayout.new(self, page_layout, section_id)
     end
     

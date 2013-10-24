@@ -29,8 +29,6 @@ root:
     <body class="clear-block">
       <div id="page-wrapper" class="<%='ui-layout-center' if @current_page.is_preview %>">
       <div id="page" class='<%=g_piece_selector%>'><div id="page-inner" class="<%=g_piece_selector%>_inner clear-block">
-        <a name="top" id="navigation-top"></a>
-        <div id="skip-to-nav"><a href="#navigation">Skip to Navigation</a></div>
         ~~content~~
       </div><!-- /#page-inner -->
       </div><!-- /#page -->
@@ -59,7 +57,7 @@ root:
       ol,ul {
         list-style: none;
       }
-    /* **** Defaults **** */  /** headings **/
+      /* **** Defaults **** */  /** headings **/     
       h1
       { font-size: 2em;
         line-height: 1.3em;
@@ -79,16 +77,38 @@ root:
         margin-top: 0.769em; /* Equivalent to 1em in the page's base font: 1 / 1.3 = 0.769 */
         margin-bottom: 0.769em;
       }    
-      h4, h5, h6
-      { font-size: 1.1em;
-        line-height: 1.3em;
-        margin-top: 0.909em; /* Equivalent to 1em in the page's base font: 1 / 1.1 = 0.909 */
-        margin-bottom: 0.909em;
-      }  
-      /* Normalizes margin,padding */        
-      div,dl,dt,dd,ul,ol,li,pre,form,fieldset,input,p,blockquote,th,td
-      { margin: 0;
+      /* http://meyerweb.com/eric/tools/css/reset/ */
+      /* Normalizes margin,padding */
+      html, body, div, span, applet, object, iframe,
+      h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+      a, abbr, acronym, address, big, cite, code,
+      del, dfn, em, font, img, ins, kbd, q, s, samp,
+      small, strike, strong, sub, sup, tt, var,
+      b, u, i, center,
+      dl, dt, dd, ol, ul, li,
+      fieldset, form, label, legend,
+      table, caption, tbody, tfoot, thead, tr, th, td {
+        margin: 0;
         padding: 0;
+        border: 0;
+        outline: 0;
+        font-size: 100%;
+        vertical-align: baseline;
+        background: transparent;
+      }
+      body {
+        line-height: 1;
+      }
+      ol, ul {
+        list-style: none;
+      }
+      blockquote, q {
+        quotes: none;
+      }
+      blockquote:before, blockquote:after,
+      q:before, q:after {
+        content: '';
+        content: none;
       }
       /* Normalizes font-size and font-weight to normal */
       address,caption,cite,code,dfn,em,strong,th,var { font-size:normal; font-weight:normal }    
@@ -163,35 +183,7 @@ root:
         { position:relative;
         <% @template.css :inner %>
         }
-          #navigation-top, #navigation
-          { position: absolute;
-            left: -10000px;
-          }
-          #skip-to-nav
-          { position:relative; /* This allows the skip-to-nav link to not take up any screen space at all, but will remain visible to screen readers? */
-            z-index:-99;
-            margin: 0 !important;
-            font-size: 0.8em;
-            background-color:#9cb3be;
-          }
-    
-          #skip-to-nav a, #skip-to-nav a:hover, #skip-to-nav a:visited
-          {
-            position: absolute;
-            left: 0;
-            top: -500px;
-            width: 1px;
-            height: 1px;
-            overflow: hidden;
-          }
-    
-          #skip-to-nav a:active, #skip-to-nav a:focus
-          {
-            position: static;
-            width: auto;
-            height: auto;
-          }
-    .<%=g_piece_selector%>_inner>.content_layout
+    .<%=@template.current_piece.child_selector%> 
     {  
       <% if @template.css(:content_layout).to_i > 0 %>
       clear:none;
@@ -266,7 +258,7 @@ container:
   is_container: "1"
   html: |-
     <!-- container  -->
-    <div class="<%=g_piece_selector%> c_pageparams.parent_section_instance content_layout" >
+    <div class="<%=g_piece_selector%> <%=@template.current_piece.as_child_selector%> content_layout" >
           <div class="<%=g_piece_selector%>_inner clear-block">
           ~~content~~
           </div>          
@@ -283,7 +275,7 @@ container:
     {
       <%=@template.css(:inner)%>
     }
-    .<%=g_piece_selector%>_inner>.content_layout
+    .<%=@template.current_piece.child_selector%> 
     {
       <%if @template.css(:content_layout).present? %>
         <%= @template.css(:content_layout) %>
@@ -752,10 +744,34 @@ checkout:
   is_selectable: "0"
   is_container: "0"
   html: |   
-    <%= flash_messages %><%= yield %>
+    <div id="checkout" class="<%=g_piece_selector%>">  
+      <%= render :partial => 'spree/shared/error_messages', :locals => { :target => @order } %>
+        <div class="columns <%= if @order.state != 'confirm' then 'alpha twelve' else 'alpha omega sixteen' end %>" data-hook="checkout_form_wrapper">
+          <%= form_for @order, :url => update_checkout_path(@order.state), :html => { :id => "checkout_form", :class=>'form' } do |form| %>
+            <% unless @order.email? %>
+              <p class="field" style='clear: both'>
+                <%= form.label :email %><br />
+                <%= form.text_field :email %>
+              </p>
+            <% end %>
+            <%= yield %>~~content~~
+            <div class="form-buttons" data-hook="buttons">
+              <%= button_tag :class => 'continue button primary', :type => 'submit' do %>
+                <%= Spree.t(:save_and_continue) %>
+              <% end %>
+              <script>Spree.disableSaveOnClick();</script>
+            </div>            
+          <% end %>
+        </div>
+    </div>    
+    <% if I18n.locale != :en %>
+      <script src='/assets/jquery.validate/localization/messages_<%= I18n.locale %>.js'></script>
+    <% end %>
   created_at: 2011-09-20 19:40:07
   updated_at: 2011-09-20 19:40:07
-  css: ""
+  css: 
+    .<%=g_piece_selector%> .form-buttons{ clear:both; }
+
   js: ""
 thanks:
   id: 26
@@ -789,8 +805,8 @@ container_title:
   is_container: "0"
   html: ""    
   css: |
-    .<%=@template.current_piece.section_selector%> .s_title{
-      <%= @template.css :s_title %> 
+    .<%=@template.current_piece.section_selector%> h6{
+      <%= @template.css :h6 %> 
     }
   js: ""
 order_number:
@@ -843,5 +859,71 @@ order_items:
   is_container: "0"
   html: |    
     <%= render :partial => 'order_items' %>
+  css: ""
+  js: ""
+payment_form:
+  id: 33
+  title: payment form
+  slug: payment-form
+  is_selectable: "1"
+  is_container: "0"
+  html: |    
+    <div id="checkout_form_payment" >
+      <h6><%= Spree.t(:payment_information) %></h6>
+      <% @order.available_payment_methods.each do |method| %>
+      <p>
+        <label>
+          <%= radio_button_tag "order[payments_attributes][][payment_method_id]", method.id, method == @order.available_payment_methods.first %>
+          <%= Spree.t(method.name, :scope => :payment_methods, :default => method.name) %>
+        </label>
+      </p>
+      <% end %>  
+      <ul id="payment-methods" >
+        <% @order.available_payment_methods.each do |method| %>
+          <li id="payment_method_<%= method.id %>" class="<%= 'last' if method == @order.available_payment_methods.last %>" data-hook>
+            <fieldset>
+              <%= render :partial => "spree/checkout/payment/#{method.method_type}", :locals => { :payment_method => method } %>
+            </fieldset>
+          </li>
+        <% end %>
+      </ul>
+      <div style="clear:both;"></div>
+      <% if Spree::Promotion.with_code.count > 0 %>
+        <p class='field' data-hook='coupon_code'>
+          <%= form.label :coupon_code %><br />
+          <%= form.text_field :coupon_code %>
+        </p>
+      <% end %>
+    </div>
+  css: ""
+  js: ""
+ship_form:
+  id: 34
+  title: shipping address form
+  slug: ship-form
+  is_selectable: "1"
+  is_container: "0"
+  html: |    
+    <div id="checkout_form_address" data-hook="billing_fieldset_wrapper">
+      <%= form.fields_for :bill_address do |bill_form| %>
+        <h6><%= Spree.t(:billing_address) %></h6>
+        <%= render :partial => 'spree/address/form', :locals => { :form => bill_form, :address_type => 'billing', :address => @order.bill_address } %>
+      <% end %>
+      <%= form.fields_for :ship_address do |ship_form| %>
+          <%= hidden_field_tag 'order[use_billing]', '1' %>
+      <% end %>
+    </div>
+  css: ""
+  js: ""
+order_summary:
+  id: 35
+  title: order summary
+  slug: order-summary
+  is_selectable: "1"
+  is_container: "0"
+  html: |    
+    <% if @order.state != 'confirm' %>
+        <%= render :partial => 'summary', :locals => { :order => @order } %>
+    <% end %>  
   css: ""
   js: ""

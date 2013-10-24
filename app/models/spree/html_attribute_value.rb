@@ -252,7 +252,7 @@ module Spree
         if self.param_value.section_param.section_piece_param.class_name=~/page/
           "#page"
         elsif self.param_value.section_param.section_piece_param.class_name=~/content_layout/
-          ".s_#{self.param_value.page_layout_id}_#{self.param_value.section_param.section_id}_inner>.content_layout"          
+          ".c_#{self.param_value.page_layout_id}"          
         elsif self.param_value.section_param.section_piece_param.class_name=~/block/
           ".s_#{self.param_value.page_layout_id}_#{self.param_value.section_param.section_id}"
         elsif self.param_value.section_param.section_piece_param.class_name=~/inner/

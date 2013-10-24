@@ -54,6 +54,8 @@
   </div>
     
 <div class="form-buttons" data-hook="buttons">
-  <%= submit_tag Spree.t(:save_and_continue), :class => 'continue button primary' %>
+  <%= button_tag :class => 'continue button primary', :type => 'submit' do %>
+    <%= Spree.t(:save_and_continue) %>
+  <% end %>
   <script>Spree.disableSaveOnClick();</script>
 </div>
