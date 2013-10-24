@@ -9,8 +9,8 @@ module Spree
     friendly_id :title, :use => :slugged
     attr_accessible :section_piece_id, :title, :global_events, :subscribed_global_events
     # usage: attribute section_piece_id, title required
-    # params: default_param_value,  is a hash,  class_name=>{htmal_attribute_id=>default_value,..}
-    def self.create_section(section_piece_id,attrs = {}, default_param_value={})
+    # params: default_param_values,  is a hash,  class_name=>{htmal_attribute_id=>default_value,..}
+    def self.create_section(section_piece_id,attrs = {}, default_param_values={})
       #create record in table sections
       obj = nil
       self.transaction do      
@@ -19,7 +19,7 @@ module Spree
           sp.attributes= attrs unless attrs.empty?
         end
         #copy the section piece param  to section param table
-        obj.add_section_piece_param(default_param_value)
+        obj.add_section_piece_param(default_param_values)
         #set root_id, css need root_piece_instance_id as selector
         obj.update_attribute("root_id", obj.id)
       end
@@ -27,7 +27,7 @@ module Spree
     end  
     
     # return created section
-    def add_section_piece(section_piece_id, default_param_value={})
+    def add_section_piece(section_piece_id, default_param_values={})
       section_piece = SectionPiece.find(section_piece_id)
       tree = self.root.self_and_descendants
       section_piece_instance = tree.select{|xnode| xnode.section_piece_id==section_piece_id}.size.succ
@@ -39,7 +39,7 @@ module Spree
           obj.section_piece_instance=section_piece_instance       
         end
         obj.move_to_child_of(self)
-        obj.add_section_piece_param(default_param_value)
+        obj.add_section_piece_param(default_param_values)
       end
       obj
     end
