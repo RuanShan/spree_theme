@@ -969,3 +969,80 @@ sign_up_form:
     <%= render :partial => 'spree/user_registrations/new' %>
   css: ""
   js: ""
+profile:
+  id: 39
+  title: profile
+  slug: profile
+  is_selectable: "1"
+  is_container: "0"
+  html: |    
+    <%= render :partial => 'spree/user_registrations/new' %>
+  css: ""
+  js: ""
+order_list:
+  id: 40
+  title: order list
+  slug: order-list
+  is_selectable: "1"
+  is_container: "0"
+  html: |    
+    <%= render :partial => 'spree/user_registrations/new' %>
+  css: ""
+  js: ""
+dialog:
+  id: 41
+  title: dialog
+  slug: dialog
+  is_selectable: "1"
+  is_container: "0"
+  html: |    
+    <div id="dialog" class="<%=g_piece_selector%> <%=@template.current_piece.as_child_selector%> content_layout" >
+          <div class="<%=g_piece_selector%>_inner clear-block">
+          ~~content~~
+          </div>          
+    </div> 
+  css: |
+    div.sd~~pageparams.section_instance~~
+    { 
+      position:absolute;
+      display:none;
+      z-index:1001;
+      ~~PageParams.get:outer~~
+    }
+    div.sd~~pageparams.section_instance~~_inner
+    {
+      ~~PageParams.get:inner~~
+    }
+    div.sd~~pageparams.section_instance~~ .window_heading
+    {
+    ~~PageParams.get:window_heading~~ 
+    }
+    div.sd~~pageparams.section_instance~~ .form_title
+    { 
+      ~~PageParams.get:form_title~~
+    }
+    div.sd~~pageparams.section_instance~~ .form_label
+    { 
+      ~~PageParams.get:form_label~~
+    }
+    div.sd~~pageparams.section_instance~~ .form_control
+    { 
+      ~~PageParams.get:form_control~~
+    }
+    div.sd~~pageparams.section_instance~~ .submit_button
+    { 
+      ~~PageParams.get:submit_button~~
+    }
+    div.sd~~pageparams.section_instance~~ .link_button
+    { 
+      ~~PageParams.get:link_button~~
+    }
+  js: |
+    function center_template_section( selector )
+    {
+      var ele = $(selector);
+      ele.css("top", ($('#page').height() - ele.outerHeight(true)) / 2 + $('#page').scrollTop() + "px");
+      ele.css("left", ($('#page').width() - ele.outerWidth(true)) / 2 + $('#page').scrollLeft() + "px");
+      ele.show();
+    }
+ 
