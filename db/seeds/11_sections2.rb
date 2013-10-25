@@ -1,7 +1,6 @@
 bool_false = Spree::HtmlAttribute::BOOL_FALSE
 bool_true =  Spree::HtmlAttribute::BOOL_TRUE
-sps = Spree::SectionPiece.all
-section_piece_hash= sps.inject({}){|h,sp| h[sp.slug] = sp; h}
+section_piece_hash= Spree::SectionPiece.all.inject({}){|h,sp| h[sp.slug] = sp; h}
 
 #ship_form
 Spree::Section.where(:title=>'ship form').each(&:destroy)

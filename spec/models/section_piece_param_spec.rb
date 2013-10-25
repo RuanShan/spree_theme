@@ -27,5 +27,9 @@ describe Spree::SectionPieceParam do
 Rails.logger.debug "new_param_value_count=#{new_param_value_count},original_param_value_count=#{original_param_value_count}"    
     new_param_value_count.should ==(original_param_value_count+count)
   end
+  
+  it 'has many section_params' do
+    section_piece_param.section_params.should be_kind_of Array
+  end
    
 end

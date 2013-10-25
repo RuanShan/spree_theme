@@ -5,7 +5,7 @@ module Spree
     belongs_to :section_piece
     belongs_to :param_category
     belongs_to :editor
-  
+    has_many :section_params
     serialize :param_conditions, Hash #{html_attribute_id=>[:change]}  
     attr_accessible :editor,:param_category, :section_piece, :class_name, :pclass, :html_attribute_ids
     

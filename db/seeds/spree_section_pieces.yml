@@ -927,3 +927,45 @@ order_summary:
     <% end %>  
   css: ""
   js: ""
+login_form:
+  id: 36
+  title: login form
+  slug: login-form
+  is_selectable: "1"
+  is_container: "0"
+  html: |    
+    <%= render :partial => 'spree/user_sessions/new' %>
+  css: ""
+  js: ""
+checkout_as_guest_form:
+  id: 37
+  title: checkout as guest form
+  slug: checkout-as-guest-form
+  is_selectable: "1"
+  is_container: "0"
+  html: |    
+    <% if Spree::Config[:allow_guest_checkout] %>
+      <div id="guest_checkout" data-hook class="columns omega eight">
+        <%= render :partial => 'spree/shared/error_messages', :locals => { :target => @order } %>
+        <h6><%= Spree.t(:guest_user_account) %></h6>
+        <%= form_for @order, :url => update_checkout_registration_path, :method => :put, :html => { :id => 'checkout_form_registration' } do |f| %>
+          <p>
+            <%= f.label :email, Spree.t(:email) %><br />
+            <%= f.email_field :email, :class => 'title' %>
+          </p>
+          <p><%= f.submit Spree.t(:continue), :class => 'button primary' %></p>
+        <% end %>
+      </div>
+    <% end %>
+  css: ""
+  js: ""
+sign_up_form:
+  id: 38
+  title: sign up form
+  slug: sign-up-form
+  is_selectable: "1"
+  is_container: "0"
+  html: |    
+    <%= render :partial => 'spree/user_registrations/new' %>
+  css: ""
+  js: ""
