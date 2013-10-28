@@ -135,7 +135,6 @@ module Spree
         return new_theme
       end
     
-      #
       # Usage: modify layout, add the section instance as child of current node into the layout,
       # Params: 
       #   page_layout, instance of model PageLayout
@@ -171,7 +170,8 @@ module Spree
         end
         obj
       end
-          
+      
+                
     end
     begin 'export&import'
       # export to yaml, include page_layouts, param_values, template_files

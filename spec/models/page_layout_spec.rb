@@ -58,4 +58,14 @@ describe Spree::PageLayout do
     Spree::PageLayout.verify_contexts( Spree::PageLayout::ContextEnum.either, [:cart, :checkout, :thankyou ] ).should be_false
   end
   
+  it "could replace section" do
+    original_page_layout = page_layout.dup 
+    root2 = Spree::Section.find('root2')
+    page_layout.replace_with(root2)
+    original_page_layout.param_values.empty?.should be_true
+    page_layout.section.should eq root2
+    page_layout.param_values.present?.should be_true
+     
+  end
+  
 end

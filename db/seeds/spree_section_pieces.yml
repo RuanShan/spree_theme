@@ -126,6 +126,9 @@ root:
          */
         vertical-align:middle; 
       }
+      table {
+        width:100%; 
+      }
     <% if @template.css :use_bbtl %>
     div#bbtl
     { position:absolute;
@@ -802,11 +805,11 @@ container_title:
   title: container title
   slug: container-title
   is_selectable: "1"
-  is_container: "0"
-  html: ""    
+  is_container: "1"
+  html: ~~content~~    
   css: |
     .<%=@template.current_piece.section_selector%> h6{
-      <%= @template.css :h6 %> 
+      <%= @template.css :s_h6 %> 
     }
   js: ""
 order_number:
@@ -1045,3 +1048,39 @@ dialog:
       ele.css("left", ($('#page').width() - ele.outerWidth(true)) / 2 + $('#page').scrollLeft() + "px");
       ele.show();
     }
+container_link:
+  id: 42
+  title: container link
+  slug: container-link
+  is_selectable: "1"
+  is_container: "1"
+  html: ~~content~~    
+  css: |
+    .<%=@template.current_piece.section_selector%> a{ <%=@template.css(:s_a) %> }
+    .<%=@template.current_piece.section_selector%> a:hover{ <%=@template.css(:s_ah) %> }    
+  js: ""
+container_table:
+  id: 43
+  title: container table
+  slug: container-table
+  is_selectable: "1"
+  is_container: "1"
+  html: ~~content~~    
+  css: |
+    .<%=@template.current_piece.section_selector%> .cell{ <%= @template.css :s_cell %> }
+    .<%=@template.current_piece.section_selector%> th{ <%= @template.css :s_th %>  }
+    .<%=@template.current_piece.section_selector%> td{ <%= @template.css :s_td %>  }
+  js: ""
+container_form:
+  id: 44
+  title: container form
+  slug: container-form
+  is_selectable: "1"
+  is_container: "1"
+  html: ~~content~~    
+  css: |
+    .<%=@template.current_piece.section_selector%> .error{ <%=@template.css(:s_error) %> }
+    .<%=@template.current_piece.section_selector%> label{ <%=@template.css(:s_label) %> }
+    .<%=@template.current_piece.section_selector%> input{ <%=@template.css(:s_input) %> }
+    .<%=@template.current_piece.section_selector%> button{ <%=@template.css(:s_button) %> } 
+  js: ""

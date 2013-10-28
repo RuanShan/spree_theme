@@ -247,29 +247,41 @@ module Spree
     end
     
     begin 'css selector, name, value'
-      def css_selector
+      # from param_value page_layout_id, section_param.section_id, section_param.section_root_id, section_param.class_name get selector and prefix   
+      def css_selector        
+        prefix = case self.param_value.section_param.section_piece_param.class_name
+          when /^s\_/
+            ".s_#{self.param_value.page_layout_id}_#{self.param_value.section_param.section_root_id}"
+          when "ash",/^a/, /(label|input|li|img|button|td|th)/ #a, ah
+            ".s_#{self.param_value.page_layout_id}_#{self.param_value.section_param.section_id}"
+          when /page/
+            "#page"
+          when /content_layout/
+            ".c_#{self.param_value.page_layout_id}"          
+          when /cell/
+            ".s_#{self.param_value.page_layout_id}_#{self.param_value.section_param.section_id} td, .s_#{self.param_value.page_layout_id}_#{self.param_value.section_param.section_id} th"            
+          else
+            ".s_#{self.param_value.page_layout_id}_#{self.param_value.section_param.section_id}"
+          end
+        
         #it has to apply to inner, for root, outer is body, it include editor panel, some css would affect it. 
-        if self.param_value.section_param.section_piece_param.class_name=~/page/
-          "#page"
-        elsif self.param_value.section_param.section_piece_param.class_name=~/content_layout/
-          ".c_#{self.param_value.page_layout_id}"          
-        elsif self.param_value.section_param.section_piece_param.class_name=~/block/
-          ".s_#{self.param_value.page_layout_id}_#{self.param_value.section_param.section_id}"
-        elsif self.param_value.section_param.section_piece_param.class_name=~/inner/
-          ".s_#{self.param_value.page_layout_id}_#{self.param_value.section_param.section_id}_#{self.param_value.section_param.section_piece_param.class_name}"
-        elsif self.param_value.section_param.section_piece_param.class_name=='ash' #selected:hover
-          ".s_#{self.param_value.page_layout_id}_#{self.param_value.section_param.section_id} .selected"
-        elsif self.param_value.section_param.section_piece_param.class_name=~/^a/ #a, ah
-          ".s_#{self.param_value.page_layout_id}_#{self.param_value.section_param.section_id} a"
-        elsif ['label','input','li','img','button','td','th'].include? self.param_value.section_param.section_piece_param.class_name
+        selector = case self.param_value.section_param.section_piece_param.class_name
+          when /content_layout/,/block/,/cell/
+            ""          
+          when /inner/
+            "_#{self.param_value.section_param.section_piece_param.class_name}"
+          when 'ash' #selected:hover
+            " .selected"
+          when /^a/ #a, ah
+            " a"
+          when /(label|input|li|img|button|td|th)/
           #product quantity,atc section_piece content just input,add a <span> wrap it.
           #product images content thumb and main images so here should be section_id,
-          ".s_#{self.param_value.page_layout_id}_#{self.param_value.section_param.section_id} #{self.param_value.section_param.section_piece_param.class_name}"
-        elsif self.param_value.section_param.section_piece_param.class_name=='cell'
-          ".s_#{self.param_value.page_layout_id}_#{self.param_value.section_param.section_id} th, .s_#{self.param_value.page_layout_id}_#{self.param_value.section_param.section_id} td"          
-        else  #noclick, selected
-          ".s_#{self.param_value.page_layout_id}_#{self.param_value.section_param.section_id} .#{self.param_value.section_param.section_piece_param.class_name}"
-        end
+            " #{self.param_value.section_param.section_piece_param.class_name}"
+          else  #noclick, selected
+            " .#{self.param_value.section_param.section_piece_param.class_name}"
+          end
+        prefix+selector
       end 
       
       def attribute_name

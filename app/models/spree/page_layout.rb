@@ -41,7 +41,6 @@ module Spree
     #      [:cart]  is invalid to [:account]
     def self.verify_contexts( some_contexts, target_contexts )
       some_contexts = [some_contexts] unless some_contexts.kind_of?( Array )
-
       (target_contexts==[ContextEnum.either] || (target_contexts&some_contexts)==some_contexts)
     end
     
@@ -66,7 +65,6 @@ module Spree
       self.section.self_and_descendants(:include=>:section_piece).select{|node|
         node.section_piece.resources
       }.select{|resource| resource.present?}
-      
     end
     
     begin 'modify page layout tree'
@@ -77,12 +75,9 @@ module Spree
       # copy it self and decendants to new parent. this only for root layout.
       # include theme param values. add theme param values to all themes which available to the new parent.
       def add_layout_tree(copy_layout_id)
-        
         copy_layout = self.class.find(copy_layout_id)
         raise "only for root layout" unless copy_layout.root?
-        
-        copy_layout.copy_to_new_parent(self)
-        
+        copy_layout.copy_to_new_parent(self)        
       end
     
       
@@ -102,7 +97,6 @@ module Spree
         clone_node.root_id = new_parent.root_id
         clone_node.section_instance = new_section_instance
         clone_node.copy_from_root_id =  self.root_id
-        
         clone_node.save!    
         added_section_ids << clone_node.section_id
     
@@ -117,7 +111,6 @@ module Spree
           table_column_values[table_column_values.index('page_layout_root_id')] = clone_node.root_id
           table_column_values[table_column_values.index('page_layout_id')] = clone_node.id
           table_column_values[table_column_values.index('theme_id')] = theme.id
-        
           sql = %Q!INSERT INTO #{table_name}(#{table_column_names.join(',')}) SELECT #{table_column_values.join(',')} FROM #{table_name} WHERE ((page_layout_root_id=#{self.root_id} and page_layout_id =#{self.id}) and theme_id =#{copy_theme.id} )! 
           self.class.connection.execute(sql) 
         end 
@@ -153,7 +146,6 @@ module Spree
         new_layout.root_id = 0 # reset the lft,rgt.
         new_layout.save!
         new_layout.update_attribute("root_id", new_layout.id)  
-        
         self.copy_decendants_to_new_parent(new_layout)
         new_layout.reload
       end
@@ -199,12 +191,12 @@ module Spree
             ParamValue.create(:page_layout_root_id=>layout_root_id, :page_layout_id=>layout_id) do |pv|
               pv.section_param_id = sp.id
               pv.theme_id = theme.id
-  # puts "sp.default_value=#{sp.default_value.inspect}"            
               pv.pvalue = sp.default_value   
               #set default empty {} for now.
             end
           end
         end
+        
       end 
        
       def remove_param_value()
@@ -226,6 +218,21 @@ module Spree
         end        
       end
       
+      # replace section with another section, this section only for development for now
+      # ex. we developed a section with new feature, a page_layout tree want to have this feature, it could replace its original section with new section.
+      #     for leaf we could just remove a section, then add new one. Root or some ancestor, replace is better way for developer and user.
+      def replace_with( new_section)
+        #1. delete all param_values of original section.
+        #2. update section_id of current page_layout.  
+        #3. add new param_values of new sections for each template theme which is using current page_layout
+        self.remove_param_value()        
+        new_section_instance =  self.root.self_and_descendants.select{|xnode| xnode.section_id==new_section.id }.size.succ
+        self.section_id, self.section_instance=new_section.id, new_section_instance
+        self.save!          
+        self.themes.each{|theme|
+          self.add_param_value(theme)  
+        }
+      end      
     end   
     
     begin 'section content, html, css, js'
@@ -238,10 +245,10 @@ module Spree
         html = build_html(tree,  section_hash)
         return html, css
       end
+      
       # Usage: build html, js, css for a layout
       # Params: theme_id, 
       #         if passed, build css for that theme, or build css for default theme   
-      #
       def build_html(tree, section_hash)
         build_section_html(tree, self, section_hash)
       end
