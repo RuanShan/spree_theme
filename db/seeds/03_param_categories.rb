@@ -27,7 +27,7 @@ objs=[
   #{"id"=>64, "position"=>64, "is_enabled"=>true, "editor_id"=>3, "slug"=>"link_selected_hover_background" },
   #{"id"=>65, "position"=>65, "is_enabled"=>true, "editor_id"=>3, "slug"=>"unclickable_link" },
   #table
-  {"id"=>78, "position"=>78, "is_enabled"=>true, "editor_id"=>0, "slug"=>"table_wrapper" },
+  {"id"=>78, "position"=>78, "is_enabled"=>true, "editor_id"=>0, "slug"=>"table" },
   {"id"=>79, "position"=>79, "is_enabled"=>true, "editor_id"=>0, "slug"=>"table_title" },
   {"id"=>80, "position"=>80, "is_enabled"=>true, "editor_id"=>2, "slug"=>"cell" },
   {"id"=>81, "position"=>81, "is_enabled"=>true, "editor_id"=>2, "slug"=>"th" },

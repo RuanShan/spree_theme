@@ -19,10 +19,10 @@ module SpreeTheme::System
     if @is_designer
       return 'layout_for_design'
     end 
-    #for customer
-    if @is_preview 
-      return 'layout_for_preview'
-    end  
+    #for customer, do not support it now.
+    #if @is_preview 
+    #  return 'layout_for_preview'
+    #end  
     SpreeTheme.site_class.current.layout || Spree::Config[:layout]
   end
 
@@ -97,7 +97,7 @@ Rails.logger.debug "request.fullpath=#{request.fullpath}"
       @param_values_for_editors = Array.new(@editors.size){|i| []}
       editor_ids = @editors.collect{|e|e.id}
       page_layout ||= theme.page_layout
-      param_values =theme.param_values().where(:page_layout_id=>page_layout.id).includes([:section_param=>[:section_piece_param=>:param_category]]) 
+      param_values =theme.param_values().where(:page_layout_id=>page_layout.id).includes([:section_param=>[:section_piece_param=>:param_category]]).order("spree_param_categories.position, spree_section_params.section_id, spree_section_piece_params.position") 
       #get param_values for each editors
       for pv in param_values
         #only get pv blong to root section

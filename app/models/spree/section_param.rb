@@ -1,6 +1,6 @@
 module Spree
   class SectionParam < ActiveRecord::Base  
-    has_many :param_values
+    has_many :param_values, :dependent=>:destroy
     belongs_to :section_piece_param
     belongs_to :section
     serialize :default_value, Hash

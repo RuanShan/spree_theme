@@ -69,7 +69,6 @@ module Spree
           object_properties["pvalue0"] = pvalue_string.to_i
         else # css and pvalue_string
           if pvalue_string.present?  
-  Rails.logger.debug "pvalue_string=#{pvalue_string}"
             html_attribute_slug, vals = pvalue_string.split(':')
             # 'width:'.split(':') -> ['width'], in this case vals is nil, 
             # it happened while user select a manul entry and have not enter anything. we should show the empty entry.
@@ -249,8 +248,10 @@ module Spree
     begin 'css selector, name, value'
       # from param_value page_layout_id, section_param.section_id, section_param.section_root_id, section_param.class_name get selector and prefix   
       def css_selector        
-        prefix = case self.param_value.section_param.section_piece_param.class_name
+        target = self.param_value.section_param.section_piece_param.class_name
+        prefix = case target
           when /^s\_/
+            target = target[2..-1]
             ".s_#{self.param_value.page_layout_id}_#{self.param_value.section_param.section_root_id}"
           when "ash",/^a/, /(label|input|li|img|button|td|th)/ #a, ah
             ".s_#{self.param_value.page_layout_id}_#{self.param_value.section_param.section_id}"
@@ -265,22 +266,23 @@ module Spree
           end
         
         #it has to apply to inner, for root, outer is body, it include editor panel, some css would affect it. 
-        selector = case self.param_value.section_param.section_piece_param.class_name
+        selector = case target
           when /content_layout/,/block/,/cell/
             ""          
           when /inner/
-            "_#{self.param_value.section_param.section_piece_param.class_name}"
+            "_#{target}"
           when 'ash' #selected:hover
             " .selected"
           when /^a/ #a, ah
             " a"
-          when /(label|input|li|img|button|td|th)/
+          when /(label|input|li|img|button|td|th|h6)/
           #product quantity,atc section_piece content just input,add a <span> wrap it.
           #product images content thumb and main images so here should be section_id,
-            " #{self.param_value.section_param.section_piece_param.class_name}"
+            " #{target}"
           else  #noclick, selected
-            " .#{self.param_value.section_param.section_piece_param.class_name}"
+            " .#{target}"
           end
+Rails.logger.debug "css selector:#{prefix+selector}, #{attribute_name}:#{attribute_value}"          
         prefix+selector
       end 
       

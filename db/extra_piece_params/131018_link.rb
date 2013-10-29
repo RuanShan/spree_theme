@@ -1,3 +1,5 @@
+=begin
+ 
 include SpreeTheme::SectionPieceParamHelper
 
 #table title cell, border,padding
@@ -17,3 +19,4 @@ a =   { "editor_id"=>4,  "class_name"=>"a", "pclass"=>"css", "param_category_id"
 ah =  { "editor_id"=>4,  "class_name"=>"ah", "pclass"=>"css", "param_category_id"=>12,  "html_attribute_ids"=>"24,27,49,53,54"}  
 create_section_piece_param( section_piece, a)
 create_section_piece_param( section_piece, ah)
+=end

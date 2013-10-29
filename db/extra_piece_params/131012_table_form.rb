@@ -1,3 +1,4 @@
+=begin
 include SpreeTheme::SectionPieceParamHelper
 
 #table title cell, border,padding
@@ -58,3 +59,4 @@ create_section_piece_param( section_piece, title)
 create_section_piece_param( section_piece, label)
 create_section_piece_param( section_piece, error)
 create_section_piece_param( section_piece, input)
+=end

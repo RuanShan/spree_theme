@@ -31,5 +31,16 @@ Rails.logger.debug "new_param_value_count=#{new_param_value_count},original_para
   it 'has many section_params' do
     section_piece_param.section_params.should be_kind_of Array
   end
+  
+  it 'destroy section_params and param_values together' do
+    section_params = section_piece_param.section_params
+    section_piece_param.destroy    
+    Spree::SectionParam.where(:section_piece_param_id=>section_piece_param.id).should be_blank
+    for section_param in section_params      
+      Spree::ParamValue.where(:section_param_id=>section_param.id).should be_blank
+    end
+    
+    
+  end
    
 end

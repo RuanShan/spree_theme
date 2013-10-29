@@ -34,7 +34,6 @@ root:
       </div><!-- /#page -->
       </div><!-- /#jquery.layout require it -->
     <% if @current_page.is_preview %>      
-      // And go!
       <script type="text/javascript" src="/assets/interface.js"></script>    
     <% end %>
     </body>
@@ -979,7 +978,10 @@ profile:
   is_selectable: "1"
   is_container: "0"
   html: |    
-    <%= render :partial => 'spree/user_registrations/new' %>
+    <dl id="user-info">
+      <dt><%= Spree.t(:email) %></dt>
+      <dd><%= @user.email %> (<%= link_to Spree.t(:edit), spree.edit_account_path, :remote=>true %>)</dd>
+    </dl>
   css: ""
   js: ""
 order_list:
@@ -989,7 +991,35 @@ order_list:
   is_selectable: "1"
   is_container: "0"
   html: |    
-    <%= render :partial => 'spree/user_registrations/new' %>
+    <h3><%= Spree.t(:my_orders) %></h3>
+    <% if @orders.present? %>
+      <table class="order-summary">
+        <thead>
+        <tr>
+          <th class="order-number"><%= Spree.t(:order_number) %></th>
+          <th class="order-date"><%= Spree.t(:order_date) %></th>
+          <th class="order-status"><%= Spree.t(:status) %></th>
+          <th class="order-payment-state"><%= Spree.t(:payment_state) %></th>
+          <th class="order-shipment-state"><%= Spree.t(:shipment_state) %></th>
+          <th class="order-total"><%= Spree.t(:total) %></th>
+        </tr>
+        </thead>
+        <tbody>
+        <% @orders.each do |order| %>
+          <tr class="<%= cycle('even', 'odd') %>">
+            <td class="order-number"><%= link_to order.number, order_url(order) %></td>
+            <td class="order-date"><%= l order.completed_at.to_date %></td>
+            <td class="order-status"><%= Spree.t(order.state).titleize %></td>
+            <td class="order-payment-state"><%= Spree.t("payment_states.#{order.payment_state}") if order.payment_state %></td>
+            <td class="order-shipment-state"><%= Spree.t("shipment_states.#{order.shipment_state}") if order.shipment_state %></td>
+            <td class="order-total"><%= order.display_total %></td>
+          </tr>
+        <% end %>
+        </tbody>
+      </table>
+    <% else %>
+      <p><%= Spree.t(:you_have_no_orders_yet) %></p>
+    <% end %>
   css: ""
   js: ""
 dialog:
@@ -1000,12 +1030,13 @@ dialog:
   is_container: "0"
   html: |    
     <div id="dialog" class="<%=g_piece_selector%> <%=@template.current_piece.as_child_selector%> content_layout" >
+      <div> this is dialog title  <a href="javascript:void(0)" onclick="$('#dialog').hide();" class="close">X</a> </div>
           <div class="<%=g_piece_selector%>_inner clear-block">
           ~~content~~
-          </div>          
+          </div>
     </div> 
   css: |
-    div.sd~~pageparams.section_instance~~
+    div.<%=g_piece_selector%>
     { 
       position:absolute;
       display:none;
