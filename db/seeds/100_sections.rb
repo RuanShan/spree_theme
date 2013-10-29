@@ -75,22 +75,22 @@ product_image.add_section_piece(section_piece_hash['product_image'].id)
 
 
 ################################################ center area start ##############################################  
-#center_area = Spree::Section.create_section(section_piece_hash['container'].id, {:title=>"center_area",:subscribed_global_events=>"page_layout_fixed,block_width"},{'content_layout'=>{86=>bool_true,'86unset'=>bool_false},
-#'block'=>{15=>"height:100px",'15unset'=>bool_false,:disabled_ha_ids=>"101"}})
+center_area = Spree::Section.create_section(section_piece_hash['container'].id, {:title=>"center_area",:is_enabled=>false,:subscribed_global_events=>"page_layout_fixed,block_width"},{'content_layout'=>{86=>bool_true,'86unset'=>bool_false},
+'block'=>{15=>"height:100px",'15unset'=>bool_false,:disabled_ha_ids=>"101"}})
 
-#left_part = Spree::Section.create_section(section_piece_hash['container'].id, {:title=>"left_part",:global_events=>"block_width"},
-#  {'content_layout'=>{86=>bool_true},
-#   'block'=>{15=>"height:100px",'15unset'=>bool_false,21=>"width:200px",'21unset'=>bool_false, 101=>"float:left",'101unset'=>bool_false,111=>"margin:0 -200px 0 0",'111unset'=>bool_false,:disabled_ha_ids=>"111"},
-#   'inner'=>{'15hidden'=>bool_true}})
-#right_part = Spree::Section.create_section(section_piece_hash['container'].id, {:title=>"right_part",:global_events=>"block_width"},
-#  {'content_layout'=>{86=>bool_true},
-#   'block'=>{15=>"height:100px",'15unset'=>bool_false,21=>"width:200px",'21unset'=>bool_false, 101=>"float:right",'101unset'=>bool_false,111=>"margin:0 0 0 -200px",'111unset'=>bool_false,:disabled_ha_ids=>"111"},
-#   'inner'=>{'15hidden'=>bool_true}})
+left_part = Spree::Section.create_section(section_piece_hash['container'].id, {:title=>"left_part",:is_enabled=>false,:global_events=>"block_width"},
+  {'content_layout'=>{86=>bool_true},
+   'block'=>{15=>"height:100px",'15unset'=>bool_false,21=>"width:200px",'21unset'=>bool_false, 101=>"float:left",'101unset'=>bool_false,111=>"margin:0 -200px 0 0",'111unset'=>bool_false,:disabled_ha_ids=>"111"},
+   'inner'=>{'15hidden'=>bool_true}})
+right_part = Spree::Section.create_section(section_piece_hash['container'].id, {:title=>"right_part",:is_enabled=>false,:global_events=>"block_width"},
+  {'content_layout'=>{86=>bool_true},
+   'block'=>{15=>"height:100px",'15unset'=>bool_false,21=>"width:200px",'21unset'=>bool_false, 101=>"float:right",'101unset'=>bool_false,111=>"margin:0 0 0 -200px",'111unset'=>bool_false,:disabled_ha_ids=>"111"},
+   'inner'=>{'15hidden'=>bool_true}})
    
-#center_part = Spree::Section.create_section(section_piece_hash['container'].id, {:title=>"center_part",:global_events=>"block_width"},
-#  {'content_layout'=>{86=>bool_true},
-#'block'=>{15=>"height:100px",'15unset'=>bool_false,21=>"width:100%",'21unset'=>bool_false, 101=>"float:left",'101unset'=>bool_false,111=>"margin:0 -100% 0 0",'111unset'=>bool_false, '111hidden'=>bool_true,:disabled_ha_ids=>"101,21"},
-#'inner'=>{31=>"margin:0 200px 0 200px",'31unset'=>bool_false, '31hidden'=>bool_true, '15hidden'=>bool_true}})
+center_part = Spree::Section.create_section(section_piece_hash['container'].id, {:title=>"center_part",:is_enabled=>false,:global_events=>"block_width"},
+  {'content_layout'=>{86=>bool_true},
+'block'=>{15=>"height:100px",'15unset'=>bool_false,21=>"width:100%",'21unset'=>bool_false, 101=>"float:left",'101unset'=>bool_false,111=>"margin:0 -100% 0 0",'111unset'=>bool_false, '111hidden'=>bool_true,:disabled_ha_ids=>"101,21"},
+'inner'=>{31=>"margin:0 200px 0 200px",'31unset'=>bool_false, '31hidden'=>bool_true, '15hidden'=>bool_true}})
 ################################################ center area end ##############################################  
 
   

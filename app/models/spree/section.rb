@@ -7,7 +7,7 @@ module Spree
     has_many :section_params
     
     friendly_id :title, :use => :slugged
-    attr_accessible :section_piece_id, :title, :global_events, :subscribed_global_events
+    attr_accessible :section_piece_id, :title, :global_events, :subscribed_global_events,:is_enabled
     # usage: attribute section_piece_id, title required
     # params: default_param_values,  is a hash,  class_name=>{htmal_attribute_id=>default_value,..}
     def self.create_section(section_piece_id,attrs = {}, default_param_values={})
