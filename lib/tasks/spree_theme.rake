@@ -43,12 +43,20 @@ namespace :spree_theme do
     puts "template 1, page_layout_id=#{args.page_layout_id}_#{args.section_id}, #{class_name}= #{template.css(class_name)}"
   end
   
-  desc "test param values"
-  task :test_param_values =>[ :environment ] do |t, args|
+  desc "test theme"
+  task :test_theme =>[ :environment ] do |t, args|
     #section_pieces = Spree::SectionPiece.all(:include=>:section_piece_params)    
     #sections =  Spree::Section.all(:include=>{:section_params=>:section_piece_params})
     #page_layouts = Spree::PageLayout.all(:include=>{:section_params=>:section_piece_params})    
-    pvs = Spree::TemplateTheme.first.param_values.all(:include=>{:section_param=>{:section_piece_param=>:param_category}})
+    theme = Spree::TemplateTheme.first
+    
+    for page_layout in theme.page_layout.self_and_descendants.includes(:section)
+      if page_layout.section.blank?
+        puts "error:page_layout=#{page_layout.id} has no section"
+      end
+    end 
+    
+    pvs = theme.param_values.all(:include=>{:section_param=>{:section_piece_param=>:param_category}})
     for pv in pvs
       if pv.section_param.blank?
         puts "error:pv=#{pv.id} has no section_param"  
