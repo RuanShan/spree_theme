@@ -243,7 +243,8 @@ module Spree
         section_hash = sections.inject({}){|h, s| h[s.id] = s; h}
         css = build_css(tree, self, section_hash)
         html = build_html(tree,  section_hash)
-        return html, css
+        js = build_js(tree, sections)
+        return html, css, js
       end
       
       # Usage: build html, js, css for a layout
@@ -269,15 +270,12 @@ module Spree
       def build_js(tree, sections)
         section_ids = tree.collect{|node|node.section_id}
         section_piece_ids = sections.select{|s| section_ids.include?(s.root_id) or section_ids.include?(s.id) }.collect{|s| s.section_piece_id}
-        js_ids = ''
-        unless section_piece_ids.empty?
+        js = ''
+        if section_piece_ids.present?
           section_pieces = SectionPiece.find(section_piece_ids)
-          js_ids = section_pieces.inject(''){|sum, sp| sum.concat(sp.js); sum}
+          js = section_pieces.inject(''){|sum, sp| sum.concat(sp.js); sum}
         end    
-        unless js_ids.empty?
-          
-        end
-        return ''
+        return js
       end
 
       # highlight this page_layout.      

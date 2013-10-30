@@ -20,7 +20,8 @@ module PageRenderer
     #generate css and js, they are do not need current menu
     def generate_assets
       prepare_instance_variables
-      self.css = renderer.render_to_string(:inline =>ecss)
+      self.css = renderer.render_to_string(:inline =>ecss) if ecss.present?
+      self.js = renderer.render_to_string(:inline =>ejs) if ejs.present?
       return self.css, self.js
     end
         

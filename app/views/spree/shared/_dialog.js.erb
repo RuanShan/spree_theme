@@ -1,0 +1,8 @@
+<%
+dialog_selector = "#dialog"
+target_view = ( params[:action]=='update' ? 'edit' : params[:action] )
+%>
+
+$("<%=dialog_selector%> div:last-child").html(<%= raw ( render :partial => target_view ).to_json %>)
+
+center_template_section("<%=dialog_selector%>")

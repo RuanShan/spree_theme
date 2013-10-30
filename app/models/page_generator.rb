@@ -73,8 +73,8 @@ class PageGenerator
 
   #build html, css sourse
   def build
-    self.ehtml, self.ecss = self.theme.page_layout.build_content()      
-    return self.ehtml, self.ecss
+    self.ehtml, self.ecss, self.ejs = self.theme.page_layout.build_content()      
+    return self.ehtml, self.ecss, self.ejs
   end
   
   def release

@@ -4,6 +4,7 @@
 //= require jquery.form
 //= require jquery.layout
 //= require store/spree_frontend
+//= require store/spree_theme.client
 
 function ajax_post (url, form, data_type, callback) {
   $.ajax({type:'post',data:$("#"+form+" :input").serialize(), url:url,dataType:data_type, success:callback });   
