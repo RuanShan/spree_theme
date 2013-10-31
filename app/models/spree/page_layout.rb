@@ -278,9 +278,10 @@ module Spree
         return js
       end
 
-      # highlight this page_layout.      
-      def css_selector
-        ".s_#{id}_#{section_id}"
+      # highlight this page_layout.
+      # or get subsection of section tree.      
+      def css_selector( subsection = nil )
+        subsection.blank? ? ".s_#{id}_#{section_id}" : ".s_#{id}_#{subsection.id}"
       end
       
     end

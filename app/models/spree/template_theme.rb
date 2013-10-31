@@ -171,6 +171,16 @@ module Spree
         obj
       end
       
+      # ex. get dialog section
+      def find_section_by_usage( usage )
+        PageLayout.includes(:section=>:section_piece).where(["#{PageLayout.table_name}.root_id=? and #{SectionPiece.table_name}.usage=?",self.page_layout_root_id, usage]).first
+      end
+      
+      def dialog_content_container_selector
+        dialog = find_section_by_usage( 'dialog' )
+        dialog_content_container = dialog.section.leaves.includes(:section_piece).select{|section| section.section_piece.is_container?}.first
+        dialog.css_selector(dialog_content_container)
+      end
                 
     end
     begin 'export&import'

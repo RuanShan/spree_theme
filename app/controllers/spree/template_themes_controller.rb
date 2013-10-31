@@ -172,7 +172,7 @@ module Spree
         #FIXME update param_values in editor        
         #@layout.reload
       end
-      
+      @theme.page_layout.reload #layout is changed
       render :partial=>"layout_tree1"    
     end
   

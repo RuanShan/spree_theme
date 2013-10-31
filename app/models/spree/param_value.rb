@@ -93,12 +93,12 @@ module Spree
     end
     
   
-    def disabled_html_attribute_ids
-      if @disabled_html_attribute_ids.nil?
-        @disabled_html_attribute_ids = self.disabled_ha_ids.split(',').collect{|i|i.to_i}
-      end
-      @disabled_html_attribute_ids
-    end  
+    #def disabled_html_attribute_ids
+    #  if @disabled_html_attribute_ids.nil?
+    #    @disabled_html_attribute_ids = self.disabled_ha_ids.split(',').collect{|i|i.to_i}
+    #  end
+    #  @disabled_html_attribute_ids
+    #end  
     
     # in case, there is only one html_attribute_id in current param_value
     # use this to fetch param value directly.

@@ -62,7 +62,7 @@ module Spree
     def add_section_piece_param(default_param_values={})
       # section_id, section_piece_param_id, section_piece_id, section_piece_instance, is_enabled, disabled_ha_ids
       section_piece_params = section_piece.section_piece_params
-      exclude_keys = [:disabled_ha_ids]
+      exclude_keys = ['disabled_ha_ids']
       section_root_id = self.root.id
         for spp in section_piece_params
           section_param = SectionParam.create() do |sp|
@@ -72,7 +72,7 @@ module Spree
             #sp.is_enabled =
             if default_param_values.key?(spp[:class_name])
               dpvs = default_param_values.fetch spp[:class_name]
-              sp.default_value = dpvs.except(*exclude_keys)
+              sp.default_value = dpvs.slice(*spp.param_keys)
               sp.disabled_ha_ids = dpvs['disabled_ha_ids'].to_s
             end
             sp.default_value ||={}

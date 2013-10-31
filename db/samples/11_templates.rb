@@ -32,22 +32,22 @@ main_content = template.add_section(section_hash['container'], body, :title=>"ma
 
 template.add_section(section_hash['vmenu'], lftnav, :title=>"Categories")
 
-blog_list = template.add_section(section_hash['container'], main_content, :title=>"product list")
-blog_detail = template.add_section(section_hash['container'], main_content, :title=>"product detail")
-template.add_section(section_hash['product-name'], blog_list, :title=>"product name")
-template.add_section(section_hash['product-image'], blog_list, :title=>"product image")
+product_list = template.add_section(section_hash['container'], main_content, :title=>"product list")
+product_detail = template.add_section(section_hash['container'], main_content, :title=>"product detail")
+template.add_section(section_hash['product-name'], product_list, :title=>"product name")
+template.add_section(section_hash['product-image'], product_list, :title=>"product image")
 
 
-template.add_section(section_hash['product-name'], blog_detail, :title=>"product name")
-template.add_section(section_hash['product-description'], blog_detail, :title=>"product description")
+template.add_section(section_hash['product-name'], product_detail, :title=>"product name")
+template.add_section(section_hash['product-description'], product_detail, :title=>"product description")
 
-blog_list.reload   #reload left, right
-blog_detail.reload #reload left, right
-blog_list.update_section_context( Spree::PageLayout::ContextEnum.list )
-blog_list.update_data_source( Spree::PageLayout::ContextDataSourceMap[Spree::PageLayout::ContextEnum.list].first )
+product_list.reload   #reload left, right
+product_detail.reload #reload left, right
+product_list.update_section_context( Spree::PageLayout::ContextEnum.list )
+product_list.update_data_source( Spree::PageLayout::ContextDataSourceMap[Spree::PageLayout::ContextEnum.list].first )
 
-blog_detail.update_section_context( Spree::PageLayout::ContextEnum.detail )
-blog_detail.update_data_source( Spree::PageLayout::ContextDataSourceMap[Spree::PageLayout::ContextEnum.detail].first )
+product_detail.update_section_context( Spree::PageLayout::ContextEnum.detail )
+product_detail.update_data_source( Spree::PageLayout::ContextDataSourceMap[Spree::PageLayout::ContextEnum.detail].first )
 
 
 

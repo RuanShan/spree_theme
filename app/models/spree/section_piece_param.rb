@@ -28,6 +28,10 @@ module Spree
       @html_attributes
     end
     
+    def param_keys
+      self.html_attribute_ids.split(',').collect{|i| [i.to_i, "#{i}unset", "#{i}hidden"]}.flatten
+    end
+    
     private
     #add section_param where section.section_piece_id = ? for each section tree.
     def add_section_params

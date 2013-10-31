@@ -1028,9 +1028,9 @@ dialog:
   slug: dialog
   is_selectable: "1"
   is_container: "0"
+  usage: "dialog"
   html: |    
-    <div id="dialog" class="<%=g_piece_selector%> <%=@template.current_piece.as_child_selector%> content_layout" >
-      <div> this is dialog title  <a href="javascript:void(0)" onclick="$('#dialog').hide();" class="close">X</a> </div>
+    <div id="dialog" class="<%=g_piece_selector%> content_layout" >
           <div class="<%=g_piece_selector%>_inner clear-block">
           ~~content~~
           </div>
@@ -1108,3 +1108,19 @@ container_form:
     .<%=@template.current_piece.section_selector%> input{ <%=@template.css(:s_input) %> }
     .<%=@template.current_piece.section_selector%> button{ <%=@template.css(:s_button) %> } 
   js: ""
+dialog_title:
+  id: 45
+  title: dialog title
+  slug: dialog-title
+  is_selectable: "0"
+  is_container: "1"
+  html: |
+    <!-- outer and inner are required, in this way dialog content always go to the inner. -->
+    <div class="<%=g_piece_selector%>">
+      <div class="title"> this is dialog title  <a href="javascript:void(0)" onclick="$('#dialog').hide();" class="close">X</a> </div>
+      <div class="<%=g_piece_selector%>_inner"> ~~content~~  <div>
+    </div>    
+  css: | 
+    .<%=g_piece_selector%> .title{ <%=@template.css(:title) %> }
+  js: ""
+      
