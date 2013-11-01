@@ -1043,34 +1043,7 @@ dialog:
       z-index:1001;
       ~~PageParams.get:outer~~
     }
-    div.sd~~pageparams.section_instance~~_inner
-    {
-      ~~PageParams.get:inner~~
-    }
-    div.sd~~pageparams.section_instance~~ .window_heading
-    {
-    ~~PageParams.get:window_heading~~ 
-    }
-    div.sd~~pageparams.section_instance~~ .form_title
-    { 
-      ~~PageParams.get:form_title~~
-    }
-    div.sd~~pageparams.section_instance~~ .form_label
-    { 
-      ~~PageParams.get:form_label~~
-    }
-    div.sd~~pageparams.section_instance~~ .form_control
-    { 
-      ~~PageParams.get:form_control~~
-    }
-    div.sd~~pageparams.section_instance~~ .submit_button
-    { 
-      ~~PageParams.get:submit_button~~
-    }
-    div.sd~~pageparams.section_instance~~ .link_button
-    { 
-      ~~PageParams.get:link_button~~
-    }
+
   js: ''
 container_link:
   id: 42

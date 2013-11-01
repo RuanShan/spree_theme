@@ -41,15 +41,47 @@ template.add_section(section_hash['product-name'], product_detail, :title=>"prod
 template.add_section(section_hash['product-description'], product_detail, :title=>"product description")
 
 others = template.add_section(section_hash['container'], main_content, :title=>"Others")
+  template.add_section(section_hash['taxon-name'], others, :title=>"Taxon name")
+
 cart = template.add_section(section_hash['cart'], others, :title=>"Cart")
+  template.add_section(section_hash['cart-items'], cart, :title=>"Cart items")
+  template.add_section(section_hash['order-total-price'], cart, :title=>"Order total price")
+
 checkout = template.add_section(section_hash['checkout'], others, :title=>"Checkout")
+  template.add_section(section_hash['ship-form'], checkout, :title=>"Ship form")
+  template.add_section(section_hash['payment-form'], checkout, :title=>"Payment form")
+
 thanks = template.add_section(section_hash['container'], others, :title=>"Thanks")
+  template.add_section(section_hash['order-number'], thanks, :title=>"Order number")
+  template.add_section(section_hash['order-address'], thanks, :title=>"Order address")
+  template.add_section(section_hash['order-payment'], thanks, :title=>"Order payment")
+  template.add_section(section_hash['order-items'], thanks, :title=>"Order items")
+
+
 account = template.add_section(section_hash['container'], others, :title=>"Account")
+  template.add_section(section_hash['profile'], account, :title=>"Profile")
+  template.add_section(section_hash['order-list'], account, :title=>"Order history")
+
 login = template.add_section(section_hash['container'], others, :title=>"Login")
+  template.add_section(section_hash['login-form'], login, :title=>"Login form")
+  
 signup = template.add_section(section_hash['container'], others, :title=>"Signup")
+  template.add_section(section_hash['sign-up-form'], login, :title=>"Sign up form")
 
-
-
+others.reload
+  others.update_section_context( [Spree::PageLayout::ContextEnum.cart,Spree::PageLayout::ContextEnum.checkout, Spree::PageLayout::ContextEnum.thanks, Spree::PageLayout::ContextEnum.login, Spree::PageLayout::ContextEnum.signup, Spree::PageLayout::ContextEnum.account] )
+cart.reload
+  cart.update_section_context( Spree::PageLayout::ContextEnum.cart )
+checkout.reload
+  checkout.update_section_context( Spree::PageLayout::ContextEnum.checkout )
+thanks.reload
+  thanks.update_section_context( Spree::PageLayout::ContextEnum.thanks )
+account.reload
+  account.update_section_context( Spree::PageLayout::ContextEnum.account )
+login.reload
+  login.update_section_context( Spree::PageLayout::ContextEnum.login )
+signup.reload
+  signup.update_section_context( Spree::PageLayout::ContextEnum.signup )
 
 product_list.reload   #reload left, right
 product_detail.reload #reload left, right
