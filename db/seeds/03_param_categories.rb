@@ -4,6 +4,8 @@ objs=[
   #{"id"=>3, "position"=>1, "is_enabled"=>true, "editor_id"=>3, "slug"=>"general_background" },
   #{"id"=>4, "position"=>1, "is_enabled"=>true, "editor_id"=>4, "slug"=>"general_text" },
 
+  {"id"=>4, "position"=>4, "is_enabled"=>true, "editor_id"=>0, "slug"=>"dialog_title" },
+  {"id"=>5, "position"=>5, "is_enabled"=>true, "editor_id"=>0, "slug"=>"dialog_content" },
   {"id"=>6, "position"=>6, "is_enabled"=>true, "editor_id"=>0, "slug"=>"title" },
   # a
   {"id"=>11, "position"=>11, "is_enabled"=>true, "editor_id"=>4, "slug"=>"link" },

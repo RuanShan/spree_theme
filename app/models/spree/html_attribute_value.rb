@@ -76,6 +76,12 @@ module Spree
             val_arr = vals.nil? ? [] : vals.split()
             repeats.times{|i|
               val = val_arr[i]
+              if val.nil? # handle short value.  padding:5px; or margin: 5px 5px;
+                # 0,1,2,3
+                # t,r,b,l       3%2=1, 2%2=0, 1%2=1
+                val||= val_arr[i%2]  
+                val||= val_arr[0]
+              end
               if html_attribute.selected_value?(val)
                 object_properties["psvalue#{i}"] = val
               else# it is manual entry.

@@ -41,8 +41,7 @@ module Spree
       
       def foreign
         self.within_site(SpreeTheme.site_class.designsite )
-      end
-      
+      end      
     end
     
     
@@ -54,8 +53,7 @@ module Spree
           "l#{page_layout_root_id}_t#{id}.html.erb"
         else
           "l#{page_layout_root_id}_t#{id}.#{usage}"
-        end
-        
+        end        
       end
     end
     
@@ -179,7 +177,7 @@ module Spree
       def dialog_content_container_selector
         dialog = find_section_by_usage( 'dialog' )
         dialog_content_container = dialog.section.leaves.includes(:section_piece).select{|section| section.section_piece.is_container?}.first
-        dialog.css_selector(dialog_content_container)
+        dialog.css_selector(dialog_content_container)+"_inner"
       end
                 
     end

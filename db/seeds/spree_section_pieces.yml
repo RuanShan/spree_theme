@@ -1113,14 +1113,39 @@ dialog_title:
   title: dialog title
   slug: dialog-title
   is_selectable: "0"
-  is_container: "1"
+  is_container: "0"
   html: |
     <!-- outer and inner are required, in this way dialog content always go to the inner. -->
     <div class="<%=g_piece_selector%>">
-      <div class="title"> this is dialog title  <a href="javascript:void(0)" onclick="$('#dialog').hide();" class="close">X</a> </div>
-      <div class="<%=g_piece_selector%>_inner"> ~~content~~  <div>
+      <div class="title"> <span >this is dialog title </span>  <a href="javascript:void(0)" onclick="$('#dialog').hide();" class="close">X</a> </div>
     </div>    
   css: | 
     .<%=g_piece_selector%> .title{ <%=@template.css(:title) %> }
+  js: ""
+# set padding, margin, without affecting dialog title
+dialog_content:
+  id: 46
+  title: dialog content
+  slug: dialog-content
+  is_selectable: "0"
+  is_container: "1"
+  html: |
+    <!-- container  -->
+    <div class="<%=g_piece_selector%> content_layout" >
+          <div class="<%=g_piece_selector%>_inner clear-block">
+          ~~content~~
+          </div>          
+    </div> 
+  css: | 
+    .<%=g_piece_selector%>
+    { 
+      position:relative;
+      <%=@template.css(:block)%>
+    }
+    /* background, margin, border, padding */
+    .<%=g_piece_selector%> .<%=g_piece_selector%>_inner
+    {
+      <%=@template.css(:inner)%>
+    }
   js: ""
       

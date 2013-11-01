@@ -51,7 +51,7 @@ create_section_piece_param( section_piece, label)
 create_section_piece_param( section_piece, error)
 create_section_piece_param( section_piece, input)
 
-title = { "editor_id"=>4,  "class_name"=>"forme_title", "pclass"=>"css", "param_category_id"=>40,  "html_attribute_ids"=>"24,27,49,53,54"}  
+title = { "editor_id"=>4,  "class_name"=>"form_title", "pclass"=>"css", "param_category_id"=>40,  "html_attribute_ids"=>"24,27,49,53,54"}  
 label = {"editor_id"=>4, "class_name"=>"label", "pclass"=>"css", "param_category_id"=>42,  "html_attribute_ids"=>"24,27,49,53,54"}
 error = {"editor_id"=>4, "class_name"=>"form_error", "pclass"=>"css", "param_category_id"=>43,  "html_attribute_ids"=>"24,27,49,53,54"}
 input = { "editor_id"=>4,  "class_name"=>"input", "pclass"=>"css", "param_category_id"=>44,  "html_attribute_ids"=>"24,27,49,53,54"}  

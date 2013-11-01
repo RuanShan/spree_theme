@@ -37,9 +37,19 @@ product_detail = template.add_section(section_hash['container'], main_content, :
 template.add_section(section_hash['product-name'], product_list, :title=>"product name")
 template.add_section(section_hash['product-image'], product_list, :title=>"product image")
 
-
 template.add_section(section_hash['product-name'], product_detail, :title=>"product name")
 template.add_section(section_hash['product-description'], product_detail, :title=>"product description")
+
+others = template.add_section(section_hash['container'], main_content, :title=>"Others")
+cart = template.add_section(section_hash['cart'], others, :title=>"Cart")
+checkout = template.add_section(section_hash['checkout'], others, :title=>"Checkout")
+thanks = template.add_section(section_hash['container'], others, :title=>"Thanks")
+account = template.add_section(section_hash['container'], others, :title=>"Account")
+login = template.add_section(section_hash['container'], others, :title=>"Login")
+signup = template.add_section(section_hash['container'], others, :title=>"Signup")
+
+
+
 
 product_list.reload   #reload left, right
 product_detail.reload #reload left, right

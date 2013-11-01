@@ -33,7 +33,7 @@ namespace :spree_theme do
     puts "imported file #{file_path}"
   end
 
-  desc "get css of template one"
+  desc "get css of template one, rake spree_theme:get_css[1,2,'block']"
   task :get_css, [:page_layout_id,:section_id, :class_name] =>[ :environment ] do |t, args|
     #template = Spree::TemplateTheme.first
     class_name = args.class_name

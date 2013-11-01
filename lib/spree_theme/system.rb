@@ -52,6 +52,7 @@ Rails.logger.debug "request.fullpath=#{request.fullpath}"
     end
     #menu should be same instance pass to PageGenerator, it require  request_fullpath
     @menu.request_fullpath = request.fullpath
+Rails.logger.debug "menu.context=#{@menu.current_context}"    
     @is_designer = website.design?
     if Rails.env !~ /prduction/
       # for development or test, enable get site from cookies
