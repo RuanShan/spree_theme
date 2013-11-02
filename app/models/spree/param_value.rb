@@ -208,6 +208,8 @@ module Spree
           }
         end      
         extra_html_attribute_values.each{|hav| hav.update}
+        #in section_param.add_default_value, it update param_value, it trigger this method, updated_html_attribute_values is nil at this time 
+        self.updated_html_attribute_values||=[]
         self.updated_html_attribute_values.concat(extra_html_attribute_values )
       end
       

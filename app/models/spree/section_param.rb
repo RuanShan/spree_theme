@@ -44,9 +44,11 @@ module Spree
         self.default_value[html_attribute_id] = html_attribute_value
         self.save!
         #get related param_values, if html_attribute_id is nil, set default value
-        self.param_values.each{|pv|
+        self.param_values.each{|pv|          
           pv.pvalue[html_attribute_id] = html_attribute_value
-          pv.update_column(:pvalue, pv.pvalue.to_yaml)
+          #do not use update_column, or pv.pvalue would raise 'string not matched (IndexError)' during calling next time  
+          pv.save!
+          #pv.update_column(:pvalue, pv.pvalue.to_yaml)
         }
       end
       

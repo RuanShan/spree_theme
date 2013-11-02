@@ -12,6 +12,6 @@ dialog_container = dialog.add_section_piece(section_piece_hash['container'].id,
             '7unset'=>bool_false,'8unset'=>bool_false,'6unset'=>bool_false
             },
   'block'=>{21=>'width:600px','disabled_ha_ids'=>'111', 2=>'background-color:#FFFFFF','21unset'=>bool_false,'2unset'=>bool_false,}})
-dialog_container.add_section_piece(section_piece_hash['dialog-title'].id, {'title'=>{32=>'padding:2px 2px 2px 2px','32unset'=>bool_false, 2=>'background-color:#EEEEEE','2unset'=>bool_false}})
-dialog_container.add_section_piece(section_piece_hash['dialog-content'].id, {'inner'=>{32=>'padding:0 10px 5px 10px','32unset'=>bool_false}})
+dialog_container.add_section_piece(section_piece_hash['dialog-title'].id)
+dialog_container.add_section_piece(section_piece_hash['dialog-content'].id)
 
