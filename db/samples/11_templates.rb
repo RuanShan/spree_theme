@@ -18,7 +18,7 @@ objs=[
 objects = Spree::Section.roots
 section_hash= objects.inject({}){|h,sp| h[sp.slug] = sp; h}
 # puts "section_hash=#{section_hash.keys}"
-template = Spree::TemplateTheme.create_plain_template(section_hash['root'], "Template One")
+template = Spree::TemplateTheme.create_plain_template(section_hash['root2'], "Template One")
 document = template.page_layout
 header = template.add_section(section_hash['container'],document, :title=>"Header")
 template.add_section(section_hash['logo'], header,:title=>"Logo")
@@ -26,6 +26,7 @@ template.add_section(section_hash['hmenu'], header,:title=>"Main menu")
 
 body = template.add_section(section_hash['container'], document, :title=>"content")
 footer = template.add_section(section_hash['container'], document, :title=>"footer")
+dialog = template.add_section(section_hash['dialog2'], document, :title=>"Dialog")
 
 lftnav = template.add_section(section_hash['container'], body, :title=>"lftnav")
 main_content = template.add_section(section_hash['container'], body, :title=>"main content")
@@ -34,11 +35,23 @@ template.add_section(section_hash['vmenu'], lftnav, :title=>"Categories")
 
 product_list = template.add_section(section_hash['container'], main_content, :title=>"product list")
 product_detail = template.add_section(section_hash['container'], main_content, :title=>"product detail")
-template.add_section(section_hash['product-name'], product_list, :title=>"product name")
-template.add_section(section_hash['product-image'], product_list, :title=>"product image")
+product = template.add_section(section_hash['container'], product_list, :title=>"product")
+template.add_section(section_hash['product-name'], product, :title=>"product name")
+template.add_section(section_hash['product-image'], product, :title=>"product image")
+template.add_section(section_hash['product-price'], product, :title=>"product price")
 
-template.add_section(section_hash['product-name'], product_detail, :title=>"product name")
-template.add_section(section_hash['product-description'], product_detail, :title=>"product description")
+detail_left = template.add_section(section_hash['container'], main_content, :title=>"left part")
+detail_right = template.add_section(section_hash['container'], main_content, :title=>"right part")
+
+template.add_section(section_hash['image-with-thumbnails'], detail_left, :title=>"image with thumbnails")
+template.add_section(section_hash['product_properties'], detail_left, :title=>"product_properties")
+ 
+template.add_section(section_hash['product-name'], detail_right, :title=>"product name")
+template.add_section(section_hash['product-description'], detail_right, :title=>"product description")
+template.add_section(section_hash['product-price'], detail_right, :title=>"product price")
+qty_atc_container = template.add_section(section_hash['container'], detail_right, :title=>"container")
+template.add_section(section_hash['product-quantity'], qty_atc_container, :title=>"product quantity")
+template.add_section(section_hash['product-atc'], qty_atc_container, :title=>"product atc")
 
 others = template.add_section(section_hash['container'], main_content, :title=>"Others")
   template.add_section(section_hash['taxon-name'], others, :title=>"Taxon name")
@@ -66,7 +79,7 @@ login = template.add_section(section_hash['container'], others, :title=>"Login")
   template.add_section(section_hash['login-form'], login, :title=>"Login form")
   
 signup = template.add_section(section_hash['container'], others, :title=>"Signup")
-  template.add_section(section_hash['sign-up-form'], login, :title=>"Sign up form")
+  template.add_section(section_hash['sign-up-form'], signup, :title=>"Sign up form")
 
 others.reload
   others.update_section_context( [Spree::PageLayout::ContextEnum.cart,Spree::PageLayout::ContextEnum.checkout, Spree::PageLayout::ContextEnum.thanks, Spree::PageLayout::ContextEnum.login, Spree::PageLayout::ContextEnum.signup, Spree::PageLayout::ContextEnum.account] )
