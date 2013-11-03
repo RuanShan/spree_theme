@@ -217,7 +217,7 @@ root:
     { width:100%;
       height:100%;
     }
-    /* common setting for subsections
+    /* common setting for subsections, they are in container-link, container-form, container-table now.
      * a 
      *   a active
      *   a visited
@@ -234,21 +234,7 @@ root:
      *   lable margin, border, padding, bg, font
      *   error margin, border, padding, bg, font
      *   input margin, border, padding, bg, font
-     */
-    .<%=g_piece_selector%> label{ <%=@template.css(:label) %> }
-    .<%=g_piece_selector%> .error{ <%=@template.css(:error) %> }
-    .<%=g_piece_selector%> input{ <%=@template.css(:input) %> }
-    .<%=g_piece_selector%> a{ <%=@template.css(:a) %> }
-    .<%=g_piece_selector%> a:hover{ <%=@template.css(:ah) %> }    
-    .<%=g_piece_selector%> .table_title{ <%=@template.css(:table_title) %> }
-    .<%=g_piece_selector%> th, .<%=g_piece_selector%> td { <%=@template.css(:cell) %> }
-    .<%=g_piece_selector%> th{ <%=@template.css(:th) %> }
-    .<%=g_piece_selector%> td{ <%=@template.css(:td) %> }
-    .<%=g_piece_selector%> .form_title{ <%=@template.css(:form_title) %> }
-    .<%=g_piece_selector%> .form_label{ <%=@template.css(:form_label) %> }
-    .<%=g_piece_selector%> .form_error{ <%=@template.css(:form_error) %> }
-    .<%=g_piece_selector%> .form_input{ <%=@template.css(:form_input) %> }
-    
+     */ 
     
   title: root
   slug: root
@@ -1064,7 +1050,8 @@ container_table:
   is_container: "1"
   html: ~~content~~    
   css: |
-    .<%=@template.current_piece.section_selector%> .cell{ <%= @template.css :s_cell %> }
+    .<%=@template.current_piece.section_selector%> table{ <%= @template.css :s_table %>  }
+    .<%=@template.current_piece.section_selector%> th, .<%=@template.current_piece.section_selector%> td{ <%= @template.css :s_cell %> }
     .<%=@template.current_piece.section_selector%> th{ <%= @template.css :s_th %>  }
     .<%=@template.current_piece.section_selector%> td{ <%= @template.css :s_td %>  }
   js: ""

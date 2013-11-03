@@ -256,6 +256,8 @@ module Spree
       def css_selector        
         target = self.param_value.section_param.section_piece_param.class_name
         prefix = case target
+        when /cell/ # s_cell or cell
+            ".s_#{self.param_value.page_layout_id}_#{self.param_value.section_param.section_root_id} td, .s_#{self.param_value.page_layout_id}_#{self.param_value.section_param.section_root_id} th"            
           when /^s\_/
             target = target[2..-1]
             ".s_#{self.param_value.page_layout_id}_#{self.param_value.section_param.section_root_id}"
@@ -265,8 +267,6 @@ module Spree
             "#page"
           when /content_layout/
             ".c_#{self.param_value.page_layout_id}"          
-          when /cell/
-            ".s_#{self.param_value.page_layout_id}_#{self.param_value.section_param.section_id} td, .s_#{self.param_value.page_layout_id}_#{self.param_value.section_param.section_id} th"            
           else
             ".s_#{self.param_value.page_layout_id}_#{self.param_value.section_param.section_id}"
           end
@@ -281,7 +281,7 @@ module Spree
             " .selected"
           when /^a/ #a, ah
             " a"
-          when /(label|input|li|img|button|td|th|h6)/
+          when /(table|label|input|li|img|button|td|th|h6)/
           #product quantity,atc section_piece content just input,add a <span> wrap it.
           #product images content thumb and main images so here should be section_id,
             " #{target}"

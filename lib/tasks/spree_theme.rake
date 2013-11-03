@@ -49,9 +49,21 @@ namespace :spree_theme do
     #sections =  Spree::Section.all(:include=>{:section_params=>:section_piece_params})
     #page_layouts = Spree::PageLayout.all(:include=>{:section_params=>:section_piece_params})    
     theme = Spree::TemplateTheme.first
-    
-    for page_layout in theme.page_layout.self_and_descendants.includes(:section)
-      if page_layout.section.blank?
+    # section_param and param_value match each other.
+    for page_layout in theme.page_layout.self_and_descendants.includes(:section)     
+      if page_layout.section.present?
+        section_nodes = page_layout.section.self_and_descendants.includes(:section_params)
+        section_params = section_nodes.collect(&:section_params).flatten
+        if page_layout.param_values.count!=section_params.count
+          puts "error:page_layout=#{page_layout.id} missing param_values"
+          puts "      page_layout.param_values=#{page_layout.param_values.count}, section_params=#{section_params.count}"
+          for sp in section_params
+            if page_layout.param_values.select{|pv| pv.section_param_id==sp.id}.blank?
+              puts "      missing section_param=#{sp.id}"            
+            end
+          end          
+        end        
+      else
         puts "error:page_layout=#{page_layout.id} has no section"
       end
     end 
