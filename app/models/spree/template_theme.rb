@@ -209,7 +209,7 @@ module Spree
         # template = self.find_by_title template.title
         serialized_hash[:param_values].each do |record|
           table_name = ParamValue.table_name
-          connection.insert_fixture(record.attributes, table_name)          
+          connection.insert_fixture(record.attributes.except('id'), table_name)          
         end
         serialized_hash[:page_layouts].each do |record|
           table_name = PageLayout.table_name

@@ -44,7 +44,7 @@ detail_left = template.add_section(section_hash['container'], main_content, :tit
 detail_right = template.add_section(section_hash['container'], main_content, :title=>"right part")
 
 template.add_section(section_hash['image-with-thumbnails'], detail_left, :title=>"image with thumbnails")
-template.add_section(section_hash['product_properties'], detail_left, :title=>"product_properties")
+template.add_section(section_hash['product-properties'], detail_left, :title=>"product_properties")
  
 template.add_section(section_hash['product-name'], detail_right, :title=>"product name")
 template.add_section(section_hash['product-description'], detail_right, :title=>"product description")

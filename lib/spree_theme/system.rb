@@ -58,13 +58,16 @@ Rails.logger.debug "menu.context=#{@menu.current_context}"
       # for development or test, enable get site from cookies
       if cookies[:abc_development_design].present?
         @is_designer = true
-        #user is designer.
       end     
     end    
     #get template from query string 
     if @is_designer
+      if session[:theme_id].present?
+        @theme = Spree::TemplateTheme.find( params[:id] )
+      end
       if params[:action]=='preview' && params[:id].present?
-        @theme = Spree::TemplateTheme.find( params[:id] )          
+        @theme = Spree::TemplateTheme.find( params[:id] )
+        session[:theme_id] = params[:id]
       end
     end
     template_release =  SpreeTheme.site_class.current.template_release
@@ -84,7 +87,11 @@ Rails.logger.debug "menu.context=#{@menu.current_context}"
         end
       end
       # we have initialize PageGenerator here, page like login  do not go to template_thems_controller/page
-      @lg = PageGenerator.generator( @menu, template_release, {:resource=>@resource,:controller=>self})
+      if @is_designer
+        @lg = PageGenerator.generator( @menu, @theme, {:resource=>@resource,:controller=>self})                  
+      else
+        @lg = PageGenerator.generator( @menu, template_release, {:resource=>@resource,:controller=>self})          
+      end      
       @lg.context.each_pair{|key,val|
         instance_variable_set( "@#{key}", val)
       }      

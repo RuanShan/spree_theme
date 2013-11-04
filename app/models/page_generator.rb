@@ -29,22 +29,29 @@ class PageGenerator
     end
     
     #generator generate content: html,js,css
-    def previewer(menu, template_release=nil,  options={})
+    # params:
+    #   theme_or_release: template theme or template release, a template may not released.
+    def previewer(menu, theme_or_release=nil,  options={})
       options[:preview] = true
-      pg = self.new( template_release, menu, options)
+      pg = self.new( theme_or_release, menu, options)
       pg.build
       pg
     end    
     #generator generate content: html,js,css
-    def generator(menu, template_release=nil,  options={})
-      self.new( template_release, menu, options)
+    def generator(menu, theme_or_release=nil,  options={})
+      self.new( theme_or_release, menu, options)
     end
   end
   
-  def initialize( template_release, menu, options={})
-    self.template_release=  template_release
+  def initialize( theme_or_release, menu, options={})
+    if theme_or_release.kind_of? Spree::TemplateRelease
+      self.template_release=  theme_or_release
+      self.theme = theme_or_release.template_theme      
+    else
+      self.theme = theme_or_release 
+      self.template_release = theme.template_releases.last
+    end
     self.menu = menu
-    self.theme = template_release.template_theme
     self.resource = nil
     self.is_preview = options[:preview].present?
     

@@ -6,14 +6,21 @@ It is just for spree_abc, not common use, cause it override some cart/checkout v
 
 how it work
 -----------
-designer
+  roles: designer, user, customer
+  sites: design site, shopping site
+  a design/shopping site must have a released theme, or redirect to under_contruction.  
+    released theme contains layout, js, css. each release has own folder.
+  a designer could login and design new theme.
+
+
+  designer
   0. new theme
   1. design theme
   2. release completed theme.  generate themeN/versionN.html.erb
   3. theme is viewable by public.  shops/themes/themeN/    
    designs.dalianshops.com?theme_id=N
    
-backend
+  backend
   1. user browse available themes, snapshot or live demo.
   2. import preferred theme
   *3. preview it. Do not support it now, find a clean way support tld/admin/add_to_cart first. 

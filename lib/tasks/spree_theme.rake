@@ -49,13 +49,15 @@ namespace :spree_theme do
     #sections =  Spree::Section.all(:include=>{:section_params=>:section_piece_params})
     #page_layouts = Spree::PageLayout.all(:include=>{:section_params=>:section_piece_params})    
     theme = Spree::TemplateTheme.first
+    incomplete_page_layouts = []
     # section_param and param_value match each other.
     for page_layout in theme.page_layout.self_and_descendants.includes(:section)     
       if page_layout.section.present?
         section_nodes = page_layout.section.self_and_descendants.includes(:section_params)
         section_params = section_nodes.collect(&:section_params).flatten
         if page_layout.param_values.count!=section_params.count
-          puts "error:page_layout=#{page_layout.id} missing param_values"
+          incomplete_page_layouts << page_layout
+          puts "error:page_layout=#{page_layout.title},#{page_layout.id} missing param_values"
           puts "      page_layout.param_values=#{page_layout.param_values.count}, section_params=#{section_params.count}"
           for sp in section_params
             if page_layout.param_values.select{|pv| pv.section_param_id==sp.id}.blank?
@@ -67,6 +69,12 @@ namespace :spree_theme do
         puts "error:page_layout=#{page_layout.id} has no section"
       end
     end 
+    
+    if ENV['AUTO_FIX'].present?
+      incomplete_page_layouts.each{| pl |
+        pl.replace_with( Spree::Section.find( pl.section_id ))
+      }
+    end
     
     pvs = theme.param_values.all(:include=>{:section_param=>{:section_piece_param=>:param_category}})
     for pv in pvs

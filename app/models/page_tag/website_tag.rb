@@ -12,6 +12,7 @@ module PageTag
       self.website.send function_name
     end
     
+    # template_release is nil if designing
     def public_path(target)      
       page_generator.template_release.file_path(target)       
     end

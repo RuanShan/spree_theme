@@ -32,7 +32,7 @@ module PageTag
       if self.param_values_hash.key? key
         pvs = param_values_hash[key]
         for pv in pvs
-  Rails.logger.debug "pv=#{pv.id}, pv.html_attribute_ids=#{pv.html_attribute_ids}"
+          #Rails.logger.debug "pv=#{pv.id}, pv.html_attribute_ids=#{pv.html_attribute_ids}"
           # section_piece_param which have same class_name should be given same plass
           spp = pv.section_param.section_piece_param
           if spp.class_name == class_name
