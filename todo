@@ -33,6 +33,17 @@ how to remove a section piece param?
   del param_value where page_layout.section_id = ? for each layout tree.
   
 
+# features
+  1. a site has one logo, 
+     user could upload own logo 
+     logo section always get log from app configuration.
+  2. designer could copy template for new design
+     copy layout and theme
+     
+  3. designer could copy template theme for new design
+
+
+
 #bugs
 get_css 12,13,'block', it is not right in generated css. 
 set font-size:0, unset it does not work.
