@@ -40,8 +40,8 @@ template.add_section(section_hash['product-name'], product, :title=>"product nam
 template.add_section(section_hash['product-image'], product, :title=>"product image")
 template.add_section(section_hash['product-price'], product, :title=>"product price")
 
-detail_left = template.add_section(section_hash['container'], main_content, :title=>"left part")
-detail_right = template.add_section(section_hash['container'], main_content, :title=>"right part")
+detail_left = template.add_section(section_hash['container'], product_detail, :title=>"left part")
+detail_right = template.add_section(section_hash['container'], product_detail, :title=>"right part")
 
 template.add_section(section_hash['image-with-thumbnails'], detail_left, :title=>"image with thumbnails")
 template.add_section(section_hash['product-properties'], detail_left, :title=>"product_properties")

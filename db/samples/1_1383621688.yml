@@ -22,7 +22,7 @@
 :param_values:
 - !ruby/object:Spree::ParamValue
   attributes:
-    id: 6
+    id: 780
     page_layout_root_id: 1
     page_layout_id: 2
     section_param_id: 6
@@ -36,7 +36,7 @@
     updated_at: 2013-04-08 13:27:02.904386000 Z
 - !ruby/object:Spree::ParamValue
   attributes:
-    id: 7
+    id: 781
     page_layout_root_id: 1
     page_layout_id: 2
     section_param_id: 7
@@ -52,7 +52,7 @@
     updated_at: 2013-04-08 13:27:12.587829000 Z
 - !ruby/object:Spree::ParamValue
   attributes:
-    id: 8
+    id: 782
     page_layout_root_id: 1
     page_layout_id: 2
     section_param_id: 8
@@ -65,7 +65,7 @@
     updated_at: 2013-04-08 13:27:03.110251000 Z
 - !ruby/object:Spree::ParamValue
   attributes:
-    id: 9
+    id: 783
     page_layout_root_id: 1
     page_layout_id: 2
     section_param_id: 9
@@ -81,7 +81,7 @@
     updated_at: 2013-04-08 13:27:03.188875000 Z
 - !ruby/object:Spree::ParamValue
   attributes:
-    id: 10
+    id: 784
     page_layout_root_id: 1
     page_layout_id: 2
     section_param_id: 10
@@ -97,137 +97,7 @@
     updated_at: 2013-04-08 13:27:03.275320000 Z
 - !ruby/object:Spree::ParamValue
   attributes:
-    id: 11
-    page_layout_root_id: 1
-    page_layout_id: 3
-    section_param_id: 43
-    theme_id: 1
-    pvalue: {}
-    unset: 
-    computed_pvalue: 
-    created_at: 2013-04-08 13:27:03.512634000 Z
-    updated_at: 2013-04-08 13:27:03.512634000 Z
-- !ruby/object:Spree::ParamValue
-  attributes:
-    id: 12
-    page_layout_root_id: 1
-    page_layout_id: 3
-    section_param_id: 44
-    theme_id: 1
-    pvalue:
-      disabled_ha_ids: '111'
-    unset: 
-    computed_pvalue: 
-    created_at: 2013-04-08 13:27:03.588186000 Z
-    updated_at: 2013-04-08 13:27:03.588186000 Z
-- !ruby/object:Spree::ParamValue
-  attributes:
-    id: 13
-    page_layout_root_id: 1
-    page_layout_id: 3
-    section_param_id: 45
-    theme_id: 1
-    pvalue:
-      15hidden: '1'
-    unset: 
-    computed_pvalue: 
-    created_at: 2013-04-08 13:27:03.663478000 Z
-    updated_at: 2013-04-08 13:27:03.663478000 Z
-- !ruby/object:Spree::ParamValue
-  attributes:
-    id: 14
-    page_layout_root_id: 1
-    page_layout_id: 3
-    section_param_id: 46
-    theme_id: 1
-    pvalue:
-      disabled_ha_ids: '111'
-    unset: 
-    computed_pvalue: 
-    created_at: 2013-04-08 13:27:03.738054000 Z
-    updated_at: 2013-04-08 13:27:03.738054000 Z
-- !ruby/object:Spree::ParamValue
-  attributes:
-    id: 15
-    page_layout_root_id: 1
-    page_layout_id: 3
-    section_param_id: 47
-    theme_id: 1
-    pvalue:
-      disabled_ha_ids: '111'
-    unset: 
-    computed_pvalue: 
-    created_at: 2013-04-08 13:27:03.804754000 Z
-    updated_at: 2013-04-08 13:27:03.804754000 Z
-- !ruby/object:Spree::ParamValue
-  attributes:
-    id: 16
-    page_layout_root_id: 1
-    page_layout_id: 4
-    section_param_id: 11
-    theme_id: 1
-    pvalue: {}
-    unset: 
-    computed_pvalue: 
-    created_at: 2013-04-08 13:27:04.045836000 Z
-    updated_at: 2013-04-08 13:27:04.045836000 Z
-- !ruby/object:Spree::ParamValue
-  attributes:
-    id: 17
-    page_layout_root_id: 1
-    page_layout_id: 4
-    section_param_id: 12
-    theme_id: 1
-    pvalue:
-      disabled_ha_ids: '111'
-    unset: 
-    computed_pvalue: 
-    created_at: 2013-04-08 13:27:04.113032000 Z
-    updated_at: 2013-04-08 13:27:04.113032000 Z
-- !ruby/object:Spree::ParamValue
-  attributes:
-    id: 18
-    page_layout_root_id: 1
-    page_layout_id: 4
-    section_param_id: 13
-    theme_id: 1
-    pvalue:
-      15hidden: '1'
-    unset: 
-    computed_pvalue: 
-    created_at: 2013-04-08 13:27:04.189034000 Z
-    updated_at: 2013-04-08 13:27:04.189034000 Z
-- !ruby/object:Spree::ParamValue
-  attributes:
-    id: 19
-    page_layout_root_id: 1
-    page_layout_id: 4
-    section_param_id: 14
-    theme_id: 1
-    pvalue:
-      disabled_ha_ids: '111'
-      2unset: '0'
-      2: background-color:#D74700
-    unset: 
-    computed_pvalue: 
-    created_at: 2013-04-08 13:27:04.254803000 Z
-    updated_at: 2013-04-08 13:27:12.667147000 Z
-- !ruby/object:Spree::ParamValue
-  attributes:
-    id: 20
-    page_layout_root_id: 1
-    page_layout_id: 4
-    section_param_id: 15
-    theme_id: 1
-    pvalue:
-      disabled_ha_ids: '111'
-    unset: 
-    computed_pvalue: 
-    created_at: 2013-04-08 13:27:04.329749000 Z
-    updated_at: 2013-04-08 13:27:04.329749000 Z
-- !ruby/object:Spree::ParamValue
-  attributes:
-    id: 21
+    id: 795
     page_layout_root_id: 1
     page_layout_id: 5
     section_param_id: 6
@@ -243,7 +113,7 @@
     updated_at: 2013-04-08 14:08:13.440689000 Z
 - !ruby/object:Spree::ParamValue
   attributes:
-    id: 22
+    id: 796
     page_layout_root_id: 1
     page_layout_id: 5
     section_param_id: 7
@@ -258,8 +128,8 @@
     created_at: 2013-04-08 13:27:04.647190000 Z
     updated_at: 2013-04-08 13:27:12.747198000 Z
 - !ruby/object:Spree::ParamValue
-  attributes:
-    id: 23
+  attributes: &52811380
+    id: 797
     page_layout_root_id: 1
     page_layout_id: 5
     section_param_id: 8
@@ -272,7 +142,7 @@
     updated_at: 2013-04-08 13:27:04.721840000 Z
 - !ruby/object:Spree::ParamValue
   attributes:
-    id: 24
+    id: 798
     page_layout_root_id: 1
     page_layout_id: 5
     section_param_id: 9
@@ -290,7 +160,7 @@
     updated_at: 2013-10-05 10:50:30.189265000 Z
 - !ruby/object:Spree::ParamValue
   attributes:
-    id: 25
+    id: 799
     page_layout_root_id: 1
     page_layout_id: 5
     section_param_id: 10
@@ -306,7 +176,7 @@
     updated_at: 2013-04-08 13:27:04.921941000 Z
 - !ruby/object:Spree::ParamValue
   attributes:
-    id: 26
+    id: 800
     page_layout_root_id: 1
     page_layout_id: 6
     section_param_id: 6
@@ -320,7 +190,7 @@
     updated_at: 2013-04-08 13:27:05.170747000 Z
 - !ruby/object:Spree::ParamValue
   attributes:
-    id: 27
+    id: 801
     page_layout_root_id: 1
     page_layout_id: 6
     section_param_id: 7
@@ -336,7 +206,7 @@
     updated_at: 2013-04-08 13:27:05.246981000 Z
 - !ruby/object:Spree::ParamValue
   attributes:
-    id: 28
+    id: 802
     page_layout_root_id: 1
     page_layout_id: 6
     section_param_id: 8
@@ -348,8 +218,8 @@
     created_at: 2013-04-08 13:27:05.329761000 Z
     updated_at: 2013-04-08 13:27:05.329761000 Z
 - !ruby/object:Spree::ParamValue
-  attributes:
-    id: 29
+  attributes: &48634040
+    id: 803
     page_layout_root_id: 1
     page_layout_id: 6
     section_param_id: 9
@@ -367,7 +237,7 @@
     updated_at: 2013-04-08 13:27:13.290076000 Z
 - !ruby/object:Spree::ParamValue
   attributes:
-    id: 30
+    id: 804
     page_layout_root_id: 1
     page_layout_id: 6
     section_param_id: 10
@@ -383,7 +253,7 @@
     updated_at: 2013-04-08 13:27:05.471942000 Z
 - !ruby/object:Spree::ParamValue
   attributes:
-    id: 31
+    id: 805
     page_layout_root_id: 1
     page_layout_id: 7
     section_param_id: 6
@@ -396,8 +266,8 @@
     created_at: 2013-04-08 13:27:05.709983000 Z
     updated_at: 2013-04-08 13:27:05.709983000 Z
 - !ruby/object:Spree::ParamValue
-  attributes: &94859880
-    id: 32
+  attributes:
+    id: 806
     page_layout_root_id: 1
     page_layout_id: 7
     section_param_id: 7
@@ -415,7 +285,7 @@
     updated_at: 2013-04-08 13:27:12.963062000 Z
 - !ruby/object:Spree::ParamValue
   attributes:
-    id: 33
+    id: 807
     page_layout_root_id: 1
     page_layout_id: 7
     section_param_id: 8
@@ -428,7 +298,7 @@
     updated_at: 2013-04-08 13:27:05.854906000 Z
 - !ruby/object:Spree::ParamValue
   attributes:
-    id: 34
+    id: 808
     page_layout_root_id: 1
     page_layout_id: 7
     section_param_id: 9
@@ -446,7 +316,7 @@
     updated_at: 2013-10-05 01:17:40.040776000 Z
 - !ruby/object:Spree::ParamValue
   attributes:
-    id: 35
+    id: 809
     page_layout_root_id: 1
     page_layout_id: 7
     section_param_id: 10
@@ -464,7 +334,7 @@
     updated_at: 2013-10-02 10:05:06.777087000 Z
 - !ruby/object:Spree::ParamValue
   attributes:
-    id: 36
+    id: 810
     page_layout_root_id: 1
     page_layout_id: 8
     section_param_id: 6
@@ -478,7 +348,7 @@
     updated_at: 2013-04-08 13:27:06.252182000 Z
 - !ruby/object:Spree::ParamValue
   attributes:
-    id: 37
+    id: 811
     page_layout_root_id: 1
     page_layout_id: 8
     section_param_id: 7
@@ -496,7 +366,7 @@
     updated_at: 2013-04-19 13:11:50.046503000 Z
 - !ruby/object:Spree::ParamValue
   attributes:
-    id: 38
+    id: 812
     page_layout_root_id: 1
     page_layout_id: 8
     section_param_id: 8
@@ -508,8 +378,8 @@
     created_at: 2013-04-08 13:27:06.404962000 Z
     updated_at: 2013-04-08 13:27:06.404962000 Z
 - !ruby/object:Spree::ParamValue
-  attributes:
-    id: 39
+  attributes: &51330620
+    id: 813
     page_layout_root_id: 1
     page_layout_id: 8
     section_param_id: 9
@@ -525,7 +395,7 @@
     updated_at: 2013-04-08 13:27:06.480268000 Z
 - !ruby/object:Spree::ParamValue
   attributes:
-    id: 40
+    id: 814
     page_layout_root_id: 1
     page_layout_id: 8
     section_param_id: 10
@@ -541,7 +411,7 @@
     updated_at: 2013-04-08 13:27:06.546888000 Z
 - !ruby/object:Spree::ParamValue
   attributes:
-    id: 46
+    id: 815
     page_layout_root_id: 1
     page_layout_id: 10
     section_param_id: 6
@@ -557,7 +427,7 @@
     updated_at: 2013-04-09 11:57:56.763143000 Z
 - !ruby/object:Spree::ParamValue
   attributes:
-    id: 47
+    id: 816
     page_layout_root_id: 1
     page_layout_id: 10
     section_param_id: 7
@@ -575,7 +445,7 @@
     updated_at: 2013-04-09 11:57:55.696490000 Z
 - !ruby/object:Spree::ParamValue
   attributes:
-    id: 48
+    id: 817
     page_layout_root_id: 1
     page_layout_id: 10
     section_param_id: 8
@@ -588,7 +458,7 @@
     updated_at: 2013-04-08 13:27:07.563221000 Z
 - !ruby/object:Spree::ParamValue
   attributes:
-    id: 49
+    id: 818
     page_layout_root_id: 1
     page_layout_id: 10
     section_param_id: 9
@@ -604,7 +474,7 @@
     updated_at: 2013-04-08 13:27:07.638575000 Z
 - !ruby/object:Spree::ParamValue
   attributes:
-    id: 50
+    id: 819
     page_layout_root_id: 1
     page_layout_id: 10
     section_param_id: 10
@@ -620,7 +490,7 @@
     updated_at: 2013-04-08 13:27:07.713558000 Z
 - !ruby/object:Spree::ParamValue
   attributes:
-    id: 51
+    id: 820
     page_layout_root_id: 1
     page_layout_id: 11
     section_param_id: 6
@@ -636,7 +506,7 @@
     updated_at: 2013-04-12 13:03:56.513793000 Z
 - !ruby/object:Spree::ParamValue
   attributes:
-    id: 52
+    id: 821
     page_layout_root_id: 1
     page_layout_id: 11
     section_param_id: 7
@@ -654,7 +524,7 @@
     updated_at: 2013-04-09 13:14:08.269272000 Z
 - !ruby/object:Spree::ParamValue
   attributes:
-    id: 53
+    id: 822
     page_layout_root_id: 1
     page_layout_id: 11
     section_param_id: 8
@@ -667,7 +537,7 @@
     updated_at: 2013-04-08 13:27:08.113211000 Z
 - !ruby/object:Spree::ParamValue
   attributes:
-    id: 54
+    id: 823
     page_layout_root_id: 1
     page_layout_id: 11
     section_param_id: 9
@@ -683,7 +553,7 @@
     updated_at: 2013-04-08 13:27:08.180264000 Z
 - !ruby/object:Spree::ParamValue
   attributes:
-    id: 55
+    id: 824
     page_layout_root_id: 1
     page_layout_id: 11
     section_param_id: 10
@@ -699,7 +569,7 @@
     updated_at: 2013-04-08 13:27:08.255318000 Z
 - !ruby/object:Spree::ParamValue
   attributes:
-    id: 56
+    id: 825
     page_layout_root_id: 1
     page_layout_id: 12
     section_param_id: 55
@@ -711,7 +581,7 @@
     updated_at: 2013-04-08 13:27:08.495776000 Z
 - !ruby/object:Spree::ParamValue
   attributes:
-    id: 57
+    id: 826
     page_layout_root_id: 1
     page_layout_id: 12
     section_param_id: 56
@@ -728,7 +598,7 @@
     updated_at: 2013-10-01 14:54:52.238767000 Z
 - !ruby/object:Spree::ParamValue
   attributes:
-    id: 58
+    id: 827
     page_layout_root_id: 1
     page_layout_id: 12
     section_param_id: 57
@@ -751,7 +621,7 @@
     updated_at: 2013-10-01 15:34:38.789905000 Z
 - !ruby/object:Spree::ParamValue
   attributes:
-    id: 59
+    id: 828
     page_layout_root_id: 1
     page_layout_id: 12
     section_param_id: 58
@@ -764,7 +634,7 @@
     updated_at: 2013-04-08 13:27:08.704660000 Z
 - !ruby/object:Spree::ParamValue
   attributes:
-    id: 60
+    id: 829
     page_layout_root_id: 1
     page_layout_id: 12
     section_param_id: 59
@@ -781,7 +651,7 @@
     updated_at: 2013-10-01 14:51:45.536422000 Z
 - !ruby/object:Spree::ParamValue
   attributes:
-    id: 61
+    id: 830
     page_layout_root_id: 1
     page_layout_id: 13
     section_param_id: 65
@@ -793,7 +663,7 @@
     updated_at: 2013-04-08 13:27:08.995335000 Z
 - !ruby/object:Spree::ParamValue
   attributes:
-    id: 62
+    id: 831
     page_layout_root_id: 1
     page_layout_id: 13
     section_param_id: 66
@@ -810,7 +680,7 @@
     updated_at: 2013-10-05 01:20:44.353624000 Z
 - !ruby/object:Spree::ParamValue
   attributes:
-    id: 63
+    id: 832
     page_layout_root_id: 1
     page_layout_id: 13
     section_param_id: 67
@@ -833,7 +703,7 @@
     updated_at: 2013-10-05 01:21:15.896610000 Z
 - !ruby/object:Spree::ParamValue
   attributes:
-    id: 64
+    id: 833
     page_layout_root_id: 1
     page_layout_id: 13
     section_param_id: 68
@@ -846,7 +716,7 @@
     updated_at: 2013-04-08 13:27:09.221136000 Z
 - !ruby/object:Spree::ParamValue
   attributes:
-    id: 65
+    id: 834
     page_layout_root_id: 1
     page_layout_id: 13
     section_param_id: 69
@@ -861,7 +731,7 @@
     updated_at: 2013-04-19 13:14:07.025740000 Z
 - !ruby/object:Spree::ParamValue
   attributes:
-    id: 66
+    id: 835
     page_layout_root_id: 1
     page_layout_id: 14
     section_param_id: 55
@@ -873,7 +743,7 @@
     updated_at: 2013-04-08 13:27:09.520084000 Z
 - !ruby/object:Spree::ParamValue
   attributes:
-    id: 67
+    id: 836
     page_layout_root_id: 1
     page_layout_id: 14
     section_param_id: 56
@@ -888,7 +758,7 @@
     updated_at: 2013-10-04 07:23:16.013928000 Z
 - !ruby/object:Spree::ParamValue
   attributes:
-    id: 68
+    id: 837
     page_layout_root_id: 1
     page_layout_id: 14
     section_param_id: 57
@@ -909,7 +779,7 @@
     updated_at: 2013-10-04 07:23:06.866099000 Z
 - !ruby/object:Spree::ParamValue
   attributes:
-    id: 69
+    id: 838
     page_layout_root_id: 1
     page_layout_id: 14
     section_param_id: 58
@@ -922,20 +792,19 @@
     updated_at: 2013-04-08 13:27:09.737839000 Z
 - !ruby/object:Spree::ParamValue
   attributes:
-    id: 70
+    id: 839
     page_layout_root_id: 1
     page_layout_id: 14
     section_param_id: 59
     theme_id: 1
-    pvalue:
-      disabled_ha_ids: '111'
+    pvalue: *52811380
     unset: 
     computed_pvalue: 
     created_at: 2013-04-08 13:27:09.804608000 Z
     updated_at: 2013-04-08 13:27:09.804608000 Z
 - !ruby/object:Spree::ParamValue
   attributes:
-    id: 71
+    id: 840
     page_layout_root_id: 1
     page_layout_id: 15
     section_param_id: 60
@@ -947,7 +816,7 @@
     updated_at: 2013-04-08 13:27:10.036667000 Z
 - !ruby/object:Spree::ParamValue
   attributes:
-    id: 72
+    id: 841
     page_layout_root_id: 1
     page_layout_id: 15
     section_param_id: 61
@@ -960,7 +829,7 @@
     updated_at: 2013-04-08 13:27:10.104486000 Z
 - !ruby/object:Spree::ParamValue
   attributes:
-    id: 73
+    id: 842
     page_layout_root_id: 1
     page_layout_id: 15
     section_param_id: 62
@@ -975,7 +844,7 @@
     updated_at: 2013-10-04 07:23:31.961802000 Z
 - !ruby/object:Spree::ParamValue
   attributes:
-    id: 74
+    id: 843
     page_layout_root_id: 1
     page_layout_id: 15
     section_param_id: 63
@@ -988,7 +857,7 @@
     updated_at: 2013-04-08 13:27:10.262874000 Z
 - !ruby/object:Spree::ParamValue
   attributes:
-    id: 75
+    id: 844
     page_layout_root_id: 1
     page_layout_id: 15
     section_param_id: 64
@@ -1003,71 +872,7 @@
     updated_at: 2013-10-04 07:23:47.959562000 Z
 - !ruby/object:Spree::ParamValue
   attributes:
-    id: 76
-    page_layout_root_id: 1
-    page_layout_id: 16
-    section_param_id: 11
-    theme_id: 1
-    pvalue: {}
-    unset: 
-    computed_pvalue: 
-    created_at: 2013-04-08 13:27:11.153582000 Z
-    updated_at: 2013-04-08 13:27:11.153582000 Z
-- !ruby/object:Spree::ParamValue
-  attributes:
-    id: 77
-    page_layout_root_id: 1
-    page_layout_id: 16
-    section_param_id: 12
-    theme_id: 1
-    pvalue:
-      disabled_ha_ids: '111'
-    unset: 
-    computed_pvalue: 
-    created_at: 2013-04-08 13:27:11.229475000 Z
-    updated_at: 2013-04-08 13:27:11.229475000 Z
-- !ruby/object:Spree::ParamValue
-  attributes:
-    id: 78
-    page_layout_root_id: 1
-    page_layout_id: 16
-    section_param_id: 13
-    theme_id: 1
-    pvalue:
-      15hidden: '1'
-    unset: 
-    computed_pvalue: 
-    created_at: 2013-04-08 13:27:11.304888000 Z
-    updated_at: 2013-04-08 13:27:11.304888000 Z
-- !ruby/object:Spree::ParamValue
-  attributes:
-    id: 79
-    page_layout_root_id: 1
-    page_layout_id: 16
-    section_param_id: 14
-    theme_id: 1
-    pvalue:
-      disabled_ha_ids: '111'
-    unset: 
-    computed_pvalue: 
-    created_at: 2013-04-08 13:27:11.379454000 Z
-    updated_at: 2013-04-08 13:27:11.379454000 Z
-- !ruby/object:Spree::ParamValue
-  attributes:
-    id: 80
-    page_layout_root_id: 1
-    page_layout_id: 16
-    section_param_id: 15
-    theme_id: 1
-    pvalue:
-      disabled_ha_ids: '111'
-    unset: 
-    computed_pvalue: 
-    created_at: 2013-04-08 13:27:11.454457000 Z
-    updated_at: 2013-04-08 13:27:11.454457000 Z
-- !ruby/object:Spree::ParamValue
-  attributes:
-    id: 81
+    id: 850
     page_layout_root_id: 1
     page_layout_id: 17
     section_param_id: 50
@@ -1079,7 +884,7 @@
     updated_at: 2013-04-08 13:27:11.696278000 Z
 - !ruby/object:Spree::ParamValue
   attributes:
-    id: 82
+    id: 851
     page_layout_root_id: 1
     page_layout_id: 17
     section_param_id: 51
@@ -1092,7 +897,7 @@
     updated_at: 2013-04-08 13:27:11.771137000 Z
 - !ruby/object:Spree::ParamValue
   attributes:
-    id: 83
+    id: 852
     page_layout_root_id: 1
     page_layout_id: 17
     section_param_id: 52
@@ -1105,7 +910,7 @@
     updated_at: 2013-04-08 13:27:11.846405000 Z
 - !ruby/object:Spree::ParamValue
   attributes:
-    id: 84
+    id: 853
     page_layout_root_id: 1
     page_layout_id: 17
     section_param_id: 53
@@ -1118,7 +923,7 @@
     updated_at: 2013-04-08 13:27:11.921193000 Z
 - !ruby/object:Spree::ParamValue
   attributes:
-    id: 85
+    id: 854
     page_layout_root_id: 1
     page_layout_id: 17
     section_param_id: 54
@@ -1131,7 +936,7 @@
     updated_at: 2013-04-08 13:27:11.996247000 Z
 - !ruby/object:Spree::ParamValue
   attributes:
-    id: 86
+    id: 855
     page_layout_root_id: 1
     page_layout_id: 18
     section_param_id: 6
@@ -1147,7 +952,7 @@
     updated_at: 2013-04-09 13:23:57.083668000 Z
 - !ruby/object:Spree::ParamValue
   attributes:
-    id: 87
+    id: 856
     page_layout_root_id: 1
     page_layout_id: 18
     section_param_id: 7
@@ -1165,7 +970,7 @@
     updated_at: 2013-10-05 01:20:18.867907000 Z
 - !ruby/object:Spree::ParamValue
   attributes:
-    id: 88
+    id: 857
     page_layout_root_id: 1
     page_layout_id: 18
     section_param_id: 8
@@ -1186,7 +991,7 @@
     updated_at: 2013-10-05 01:20:09.988192000 Z
 - !ruby/object:Spree::ParamValue
   attributes:
-    id: 89
+    id: 858
     page_layout_root_id: 1
     page_layout_id: 18
     section_param_id: 9
@@ -1202,7 +1007,7 @@
     updated_at: 2013-04-08 14:05:42.882671000 Z
 - !ruby/object:Spree::ParamValue
   attributes:
-    id: 90
+    id: 859
     page_layout_root_id: 1
     page_layout_id: 18
     section_param_id: 10
@@ -1218,77 +1023,7 @@
     updated_at: 2013-04-08 14:05:42.957777000 Z
 - !ruby/object:Spree::ParamValue
   attributes:
-    id: 91
-    page_layout_root_id: 1
-    page_layout_id: 19
-    section_param_id: 90
-    theme_id: 1
-    pvalue: {}
-    unset: 
-    computed_pvalue: 
-    created_at: 2013-04-09 13:08:24.187691000 Z
-    updated_at: 2013-04-09 13:08:24.187691000 Z
-- !ruby/object:Spree::ParamValue
-  attributes:
-    id: 92
-    page_layout_root_id: 1
-    page_layout_id: 19
-    section_param_id: 91
-    theme_id: 1
-    pvalue:
-      disabled_ha_ids: '111'
-      101unset: '1'
-      101: float:left
-      21unset: '1'
-      21: width:250px
-      15unset: '1'
-      15: height:auto
-    unset: 
-    computed_pvalue: 
-    created_at: 2013-04-09 13:08:24.265664000 Z
-    updated_at: 2013-10-03 06:42:44.339190000 Z
-- !ruby/object:Spree::ParamValue
-  attributes:
-    id: 93
-    page_layout_root_id: 1
-    page_layout_id: 19
-    section_param_id: 92
-    theme_id: 1
-    pvalue:
-      15hidden: '1'
-    unset: 
-    computed_pvalue: 
-    created_at: 2013-04-09 13:08:24.328734000 Z
-    updated_at: 2013-04-09 13:08:24.328734000 Z
-- !ruby/object:Spree::ParamValue
-  attributes:
-    id: 94
-    page_layout_root_id: 1
-    page_layout_id: 19
-    section_param_id: 93
-    theme_id: 1
-    pvalue:
-      disabled_ha_ids: '111'
-    unset: 
-    computed_pvalue: 
-    created_at: 2013-04-09 13:08:24.386552000 Z
-    updated_at: 2013-04-09 13:08:24.386552000 Z
-- !ruby/object:Spree::ParamValue
-  attributes:
-    id: 95
-    page_layout_root_id: 1
-    page_layout_id: 19
-    section_param_id: 94
-    theme_id: 1
-    pvalue:
-      disabled_ha_ids: '111'
-    unset: 
-    computed_pvalue: 
-    created_at: 2013-04-09 13:08:24.436553000 Z
-    updated_at: 2013-04-09 13:08:24.436553000 Z
-- !ruby/object:Spree::ParamValue
-  attributes:
-    id: 96
+    id: 865
     page_layout_root_id: 1
     page_layout_id: 20
     section_param_id: 6
@@ -1302,7 +1037,7 @@
     updated_at: 2013-04-09 13:12:32.001892000 Z
 - !ruby/object:Spree::ParamValue
   attributes:
-    id: 97
+    id: 866
     page_layout_root_id: 1
     page_layout_id: 20
     section_param_id: 7
@@ -1320,7 +1055,7 @@
     updated_at: 2013-04-12 13:08:17.276872000 Z
 - !ruby/object:Spree::ParamValue
   attributes:
-    id: 98
+    id: 867
     page_layout_root_id: 1
     page_layout_id: 20
     section_param_id: 8
@@ -1333,7 +1068,7 @@
     updated_at: 2013-04-09 13:12:32.128313000 Z
 - !ruby/object:Spree::ParamValue
   attributes:
-    id: 99
+    id: 868
     page_layout_root_id: 1
     page_layout_id: 20
     section_param_id: 9
@@ -1349,7 +1084,7 @@
     updated_at: 2013-04-09 13:12:32.187269000 Z
 - !ruby/object:Spree::ParamValue
   attributes:
-    id: 100
+    id: 869
     page_layout_root_id: 1
     page_layout_id: 20
     section_param_id: 10
@@ -1365,7 +1100,7 @@
     updated_at: 2013-04-09 13:12:32.320739000 Z
 - !ruby/object:Spree::ParamValue
   attributes:
-    id: 101
+    id: 870
     page_layout_root_id: 1
     page_layout_id: 21
     section_param_id: 105
@@ -1377,7 +1112,7 @@
     updated_at: 2013-04-12 13:43:15.500605000 Z
 - !ruby/object:Spree::ParamValue
   attributes:
-    id: 102
+    id: 871
     page_layout_root_id: 1
     page_layout_id: 21
     section_param_id: 106
@@ -1392,7 +1127,7 @@
     updated_at: 2013-10-04 07:20:45.754954000 Z
 - !ruby/object:Spree::ParamValue
   attributes:
-    id: 103
+    id: 872
     page_layout_root_id: 1
     page_layout_id: 21
     section_param_id: 107
@@ -1413,7 +1148,7 @@
     updated_at: 2013-11-03 07:41:37.053217000 Z
 - !ruby/object:Spree::ParamValue
   attributes:
-    id: 104
+    id: 873
     page_layout_root_id: 1
     page_layout_id: 21
     section_param_id: 108
@@ -1426,7 +1161,7 @@
     updated_at: 2013-04-12 13:43:15.674728000 Z
 - !ruby/object:Spree::ParamValue
   attributes:
-    id: 105
+    id: 874
     page_layout_root_id: 1
     page_layout_id: 21
     section_param_id: 109
@@ -1439,7 +1174,7 @@
     updated_at: 2013-04-12 13:43:15.724726000 Z
 - !ruby/object:Spree::ParamValue
   attributes:
-    id: 106
+    id: 875
     page_layout_root_id: 1
     page_layout_id: 22
     section_param_id: 6
@@ -1453,7 +1188,7 @@
     updated_at: 2013-04-12 13:44:05.428809000 Z
 - !ruby/object:Spree::ParamValue
   attributes:
-    id: 107
+    id: 876
     page_layout_root_id: 1
     page_layout_id: 22
     section_param_id: 7
@@ -1469,7 +1204,7 @@
     updated_at: 2013-04-12 13:44:58.798329000 Z
 - !ruby/object:Spree::ParamValue
   attributes:
-    id: 108
+    id: 877
     page_layout_root_id: 1
     page_layout_id: 22
     section_param_id: 8
@@ -1484,7 +1219,7 @@
     updated_at: 2013-10-04 07:21:38.389733000 Z
 - !ruby/object:Spree::ParamValue
   attributes:
-    id: 109
+    id: 878
     page_layout_root_id: 1
     page_layout_id: 22
     section_param_id: 9
@@ -1500,7 +1235,7 @@
     updated_at: 2013-04-12 13:44:05.607220000 Z
 - !ruby/object:Spree::ParamValue
   attributes:
-    id: 110
+    id: 879
     page_layout_root_id: 1
     page_layout_id: 22
     section_param_id: 10
@@ -1516,19 +1251,39 @@
     updated_at: 2013-04-12 13:44:05.673994000 Z
 - !ruby/object:Spree::ParamValue
   attributes:
-    id: 111
+    id: 880
     page_layout_root_id: 1
     page_layout_id: 23
     section_param_id: 110
     theme_id: 1
-    pvalue: *94859880
+    pvalue:
+      id: 32
+      page_layout_root_id: 1
+      page_layout_id: 7
+      section_param_id: 7
+      theme_id: 1
+      pvalue: !ruby/struct:ActiveRecord::AttributeMethods::Serialization::Attribute
+        coder: !ruby/object:ActiveRecord::Coders::YAMLColumn
+          object_class: &9512760 !ruby/class 'Hash'
+        value:
+          15: height:100px
+          15unset: '1'
+          101: float:left
+          101unset: '0'
+          21unset: '0'
+          21: width:200px
+        state: :unserialized
+      unset: 
+      computed_pvalue: 
+      created_at: 2013-04-08 13:27:05.780447000 Z
+      updated_at: 2013-04-08 13:27:12.963062000 Z
     unset: 
     computed_pvalue: 
     created_at: 2013-04-13 01:32:40.681987000 Z
     updated_at: 2013-04-13 01:32:40.681987000 Z
 - !ruby/object:Spree::ParamValue
   attributes:
-    id: 112
+    id: 881
     page_layout_root_id: 1
     page_layout_id: 23
     section_param_id: 111
@@ -1541,7 +1296,7 @@
     updated_at: 2013-04-13 01:32:40.739975000 Z
 - !ruby/object:Spree::ParamValue
   attributes:
-    id: 113
+    id: 882
     page_layout_root_id: 1
     page_layout_id: 23
     section_param_id: 112
@@ -1554,7 +1309,7 @@
     updated_at: 2013-04-13 01:32:40.798316000 Z
 - !ruby/object:Spree::ParamValue
   attributes:
-    id: 114
+    id: 883
     page_layout_root_id: 1
     page_layout_id: 23
     section_param_id: 113
@@ -1567,7 +1322,7 @@
     updated_at: 2013-04-13 01:32:40.856231000 Z
 - !ruby/object:Spree::ParamValue
   attributes:
-    id: 115
+    id: 884
     page_layout_root_id: 1
     page_layout_id: 23
     section_param_id: 114
@@ -1586,7 +1341,7 @@
     updated_at: 2013-10-04 07:25:24.191109000 Z
 - !ruby/object:Spree::ParamValue
   attributes:
-    id: 116
+    id: 885
     page_layout_root_id: 1
     page_layout_id: 24
     section_param_id: 6
@@ -1602,7 +1357,7 @@
     updated_at: 2013-04-13 02:37:27.562723000 Z
 - !ruby/object:Spree::ParamValue
   attributes:
-    id: 117
+    id: 886
     page_layout_root_id: 1
     page_layout_id: 24
     section_param_id: 7
@@ -1618,7 +1373,7 @@
     updated_at: 2013-10-04 07:24:31.302999000 Z
 - !ruby/object:Spree::ParamValue
   attributes:
-    id: 118
+    id: 887
     page_layout_root_id: 1
     page_layout_id: 24
     section_param_id: 8
@@ -1633,7 +1388,7 @@
     updated_at: 2013-10-04 07:24:39.775863000 Z
 - !ruby/object:Spree::ParamValue
   attributes:
-    id: 119
+    id: 888
     page_layout_root_id: 1
     page_layout_id: 24
     section_param_id: 9
@@ -1649,7 +1404,7 @@
     updated_at: 2013-04-13 02:35:25.947666000 Z
 - !ruby/object:Spree::ParamValue
   attributes:
-    id: 120
+    id: 889
     page_layout_root_id: 1
     page_layout_id: 24
     section_param_id: 10
@@ -1665,7 +1420,7 @@
     updated_at: 2013-04-13 02:35:26.012057000 Z
 - !ruby/object:Spree::ParamValue
   attributes:
-    id: 121
+    id: 890
     page_layout_root_id: 1
     page_layout_id: 25
     section_param_id: 115
@@ -1677,7 +1432,7 @@
     updated_at: 2013-04-13 02:35:40.300859000 Z
 - !ruby/object:Spree::ParamValue
   attributes:
-    id: 122
+    id: 891
     page_layout_root_id: 1
     page_layout_id: 25
     section_param_id: 116
@@ -1692,7 +1447,7 @@
     updated_at: 2013-10-04 07:31:16.173882000 Z
 - !ruby/object:Spree::ParamValue
   attributes:
-    id: 123
+    id: 892
     page_layout_root_id: 1
     page_layout_id: 25
     section_param_id: 117
@@ -1705,7 +1460,7 @@
     updated_at: 2013-04-13 02:35:40.411211000 Z
 - !ruby/object:Spree::ParamValue
   attributes:
-    id: 124
+    id: 893
     page_layout_root_id: 1
     page_layout_id: 25
     section_param_id: 118
@@ -1719,7 +1474,7 @@
         theme_id: 1
         pvalue: !ruby/struct:ActiveRecord::AttributeMethods::Serialization::Attribute
           coder: !ruby/object:ActiveRecord::Coders::YAMLColumn
-            object_class: !ruby/class 'Hash'
+            object_class: *9512760
           value:
             15hidden: '1'
           state: :unserialized
@@ -1733,7 +1488,7 @@
     updated_at: 2013-04-13 02:35:40.544482000 Z
 - !ruby/object:Spree::ParamValue
   attributes:
-    id: 125
+    id: 894
     page_layout_root_id: 1
     page_layout_id: 25
     section_param_id: 119
@@ -1746,7 +1501,7 @@
     updated_at: 2013-04-13 02:35:40.602222000 Z
 - !ruby/object:Spree::ParamValue
   attributes:
-    id: 126
+    id: 895
     page_layout_root_id: 1
     page_layout_id: 26
     section_param_id: 120
@@ -1758,7 +1513,7 @@
     updated_at: 2013-04-13 02:35:47.199776000 Z
 - !ruby/object:Spree::ParamValue
   attributes:
-    id: 127
+    id: 896
     page_layout_root_id: 1
     page_layout_id: 26
     section_param_id: 121
@@ -1771,7 +1526,7 @@
     updated_at: 2013-04-13 02:35:47.268782000 Z
 - !ruby/object:Spree::ParamValue
   attributes:
-    id: 128
+    id: 897
     page_layout_root_id: 1
     page_layout_id: 26
     section_param_id: 122
@@ -1784,7 +1539,7 @@
     updated_at: 2013-04-13 02:35:47.335696000 Z
 - !ruby/object:Spree::ParamValue
   attributes:
-    id: 129
+    id: 898
     page_layout_root_id: 1
     page_layout_id: 26
     section_param_id: 123
@@ -1797,7 +1552,7 @@
     updated_at: 2013-04-13 02:35:47.401739000 Z
 - !ruby/object:Spree::ParamValue
   attributes:
-    id: 130
+    id: 899
     page_layout_root_id: 1
     page_layout_id: 26
     section_param_id: 124
@@ -1814,7 +1569,7 @@
     updated_at: 2013-10-04 07:27:36.339574000 Z
 - !ruby/object:Spree::ParamValue
   attributes:
-    id: 131
+    id: 900
     page_layout_root_id: 1
     page_layout_id: 27
     section_param_id: 125
@@ -1826,7 +1581,7 @@
     updated_at: 2013-04-16 14:20:10.154126000 Z
 - !ruby/object:Spree::ParamValue
   attributes:
-    id: 132
+    id: 901
     page_layout_root_id: 1
     page_layout_id: 27
     section_param_id: 126
@@ -1841,7 +1596,7 @@
     updated_at: 2013-10-07 13:04:14.730036000 Z
 - !ruby/object:Spree::ParamValue
   attributes:
-    id: 133
+    id: 902
     page_layout_root_id: 1
     page_layout_id: 27
     section_param_id: 127
@@ -1854,7 +1609,7 @@
     updated_at: 2013-04-16 14:20:10.271780000 Z
 - !ruby/object:Spree::ParamValue
   attributes:
-    id: 134
+    id: 903
     page_layout_root_id: 1
     page_layout_id: 27
     section_param_id: 128
@@ -1867,7 +1622,7 @@
     updated_at: 2013-04-16 14:20:10.329235000 Z
 - !ruby/object:Spree::ParamValue
   attributes:
-    id: 135
+    id: 904
     page_layout_root_id: 1
     page_layout_id: 27
     section_param_id: 129
@@ -1880,7 +1635,7 @@
     updated_at: 2013-04-16 14:20:10.387961000 Z
 - !ruby/object:Spree::ParamValue
   attributes:
-    id: 141
+    id: 905
     page_layout_root_id: 1
     page_layout_id: 29
     section_param_id: 110
@@ -1892,7 +1647,7 @@
     updated_at: 2013-04-19 13:03:09.945089000 Z
 - !ruby/object:Spree::ParamValue
   attributes:
-    id: 142
+    id: 906
     page_layout_root_id: 1
     page_layout_id: 29
     section_param_id: 111
@@ -1907,7 +1662,7 @@
     updated_at: 2013-10-02 09:59:32.409473000 Z
 - !ruby/object:Spree::ParamValue
   attributes:
-    id: 143
+    id: 907
     page_layout_root_id: 1
     page_layout_id: 29
     section_param_id: 112
@@ -1924,7 +1679,7 @@
     updated_at: 2013-10-05 07:13:31.461845000 Z
 - !ruby/object:Spree::ParamValue
   attributes:
-    id: 144
+    id: 908
     page_layout_root_id: 1
     page_layout_id: 29
     section_param_id: 113
@@ -1937,7 +1692,7 @@
     updated_at: 2013-04-19 13:03:10.200265000 Z
 - !ruby/object:Spree::ParamValue
   attributes:
-    id: 145
+    id: 909
     page_layout_root_id: 1
     page_layout_id: 29
     section_param_id: 114
@@ -1956,7 +1711,7 @@
     updated_at: 2013-10-02 10:00:34.435374000 Z
 - !ruby/object:Spree::ParamValue
   attributes:
-    id: 146
+    id: 910
     page_layout_root_id: 1
     page_layout_id: 12
     section_param_id: 135
@@ -1968,7 +1723,7 @@
     updated_at: 2013-10-01 05:27:59.316664000 Z
 - !ruby/object:Spree::ParamValue
   attributes:
-    id: 147
+    id: 911
     page_layout_root_id: 1
     page_layout_id: 14
     section_param_id: 135
@@ -1980,7 +1735,7 @@
     updated_at: 2013-10-01 05:27:59.319787000 Z
 - !ruby/object:Spree::ParamValue
   attributes:
-    id: 148
+    id: 912
     page_layout_root_id: 1
     page_layout_id: 12
     section_param_id: 136
@@ -1992,7 +1747,7 @@
     updated_at: 2013-10-01 05:27:59.411662000 Z
 - !ruby/object:Spree::ParamValue
   attributes:
-    id: 149
+    id: 913
     page_layout_root_id: 1
     page_layout_id: 14
     section_param_id: 136
@@ -2004,7 +1759,7 @@
     updated_at: 2013-10-01 05:27:59.414109000 Z
 - !ruby/object:Spree::ParamValue
   attributes:
-    id: 150
+    id: 914
     page_layout_root_id: 1
     page_layout_id: 12
     section_param_id: 137
@@ -2024,7 +1779,7 @@
     updated_at: 2013-10-01 15:19:57.029126000 Z
 - !ruby/object:Spree::ParamValue
   attributes:
-    id: 151
+    id: 915
     page_layout_root_id: 1
     page_layout_id: 14
     section_param_id: 137
@@ -2044,7 +1799,7 @@
     updated_at: 2013-10-04 07:22:21.031883000 Z
 - !ruby/object:Spree::ParamValue
   attributes:
-    id: 152
+    id: 916
     page_layout_root_id: 1
     page_layout_id: 12
     section_param_id: 138
@@ -2056,7 +1811,7 @@
     updated_at: 2013-10-01 05:27:59.576232000 Z
 - !ruby/object:Spree::ParamValue
   attributes:
-    id: 153
+    id: 917
     page_layout_root_id: 1
     page_layout_id: 14
     section_param_id: 138
@@ -2068,7 +1823,7 @@
     updated_at: 2013-10-01 05:27:59.578229000 Z
 - !ruby/object:Spree::ParamValue
   attributes:
-    id: 154
+    id: 918
     page_layout_root_id: 1
     page_layout_id: 9
     section_param_id: 27
@@ -2080,7 +1835,7 @@
     updated_at: 2013-10-02 10:20:54.360477000 Z
 - !ruby/object:Spree::ParamValue
   attributes:
-    id: 155
+    id: 919
     page_layout_root_id: 1
     page_layout_id: 9
     section_param_id: 28
@@ -2093,7 +1848,7 @@
     updated_at: 2013-10-02 10:20:54.434209000 Z
 - !ruby/object:Spree::ParamValue
   attributes:
-    id: 156
+    id: 920
     page_layout_root_id: 1
     page_layout_id: 9
     section_param_id: 29
@@ -2108,7 +1863,7 @@
     updated_at: 2013-10-05 00:49:11.651474000 Z
 - !ruby/object:Spree::ParamValue
   attributes:
-    id: 157
+    id: 921
     page_layout_root_id: 1
     page_layout_id: 9
     section_param_id: 30
@@ -2121,7 +1876,7 @@
     updated_at: 2013-10-02 10:20:54.575873000 Z
 - !ruby/object:Spree::ParamValue
   attributes:
-    id: 158
+    id: 922
     page_layout_root_id: 1
     page_layout_id: 9
     section_param_id: 31
@@ -2134,7 +1889,7 @@
     updated_at: 2013-10-02 10:20:54.642792000 Z
 - !ruby/object:Spree::ParamValue
   attributes:
-    id: 159
+    id: 923
     page_layout_root_id: 1
     page_layout_id: 9
     section_param_id: 32
@@ -2148,7 +1903,7 @@
     updated_at: 2013-10-05 01:11:02.384087000 Z
 - !ruby/object:Spree::ParamValue
   attributes:
-    id: 160
+    id: 924
     page_layout_root_id: 1
     page_layout_id: 9
     section_param_id: 33
@@ -2166,7 +1921,7 @@
     updated_at: 2013-10-05 01:12:13.899605000 Z
 - !ruby/object:Spree::ParamValue
   attributes:
-    id: 161
+    id: 925
     page_layout_root_id: 1
     page_layout_id: 9
     section_param_id: 34
@@ -2178,7 +1933,7 @@
     updated_at: 2013-10-02 10:20:54.842749000 Z
 - !ruby/object:Spree::ParamValue
   attributes:
-    id: 162
+    id: 926
     page_layout_root_id: 1
     page_layout_id: 9
     section_param_id: 35
@@ -2190,7 +1945,7 @@
     updated_at: 2013-10-02 10:20:54.900664000 Z
 - !ruby/object:Spree::ParamValue
   attributes:
-    id: 163
+    id: 927
     page_layout_root_id: 1
     page_layout_id: 9
     section_param_id: 36
@@ -2202,7 +1957,7 @@
     updated_at: 2013-10-02 10:20:54.967327000 Z
 - !ruby/object:Spree::ParamValue
   attributes:
-    id: 164
+    id: 928
     page_layout_root_id: 1
     page_layout_id: 9
     section_param_id: 37
@@ -2214,7 +1969,7 @@
     updated_at: 2013-10-02 10:20:55.034004000 Z
 - !ruby/object:Spree::ParamValue
   attributes:
-    id: 165
+    id: 929
     page_layout_root_id: 1
     page_layout_id: 9
     section_param_id: 38
@@ -2226,7 +1981,7 @@
     updated_at: 2013-10-02 10:20:55.108849000 Z
 - !ruby/object:Spree::ParamValue
   attributes:
-    id: 166
+    id: 930
     page_layout_root_id: 1
     page_layout_id: 9
     section_param_id: 39
@@ -2238,7 +1993,7 @@
     updated_at: 2013-10-02 10:20:55.167230000 Z
 - !ruby/object:Spree::ParamValue
   attributes:
-    id: 167
+    id: 931
     page_layout_root_id: 1
     page_layout_id: 9
     section_param_id: 40
@@ -2250,7 +2005,7 @@
     updated_at: 2013-10-02 10:20:55.225843000 Z
 - !ruby/object:Spree::ParamValue
   attributes:
-    id: 168
+    id: 932
     page_layout_root_id: 1
     page_layout_id: 9
     section_param_id: 41
@@ -2262,7 +2017,7 @@
     updated_at: 2013-10-02 10:20:55.292297000 Z
 - !ruby/object:Spree::ParamValue
   attributes:
-    id: 169
+    id: 933
     page_layout_root_id: 1
     page_layout_id: 9
     section_param_id: 42
@@ -2274,49 +2029,7 @@
     updated_at: 2013-10-02 10:20:55.417939000 Z
 - !ruby/object:Spree::ParamValue
   attributes:
-    id: 170
-    page_layout_root_id: 1
-    page_layout_id: 19
-    section_param_id: 139
-    theme_id: 1
-    pvalue:
-      7unset: '0'
-      7: border-style:solid solid solid solid
-      8unset: '0'
-      8: border-width:1px 1px 1px 1px
-      6unset: '0'
-      6: ! 'border-color:#D9D9DB #D9D9DB #D9D9DB #D9D9DB'
-      32unset: '0'
-      32: padding:5px 10px 5px 10px
-    unset: 
-    computed_pvalue: 
-    created_at: 2013-10-03 06:36:24.386488000 Z
-    updated_at: 2013-10-04 07:12:30.321911000 Z
-- !ruby/object:Spree::ParamValue
-  attributes:
-    id: 171
-    page_layout_root_id: 1
-    page_layout_id: 19
-    section_param_id: 140
-    theme_id: 1
-    pvalue:
-      7unset: '0'
-      7: border-style:solid solid solid solid
-      8unset: '0'
-      8: border-width:1px 1px 1px 1px
-      6unset: '0'
-      6: ! 'border-color:#D9D9DB #D9D9DB #D9D9DB #D9D9DB'
-      31unset: '0'
-      31: margin:5px 5px auto auto
-      32unset: '0'
-      32: padding:5px 5px 5px 5px
-    unset: 
-    computed_pvalue: 
-    created_at: 2013-10-03 06:36:24.481580000 Z
-    updated_at: 2013-10-04 07:16:49.492414000 Z
-- !ruby/object:Spree::ParamValue
-  attributes:
-    id: 172
+    id: 936
     page_layout_root_id: 1
     page_layout_id: 21
     section_param_id: 141
@@ -2336,7 +2049,7 @@
     updated_at: 2013-10-04 07:18:17.516568000 Z
 - !ruby/object:Spree::ParamValue
   attributes:
-    id: 173
+    id: 937
     page_layout_root_id: 1
     page_layout_id: 21
     section_param_id: 142
@@ -2348,7 +2061,7 @@
     updated_at: 2013-10-04 04:59:06.375335000 Z
 - !ruby/object:Spree::ParamValue
   attributes:
-    id: 174
+    id: 938
     page_layout_root_id: 1
     page_layout_id: 21
     section_param_id: 143
@@ -2360,7 +2073,7 @@
     updated_at: 2013-10-04 04:59:06.462937000 Z
 - !ruby/object:Spree::ParamValue
   attributes:
-    id: 175
+    id: 939
     page_layout_root_id: 1
     page_layout_id: 21
     section_param_id: 144
@@ -2374,7 +2087,7 @@
     updated_at: 2013-10-04 07:20:28.133895000 Z
 - !ruby/object:Spree::ParamValue
   attributes:
-    id: 176
+    id: 940
     page_layout_root_id: 1
     page_layout_id: 21
     section_param_id: 145
@@ -2386,7 +2099,7 @@
     updated_at: 2013-10-04 04:59:06.640647000 Z
 - !ruby/object:Spree::ParamValue
   attributes:
-    id: 177
+    id: 941
     page_layout_root_id: 1
     page_layout_id: 25
     section_param_id: 146
@@ -2409,8 +2122,8 @@
     created_at: 2013-10-04 06:36:07.858807000 Z
     updated_at: 2013-10-04 07:43:12.439667000 Z
 - !ruby/object:Spree::ParamValue
-  attributes:
-    id: 178
+  attributes: &56602520
+    id: 942
     page_layout_root_id: 1
     page_layout_id: 25
     section_param_id: 147
@@ -2424,7 +2137,7 @@
     updated_at: 2013-10-04 06:55:14.351986000 Z
 - !ruby/object:Spree::ParamValue
   attributes:
-    id: 179
+    id: 943
     page_layout_root_id: 1
     page_layout_id: 25
     section_param_id: 148
@@ -2438,7 +2151,7 @@
     updated_at: 2013-10-04 07:43:34.096088000 Z
 - !ruby/object:Spree::ParamValue
   attributes:
-    id: 180
+    id: 944
     page_layout_root_id: 1
     page_layout_id: 26
     section_param_id: 149
@@ -2458,7 +2171,7 @@
     updated_at: 2013-10-04 07:30:40.447755000 Z
 - !ruby/object:Spree::ParamValue
   attributes:
-    id: 181
+    id: 945
     page_layout_root_id: 1
     page_layout_id: 26
     section_param_id: 150
@@ -2472,7 +2185,7 @@
     updated_at: 2013-10-04 07:27:26.734077000 Z
 - !ruby/object:Spree::ParamValue
   attributes:
-    id: 182
+    id: 946
     page_layout_root_id: 1
     page_layout_id: 26
     section_param_id: 151
@@ -2490,7 +2203,7 @@
     updated_at: 2013-10-04 07:28:07.535448000 Z
 - !ruby/object:Spree::ParamValue
   attributes:
-    id: 183
+    id: 947
     page_layout_root_id: 1
     page_layout_id: 30
     section_param_id: 6
@@ -2504,7 +2217,7 @@
     updated_at: 2013-10-05 00:36:48.151775000 Z
 - !ruby/object:Spree::ParamValue
   attributes:
-    id: 184
+    id: 948
     page_layout_root_id: 1
     page_layout_id: 30
     section_param_id: 7
@@ -2520,7 +2233,7 @@
     updated_at: 2013-10-05 00:46:41.776694000 Z
 - !ruby/object:Spree::ParamValue
   attributes:
-    id: 185
+    id: 949
     page_layout_root_id: 1
     page_layout_id: 30
     section_param_id: 8
@@ -2535,7 +2248,7 @@
     updated_at: 2013-10-05 01:14:46.511047000 Z
 - !ruby/object:Spree::ParamValue
   attributes:
-    id: 186
+    id: 950
     page_layout_root_id: 1
     page_layout_id: 30
     section_param_id: 9
@@ -2551,7 +2264,7 @@
     updated_at: 2013-10-05 00:36:48.418831000 Z
 - !ruby/object:Spree::ParamValue
   attributes:
-    id: 187
+    id: 951
     page_layout_root_id: 1
     page_layout_id: 30
     section_param_id: 10
@@ -2567,7 +2280,7 @@
     updated_at: 2013-10-05 00:36:48.484346000 Z
 - !ruby/object:Spree::ParamValue
   attributes:
-    id: 188
+    id: 952
     page_layout_root_id: 1
     page_layout_id: 31
     section_param_id: 152
@@ -2579,7 +2292,7 @@
     updated_at: 2013-10-05 00:37:29.472251000 Z
 - !ruby/object:Spree::ParamValue
   attributes:
-    id: 189
+    id: 953
     page_layout_root_id: 1
     page_layout_id: 31
     section_param_id: 153
@@ -2594,7 +2307,7 @@
     updated_at: 2013-10-05 01:16:39.523136000 Z
 - !ruby/object:Spree::ParamValue
   attributes:
-    id: 190
+    id: 954
     page_layout_root_id: 1
     page_layout_id: 31
     section_param_id: 154
@@ -2613,7 +2326,7 @@
     updated_at: 2013-10-05 01:16:48.472605000 Z
 - !ruby/object:Spree::ParamValue
   attributes:
-    id: 191
+    id: 955
     page_layout_root_id: 1
     page_layout_id: 31
     section_param_id: 155
@@ -2626,7 +2339,7 @@
     updated_at: 2013-10-05 00:37:29.666354000 Z
 - !ruby/object:Spree::ParamValue
   attributes:
-    id: 192
+    id: 956
     page_layout_root_id: 1
     page_layout_id: 31
     section_param_id: 156
@@ -2643,7 +2356,7 @@
     updated_at: 2013-10-05 00:47:37.155323000 Z
 - !ruby/object:Spree::ParamValue
   attributes:
-    id: 193
+    id: 957
     page_layout_root_id: 1
     page_layout_id: 32
     section_param_id: 6
@@ -2657,7 +2370,7 @@
     updated_at: 2013-10-05 00:37:55.824421000 Z
 - !ruby/object:Spree::ParamValue
   attributes:
-    id: 194
+    id: 958
     page_layout_root_id: 1
     page_layout_id: 32
     section_param_id: 7
@@ -2673,7 +2386,7 @@
     updated_at: 2013-10-05 01:14:00.326679000 Z
 - !ruby/object:Spree::ParamValue
   attributes:
-    id: 195
+    id: 959
     page_layout_root_id: 1
     page_layout_id: 32
     section_param_id: 8
@@ -2686,7 +2399,7 @@
     updated_at: 2013-10-05 00:37:55.965865000 Z
 - !ruby/object:Spree::ParamValue
   attributes:
-    id: 196
+    id: 960
     page_layout_root_id: 1
     page_layout_id: 32
     section_param_id: 9
@@ -2702,7 +2415,7 @@
     updated_at: 2013-10-05 00:37:56.032837000 Z
 - !ruby/object:Spree::ParamValue
   attributes:
-    id: 197
+    id: 961
     page_layout_root_id: 1
     page_layout_id: 32
     section_param_id: 10
@@ -2718,7 +2431,7 @@
     updated_at: 2013-10-05 00:37:56.099565000 Z
 - !ruby/object:Spree::ParamValue
   attributes:
-    id: 198
+    id: 962
     page_layout_root_id: 1
     page_layout_id: 33
     section_param_id: 152
@@ -2730,7 +2443,7 @@
     updated_at: 2013-10-05 00:38:05.074854000 Z
 - !ruby/object:Spree::ParamValue
   attributes:
-    id: 199
+    id: 963
     page_layout_root_id: 1
     page_layout_id: 33
     section_param_id: 153
@@ -2745,7 +2458,7 @@
     updated_at: 2013-10-05 01:16:32.152665000 Z
 - !ruby/object:Spree::ParamValue
   attributes:
-    id: 200
+    id: 964
     page_layout_root_id: 1
     page_layout_id: 33
     section_param_id: 154
@@ -2764,7 +2477,7 @@
     updated_at: 2013-10-05 01:15:48.489172000 Z
 - !ruby/object:Spree::ParamValue
   attributes:
-    id: 201
+    id: 965
     page_layout_root_id: 1
     page_layout_id: 33
     section_param_id: 155
@@ -2777,7 +2490,7 @@
     updated_at: 2013-10-05 00:38:05.273540000 Z
 - !ruby/object:Spree::ParamValue
   attributes:
-    id: 202
+    id: 966
     page_layout_root_id: 1
     page_layout_id: 33
     section_param_id: 156
@@ -2794,7 +2507,7 @@
     updated_at: 2013-10-05 01:14:21.818266000 Z
 - !ruby/object:Spree::ParamValue
   attributes:
-    id: 203
+    id: 967
     page_layout_root_id: 1
     page_layout_id: 34
     section_param_id: 27
@@ -2805,8 +2518,8 @@
     created_at: 2013-10-05 00:38:16.725656000 Z
     updated_at: 2013-10-05 00:38:16.725656000 Z
 - !ruby/object:Spree::ParamValue
-  attributes:
-    id: 204
+  attributes: &64714240
+    id: 968
     page_layout_root_id: 1
     page_layout_id: 34
     section_param_id: 28
@@ -2819,7 +2532,7 @@
     updated_at: 2013-10-05 00:38:16.789523000 Z
 - !ruby/object:Spree::ParamValue
   attributes:
-    id: 205
+    id: 969
     page_layout_root_id: 1
     page_layout_id: 34
     section_param_id: 29
@@ -2836,7 +2549,7 @@
     updated_at: 2013-10-05 01:13:10.267284000 Z
 - !ruby/object:Spree::ParamValue
   attributes:
-    id: 206
+    id: 970
     page_layout_root_id: 1
     page_layout_id: 34
     section_param_id: 30
@@ -2849,7 +2562,7 @@
     updated_at: 2013-10-05 00:38:16.914811000 Z
 - !ruby/object:Spree::ParamValue
   attributes:
-    id: 207
+    id: 971
     page_layout_root_id: 1
     page_layout_id: 34
     section_param_id: 31
@@ -2862,7 +2575,7 @@
     updated_at: 2013-10-05 00:38:16.981443000 Z
 - !ruby/object:Spree::ParamValue
   attributes:
-    id: 208
+    id: 972
     page_layout_root_id: 1
     page_layout_id: 34
     section_param_id: 32
@@ -2876,7 +2589,7 @@
     updated_at: 2013-10-05 01:13:53.339693000 Z
 - !ruby/object:Spree::ParamValue
   attributes:
-    id: 209
+    id: 973
     page_layout_root_id: 1
     page_layout_id: 34
     section_param_id: 33
@@ -2894,7 +2607,7 @@
     updated_at: 2013-10-05 01:13:33.834094000 Z
 - !ruby/object:Spree::ParamValue
   attributes:
-    id: 210
+    id: 974
     page_layout_root_id: 1
     page_layout_id: 34
     section_param_id: 34
@@ -2906,7 +2619,7 @@
     updated_at: 2013-10-05 00:38:17.181431000 Z
 - !ruby/object:Spree::ParamValue
   attributes:
-    id: 211
+    id: 975
     page_layout_root_id: 1
     page_layout_id: 34
     section_param_id: 35
@@ -2918,7 +2631,7 @@
     updated_at: 2013-10-05 00:38:17.248097000 Z
 - !ruby/object:Spree::ParamValue
   attributes:
-    id: 212
+    id: 976
     page_layout_root_id: 1
     page_layout_id: 34
     section_param_id: 36
@@ -2930,7 +2643,7 @@
     updated_at: 2013-10-05 00:38:17.332592000 Z
 - !ruby/object:Spree::ParamValue
   attributes:
-    id: 213
+    id: 977
     page_layout_root_id: 1
     page_layout_id: 34
     section_param_id: 37
@@ -2942,7 +2655,7 @@
     updated_at: 2013-10-05 00:38:17.398105000 Z
 - !ruby/object:Spree::ParamValue
   attributes:
-    id: 214
+    id: 978
     page_layout_root_id: 1
     page_layout_id: 34
     section_param_id: 38
@@ -2954,7 +2667,7 @@
     updated_at: 2013-10-05 00:38:17.464792000 Z
 - !ruby/object:Spree::ParamValue
   attributes:
-    id: 215
+    id: 979
     page_layout_root_id: 1
     page_layout_id: 34
     section_param_id: 39
@@ -2966,7 +2679,7 @@
     updated_at: 2013-10-05 00:38:17.523069000 Z
 - !ruby/object:Spree::ParamValue
   attributes:
-    id: 216
+    id: 980
     page_layout_root_id: 1
     page_layout_id: 34
     section_param_id: 40
@@ -2978,7 +2691,7 @@
     updated_at: 2013-10-05 00:38:17.648093000 Z
 - !ruby/object:Spree::ParamValue
   attributes:
-    id: 217
+    id: 981
     page_layout_root_id: 1
     page_layout_id: 34
     section_param_id: 41
@@ -2990,7 +2703,7 @@
     updated_at: 2013-10-05 00:38:17.706589000 Z
 - !ruby/object:Spree::ParamValue
   attributes:
-    id: 218
+    id: 982
     page_layout_root_id: 1
     page_layout_id: 34
     section_param_id: 42
@@ -3002,7 +2715,7 @@
     updated_at: 2013-10-05 00:38:17.781409000 Z
 - !ruby/object:Spree::ParamValue
   attributes:
-    id: 219
+    id: 983
     page_layout_root_id: 1
     page_layout_id: 35
     section_param_id: 157
@@ -3014,7 +2727,7 @@
     updated_at: 2013-10-09 15:29:25.989905000 Z
 - !ruby/object:Spree::ParamValue
   attributes:
-    id: 220
+    id: 984
     page_layout_root_id: 1
     page_layout_id: 35
     section_param_id: 158
@@ -3027,7 +2740,7 @@
     updated_at: 2013-10-09 15:29:26.056771000 Z
 - !ruby/object:Spree::ParamValue
   attributes:
-    id: 221
+    id: 985
     page_layout_root_id: 1
     page_layout_id: 35
     section_param_id: 159
@@ -3040,7 +2753,7 @@
     updated_at: 2013-10-09 15:29:26.122803000 Z
 - !ruby/object:Spree::ParamValue
   attributes:
-    id: 222
+    id: 986
     page_layout_root_id: 1
     page_layout_id: 35
     section_param_id: 160
@@ -3053,7 +2766,7 @@
     updated_at: 2013-10-09 15:29:26.189194000 Z
 - !ruby/object:Spree::ParamValue
   attributes:
-    id: 223
+    id: 987
     page_layout_root_id: 1
     page_layout_id: 35
     section_param_id: 161
@@ -3066,7 +2779,7 @@
     updated_at: 2013-10-09 15:29:26.255849000 Z
 - !ruby/object:Spree::ParamValue
   attributes:
-    id: 224
+    id: 988
     page_layout_root_id: 1
     page_layout_id: 36
     section_param_id: 162
@@ -3078,7 +2791,7 @@
     updated_at: 2013-10-09 15:29:34.823137000 Z
 - !ruby/object:Spree::ParamValue
   attributes:
-    id: 225
+    id: 989
     page_layout_root_id: 1
     page_layout_id: 36
     section_param_id: 163
@@ -3091,7 +2804,7 @@
     updated_at: 2013-10-09 15:29:34.888920000 Z
 - !ruby/object:Spree::ParamValue
   attributes:
-    id: 226
+    id: 990
     page_layout_root_id: 1
     page_layout_id: 36
     section_param_id: 164
@@ -3104,7 +2817,7 @@
     updated_at: 2013-10-09 15:29:34.955857000 Z
 - !ruby/object:Spree::ParamValue
   attributes:
-    id: 227
+    id: 991
     page_layout_root_id: 1
     page_layout_id: 36
     section_param_id: 165
@@ -3117,7 +2830,7 @@
     updated_at: 2013-10-09 15:29:35.022282000 Z
 - !ruby/object:Spree::ParamValue
   attributes:
-    id: 228
+    id: 992
     page_layout_root_id: 1
     page_layout_id: 36
     section_param_id: 166
@@ -3130,7 +2843,7 @@
     updated_at: 2013-10-09 15:29:35.088845000 Z
 - !ruby/object:Spree::ParamValue
   attributes:
-    id: 229
+    id: 993
     page_layout_root_id: 1
     page_layout_id: 37
     section_param_id: 167
@@ -3142,7 +2855,7 @@
     updated_at: 2013-10-12 08:30:42.728666000 Z
 - !ruby/object:Spree::ParamValue
   attributes:
-    id: 230
+    id: 994
     page_layout_root_id: 1
     page_layout_id: 37
     section_param_id: 168
@@ -3155,7 +2868,7 @@
     updated_at: 2013-10-12 08:30:42.792851000 Z
 - !ruby/object:Spree::ParamValue
   attributes:
-    id: 231
+    id: 995
     page_layout_root_id: 1
     page_layout_id: 37
     section_param_id: 169
@@ -3168,7 +2881,7 @@
     updated_at: 2013-10-12 08:30:42.859128000 Z
 - !ruby/object:Spree::ParamValue
   attributes:
-    id: 232
+    id: 996
     page_layout_root_id: 1
     page_layout_id: 37
     section_param_id: 170
@@ -3181,7 +2894,7 @@
     updated_at: 2013-10-12 08:30:43.026040000 Z
 - !ruby/object:Spree::ParamValue
   attributes:
-    id: 233
+    id: 997
     page_layout_root_id: 1
     page_layout_id: 37
     section_param_id: 171
@@ -3194,7 +2907,7 @@
     updated_at: 2013-10-12 08:30:43.092249000 Z
 - !ruby/object:Spree::ParamValue
   attributes:
-    id: 263
+    id: 998
     page_layout_root_id: 1
     page_layout_id: 39
     section_param_id: 284
@@ -3206,7 +2919,7 @@
     updated_at: 2013-11-02 09:20:24.488073000 Z
 - !ruby/object:Spree::ParamValue
   attributes:
-    id: 264
+    id: 999
     page_layout_root_id: 1
     page_layout_id: 39
     section_param_id: 285
@@ -3220,7 +2933,7 @@
     updated_at: 2013-11-02 09:20:24.560663000 Z
 - !ruby/object:Spree::ParamValue
   attributes:
-    id: 265
+    id: 1000
     page_layout_root_id: 1
     page_layout_id: 39
     section_param_id: 286
@@ -3240,7 +2953,7 @@
     updated_at: 2013-11-02 09:20:24.635929000 Z
 - !ruby/object:Spree::ParamValue
   attributes:
-    id: 266
+    id: 1001
     page_layout_root_id: 1
     page_layout_id: 39
     section_param_id: 287
@@ -3254,7 +2967,7 @@
     updated_at: 2013-11-02 09:20:24.718404000 Z
 - !ruby/object:Spree::ParamValue
   attributes:
-    id: 267
+    id: 1002
     page_layout_root_id: 1
     page_layout_id: 39
     section_param_id: 288
@@ -3266,7 +2979,7 @@
     updated_at: 2013-11-02 09:20:24.793049000 Z
 - !ruby/object:Spree::ParamValue
   attributes:
-    id: 268
+    id: 1003
     page_layout_root_id: 1
     page_layout_id: 39
     section_param_id: 306
@@ -3282,7 +2995,7 @@
     updated_at: 2013-11-02 13:36:20.810502000 Z
 - !ruby/object:Spree::ParamValue
   attributes:
-    id: 269
+    id: 1004
     page_layout_root_id: 1
     page_layout_id: 39
     section_param_id: 307
@@ -3295,8 +3008,8 @@
     created_at: 2013-11-02 09:20:24.942858000 Z
     updated_at: 2013-11-02 13:36:21.100863000 Z
 - !ruby/object:Spree::ParamValue
-  attributes:
-    id: 270
+  attributes: &66733460
+    id: 1005
     page_layout_root_id: 1
     page_layout_id: 39
     section_param_id: 308
@@ -3308,7 +3021,7 @@
     updated_at: 2013-11-02 09:20:25.017947000 Z
 - !ruby/object:Spree::ParamValue
   attributes:
-    id: 271
+    id: 1006
     page_layout_root_id: 1
     page_layout_id: 39
     section_param_id: 309
@@ -3322,7 +3035,7 @@
     updated_at: 2013-11-02 13:36:21.358992000 Z
 - !ruby/object:Spree::ParamValue
   attributes:
-    id: 272
+    id: 1007
     page_layout_root_id: 1
     page_layout_id: 40
     section_param_id: 210
@@ -3334,7 +3047,7 @@
     updated_at: 2013-11-02 09:20:58.625953000 Z
 - !ruby/object:Spree::ParamValue
   attributes:
-    id: 273
+    id: 1008
     page_layout_root_id: 1
     page_layout_id: 40
     section_param_id: 211
@@ -3346,7 +3059,7 @@
     updated_at: 2013-11-02 09:20:58.775492000 Z
 - !ruby/object:Spree::ParamValue
   attributes:
-    id: 274
+    id: 1009
     page_layout_root_id: 1
     page_layout_id: 40
     section_param_id: 212
@@ -3359,7 +3072,7 @@
     updated_at: 2013-11-02 09:20:58.850620000 Z
 - !ruby/object:Spree::ParamValue
   attributes:
-    id: 275
+    id: 1010
     page_layout_root_id: 1
     page_layout_id: 40
     section_param_id: 213
@@ -3371,7 +3084,7 @@
     updated_at: 2013-11-02 09:20:58.925251000 Z
 - !ruby/object:Spree::ParamValue
   attributes:
-    id: 276
+    id: 1011
     page_layout_root_id: 1
     page_layout_id: 40
     section_param_id: 214
@@ -3383,7 +3096,7 @@
     updated_at: 2013-11-02 09:20:59.000899000 Z
 - !ruby/object:Spree::ParamValue
   attributes:
-    id: 277
+    id: 1012
     page_layout_root_id: 1
     page_layout_id: 40
     section_param_id: 215
@@ -3395,7 +3108,7 @@
     updated_at: 2013-11-02 09:20:59.075237000 Z
 - !ruby/object:Spree::ParamValue
   attributes:
-    id: 278
+    id: 1013
     page_layout_root_id: 1
     page_layout_id: 40
     section_param_id: 216
@@ -3407,7 +3120,7 @@
     updated_at: 2013-11-02 09:20:59.142006000 Z
 - !ruby/object:Spree::ParamValue
   attributes:
-    id: 279
+    id: 1014
     page_layout_root_id: 1
     page_layout_id: 40
     section_param_id: 217
@@ -3419,7 +3132,7 @@
     updated_at: 2013-11-02 09:20:59.225230000 Z
 - !ruby/object:Spree::ParamValue
   attributes:
-    id: 280
+    id: 1015
     page_layout_root_id: 1
     page_layout_id: 41
     section_param_id: 218
@@ -3431,7 +3144,7 @@
     updated_at: 2013-11-02 09:21:08.750806000 Z
 - !ruby/object:Spree::ParamValue
   attributes:
-    id: 281
+    id: 1016
     page_layout_root_id: 1
     page_layout_id: 41
     section_param_id: 219
@@ -3443,7 +3156,7 @@
     updated_at: 2013-11-02 09:21:08.833225000 Z
 - !ruby/object:Spree::ParamValue
   attributes:
-    id: 282
+    id: 1017
     page_layout_root_id: 1
     page_layout_id: 41
     section_param_id: 220
@@ -3456,7 +3169,7 @@
     updated_at: 2013-11-02 09:21:08.933443000 Z
 - !ruby/object:Spree::ParamValue
   attributes:
-    id: 283
+    id: 1018
     page_layout_root_id: 1
     page_layout_id: 41
     section_param_id: 221
@@ -3468,7 +3181,7 @@
     updated_at: 2013-11-02 09:21:09.049677000 Z
 - !ruby/object:Spree::ParamValue
   attributes:
-    id: 284
+    id: 1019
     page_layout_root_id: 1
     page_layout_id: 41
     section_param_id: 222
@@ -3480,7 +3193,7 @@
     updated_at: 2013-11-02 09:21:09.149652000 Z
 - !ruby/object:Spree::ParamValue
   attributes:
-    id: 285
+    id: 1020
     page_layout_root_id: 1
     page_layout_id: 41
     section_param_id: 223
@@ -3492,7 +3205,7 @@
     updated_at: 2013-11-02 09:21:09.274695000 Z
 - !ruby/object:Spree::ParamValue
   attributes:
-    id: 286
+    id: 1021
     page_layout_root_id: 1
     page_layout_id: 41
     section_param_id: 224
@@ -3504,7 +3217,7 @@
     updated_at: 2013-11-02 09:21:09.420414000 Z
 - !ruby/object:Spree::ParamValue
   attributes:
-    id: 287
+    id: 1022
     page_layout_root_id: 1
     page_layout_id: 41
     section_param_id: 225
@@ -3516,7 +3229,7 @@
     updated_at: 2013-11-02 09:21:09.508194000 Z
 - !ruby/object:Spree::ParamValue
   attributes:
-    id: 288
+    id: 1023
     page_layout_root_id: 1
     page_layout_id: 42
     section_param_id: 6
@@ -3528,7 +3241,7 @@
     updated_at: 2013-11-02 09:35:02.040487000 Z
 - !ruby/object:Spree::ParamValue
   attributes:
-    id: 289
+    id: 1024
     page_layout_root_id: 1
     page_layout_id: 42
     section_param_id: 7
@@ -3544,7 +3257,7 @@
     updated_at: 2013-11-02 09:53:32.371359000 Z
 - !ruby/object:Spree::ParamValue
   attributes:
-    id: 290
+    id: 1025
     page_layout_root_id: 1
     page_layout_id: 42
     section_param_id: 8
@@ -3557,7 +3270,7 @@
     updated_at: 2013-11-02 09:35:02.190199000 Z
 - !ruby/object:Spree::ParamValue
   attributes:
-    id: 291
+    id: 1026
     page_layout_root_id: 1
     page_layout_id: 42
     section_param_id: 9
@@ -3569,7 +3282,7 @@
     updated_at: 2013-11-02 09:35:02.264850000 Z
 - !ruby/object:Spree::ParamValue
   attributes:
-    id: 292
+    id: 1027
     page_layout_root_id: 1
     page_layout_id: 42
     section_param_id: 10
@@ -3581,7 +3294,7 @@
     updated_at: 2013-11-02 09:35:02.339825000 Z
 - !ruby/object:Spree::ParamValue
   attributes:
-    id: 293
+    id: 1028
     page_layout_root_id: 1
     page_layout_id: 43
     section_param_id: 160
@@ -3593,7 +3306,7 @@
     updated_at: 2013-11-02 09:36:17.713828000 Z
 - !ruby/object:Spree::ParamValue
   attributes:
-    id: 294
+    id: 1029
     page_layout_root_id: 1
     page_layout_id: 43
     section_param_id: 161
@@ -3605,7 +3318,7 @@
     updated_at: 2013-11-02 09:36:17.787649000 Z
 - !ruby/object:Spree::ParamValue
   attributes:
-    id: 295
+    id: 1030
     page_layout_root_id: 1
     page_layout_id: 43
     section_param_id: 162
@@ -3618,7 +3331,7 @@
     updated_at: 2013-11-02 09:36:17.871328000 Z
 - !ruby/object:Spree::ParamValue
   attributes:
-    id: 296
+    id: 1031
     page_layout_root_id: 1
     page_layout_id: 43
     section_param_id: 163
@@ -3630,7 +3343,7 @@
     updated_at: 2013-11-02 09:36:17.954206000 Z
 - !ruby/object:Spree::ParamValue
   attributes:
-    id: 297
+    id: 1032
     page_layout_root_id: 1
     page_layout_id: 43
     section_param_id: 164
@@ -3642,7 +3355,7 @@
     updated_at: 2013-11-02 09:36:18.029185000 Z
 - !ruby/object:Spree::ParamValue
   attributes:
-    id: 298
+    id: 1033
     page_layout_root_id: 1
     page_layout_id: 44
     section_param_id: 165
@@ -3654,7 +3367,7 @@
     updated_at: 2013-11-02 09:37:21.595935000 Z
 - !ruby/object:Spree::ParamValue
   attributes:
-    id: 299
+    id: 1034
     page_layout_root_id: 1
     page_layout_id: 44
     section_param_id: 166
@@ -3662,11 +3375,11 @@
     pvalue: {}
     unset: 
     computed_pvalue: 
-    created_at: 2013-11-02 09:37:21.677331000 Z
+    created_at: *48634040
     updated_at: 2013-11-02 09:37:21.677331000 Z
 - !ruby/object:Spree::ParamValue
   attributes:
-    id: 300
+    id: 1035
     page_layout_root_id: 1
     page_layout_id: 44
     section_param_id: 167
@@ -3679,7 +3392,7 @@
     updated_at: 2013-11-02 09:37:21.752737000 Z
 - !ruby/object:Spree::ParamValue
   attributes:
-    id: 301
+    id: 1036
     page_layout_root_id: 1
     page_layout_id: 44
     section_param_id: 168
@@ -3691,7 +3404,7 @@
     updated_at: 2013-11-02 09:37:21.827209000 Z
 - !ruby/object:Spree::ParamValue
   attributes:
-    id: 302
+    id: 1037
     page_layout_root_id: 1
     page_layout_id: 44
     section_param_id: 169
@@ -3703,7 +3416,7 @@
     updated_at: 2013-11-02 09:37:21.910751000 Z
 - !ruby/object:Spree::ParamValue
   attributes:
-    id: 303
+    id: 1038
     page_layout_root_id: 1
     page_layout_id: 44
     section_param_id: 170
@@ -3715,7 +3428,7 @@
     updated_at: 2013-11-02 09:37:21.985688000 Z
 - !ruby/object:Spree::ParamValue
   attributes:
-    id: 304
+    id: 1039
     page_layout_root_id: 1
     page_layout_id: 44
     section_param_id: 171
@@ -3727,7 +3440,7 @@
     updated_at: 2013-11-02 09:37:22.069014000 Z
 - !ruby/object:Spree::ParamValue
   attributes:
-    id: 305
+    id: 1040
     page_layout_root_id: 1
     page_layout_id: 44
     section_param_id: 172
@@ -3740,7 +3453,7 @@
     updated_at: 2013-11-02 09:37:22.144239000 Z
 - !ruby/object:Spree::ParamValue
   attributes:
-    id: 306
+    id: 1041
     page_layout_root_id: 1
     page_layout_id: 45
     section_param_id: 173
@@ -3752,7 +3465,7 @@
     updated_at: 2013-11-02 09:37:30.945724000 Z
 - !ruby/object:Spree::ParamValue
   attributes:
-    id: 307
+    id: 1042
     page_layout_root_id: 1
     page_layout_id: 45
     section_param_id: 174
@@ -3764,7 +3477,7 @@
     updated_at: 2013-11-02 09:37:31.026871000 Z
 - !ruby/object:Spree::ParamValue
   attributes:
-    id: 308
+    id: 1043
     page_layout_root_id: 1
     page_layout_id: 45
     section_param_id: 175
@@ -3777,7 +3490,7 @@
     updated_at: 2013-11-02 09:37:31.102259000 Z
 - !ruby/object:Spree::ParamValue
   attributes:
-    id: 309
+    id: 1044
     page_layout_root_id: 1
     page_layout_id: 45
     section_param_id: 176
@@ -3789,7 +3502,7 @@
     updated_at: 2013-11-02 09:37:31.168665000 Z
 - !ruby/object:Spree::ParamValue
   attributes:
-    id: 310
+    id: 1045
     page_layout_root_id: 1
     page_layout_id: 45
     section_param_id: 177
@@ -3801,7 +3514,7 @@
     updated_at: 2013-11-02 09:37:31.243193000 Z
 - !ruby/object:Spree::ParamValue
   attributes:
-    id: 311
+    id: 1046
     page_layout_root_id: 1
     page_layout_id: 45
     section_param_id: 178
@@ -3813,7 +3526,7 @@
     updated_at: 2013-11-02 09:37:31.310392000 Z
 - !ruby/object:Spree::ParamValue
   attributes:
-    id: 312
+    id: 1047
     page_layout_root_id: 1
     page_layout_id: 45
     section_param_id: 179
@@ -3825,7 +3538,7 @@
     updated_at: 2013-11-02 09:37:31.385334000 Z
 - !ruby/object:Spree::ParamValue
   attributes:
-    id: 313
+    id: 1048
     page_layout_root_id: 1
     page_layout_id: 45
     section_param_id: 180
@@ -3838,7 +3551,7 @@
     updated_at: 2013-11-02 09:37:31.459979000 Z
 - !ruby/object:Spree::ParamValue
   attributes:
-    id: 314
+    id: 1049
     page_layout_root_id: 1
     page_layout_id: 46
     section_param_id: 181
@@ -3849,20 +3562,10 @@
     created_at: 2013-11-02 09:37:40.370413000 Z
     updated_at: 2013-11-02 09:37:40.370413000 Z
 - !ruby/object:Spree::ParamValue
-  attributes:
-    id: 315
-    page_layout_root_id: 1
-    page_layout_id: 46
-    section_param_id: 182
-    theme_id: 1
-    pvalue: {}
-    unset: 
-    computed_pvalue: 
-    created_at: 2013-11-02 09:37:40.443333000 Z
-    updated_at: 2013-11-02 09:37:40.443333000 Z
+  attributes: *51330620
 - !ruby/object:Spree::ParamValue
   attributes:
-    id: 316
+    id: 1051
     page_layout_root_id: 1
     page_layout_id: 46
     section_param_id: 183
@@ -3875,7 +3578,7 @@
     updated_at: 2013-11-02 09:37:40.518920000 Z
 - !ruby/object:Spree::ParamValue
   attributes:
-    id: 317
+    id: 1052
     page_layout_root_id: 1
     page_layout_id: 46
     section_param_id: 184
@@ -3887,7 +3590,7 @@
     updated_at: 2013-11-02 09:37:40.601659000 Z
 - !ruby/object:Spree::ParamValue
   attributes:
-    id: 318
+    id: 1053
     page_layout_root_id: 1
     page_layout_id: 46
     section_param_id: 185
@@ -3899,7 +3602,7 @@
     updated_at: 2013-11-02 09:37:40.668334000 Z
 - !ruby/object:Spree::ParamValue
   attributes:
-    id: 319
+    id: 1054
     page_layout_root_id: 1
     page_layout_id: 46
     section_param_id: 186
@@ -3911,7 +3614,7 @@
     updated_at: 2013-11-02 09:37:40.743399000 Z
 - !ruby/object:Spree::ParamValue
   attributes:
-    id: 320
+    id: 1055
     page_layout_root_id: 1
     page_layout_id: 46
     section_param_id: 187
@@ -3923,7 +3626,7 @@
     updated_at: 2013-11-02 09:37:40.818324000 Z
 - !ruby/object:Spree::ParamValue
   attributes:
-    id: 321
+    id: 1056
     page_layout_root_id: 1
     page_layout_id: 46
     section_param_id: 188
@@ -3936,7 +3639,7 @@
     updated_at: 2013-11-02 09:37:40.912304000 Z
 - !ruby/object:Spree::ParamValue
   attributes:
-    id: 322
+    id: 1057
     page_layout_root_id: 1
     page_layout_id: 47
     section_param_id: 268
@@ -3948,7 +3651,7 @@
     updated_at: 2013-11-02 09:37:51.896805000 Z
 - !ruby/object:Spree::ParamValue
   attributes:
-    id: 323
+    id: 1058
     page_layout_root_id: 1
     page_layout_id: 47
     section_param_id: 269
@@ -3960,7 +3663,7 @@
     updated_at: 2013-11-02 09:37:51.968166000 Z
 - !ruby/object:Spree::ParamValue
   attributes:
-    id: 324
+    id: 1059
     page_layout_root_id: 1
     page_layout_id: 47
     section_param_id: 270
@@ -3973,7 +3676,7 @@
     updated_at: 2013-11-02 09:37:52.043525000 Z
 - !ruby/object:Spree::ParamValue
   attributes:
-    id: 325
+    id: 1060
     page_layout_root_id: 1
     page_layout_id: 47
     section_param_id: 271
@@ -3985,7 +3688,7 @@
     updated_at: 2013-11-02 09:37:52.118064000 Z
 - !ruby/object:Spree::ParamValue
   attributes:
-    id: 326
+    id: 1061
     page_layout_root_id: 1
     page_layout_id: 47
     section_param_id: 272
@@ -3997,7 +3700,7 @@
     updated_at: 2013-11-02 09:37:52.193047000 Z
 - !ruby/object:Spree::ParamValue
   attributes:
-    id: 327
+    id: 1062
     page_layout_root_id: 1
     page_layout_id: 47
     section_param_id: 273
@@ -4009,7 +3712,7 @@
     updated_at: 2013-11-02 09:37:52.259931000 Z
 - !ruby/object:Spree::ParamValue
   attributes:
-    id: 328
+    id: 1063
     page_layout_root_id: 1
     page_layout_id: 47
     section_param_id: 274
@@ -4021,7 +3724,7 @@
     updated_at: 2013-11-02 09:37:52.326231000 Z
 - !ruby/object:Spree::ParamValue
   attributes:
-    id: 329
+    id: 1064
     page_layout_root_id: 1
     page_layout_id: 47
     section_param_id: 275
@@ -4033,7 +3736,7 @@
     updated_at: 2013-11-02 09:37:52.401268000 Z
 - !ruby/object:Spree::ParamValue
   attributes:
-    id: 330
+    id: 1065
     page_layout_root_id: 1
     page_layout_id: 48
     section_param_id: 260
@@ -4045,7 +3748,7 @@
     updated_at: 2013-11-02 09:38:01.478778000 Z
 - !ruby/object:Spree::ParamValue
   attributes:
-    id: 331
+    id: 1066
     page_layout_root_id: 1
     page_layout_id: 48
     section_param_id: 261
@@ -4057,7 +3760,7 @@
     updated_at: 2013-11-02 09:38:01.559438000 Z
 - !ruby/object:Spree::ParamValue
   attributes:
-    id: 332
+    id: 1067
     page_layout_root_id: 1
     page_layout_id: 48
     section_param_id: 262
@@ -4070,7 +3773,7 @@
     updated_at: 2013-11-02 09:38:01.634782000 Z
 - !ruby/object:Spree::ParamValue
   attributes:
-    id: 333
+    id: 1068
     page_layout_root_id: 1
     page_layout_id: 48
     section_param_id: 263
@@ -4082,7 +3785,7 @@
     updated_at: 2013-11-02 09:38:01.717770000 Z
 - !ruby/object:Spree::ParamValue
   attributes:
-    id: 334
+    id: 1069
     page_layout_root_id: 1
     page_layout_id: 48
     section_param_id: 264
@@ -4094,7 +3797,7 @@
     updated_at: 2013-11-02 09:38:01.792738000 Z
 - !ruby/object:Spree::ParamValue
   attributes:
-    id: 335
+    id: 1070
     page_layout_root_id: 1
     page_layout_id: 48
     section_param_id: 265
@@ -4106,7 +3809,7 @@
     updated_at: 2013-11-02 09:38:01.867799000 Z
 - !ruby/object:Spree::ParamValue
   attributes:
-    id: 336
+    id: 1071
     page_layout_root_id: 1
     page_layout_id: 48
     section_param_id: 266
@@ -4118,7 +3821,7 @@
     updated_at: 2013-11-02 09:38:01.942764000 Z
 - !ruby/object:Spree::ParamValue
   attributes:
-    id: 337
+    id: 1072
     page_layout_root_id: 1
     page_layout_id: 48
     section_param_id: 267
@@ -4130,7 +3833,7 @@
     updated_at: 2013-11-02 09:38:02.017674000 Z
 - !ruby/object:Spree::ParamValue
   attributes:
-    id: 338
+    id: 1073
     page_layout_root_id: 1
     page_layout_id: 49
     section_param_id: 6
@@ -4142,7 +3845,7 @@
     updated_at: 2013-11-02 09:39:01.070120000 Z
 - !ruby/object:Spree::ParamValue
   attributes:
-    id: 339
+    id: 1074
     page_layout_root_id: 1
     page_layout_id: 49
     section_param_id: 7
@@ -4158,7 +3861,7 @@
     updated_at: 2013-11-02 10:07:21.845357000 Z
 - !ruby/object:Spree::ParamValue
   attributes:
-    id: 340
+    id: 1075
     page_layout_root_id: 1
     page_layout_id: 49
     section_param_id: 8
@@ -4171,7 +3874,7 @@
     updated_at: 2013-11-02 09:39:01.299624000 Z
 - !ruby/object:Spree::ParamValue
   attributes:
-    id: 341
+    id: 1076
     page_layout_root_id: 1
     page_layout_id: 49
     section_param_id: 9
@@ -4183,7 +3886,7 @@
     updated_at: 2013-11-02 09:39:01.382534000 Z
 - !ruby/object:Spree::ParamValue
   attributes:
-    id: 342
+    id: 1077
     page_layout_root_id: 1
     page_layout_id: 49
     section_param_id: 10
@@ -4195,7 +3898,7 @@
     updated_at: 2013-11-02 09:39:01.465867000 Z
 - !ruby/object:Spree::ParamValue
   attributes:
-    id: 343
+    id: 1078
     page_layout_root_id: 1
     page_layout_id: 50
     section_param_id: 6
@@ -4207,7 +3910,7 @@
     updated_at: 2013-11-02 09:39:32.935137000 Z
 - !ruby/object:Spree::ParamValue
   attributes:
-    id: 344
+    id: 1079
     page_layout_root_id: 1
     page_layout_id: 50
     section_param_id: 7
@@ -4223,7 +3926,7 @@
     updated_at: 2013-11-02 10:07:33.657550000 Z
 - !ruby/object:Spree::ParamValue
   attributes:
-    id: 345
+    id: 1080
     page_layout_root_id: 1
     page_layout_id: 50
     section_param_id: 8
@@ -4236,7 +3939,7 @@
     updated_at: 2013-11-02 09:39:33.090421000 Z
 - !ruby/object:Spree::ParamValue
   attributes:
-    id: 346
+    id: 1081
     page_layout_root_id: 1
     page_layout_id: 50
     section_param_id: 9
@@ -4248,7 +3951,7 @@
     updated_at: 2013-11-02 09:39:33.164912000 Z
 - !ruby/object:Spree::ParamValue
   attributes:
-    id: 347
+    id: 1082
     page_layout_root_id: 1
     page_layout_id: 50
     section_param_id: 10
@@ -4260,7 +3963,7 @@
     updated_at: 2013-11-02 09:39:33.240022000 Z
 - !ruby/object:Spree::ParamValue
   attributes:
-    id: 348
+    id: 1083
     page_layout_root_id: 1
     page_layout_id: 51
     section_param_id: 189
@@ -4272,7 +3975,7 @@
     updated_at: 2013-11-02 09:39:53.117360000 Z
 - !ruby/object:Spree::ParamValue
   attributes:
-    id: 349
+    id: 1084
     page_layout_root_id: 1
     page_layout_id: 51
     section_param_id: 190
@@ -4284,7 +3987,7 @@
     updated_at: 2013-11-02 09:39:53.189418000 Z
 - !ruby/object:Spree::ParamValue
   attributes:
-    id: 350
+    id: 1085
     page_layout_root_id: 1
     page_layout_id: 51
     section_param_id: 191
@@ -4297,7 +4000,7 @@
     updated_at: 2013-11-02 09:39:53.273124000 Z
 - !ruby/object:Spree::ParamValue
   attributes:
-    id: 351
+    id: 1086
     page_layout_root_id: 1
     page_layout_id: 51
     section_param_id: 192
@@ -4309,7 +4012,7 @@
     updated_at: 2013-11-02 09:39:53.356105000 Z
 - !ruby/object:Spree::ParamValue
   attributes:
-    id: 352
+    id: 1087
     page_layout_root_id: 1
     page_layout_id: 51
     section_param_id: 193
@@ -4321,7 +4024,7 @@
     updated_at: 2013-11-02 09:39:53.431029000 Z
 - !ruby/object:Spree::ParamValue
   attributes:
-    id: 353
+    id: 1088
     page_layout_root_id: 1
     page_layout_id: 51
     section_param_id: 194
@@ -4333,7 +4036,7 @@
     updated_at: 2013-11-02 09:39:53.506258000 Z
 - !ruby/object:Spree::ParamValue
   attributes:
-    id: 354
+    id: 1089
     page_layout_root_id: 1
     page_layout_id: 51
     section_param_id: 195
@@ -4345,7 +4048,7 @@
     updated_at: 2013-11-02 09:39:53.581047000 Z
 - !ruby/object:Spree::ParamValue
   attributes:
-    id: 355
+    id: 1090
     page_layout_root_id: 1
     page_layout_id: 51
     section_param_id: 196
@@ -4357,7 +4060,7 @@
     updated_at: 2013-11-02 09:39:53.655617000 Z
 - !ruby/object:Spree::ParamValue
   attributes:
-    id: 356
+    id: 1091
     page_layout_root_id: 1
     page_layout_id: 52
     section_param_id: 197
@@ -4369,7 +4072,7 @@
     updated_at: 2013-11-02 09:40:04.265322000 Z
 - !ruby/object:Spree::ParamValue
   attributes:
-    id: 357
+    id: 1092
     page_layout_root_id: 1
     page_layout_id: 52
     section_param_id: 198
@@ -4381,7 +4084,7 @@
     updated_at: 2013-11-02 09:40:04.338964000 Z
 - !ruby/object:Spree::ParamValue
   attributes:
-    id: 358
+    id: 1093
     page_layout_root_id: 1
     page_layout_id: 52
     section_param_id: 199
@@ -4394,7 +4097,7 @@
     updated_at: 2013-11-02 09:40:04.414444000 Z
 - !ruby/object:Spree::ParamValue
   attributes:
-    id: 359
+    id: 1094
     page_layout_root_id: 1
     page_layout_id: 52
     section_param_id: 200
@@ -4406,7 +4109,7 @@
     updated_at: 2013-11-02 09:40:04.488977000 Z
 - !ruby/object:Spree::ParamValue
   attributes:
-    id: 360
+    id: 1095
     page_layout_root_id: 1
     page_layout_id: 52
     section_param_id: 201
@@ -4418,7 +4121,7 @@
     updated_at: 2013-11-02 09:40:04.563962000 Z
 - !ruby/object:Spree::ParamValue
   attributes:
-    id: 361
+    id: 1096
     page_layout_root_id: 1
     page_layout_id: 52
     section_param_id: 202
@@ -4430,7 +4133,7 @@
     updated_at: 2013-11-02 09:40:04.639063000 Z
 - !ruby/object:Spree::ParamValue
   attributes:
-    id: 362
+    id: 1097
     page_layout_root_id: 1
     page_layout_id: 52
     section_param_id: 203
@@ -4442,7 +4145,7 @@
     updated_at: 2013-11-02 09:40:04.713998000 Z
 - !ruby/object:Spree::ParamValue
   attributes:
-    id: 363
+    id: 1098
     page_layout_root_id: 1
     page_layout_id: 52
     section_param_id: 204
@@ -4454,7 +4157,7 @@
     updated_at: 2013-11-02 09:40:04.789036000 Z
 - !ruby/object:Spree::ParamValue
   attributes:
-    id: 364
+    id: 1099
     page_layout_root_id: 1
     page_layout_id: 28
     section_param_id: 6
@@ -4466,7 +4169,7 @@
     updated_at: 2013-11-02 09:50:08.753039000 Z
 - !ruby/object:Spree::ParamValue
   attributes:
-    id: 365
+    id: 1100
     page_layout_root_id: 1
     page_layout_id: 28
     section_param_id: 7
@@ -4482,7 +4185,7 @@
     updated_at: 2013-11-02 10:07:29.119818000 Z
 - !ruby/object:Spree::ParamValue
   attributes:
-    id: 366
+    id: 1101
     page_layout_root_id: 1
     page_layout_id: 28
     section_param_id: 8
@@ -4495,7 +4198,7 @@
     updated_at: 2013-11-02 09:50:08.923001000 Z
 - !ruby/object:Spree::ParamValue
   attributes:
-    id: 367
+    id: 1102
     page_layout_root_id: 1
     page_layout_id: 28
     section_param_id: 9
@@ -4507,7 +4210,7 @@
     updated_at: 2013-11-02 09:50:08.996353000 Z
 - !ruby/object:Spree::ParamValue
   attributes:
-    id: 368
+    id: 1103
     page_layout_root_id: 1
     page_layout_id: 28
     section_param_id: 10
@@ -4519,7 +4222,7 @@
     updated_at: 2013-11-02 09:50:09.087385000 Z
 - !ruby/object:Spree::ParamValue
   attributes:
-    id: 369
+    id: 1104
     page_layout_root_id: 1
     page_layout_id: 38
     section_param_id: 6
@@ -4531,7 +4234,7 @@
     updated_at: 2013-11-02 09:50:37.251759000 Z
 - !ruby/object:Spree::ParamValue
   attributes:
-    id: 370
+    id: 1105
     page_layout_root_id: 1
     page_layout_id: 38
     section_param_id: 7
@@ -4547,7 +4250,7 @@
     updated_at: 2013-11-02 10:07:38.961530000 Z
 - !ruby/object:Spree::ParamValue
   attributes:
-    id: 371
+    id: 1106
     page_layout_root_id: 1
     page_layout_id: 38
     section_param_id: 8
@@ -4560,7 +4263,7 @@
     updated_at: 2013-11-02 09:50:37.403363000 Z
 - !ruby/object:Spree::ParamValue
   attributes:
-    id: 372
+    id: 1107
     page_layout_root_id: 1
     page_layout_id: 38
     section_param_id: 9
@@ -4572,7 +4275,7 @@
     updated_at: 2013-11-02 09:50:37.461581000 Z
 - !ruby/object:Spree::ParamValue
   attributes:
-    id: 373
+    id: 1108
     page_layout_root_id: 1
     page_layout_id: 38
     section_param_id: 10
@@ -4584,7 +4287,7 @@
     updated_at: 2013-11-02 09:50:37.536474000 Z
 - !ruby/object:Spree::ParamValue
   attributes:
-    id: 374
+    id: 1109
     page_layout_root_id: 1
     page_layout_id: 1
     section_param_id: 226
@@ -4600,7 +4303,7 @@
     updated_at: 2013-11-02 09:51:42.719148000 Z
 - !ruby/object:Spree::ParamValue
   attributes:
-    id: 375
+    id: 1110
     page_layout_root_id: 1
     page_layout_id: 1
     section_param_id: 227
@@ -4612,7 +4315,7 @@
     updated_at: 2013-11-02 09:51:42.792781000 Z
 - !ruby/object:Spree::ParamValue
   attributes:
-    id: 376
+    id: 1111
     page_layout_root_id: 1
     page_layout_id: 1
     section_param_id: 228
@@ -4625,7 +4328,7 @@
     updated_at: 2013-11-02 09:51:42.867876000 Z
 - !ruby/object:Spree::ParamValue
   attributes:
-    id: 377
+    id: 1112
     page_layout_root_id: 1
     page_layout_id: 1
     section_param_id: 229
@@ -4637,7 +4340,7 @@
     updated_at: 2013-11-02 09:51:42.959374000 Z
 - !ruby/object:Spree::ParamValue
   attributes:
-    id: 378
+    id: 1113
     page_layout_root_id: 1
     page_layout_id: 1
     section_param_id: 230
@@ -4649,7 +4352,7 @@
     updated_at: 2013-11-02 09:51:43.051035000 Z
 - !ruby/object:Spree::ParamValue
   attributes:
-    id: 379
+    id: 1114
     page_layout_root_id: 1
     page_layout_id: 1
     section_param_id: 231
@@ -4661,7 +4364,7 @@
     updated_at: 2013-11-02 09:51:43.117827000 Z
 - !ruby/object:Spree::ParamValue
   attributes:
-    id: 380
+    id: 1115
     page_layout_root_id: 1
     page_layout_id: 1
     section_param_id: 232
@@ -4673,7 +4376,7 @@
     updated_at: 2013-11-02 09:51:43.183937000 Z
 - !ruby/object:Spree::ParamValue
   attributes:
-    id: 381
+    id: 1116
     page_layout_root_id: 1
     page_layout_id: 1
     section_param_id: 233
@@ -4685,7 +4388,7 @@
     updated_at: 2013-11-02 09:51:43.259365000 Z
 - !ruby/object:Spree::ParamValue
   attributes:
-    id: 382
+    id: 1117
     page_layout_root_id: 1
     page_layout_id: 1
     section_param_id: 234
@@ -4697,7 +4400,7 @@
     updated_at: 2013-11-02 09:51:43.334400000 Z
 - !ruby/object:Spree::ParamValue
   attributes:
-    id: 383
+    id: 1118
     page_layout_root_id: 1
     page_layout_id: 1
     section_param_id: 235
@@ -4709,7 +4412,7 @@
     updated_at: 2013-11-02 09:51:43.409364000 Z
 - !ruby/object:Spree::ParamValue
   attributes:
-    id: 384
+    id: 1119
     page_layout_root_id: 1
     page_layout_id: 1
     section_param_id: 236
@@ -4721,7 +4424,7 @@
     updated_at: 2013-11-02 09:51:43.484402000 Z
 - !ruby/object:Spree::ParamValue
   attributes:
-    id: 385
+    id: 1120
     page_layout_root_id: 1
     page_layout_id: 1
     section_param_id: 237
@@ -4733,7 +4436,7 @@
     updated_at: 2013-11-02 09:51:43.567796000 Z
 - !ruby/object:Spree::ParamValue
   attributes:
-    id: 386
+    id: 1121
     page_layout_root_id: 1
     page_layout_id: 1
     section_param_id: 238
@@ -4745,7 +4448,7 @@
     updated_at: 2013-11-02 09:51:43.642673000 Z
 - !ruby/object:Spree::ParamValue
   attributes:
-    id: 387
+    id: 1122
     page_layout_root_id: 1
     page_layout_id: 1
     section_param_id: 239
@@ -4757,7 +4460,7 @@
     updated_at: 2013-11-02 09:51:43.717650000 Z
 - !ruby/object:Spree::ParamValue
   attributes:
-    id: 388
+    id: 1123
     page_layout_root_id: 1
     page_layout_id: 1
     section_param_id: 240
@@ -4769,7 +4472,7 @@
     updated_at: 2013-11-02 09:51:43.793075000 Z
 - !ruby/object:Spree::ParamValue
   attributes:
-    id: 389
+    id: 1124
     page_layout_root_id: 1
     page_layout_id: 1
     section_param_id: 241
@@ -4781,7 +4484,7 @@
     updated_at: 2013-11-02 09:51:43.867671000 Z
 - !ruby/object:Spree::ParamValue
   attributes:
-    id: 390
+    id: 1125
     page_layout_root_id: 1
     page_layout_id: 1
     section_param_id: 242
@@ -4793,7 +4496,7 @@
     updated_at: 2013-11-02 09:51:43.951023000 Z
 - !ruby/object:Spree::ParamValue
   attributes:
-    id: 391
+    id: 1126
     page_layout_root_id: 1
     page_layout_id: 1
     section_param_id: 243
@@ -4805,7 +4508,7 @@
     updated_at: 2013-11-02 09:51:44.026140000 Z
 - !ruby/object:Spree::ParamValue
   attributes:
-    id: 392
+    id: 1127
     page_layout_root_id: 1
     page_layout_id: 1
     section_param_id: 244
@@ -4817,7 +4520,7 @@
     updated_at: 2013-11-02 09:51:44.092704000 Z
 - !ruby/object:Spree::ParamValue
   attributes:
-    id: 393
+    id: 1128
     page_layout_root_id: 1
     page_layout_id: 1
     section_param_id: 245
@@ -4829,7 +4532,7 @@
     updated_at: 2013-11-02 09:51:44.167698000 Z
 - !ruby/object:Spree::ParamValue
   attributes:
-    id: 394
+    id: 1129
     page_layout_root_id: 1
     page_layout_id: 1
     section_param_id: 246
@@ -4841,7 +4544,7 @@
     updated_at: 2013-11-02 09:51:44.234487000 Z
 - !ruby/object:Spree::ParamValue
   attributes:
-    id: 395
+    id: 1130
     page_layout_root_id: 1
     page_layout_id: 1
     section_param_id: 247
@@ -4853,7 +4556,7 @@
     updated_at: 2013-11-02 09:51:44.309383000 Z
 - !ruby/object:Spree::ParamValue
   attributes:
-    id: 396
+    id: 1131
     page_layout_root_id: 1
     page_layout_id: 1
     section_param_id: 248
@@ -4865,7 +4568,7 @@
     updated_at: 2013-11-02 09:51:44.384495000 Z
 - !ruby/object:Spree::ParamValue
   attributes:
-    id: 397
+    id: 1132
     page_layout_root_id: 1
     page_layout_id: 1
     section_param_id: 249
@@ -4883,7 +4586,7 @@
     updated_at: 2013-11-03 07:25:27.271516000 Z
 - !ruby/object:Spree::ParamValue
   attributes:
-    id: 398
+    id: 1133
     page_layout_root_id: 1
     page_layout_id: 1
     section_param_id: 250
@@ -4903,7 +4606,7 @@
     updated_at: 2013-11-03 07:49:16.034782000 Z
 - !ruby/object:Spree::ParamValue
   attributes:
-    id: 399
+    id: 1134
     page_layout_root_id: 1
     page_layout_id: 1
     section_param_id: 251
@@ -4915,7 +4618,7 @@
     updated_at: 2013-11-02 09:51:44.609346000 Z
 - !ruby/object:Spree::ParamValue
   attributes:
-    id: 400
+    id: 1135
     page_layout_root_id: 1
     page_layout_id: 1
     section_param_id: 252
@@ -4927,7 +4630,7 @@
     updated_at: 2013-11-02 09:51:44.684035000 Z
 - !ruby/object:Spree::ParamValue
   attributes:
-    id: 401
+    id: 1136
     page_layout_root_id: 1
     page_layout_id: 1
     section_param_id: 253
@@ -4939,7 +4642,7 @@
     updated_at: 2013-11-02 09:51:44.760088000 Z
 - !ruby/object:Spree::ParamValue
   attributes:
-    id: 402
+    id: 1137
     page_layout_root_id: 1
     page_layout_id: 1
     section_param_id: 254
@@ -4951,7 +4654,7 @@
     updated_at: 2013-11-02 09:51:44.834448000 Z
 - !ruby/object:Spree::ParamValue
   attributes:
-    id: 403
+    id: 1138
     page_layout_root_id: 1
     page_layout_id: 1
     section_param_id: 255
@@ -4963,7 +4666,7 @@
     updated_at: 2013-11-02 09:51:44.909358000 Z
 - !ruby/object:Spree::ParamValue
   attributes:
-    id: 404
+    id: 1139
     page_layout_root_id: 1
     page_layout_id: 1
     section_param_id: 256
@@ -4973,6 +4676,684 @@
     computed_pvalue: 
     created_at: 2013-11-02 09:51:44.984338000 Z
     updated_at: 2013-11-02 09:51:44.984338000 Z
+- !ruby/object:Spree::ParamValue
+  attributes:
+    id: 1140
+    page_layout_root_id: 1
+    page_layout_id: 3
+    section_param_id: 43
+    theme_id: 1
+    pvalue: {}
+    unset: 
+    computed_pvalue: 
+    created_at: 2013-11-05 03:16:07.042482000 Z
+    updated_at: 2013-11-05 03:16:07.042482000 Z
+- !ruby/object:Spree::ParamValue
+  attributes:
+    id: 1141
+    page_layout_root_id: 1
+    page_layout_id: 3
+    section_param_id: 44
+    theme_id: 1
+    pvalue: {}
+    unset: 
+    computed_pvalue: 
+    created_at: 2013-11-05 03:16:07.135840000 Z
+    updated_at: 2013-11-05 03:16:07.135840000 Z
+- !ruby/object:Spree::ParamValue
+  attributes:
+    id: 1142
+    page_layout_root_id: 1
+    page_layout_id: 3
+    section_param_id: 45
+    theme_id: 1
+    pvalue:
+      15hidden: '1'
+    unset: 
+    computed_pvalue: 
+    created_at: 2013-11-05 03:16:07.235022000 Z
+    updated_at: 2013-11-05 03:16:07.235022000 Z
+- !ruby/object:Spree::ParamValue
+  attributes:
+    id: 1143
+    page_layout_root_id: 1
+    page_layout_id: 3
+    section_param_id: 46
+    theme_id: 1
+    pvalue: {}
+    unset: 
+    computed_pvalue: 
+    created_at: 2013-11-05 03:16:07.318630000 Z
+    updated_at: 2013-11-05 03:16:07.318630000 Z
+- !ruby/object:Spree::ParamValue
+  attributes:
+    id: 1144
+    page_layout_root_id: 1
+    page_layout_id: 3
+    section_param_id: 47
+    theme_id: 1
+    pvalue: {}
+    unset: 
+    computed_pvalue: 
+    created_at: 2013-11-05 03:16:07.397236000 Z
+    updated_at: 2013-11-05 03:16:07.397236000 Z
+- !ruby/object:Spree::ParamValue
+  attributes:
+    id: 1145
+    page_layout_root_id: 1
+    page_layout_id: 3
+    section_param_id: 48
+    theme_id: 1
+    pvalue: {}
+    unset: 
+    computed_pvalue: 
+    created_at: 2013-11-05 03:16:07.489981000 Z
+    updated_at: 2013-11-05 03:16:07.489981000 Z
+- !ruby/object:Spree::ParamValue
+  attributes:
+    id: 1146
+    page_layout_root_id: 1
+    page_layout_id: 3
+    section_param_id: 49
+    theme_id: 1
+    pvalue: {}
+    unset: 
+    computed_pvalue: 
+    created_at: 2013-11-05 03:16:07.580985000 Z
+    updated_at: 2013-11-05 03:16:07.580985000 Z
+- !ruby/object:Spree::ParamValue
+  attributes:
+    id: 1147
+    page_layout_root_id: 1
+    page_layout_id: 4
+    section_param_id: 11
+    theme_id: 1
+    pvalue: {}
+    unset: 
+    computed_pvalue: 
+    created_at: 2013-11-05 03:16:07.870270000 Z
+    updated_at: 2013-11-05 03:16:07.870270000 Z
+- !ruby/object:Spree::ParamValue
+  attributes:
+    id: 1148
+    page_layout_root_id: 1
+    page_layout_id: 4
+    section_param_id: 12
+    theme_id: 1
+    pvalue: {}
+    unset: 
+    computed_pvalue: 
+    created_at: 2013-11-05 03:16:07.967750000 Z
+    updated_at: 2013-11-05 03:16:07.967750000 Z
+- !ruby/object:Spree::ParamValue
+  attributes:
+    id: 1149
+    page_layout_root_id: 1
+    page_layout_id: 4
+    section_param_id: 13
+    theme_id: 1
+    pvalue:
+      15hidden: '1'
+    unset: 
+    computed_pvalue: 
+    created_at: 2013-11-05 03:16:08.045185000 Z
+    updated_at: 2013-11-05 03:16:08.045185000 Z
+- !ruby/object:Spree::ParamValue
+  attributes:
+    id: 1150
+    page_layout_root_id: 1
+    page_layout_id: 4
+    section_param_id: 14
+    theme_id: 1
+    pvalue: {}
+    unset: 
+    computed_pvalue: 
+    created_at: 2013-11-05 03:16:08.137588000 Z
+    updated_at: 2013-11-05 03:16:08.137588000 Z
+- !ruby/object:Spree::ParamValue
+  attributes:
+    id: 1151
+    page_layout_root_id: 1
+    page_layout_id: 4
+    section_param_id: 15
+    theme_id: 1
+    pvalue: {}
+    unset: 
+    computed_pvalue: 
+    created_at: 2013-11-05 03:16:08.213411000 Z
+    updated_at: 2013-11-05 03:16:08.213411000 Z
+- !ruby/object:Spree::ParamValue
+  attributes:
+    id: 1152
+    page_layout_root_id: 1
+    page_layout_id: 4
+    section_param_id: 16
+    theme_id: 1
+    pvalue: {}
+    unset: 
+    computed_pvalue: 
+    created_at: 2013-11-05 03:16:08.289196000 Z
+    updated_at: 2013-11-05 03:16:08.289196000 Z
+- !ruby/object:Spree::ParamValue
+  attributes:
+    id: 1153
+    page_layout_root_id: 1
+    page_layout_id: 4
+    section_param_id: 17
+    theme_id: 1
+    pvalue: {}
+    unset: 
+    computed_pvalue: 
+    created_at: 2013-11-05 03:16:08.373234000 Z
+    updated_at: 2013-11-05 03:16:08.373234000 Z
+- !ruby/object:Spree::ParamValue
+  attributes:
+    id: 1154
+    page_layout_root_id: 1
+    page_layout_id: 4
+    section_param_id: 18
+    theme_id: 1
+    pvalue: {}
+    unset: 
+    computed_pvalue: 
+    created_at: 2013-11-05 03:16:08.465816000 Z
+    updated_at: 2013-11-05 03:16:08.465816000 Z
+- !ruby/object:Spree::ParamValue
+  attributes:
+    id: 1155
+    page_layout_root_id: 1
+    page_layout_id: 4
+    section_param_id: 19
+    theme_id: 1
+    pvalue: {}
+    unset: 
+    computed_pvalue: 
+    created_at: 2013-11-05 03:16:08.558402000 Z
+    updated_at: 2013-11-05 03:16:08.558402000 Z
+- !ruby/object:Spree::ParamValue
+  attributes:
+    id: 1156
+    page_layout_root_id: 1
+    page_layout_id: 4
+    section_param_id: 20
+    theme_id: 1
+    pvalue: {}
+    unset: 
+    computed_pvalue: 
+    created_at: 2013-11-05 03:16:08.634232000 Z
+    updated_at: 2013-11-05 03:16:08.634232000 Z
+- !ruby/object:Spree::ParamValue
+  attributes:
+    id: 1157
+    page_layout_root_id: 1
+    page_layout_id: 4
+    section_param_id: 21
+    theme_id: 1
+    pvalue: {}
+    unset: 
+    computed_pvalue: 
+    created_at: 2013-11-05 03:16:08.709968000 Z
+    updated_at: 2013-11-05 03:16:08.709968000 Z
+- !ruby/object:Spree::ParamValue
+  attributes:
+    id: 1158
+    page_layout_root_id: 1
+    page_layout_id: 4
+    section_param_id: 22
+    theme_id: 1
+    pvalue: {}
+    unset: 
+    computed_pvalue: 
+    created_at: 2013-11-05 03:16:08.794057000 Z
+    updated_at: 2013-11-05 03:16:08.794057000 Z
+- !ruby/object:Spree::ParamValue
+  attributes:
+    id: 1159
+    page_layout_root_id: 1
+    page_layout_id: 4
+    section_param_id: 23
+    theme_id: 1
+    pvalue: {}
+    unset: 
+    computed_pvalue: 
+    created_at: 2013-11-05 03:16:08.879438000 Z
+    updated_at: 2013-11-05 03:16:08.879438000 Z
+- !ruby/object:Spree::ParamValue
+  attributes:
+    id: 1160
+    page_layout_root_id: 1
+    page_layout_id: 4
+    section_param_id: 24
+    theme_id: 1
+    pvalue: {}
+    unset: 
+    computed_pvalue: 
+    created_at: 2013-11-05 03:16:09.080934000 Z
+    updated_at: 2013-11-05 03:16:09.080934000 Z
+- !ruby/object:Spree::ParamValue
+  attributes:
+    id: 1161
+    page_layout_root_id: 1
+    page_layout_id: 4
+    section_param_id: 25
+    theme_id: 1
+    pvalue: {}
+    unset: 
+    computed_pvalue: 
+    created_at: 2013-11-05 03:16:09.181082000 Z
+    updated_at: 2013-11-05 03:16:09.181082000 Z
+- !ruby/object:Spree::ParamValue
+  attributes:
+    id: 1162
+    page_layout_root_id: 1
+    page_layout_id: 4
+    section_param_id: 26
+    theme_id: 1
+    pvalue: {}
+    unset: 
+    computed_pvalue: 
+    created_at: 2013-11-05 03:16:09.273463000 Z
+    updated_at: 2013-11-05 03:16:09.273463000 Z
+- !ruby/object:Spree::ParamValue
+  attributes:
+    id: 1163
+    page_layout_root_id: 1
+    page_layout_id: 19
+    section_param_id: 90
+    theme_id: 1
+    pvalue: {}
+    unset: 
+    computed_pvalue: 
+    created_at: 2013-11-05 03:16:09.571447000 Z
+    updated_at: 2013-11-05 03:16:09.571447000 Z
+- !ruby/object:Spree::ParamValue
+  attributes:
+    id: 1164
+    page_layout_root_id: 1
+    page_layout_id: 19
+    section_param_id: 91
+    theme_id: 1
+    pvalue: {}
+    unset: 
+    computed_pvalue: 
+    created_at: 2013-11-05 03:16:09.660135000 Z
+    updated_at: 2013-11-05 03:16:09.660135000 Z
+- !ruby/object:Spree::ParamValue
+  attributes:
+    id: 1165
+    page_layout_root_id: 1
+    page_layout_id: 19
+    section_param_id: 92
+    theme_id: 1
+    pvalue:
+      15hidden: '1'
+    unset: 
+    computed_pvalue: 
+    created_at: 2013-11-05 03:16:09.736212000 Z
+    updated_at: 2013-11-05 03:16:09.736212000 Z
+- !ruby/object:Spree::ParamValue
+  attributes:
+    id: 1166
+    page_layout_root_id: 1
+    page_layout_id: 19
+    section_param_id: 93
+    theme_id: 1
+    pvalue: {}
+    unset: 
+    computed_pvalue: 
+    created_at: 2013-11-05 03:16:09.829760000 Z
+    updated_at: 2013-11-05 03:16:09.829760000 Z
+- !ruby/object:Spree::ParamValue
+  attributes:
+    id: 1167
+    page_layout_root_id: 1
+    page_layout_id: 19
+    section_param_id: 94
+    theme_id: 1
+    pvalue: {}
+    unset: 
+    computed_pvalue: 
+    created_at: 2013-11-05 03:16:09.921944000 Z
+    updated_at: 2013-11-05 03:16:09.921944000 Z
+- !ruby/object:Spree::ParamValue
+  attributes:
+    id: 1168
+    page_layout_root_id: 1
+    page_layout_id: 19
+    section_param_id: 95
+    theme_id: 1
+    pvalue: {}
+    unset: 
+    computed_pvalue: 
+    created_at: 2013-11-05 03:16:10.014464000 Z
+    updated_at: 2013-11-05 03:16:10.014464000 Z
+- !ruby/object:Spree::ParamValue
+  attributes:
+    id: 1169
+    page_layout_root_id: 1
+    page_layout_id: 19
+    section_param_id: 96
+    theme_id: 1
+    pvalue: {}
+    unset: 
+    computed_pvalue: 
+    created_at: 2013-11-05 03:16:10.106841000 Z
+    updated_at: 2013-11-05 03:16:10.106841000 Z
+- !ruby/object:Spree::ParamValue
+  attributes:
+    id: 1170
+    page_layout_root_id: 1
+    page_layout_id: 19
+    section_param_id: 97
+    theme_id: 1
+    pvalue:
+      15hidden: '1'
+    unset: 
+    computed_pvalue: 
+    created_at: 2013-11-05 03:16:10.199782000 Z
+    updated_at: 2013-11-05 03:16:10.199782000 Z
+- !ruby/object:Spree::ParamValue
+  attributes:
+    id: 1171
+    page_layout_root_id: 1
+    page_layout_id: 19
+    section_param_id: 98
+    theme_id: 1
+    pvalue: {}
+    unset: 
+    computed_pvalue: 
+    created_at: 2013-11-05 03:16:10.291931000 Z
+    updated_at: 2013-11-05 03:16:10.291931000 Z
+- !ruby/object:Spree::ParamValue
+  attributes:
+    id: 1172
+    page_layout_root_id: 1
+    page_layout_id: 19
+    section_param_id: 99
+    theme_id: 1
+    pvalue: {}
+    unset: 
+    computed_pvalue: 
+    created_at: 2013-11-05 03:16:10.359375000 Z
+    updated_at: 2013-11-05 03:16:10.359375000 Z
+- !ruby/object:Spree::ParamValue
+  attributes:
+    id: 1173
+    page_layout_root_id: 1
+    page_layout_id: 19
+    section_param_id: 293
+    theme_id: 1
+    pvalue: {}
+    unset: 
+    computed_pvalue: 
+    created_at: 2013-11-05 03:16:10.443413000 Z
+    updated_at: 2013-11-05 03:16:10.443413000 Z
+- !ruby/object:Spree::ParamValue
+  attributes:
+    id: 1174
+    page_layout_root_id: 1
+    page_layout_id: 19
+    section_param_id: 100
+    theme_id: 1
+    pvalue: {}
+    unset: 
+    computed_pvalue: 
+    created_at: 2013-11-05 03:16:10.529065000 Z
+    updated_at: 2013-11-05 03:16:10.529065000 Z
+- !ruby/object:Spree::ParamValue
+  attributes:
+    id: 1175
+    page_layout_root_id: 1
+    page_layout_id: 19
+    section_param_id: 101
+    theme_id: 1
+    pvalue: {}
+    unset: 
+    computed_pvalue: 
+    created_at: 2013-11-05 03:16:10.621524000 Z
+    updated_at: 2013-11-05 03:16:10.621524000 Z
+- !ruby/object:Spree::ParamValue
+  attributes:
+    id: 1176
+    page_layout_root_id: 1
+    page_layout_id: 19
+    section_param_id: 102
+    theme_id: 1
+    pvalue:
+      15hidden: '1'
+    unset: 
+    computed_pvalue: 
+    created_at: 2013-11-05 03:16:10.722526000 Z
+    updated_at: 2013-11-05 03:16:10.722526000 Z
+- !ruby/object:Spree::ParamValue
+  attributes:
+    id: 1177
+    page_layout_root_id: 1
+    page_layout_id: 19
+    section_param_id: 103
+    theme_id: 1
+    pvalue: {}
+    unset: 
+    computed_pvalue: 
+    created_at: 2013-11-05 03:16:10.822945000 Z
+    updated_at: 2013-11-05 03:16:10.822945000 Z
+- !ruby/object:Spree::ParamValue
+  attributes:
+    id: 1178
+    page_layout_root_id: 1
+    page_layout_id: 19
+    section_param_id: 104
+    theme_id: 1
+    pvalue: {}
+    unset: 
+    computed_pvalue: 
+    created_at: 2013-11-05 03:16:10.907088000 Z
+    updated_at: 2013-11-05 03:16:10.907088000 Z
+- !ruby/object:Spree::ParamValue
+  attributes:
+    id: 1179
+    page_layout_root_id: 1
+    page_layout_id: 19
+    section_param_id: 294
+    theme_id: 1
+    pvalue: {}
+    unset: 
+    computed_pvalue: 
+    created_at: 2013-11-05 03:16:10.991242000 Z
+    updated_at: 2013-11-05 03:16:10.991242000 Z
+- !ruby/object:Spree::ParamValue
+  attributes:
+    id: 1180
+    page_layout_root_id: 1
+    page_layout_id: 16
+    section_param_id: 11
+    theme_id: 1
+    pvalue: {}
+    unset: 
+    computed_pvalue: 
+    created_at: 2013-11-05 03:16:11.254660000 Z
+    updated_at: 2013-11-05 03:16:11.254660000 Z
+- !ruby/object:Spree::ParamValue
+  attributes:
+    id: 1181
+    page_layout_root_id: 1
+    page_layout_id: 16
+    section_param_id: 12
+    theme_id: 1
+    pvalue: {}
+    unset: 
+    computed_pvalue: 
+    created_at: 2013-11-05 03:16:11.354094000 Z
+    updated_at: 2013-11-05 03:16:11.354094000 Z
+- !ruby/object:Spree::ParamValue
+  attributes:
+    id: 1182
+    page_layout_root_id: 1
+    page_layout_id: 16
+    section_param_id: 13
+    theme_id: 1
+    pvalue:
+      15hidden: '1'
+    unset: 
+    computed_pvalue: 
+    created_at: 2013-11-05 03:16:11.446926000 Z
+    updated_at: 2013-11-05 03:16:11.446926000 Z
+- !ruby/object:Spree::ParamValue
+  attributes:
+    id: 1183
+    page_layout_root_id: 1
+    page_layout_id: 16
+    section_param_id: 14
+    theme_id: 1
+    pvalue: {}
+    unset: 
+    computed_pvalue: 
+    created_at: 2013-11-05 03:16:11.539117000 Z
+    updated_at: 2013-11-05 03:16:11.539117000 Z
+- !ruby/object:Spree::ParamValue
+  attributes:
+    id: 1184
+    page_layout_root_id: 1
+    page_layout_id: 16
+    section_param_id: 15
+    theme_id: 1
+    pvalue: {}
+    unset: 
+    computed_pvalue: 
+    created_at: 2013-11-05 03:16:11.656607000 Z
+    updated_at: 2013-11-05 03:16:11.656607000 Z
+- !ruby/object:Spree::ParamValue
+  attributes:
+    id: 1185
+    page_layout_root_id: 1
+    page_layout_id: 16
+    section_param_id: 16
+    theme_id: 1
+    pvalue: {}
+    unset: 
+    computed_pvalue: 
+    created_at: 2013-11-05 03:16:11.740764000 Z
+    updated_at: 2013-11-05 03:16:11.740764000 Z
+- !ruby/object:Spree::ParamValue
+  attributes:
+    id: 1186
+    page_layout_root_id: 1
+    page_layout_id: 16
+    section_param_id: 17
+    theme_id: 1
+    pvalue: {}
+    unset: 
+    computed_pvalue: 
+    created_at: 2013-11-05 03:16:11.808090000 Z
+    updated_at: 2013-11-05 03:16:11.808090000 Z
+- !ruby/object:Spree::ParamValue
+  attributes:
+    id: 1187
+    page_layout_root_id: 1
+    page_layout_id: 16
+    section_param_id: 18
+    theme_id: 1
+    pvalue: {}
+    unset: 
+    computed_pvalue: 
+    created_at: 2013-11-05 03:16:11.892310000 Z
+    updated_at: 2013-11-05 03:16:11.892310000 Z
+- !ruby/object:Spree::ParamValue
+  attributes:
+    id: 1188
+    page_layout_root_id: 1
+    page_layout_id: 16
+    section_param_id: 19
+    theme_id: 1
+    pvalue: {}
+    unset: 
+    computed_pvalue: 
+    created_at: 2013-11-05 03:16:11.976504000 Z
+    updated_at: 2013-11-05 03:16:11.976504000 Z
+- !ruby/object:Spree::ParamValue
+  attributes:
+    id: 1189
+    page_layout_root_id: 1
+    page_layout_id: 16
+    section_param_id: 20
+    theme_id: 1
+    pvalue: {}
+    unset: 
+    computed_pvalue: 
+    created_at: 2013-11-05 03:16:12.070103000 Z
+    updated_at: 2013-11-05 03:16:12.070103000 Z
+- !ruby/object:Spree::ParamValue
+  attributes:
+    id: 1190
+    page_layout_root_id: 1
+    page_layout_id: 16
+    section_param_id: 21
+    theme_id: 1
+    pvalue: {}
+    unset: 
+    computed_pvalue: 
+    created_at: 2013-11-05 03:16:12.162778000 Z
+    updated_at: 2013-11-05 03:16:12.162778000 Z
+- !ruby/object:Spree::ParamValue
+  attributes:
+    id: 1191
+    page_layout_root_id: 1
+    page_layout_id: 16
+    section_param_id: 22
+    theme_id: 1
+    pvalue: {}
+    unset: 
+    computed_pvalue: 
+    created_at: 2013-11-05 03:16:12.246868000 Z
+    updated_at: 2013-11-05 03:16:12.246868000 Z
+- !ruby/object:Spree::ParamValue
+  attributes:
+    id: 1192
+    page_layout_root_id: 1
+    page_layout_id: 16
+    section_param_id: 23
+    theme_id: 1
+    pvalue: {}
+    unset: 
+    computed_pvalue: 
+    created_at: *56602520
+    updated_at: 2013-11-05 03:16:12.331006000 Z
+- !ruby/object:Spree::ParamValue
+  attributes:
+    id: 1193
+    page_layout_root_id: 1
+    page_layout_id: 16
+    section_param_id: 24
+    theme_id: 1
+    pvalue: {}
+    unset: 
+    computed_pvalue: 
+    created_at: 2013-11-05 03:16:12.406833000 Z
+    updated_at: 2013-11-05 03:16:12.406833000 Z
+- !ruby/object:Spree::ParamValue
+  attributes:
+    id: 1194
+    page_layout_root_id: 1
+    page_layout_id: 16
+    section_param_id: 25
+    theme_id: 1
+    pvalue: {}
+    unset: 
+    computed_pvalue: 
+    created_at: 2013-11-05 03:16:12.466137000 Z
+    updated_at: 2013-11-05 03:16:12.466137000 Z
+- !ruby/object:Spree::ParamValue
+  attributes:
+    id: 1195
+    page_layout_root_id: 1
+    page_layout_id: 16
+    section_param_id: 26
+    theme_id: 1
+    pvalue: {}
+    unset: 
+    computed_pvalue: 
+    created_at: 2013-11-05 03:16:12.550330000 Z
+    updated_at: 2013-11-05 03:16:12.550330000 Z
 :page_layouts:
 - !ruby/object:Spree::PageLayout
   attributes:
@@ -5025,7 +5406,7 @@
     title: Logo
     slug: logo
     section_id: 9
-    section_instance: 1
+    section_instance: 2
     section_context: ''
     data_source: ''
     data_filter: ''
@@ -5033,7 +5414,7 @@
     copy_from_root_id: 0
     is_full_html: false
     created_at: 2013-04-08 13:27:03.357970000 Z
-    updated_at: 2013-04-08 13:27:03.357970000 Z
+    updated_at: 2013-11-05 03:16:06.940760000 Z
 - !ruby/object:Spree::PageLayout
   attributes:
     id: 4
@@ -5045,7 +5426,7 @@
     title: Main menu
     slug: main-menu
     section_id: 3
-    section_instance: 1
+    section_instance: 3
     section_context: ''
     data_source: ''
     data_filter: ''
@@ -5053,7 +5434,7 @@
     copy_from_root_id: 0
     is_full_html: false
     created_at: 2013-04-08 13:27:03.890022000 Z
-    updated_at: 2013-04-08 13:27:03.890022000 Z
+    updated_at: 2013-11-05 03:16:07.756559000 Z
 - !ruby/object:Spree::PageLayout
   attributes:
     id: 5
@@ -5285,7 +5666,7 @@
     title: footer menu
     slug: footer-menu
     section_id: 3
-    section_instance: 2
+    section_instance: 3
     section_context: ''
     data_source: ''
     data_filter: ''
@@ -5293,7 +5674,7 @@
     copy_from_root_id: 0
     is_full_html: false
     created_at: 2013-04-08 13:27:10.998044000 Z
-    updated_at: 2013-04-08 13:27:10.998044000 Z
+    updated_at: 2013-11-05 03:16:11.156423000 Z
 - !ruby/object:Spree::PageLayout
   attributes:
     id: 17
@@ -5345,7 +5726,7 @@
     title: image with thumbnails1
     slug: image-with-thumbnails1
     section_id: 23
-    section_instance: 1
+    section_instance: 2
     section_context: ''
     data_source: ''
     data_filter: ''
@@ -5353,7 +5734,7 @@
     copy_from_root_id: 0
     is_full_html: false
     created_at: 2013-04-09 13:08:24.039363000 Z
-    updated_at: 2013-04-09 13:08:24.039363000 Z
+    updated_at: 2013-11-05 03:16:09.480985000 Z
 - !ruby/object:Spree::PageLayout
   attributes:
     id: 20
@@ -5433,7 +5814,7 @@
     copy_from_root_id: 0
     is_full_html: false
     created_at: 2013-04-13 01:32:40.530633000 Z
-    updated_at: 2013-04-13 01:32:40.530633000 Z
+    updated_at: *64714240
 - !ruby/object:Spree::PageLayout
   attributes:
     id: 24
@@ -5932,7 +6313,7 @@
     is_enabled: true
     copy_from_root_id: 0
     is_full_html: false
-    created_at: 2013-11-02 09:38:01.303968000 Z
+    created_at: *66733460
     updated_at: 2013-11-02 09:38:01.303968000 Z
 - !ruby/object:Spree::PageLayout
   attributes:
