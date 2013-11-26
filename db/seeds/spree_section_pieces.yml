@@ -20,8 +20,6 @@ root:
     <% else%>
       <link rel="stylesheet" href="<%=@website.public_path('css')%>" type="text/css" />
       <script type="text/javascript" src="<%=@website.public_path('js')%>"></script>
-      <script type="text/javascript" src="/assets/jquery.js"></script>
-      <script type="text/javascript" src="/assets/jquery-ui.js"></script>    
     <% end %>    
     <%= csrf_meta_tags %>
     <%= render "spree/shared/routes" %>
@@ -128,6 +126,11 @@ root:
       table {
         width:100%; 
       }
+      /* set padding margin to label */
+      #page form label {
+        display: inline-block;
+      }
+      
     <% if @template.css :use_bbtl %>
     div#bbtl
     { position:absolute;
@@ -620,9 +623,9 @@ product_atc:
   is_selectable: "0"
   is_container: "0"
   html: |   
-    <%= form_for :order, :url => populate_orders_path, :html=>{:class=>g_piece_selector} do |f| %>
+    <%= form_for :order, :url => populate_orders_path, :html=>{:class=>[g_piece_selector]} do |f| %>
       <%= hidden_field_tag  "variants[#{product.master.id}]", 1 %>
-      <%= button_tag  :id => 'add-to-cart-button', :type => :submit do %>
+      <%= button_tag  :id => 'add-to-cart-button', :type => :submit  do %>
             <%= t(:add_to_cart) %>
       <% end %>
     <% end %>
@@ -780,7 +783,7 @@ taxon_name:
   is_selectable: "1"
   is_container: "0"
   html: |    
-    <span> <%= @current_page.menu.name %> </span>
+    <h1> <%= @current_page.menu.name %> </h1>
   created_at: 2011-09-20 19:40:07
   updated_at: 2011-09-20 19:40:07
   css: ""
