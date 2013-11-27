@@ -256,12 +256,12 @@ module Spree
       def css_selector        
         target = self.param_value.section_param.section_piece_param.class_name
         prefix = case target
-        when /cell/ # s_cell or cell
+          when /cell/ # s_cell or cell
             ".s_#{self.param_value.page_layout_id}_#{self.param_value.section_param.section_root_id} td, .s_#{self.param_value.page_layout_id}_#{self.param_value.section_param.section_root_id} th"            
           when /^s\_/
             target = target[2..-1]
             ".s_#{self.param_value.page_layout_id}_#{self.param_value.section_param.section_root_id}"
-          when "ash",/^a/, /(label|input|li|img|button|td|th)/ #a, ah
+          when "as_h","a_h", /(a|label|input|li|img|button|td|th)/ #a, a_h
             ".s_#{self.param_value.page_layout_id}_#{self.param_value.section_param.section_id}"
           when /page/
             "#page"
@@ -277,10 +277,12 @@ module Spree
             ""          
           when /inner/
             "_#{target}"
-          when 'ash' #selected:hover
+          when 'as_h' #selected:hover
             " .selected"
-          when /^a/ #a, ah
+          when /(a|a_h)/
             " a"
+          when /\_h$/  #button_h
+            " #{target.delete('_h')}"
           when /(table|label|input|li|img|button|td|th|h6)/
           #product quantity,atc section_piece content just input,add a <span> wrap it.
           #product images content thumb and main images so here should be section_id,
@@ -327,7 +329,7 @@ Rails.logger.debug "css selector:#{prefix+selector}, #{attribute_name}:#{attribu
     
     # update param_value with self 
     def update()
-      Rails.logger.debug "yes, in HtmlAttributeValue.save"
+      #Rails.logger.debug "yes, in HtmlAttributeValue.save"
       self.param_value.update_html_attribute_value(self.html_attribute, self.properties, 'system')
     end
     

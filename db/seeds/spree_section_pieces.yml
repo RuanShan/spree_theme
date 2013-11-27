@@ -404,12 +404,12 @@ menuitem:
        <%= @template.css :a %>  
       }
       .<%=g_piece_selector%> a:hover{  
-        <%= @template.css :ah %> 
+        <%= @template.css :a_h %> 
       }
       .<%=g_piece_selector%> .selected{ 
         <%= @template.css :selected %> 
       }
-      .<%=g_piece_selector%> a.selected:hover{  <%= @template.css :ash %> }
+      .<%=g_piece_selector%> a.selected:hover{  <%= @template.css :as_h %> }
       .<%=g_piece_selector%> .noclick{ <%= @template.css :noclick %> }
   js: ""
 image:
@@ -481,7 +481,7 @@ product_name:
       <%= @template.css :a %> 
     }
     .<%=g_piece_selector%> a:hover{
-      <%= @template.css :ah %> 
+      <%= @template.css :a_h %> 
     }
   js: ""
 product_thumbnails:
@@ -1043,7 +1043,7 @@ container_link:
   html: ~~content~~    
   css: |
     .<%=@template.current_piece.section_selector%> a{ <%=@template.css(:s_a) %> }
-    .<%=@template.current_piece.section_selector%> a:hover{ <%=@template.css(:s_ah) %> }    
+    .<%=@template.current_piece.section_selector%> a:hover{ <%=@template.css(:s_a_h) %> }    
   js: ""
 container_table:
   id: 43
@@ -1070,6 +1070,8 @@ container_form:
     .<%=@template.current_piece.section_selector%> label{ <%=@template.css(:s_label) %> }
     .<%=@template.current_piece.section_selector%> input{ <%=@template.css(:s_input) %> }
     .<%=@template.current_piece.section_selector%> button{ <%=@template.css(:s_button) %> } 
+    .<%=@template.current_piece.section_selector%> button:hover{ <%=@template.css(:s_button_h) %> } 
+
   js: ""
 dialog_title:
   id: 45
