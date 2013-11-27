@@ -4,8 +4,8 @@
 # @editor, selected editor
 
 # method of this form should be 'get', every time user click a section, get_param_values belong to the section.
--%>
-<%= form_tag(get_param_values_template_theme_path(@theme), { :remote=>true, :method=>'post', 'data-type'=>'script', :id=>"layout_editor_form",:name=>"layout_editor_form"}) do -%>
+%>
+<%= form_tag(get_param_values_template_theme_path(@theme), { :remote=>true, :method=>'post', 'data-type'=>'script', :id=>"layout_editor_form",:name=>"layout_editor_form"}) do %>
 
     <ul class="tabs clear-block">
     <% for tab in @editors%>
@@ -17,11 +17,12 @@
  <% # the next div container is for js to get all editors, in other word, its children
  %>
  <div>
-<% @editors.each_index{ |idx|-%>
+<% @editors.each_index{ |idx|%>
   <div style="<%= 'display:none' if @editors[idx]!=@editor %>">    
-  <%= render :partial=>"editor", :locals => {:editor=>@editors[idx], :param_values=>@param_values_for_editors[idx]}%>
+  <%# render :partial=>"editor", :locals => {:editor=>@editors[idx], :param_values=>@param_values_for_editors[idx]}%>
+  <%= raw partial_editor( @editors[idx], @param_values_for_editors[idx]) %>
   </div>
-<%}-%>
+<%}%>
  </div>
 <%# put these hidden fields here, refresh this form while update editors 
 %>
@@ -35,7 +36,7 @@
 <%=hidden_field_tag "editing_html_attribute_id" %>
 <%=hidden_field_tag "param_value_event" %>
 
-<% end-%>
+<% end%>
 
 <script type="text/javascript" charset="utf-8">
   $("#editors .tabs li").hover(function(){

@@ -49,7 +49,7 @@
                             :disabled => have_states)
          ].join.gsub('"', "'").gsub("\n", "")
       %>
-      <%= javascript_tag do -%>
+      <%= javascript_tag do %>
         $('#<%="#{address_id}state" %>').append("<%== state_elements %>");
       <% end %>
     </p>

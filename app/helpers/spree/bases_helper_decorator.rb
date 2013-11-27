@@ -13,6 +13,36 @@ module Spree
       end
       function
     end
+    # for speed up partial, create these helpers instead of partial
+    
+    def partial_editor( editor, param_values)
+      #local_params: editor, param_values
+      @param_category_ids = []      
+      <<-EOS
+        <div id="editor_#{editor.id}" class="block param_value_editor">
+          #{ param_values.collect{|param_value| partial_param_value( param_value )}.join }
+        </div>
+      EOS
+    end
+    
+    def partial_param_value( param_value)      
+      #params:  html_attribute_hash  {id=>html_attribute}
+      #         
+      #local_params: param_value, param_category
+      param_category = param_value.section_param.section_piece_param.param_category
+      section_piece_param = param_value.section_param.section_piece_param
+      ha_array = param_value.section_param.html_attributes # excluded disabled by section      
+      tags = ''
+      unless @param_category_ids.include? param_category.id
+        @param_category_ids << param_category.id
+        tags = %Q( <div class="editor-header">H:#{param_category.slug}</div> )
+      end
+
+      ha_array.collect{|html_attribute| 
+        tags <<  partial_html_attribute_value( param_value, html_attribute )
+      }
+      tags
+    end
 
     def partial_html_attribute_value( param_value, html_attribute )
       #params: @theme
@@ -42,7 +72,6 @@ module Spree
         passible_value_tag = ""
         manual_value_tag = ""
         manual_unit_tag = ""
-        unset_tag = ""
         if possible_values.size>1
           passible_value_tag << select(pv_ele_id,"psvalue#{i}", possible_values.each_index.collect{|j|  [possible_values_descriptions[j],possible_values[j]] },{:selected =>psvalue }, {:class=>"pv-psv", :onchange=>onchange})
         else
@@ -60,21 +89,20 @@ module Spree
         end
         if units        
           manual_unit_tag << select(pv_ele_id,"unit#{i}", units.collect{|psv|  [psv, psv] },{:selected => unit}, {:class=>"pv-psv", :style=>element_style, :onchange=>manual_value_onchange}) 
-        end 
-
-        unset_onchange = my_remote_function( :submit=>"layout_editor_form",:query_path=>query_path, :query_params => hav.build_url_params(:unset_changed))
-        unset_tag<<  check_box_tag(pv_ele_id+"[unset]", bool_true, hav.unset?, :onchange=>unset_onchange)
-        unset_tag<<  label_tag(pv_ele_id+"[unset]", "Unset")
-        
+        end         
         tags.concat <<-EOS1                
           <div class="clear-block">
             <div class="fl"> #{passible_value_tag} </div>
             <div class="fl" style="#{element_style}">   #{manual_value_tag} </div>
             <div class="fl"> #{manual_unit_tag} </div>
-            <div class="fr"> #{unset_tag} </div>
           </div>
         EOS1
       }
+      unset_tag = ""
+      unset_onchange = my_remote_function( :submit=>"layout_editor_form",:query_path=>query_path, :query_params => hav.build_url_params(:unset_changed))
+      unset_tag<<  check_box_tag(pv_ele_id+"[unset]", bool_true, hav.unset?, :onchange=>unset_onchange)
+      unset_tag<<  label_tag(pv_ele_id+"[unset]", "Unset")
+
       <<-EOS2
         <div id="#{pv_div_id}" class="pv clear-block" style="#{display}">
           <div class="fl"> <span class="pv-name">#{ha.title}</span>
@@ -82,6 +110,7 @@ module Spree
           <div class="fl" style="#{'display:none' if hav.unset?}">
             #{tags}                  
           </div>
+          <div class="fr"> #{unset_tag} </div>
         </div>
       EOS2
     end

@@ -2,17 +2,17 @@
 
     
     <ul class="fl titles" style="width:200px;">
-      <% sections.each_index{|i| s = sections[i]-%>
+      <% sections.each_index{|i| s = sections[i]%>
       <li <%= 'class=selected' if i==0%> <%="data-section-id=#{s.id}"%> ><%=s.slug%></li>
-      <% }-%>
+      <% }%>
     </ul>
   
   <div class="fl details" style="width:200px;">
-      <% sections.each_index{|i| s = sections[i]-%>
+      <% sections.each_index{|i| s = sections[i]%>
       <div <%= 'class=selected' if i==0%>>
         <%= s.slug%>
       </div>
-      <% }-%>
+      <% }%>
   </div>
     
   <input type="hidden" name="selected_section_id" value="<%=sections.first.id%>" />
