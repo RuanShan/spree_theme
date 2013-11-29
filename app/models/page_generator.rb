@@ -125,7 +125,8 @@ class PageGenerator
           [self.url_prefix,'account']
         else
           [self.url_prefix, model.id]  
-        end.join('/')      
+        end.join('/')
+      url = '/' if url.blank?  #[''].join('/')=>''      
     else  
       # menu.id would be nil if it is class DefaultTaxon
       # nil.to_i => 0
