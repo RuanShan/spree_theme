@@ -42,7 +42,7 @@ vmenu = Spree::Section.create_section(section_piece_hash['container'].id, {:titl
 
 vmenu.add_section_piece(section_piece_hash['vmenu'].id).add_section_piece(section_piece_hash['menuitem'].id)
 
-logo = Spree::Section.create_section(section_piece_hash['container'].id, {:title=>"logo"},
+logo = Spree::Section.create_section(section_piece_hash['container'].id, {:title=>"image"},
   {'block'=>{'disabled_ha_ids'=>'111'},
    #'content_horizontal'=>{'disabled_ha_ids'=>'101'},
    'inner'=>{'15hidden'=>bool_true}})

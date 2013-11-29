@@ -21,7 +21,7 @@ section_hash= objects.inject({}){|h,sp| h[sp.slug] = sp; h}
 template = Spree::TemplateTheme.create_plain_template(section_hash['root2'], "Template One")
 document = template.page_layout
 header = template.add_section(section_hash['container'],document, :title=>"Header")
-template.add_section(section_hash['logo'], header,:title=>"Logo")
+template.add_section(section_hash['image'], header,:title=>"Logo")
 template.add_section(section_hash['hmenu'], header,:title=>"Main menu")
 
 body = template.add_section(section_hash['container'], document, :title=>"content")
@@ -43,7 +43,7 @@ template.add_section(section_hash['product-price'], product, :title=>"product pr
 detail_left = template.add_section(section_hash['container'], product_detail, :title=>"left part")
 detail_right = template.add_section(section_hash['container'], product_detail, :title=>"right part")
 
-template.add_section(section_hash['image-with-thumbnails'], detail_left, :title=>"image with thumbnails")
+template.add_section(section_hash['product-image-with-thumbnails'], detail_left, :title=>"image with thumbnails")
 template.add_section(section_hash['product-properties'], detail_left, :title=>"product_properties")
  
 template.add_section(section_hash['product-name'], detail_right, :title=>"product name")

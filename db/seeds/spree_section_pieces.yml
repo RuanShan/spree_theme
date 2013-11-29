@@ -1112,5 +1112,21 @@ dialog_content:
     {
       <%=@template.css(:inner)%>
     }
+  js: ""      
+logo:
+  id: 47
+  title: logo
+  slug: logo
+  is_selectable: "0"
+  is_container: "0"
+  resources: i
+  html: | 
+    <% if @template.image.present? %>    
+         <img src="<%= @template.image.url %>"  border="0" />
+    <% else %>
+         <%= logo %>         
+    <% end %>
+  created_at: 2011-09-20 19:40:07
+  updated_at: 2011-09-20 19:40:07
+  css: ""
   js: ""
-      

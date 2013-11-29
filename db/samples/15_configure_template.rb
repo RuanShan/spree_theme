@@ -5,14 +5,18 @@ taxon_class = SpreeTheme.taxon_class
 
 categories = taxon_class.find_by_name("Categories")
 brands = taxon_class.find_by_name("Brand")
+main_menu = taxon_class.find_by_name("MainMenu")
 
 #main_menu_section = template.page_layout.self_and_descendants.where(:title=>title).first
 
 #template.assign_resource(main_menu, main_menu_section)
+main_menu_section = template.page_layout.self_and_descendants.where(:title=>'Main menu').first
+template.assign_resource(main_menu, main_menu_section)
 
-title="Categories"
-category_section = template.page_layout.self_and_descendants.where(:title=>title).first
+category_section = template.page_layout.self_and_descendants.where(:title=>'Categories').first
 template.assign_resource(categories, category_section)
+
+
 
 template_files = template.template_files
 title="Logo"
