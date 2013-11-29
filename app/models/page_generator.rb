@@ -106,8 +106,26 @@ class PageGenerator
  
   def build_path(model)    
     url = nil
-    if model.kind_of?( SpreeTheme.taxon_class)
-      url= [self.url_prefix, model.id].join('/')
+    if model.kind_of?( SpreeTheme.taxon_class )
+      
+      url= case model.mtype
+        when 1 #home
+          [self.url_prefix]  
+        when 2 #cart
+          [self.url_prefix,'cart']
+        when 3 #checkout
+          [self.url_prefix,'checkout']
+        when 4 #thanks
+          [self.url_prefix,'thanks']
+        when 5 #signup
+          [self.url_prefix,'signup']
+        when 6 #login
+          [self.url_prefix,'login']
+        when 7 #accout
+          [self.url_prefix,'account']
+        else
+          [self.url_prefix, model.id]  
+        end.join('/')      
     else  
       # menu.id would be nil if it is class DefaultTaxon
       # nil.to_i => 0

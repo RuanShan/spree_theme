@@ -22,7 +22,7 @@ template = Spree::TemplateTheme.create_plain_template(section_hash['root2'], "Te
 document = template.page_layout
 header = template.add_section(section_hash['container'],document, :title=>"Header")
 template.add_section(section_hash['image'], header,:title=>"Logo")
-template.add_section(section_hash['hmenu'], header,:title=>"Main menu")
+main_menu = template.add_section(section_hash['hmenu'], header,:title=>"Main menu")
 
 body = template.add_section(section_hash['container'], document, :title=>"content")
 footer = template.add_section(section_hash['container'], document, :title=>"footer")

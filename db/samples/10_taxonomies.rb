@@ -14,7 +14,7 @@ logged = Spree::Taxonomy.find_by_name!("Logged")
 
 taxons = [
   {
-    :name => "Index",
+    :name => "Home",
     :taxonomy => main_menu,
     :parent => "MainMenu",
     :mtype => 1,
