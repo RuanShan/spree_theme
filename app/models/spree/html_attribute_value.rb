@@ -261,12 +261,12 @@ module Spree
           when /^s\_/
             target = target[2..-1]
             ".s_#{self.param_value.page_layout_id}_#{self.param_value.section_param.section_root_id}"
-          when "as_h","a_h", /(a|label|input|li|img|button|td|th)/ #a, a_h
-            ".s_#{self.param_value.page_layout_id}_#{self.param_value.section_param.section_id}"
           when /page/
             "#page"
           when /content_layout/
             ".c_#{self.param_value.page_layout_id}"          
+          when "as_h","a_h","a", /(label|input|li|img|button|td|th)/ #a, a_h
+            ".s_#{self.param_value.page_layout_id}_#{self.param_value.section_param.section_id}"
           else
             ".s_#{self.param_value.page_layout_id}_#{self.param_value.section_param.section_id}"
           end
