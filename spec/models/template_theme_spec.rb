@@ -34,8 +34,7 @@ Rails.logger.debug "temp_file=#{temp_file.size}"
     
     first_param_value = template.param_values.first 
     first_param_value.page_layout_id.should eq(template.page_layout.id)
-    first_param_value.page_layout_root_id.should eq(template.page_layout.root_id)
-    
+    first_param_value.page_layout_root_id.should eq(template.page_layout.root_id)    
   end
   
   it "should copy to new" do
@@ -45,8 +44,7 @@ Rails.logger.debug "temp_file=#{temp_file.size}"
      new_node_ids = copy_template.page_layout.self_and_descendants.collect{|node| node.id }     
      template.assigned_resource_ids.keys{| node_id |
        new_node_ids.should include node_id
-     }
-     
+     }     
   end
   
   it "destroy imported one" do
@@ -61,4 +59,21 @@ Rails.logger.debug "............strart test import................."
     imported_template.destroy
     template.page_layout.present?.should be_true    
   end
+  
+  it "should get resource id" do
+    page_layout_tree = template.page_layout.self_and_descendants
+    logo = page_layout_tree.select{|pl| pl.title=='Logo'}.first
+    template.assigned_resource_id( Spree::TemplateFile, logo ).should be > 0
+    template.assigned_resource_id( Spree::TemplateFile, logo, 1 ).should eq 0
+    
+  end
+  
+  it "should assign resource" do
+    template_file = Spree::TemplateFile.first
+    template.assign_resource( template_file, template.page_layout )
+    template.assign_resource( template_file, template.page_layout, 1 )
+    template.assigned_resource_id( Spree::TemplateFile, logo ).should eq template_file.id
+    template.assigned_resource_id( Spree::TemplateFile, logo, 1 ).should eq template_file.id    
+  end
+  
 end

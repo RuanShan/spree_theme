@@ -240,27 +240,29 @@ module Spree
       end
       
       # get assigned menu by specified page_layout_id
-      def assigned_resource_id( resource_class, page_layout_id)
-        resource_id = 0
+      # params:
+      #   resource_position: get first( position 0 ) of assigned resources by default
+      #     logged_and_unlogged_menu required this feature
+      def assigned_resource_id( resource_class, page_layout_id, resource_position=0 )
+        #resource_id = 0
         resource_key = get_resource_class_key(resource_class)
         if assigned_resource_ids.try(:[],page_layout_id).try(:[],resource_key).present?
-          resource_id = assigned_resource_ids[page_layout_id][resource_key].first
+          resource_id = assigned_resource_ids[page_layout_id][resource_key][resource_position]
         end
-        resource_id
+        resource_id||0
       end
     
       # assign resource to page_layout node
-      def assign_resource( resource, page_layout)
+      def assign_resource( resource, page_layout, resource_position=0 )
         #assigned_resource_ids={page_layout_id={:menu_ids=>[]}}
-        self.assigned_resource_ids = {} unless assigned_resource_ids.present?
-        
+        self.assigned_resource_ids = {} unless assigned_resource_ids.present?        
         resource_key = get_resource_class_key(resource.class)
-        unless self.assigned_resource_ids[page_layout.id].try(:[],resource_key).try(:include?, resource.id )
+        unless( self.assigned_resource_ids[page_layout.id].try(:[],resource_key).try(:[], resource.id) ==  resource.id )
           self.assigned_resource_ids[page_layout.id]||={}
           self.assigned_resource_ids[page_layout.id][resource_key]||=[]
-          self.assigned_resource_ids[page_layout.id][resource_key].push( resource.id )
+          self.assigned_resource_ids[page_layout.id][resource_key][resource_position] = resource.id 
         end
-        Rails.logger.debug "assigned_resource_ids=#{assigned_resource_ids.inspect}"
+        #Rails.logger.debug "assigned_resource_ids=#{assigned_resource_ids.inspect}"
         self.save! 
       end
     end
