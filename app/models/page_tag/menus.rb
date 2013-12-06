@@ -42,10 +42,9 @@ module PageTag
       unless menus_cache.key? key
         menu_tree = nil
         #wrapped_page_layout.assigned_menu_id may not exist for some reason.        
-        assigned_menu_id = 
-        if wrapped_page_layout.assigned_menu_id(resource_position)>0 and SpreeTheme.taxon_class.exists?( wrapped_page_layout.assigned_menu_id )     
-                
-          menu_tree = SpreeTheme.taxon_class.find( wrapped_page_layout.assigned_menu_id).self_and_descendants
+        assigned_menu_id = wrapped_page_layout.assigned_menu_id(resource_position)
+        if assigned_menu_id>0 and SpreeTheme.taxon_class.exists?( assigned_menu_id )
+          menu_tree = SpreeTheme.taxon_class.find( assigned_menu_id ).self_and_descendants
         end
         menus_cache[key] = menu_tree     
       end

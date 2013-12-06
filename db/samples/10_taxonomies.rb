@@ -21,17 +21,17 @@ taxons = [
     :position => 1
   },
   {
-    :name => "My account",
-    :taxonomy => logged,
-    :parent => "Logged",
-    :mtype => 1,
-    :position => 7
-  },
-  {
     :name => "Login",
     :taxonomy => unlogged,
     :parent => "Unlogged",
     :mtype => 6,
+    :position => 1
+  },
+  {
+    :name => "My account",
+    :taxonomy => logged,
+    :parent => "Logged",
+    :mtype => 7,
     :position => 1
   },
 ]
