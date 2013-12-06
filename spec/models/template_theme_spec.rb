@@ -72,8 +72,8 @@ Rails.logger.debug "............strart test import................."
     template_file = Spree::TemplateFile.first
     template.assign_resource( template_file, template.page_layout )
     template.assign_resource( template_file, template.page_layout, 1 )
-    template.assigned_resource_id( Spree::TemplateFile, logo ).should eq template_file.id
-    template.assigned_resource_id( Spree::TemplateFile, logo, 1 ).should eq template_file.id    
+    template.assigned_resource_id( Spree::TemplateFile, template.page_layout ).should eq template_file.id
+    template.assigned_resource_id( Spree::TemplateFile, template.page_layout, 1 ).should eq template_file.id    
   end
   
 end

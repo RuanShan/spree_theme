@@ -49,24 +49,24 @@ module PageTag
         "#{page_layout.id}_#{section_id}"
       end
        
-      def assigned_menu_id
-        assigned_id =  self.collection_tag.theme.assigned_resource_id(SpreeTheme.taxon_class, page_layout.id)
+      def assigned_menu_id( resource_position=0 )
+        assigned_id =  self.collection_tag.theme.assigned_resource_id(SpreeTheme.taxon_class, page_layout, resource_position)
         if assigned_id==0
           assigned_id = page_layout.ancestors.collect{|ancestor| 
-            self.collection_tag.theme.assigned_resource_id(SpreeTheme.taxon_class, ancestor.id) 
+            self.collection_tag.theme.assigned_resource_id(SpreeTheme.taxon_class, ancestor, resource_position) 
           }.select{| ancestor_assigned_id | ancestor_assigned_id >0 }.first.to_i
         end        
         assigned_id
       end
       def assigned_image_id
-        self.collection_tag.theme.assigned_resource_id(Spree::TemplateFile, page_layout.id)
+        self.collection_tag.theme.assigned_resource_id(Spree::TemplateFile, page_layout)
       end
     end
     
     attr_accessor :page_layout_tree
     attr_accessor :param_values_tag, :menus_tag, :image_tag
     delegate :css, :to => :param_values_tag 
-    delegate :menu, :to => :menus_tag
+    delegate :menu,:menu2, :to => :menus_tag
     delegate :image, :to => :image_tag
     delegate :theme, :to => :page_generator
     attr_accessor :current_piece

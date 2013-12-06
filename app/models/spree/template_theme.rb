@@ -243,11 +243,11 @@ module Spree
       # params:
       #   resource_position: get first( position 0 ) of assigned resources by default
       #     logged_and_unlogged_menu required this feature
-      def assigned_resource_id( resource_class, page_layout_id, resource_position=0 )
+      def assigned_resource_id( resource_class, page_layout, resource_position=0 )
         #resource_id = 0
         resource_key = get_resource_class_key(resource_class)
-        if assigned_resource_ids.try(:[],page_layout_id).try(:[],resource_key).present?
-          resource_id = assigned_resource_ids[page_layout_id][resource_key][resource_position]
+        if assigned_resource_ids.try(:[],page_layout.id).try(:[],resource_key).present?
+          resource_id = assigned_resource_ids[page_layout.id][resource_key][resource_position]
         end
         resource_id||0
       end
@@ -257,7 +257,7 @@ module Spree
         #assigned_resource_ids={page_layout_id={:menu_ids=>[]}}
         self.assigned_resource_ids = {} unless assigned_resource_ids.present?        
         resource_key = get_resource_class_key(resource.class)
-        unless( self.assigned_resource_ids[page_layout.id].try(:[],resource_key).try(:[], resource.id) ==  resource.id )
+        unless( self.assigned_resource_ids[page_layout.id].try(:[],resource_key).try(:[], resource_position) ==  resource.id )
           self.assigned_resource_ids[page_layout.id]||={}
           self.assigned_resource_ids[page_layout.id][resource_key]||=[]
           self.assigned_resource_ids[page_layout.id][resource_key][resource_position] = resource.id 

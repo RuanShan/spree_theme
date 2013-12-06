@@ -1151,20 +1151,20 @@ minicart:
     <%=  link_to text, spree.cart_path, :class => "cart-info #{css_class}" %>
   css: ""
   js: ""
-logged_and_unlogged_menu
+logged_and_unlogged_menu:
   id: 49
   is_selectable: "0"
   is_container: "1"
   resources: m
   html: |
-    <% menu = spree_current_user ? @template.menu : @template.menu2 %>
-    <ul class="<%=g_piece_selector%>" >
+    <% menu = (spree_current_user ? @template.menu : @template.menu2) %>
     <% if menu.present? %>
+    <ul class="<%=g_piece_selector%>" >
       <% for page in menu.children %>
          ~~content~~
       <% end %>
-    <% end %>
     </ul>
+    <% end %>
   css: |
     .<%=g_piece_selector%> li{ 
       list-style-type:none;
