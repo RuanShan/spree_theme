@@ -13,10 +13,9 @@ root:
       <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
       <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE8" />
       <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon"/>
-      <script type="text/javascript" src="/assets/store/spree_theme.js"></script>
+      <%= javascript_include_tag 'store/spree_theme' %>      
     <% if @current_page.is_preview %>
-      <link rel="stylesheet" href="/assets/store/spree_theme.css" type="text/css" />    
-      <link rel="stylesheet" href="/assets/jquery-ui/minified/jquery-ui.min.css" type="text/css" />    
+      <%= stylesheet_link_tag 'store/spree_theme', :media => 'screen' %>
     <% else%>
       <link rel="stylesheet" href="<%=@website.public_path('css')%>" type="text/css" />
       <script type="text/javascript" src="<%=@website.public_path('js')%>"></script>
