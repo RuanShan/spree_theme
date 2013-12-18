@@ -1,8 +1,8 @@
 namespace :spree_theme do
-  desc "load sample of theme"
-  task :load_sample  => :environment do
+  desc "load themes"
+  task :load_themes  => :environment do
     Rake::Task["spree_sample:load"].invoke    
-    load File.join(SpreeTheme::Engine.root,'db/samples/seed.rb')
+    load File.join(SpreeTheme::Engine.root,'db/themes/seed.rb')
   end
   
   desc "reload section_piece.yml"
