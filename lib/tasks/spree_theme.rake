@@ -21,12 +21,17 @@ namespace :spree_theme do
     puts "exported file #{file_path}"
   end
   
-  desc "import template one"
+  desc "import template one, accept param FILE, ex. FILE='spree_theme/db/themes/design/1_138.rb'"
+       "default path=shops/rails_env/shop_id/1_nnn.rb"
   task :import_template => :environment do
     #template = Spree::TemplateTheme.first
-    SpreeTheme.site_class.current = SpreeTheme.site_class.designsite 
-    file_path =  File.join(SpreeTheme.site_class.designsite.document_path, "1_*.yml")
-    file_path = Dir[file_path].sort.last
+    if ENV['FILE']
+      file_path = ENV['FILE'] 
+    else 
+      SpreeTheme.site_class.current = SpreeTheme.site_class.designsite 
+      file_path =  File.join(SpreeTheme.site_class.designsite.document_path, "1_*.yml")
+      file_path = Dir[file_path].sort.last      
+    end
     open(file_path) do |file|
       Spree::TemplateTheme.import_into_db(file)
     end    
